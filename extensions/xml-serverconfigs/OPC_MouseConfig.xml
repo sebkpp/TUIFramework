@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--document xmlns:xi='http://www.w3.org/2001/XInclude'--><document xmlns:xi="http://www.w3.org/2001/XInclude">
+   <ServerConfig>
+      <ServerStartupConfig/>
+      <DeviceTypeSequence>
+         <Image path="images/TUI1.png"/>
+         <DeviceType name="MouseDevice">
+            <PortTypeSequence>
+               <PortType name="m4" sink="0" source="1" typename="MouseChannel">
+                  <Description/>
+               </PortType>
+               <PortType name="m3" sink="0" source="1" typename="MouseChannel">
+                  <Description/>
+               </PortType>
+               <PortType name="m2" sink="0" source="1" typename="MouseChannel">
+                  <Description/>
+               </PortType>
+               <PortType name="m1" sink="0" source="1" typename="MouseChannel">
+                  <Description/>
+               </PortType>
+            </PortTypeSequence>
+            <ParameterTypeDefSequence/>
+            <ParameterTypeSequence/>
+            <ParameterGroup name="Client">
+               <Parameter name="PortNr" value="19100"/>
+            </ParameterGroup>
+         </DeviceType>
+         <DeviceType name="OPCDev">
+            <PortTypeSequence>
+               <PortType name="mIn" sink="1" source="0" typename="MouseChannel">
+                  <Description/>
+               </PortType>
+               <PortType name="iOPC" sink="0" source="1" typename="IntegerOPCChannel">
+                  <Description/>
+               </PortType>
+               <PortType name="aOPC" sink="0" source="1" typename="AnalogOPCChannel">
+                  <Description/>
+               </PortType>
+               <PortType name="dOPCIn" sink="1" source="0" typename="DigitalOPCChannel">
+                  <Description/>
+               </PortType>
+               <PortType name="dOPC" sink="0" source="1" typename="DigitalOPCChannel">
+                  <Description/>
+               </PortType>
+               <PortType name="aOPCIn" sink="1" source="0" typename="AnalogOPCChannel">
+                  <Description/>
+               </PortType>
+               <PortType name="iOPCIn" sink="1" source="0" typename="IntegerOPCChannel">
+                  <Description/>
+               </PortType>
+            </PortTypeSequence>
+            <ParameterTypeDefSequence/>
+            <ParameterTypeSequence/>
+            <ParameterGroup name="Client">
+               <Parameter name="OPCServer" value=""/>
+               <Parameter name="Hostname" value=""/>
+            </ParameterGroup>
+         </DeviceType>
+      </DeviceTypeSequence>
+      <MSPTypeSequence>
+         <Image path="images/DefaultMSP.png"/>
+      </MSPTypeSequence>
+      <TUIObjectTypeSequence>
+         <Image path="images/TUI1.png"/>
+         <TUIObjectType name="TestOPC">
+            <PortTypeSequence>
+               <PortType name="iIn" sink="0" source="1" typename="IntegerOPCChannel">
+                  <Description/>
+               </PortType>
+               <PortType name="iOut" sink="1" source="0" typename="IntegerOPCChannel">
+                  <Description/>
+               </PortType>
+               <PortType name="aOut" sink="1" source="0" typename="AnalogOPCChannel">
+                  <Description/>
+               </PortType>
+               <PortType name="dOut" sink="1" source="0" typename="DigitalOPCChannel">
+                  <Description/>
+               </PortType>
+               <PortType name="dIn" sink="0" source="1" typename="DigitalOPCChannel">
+                  <Description/>
+               </PortType>
+               <PortType name="aIn" sink="0" source="1" typename="AnalogOPCChannel">
+                  <Description/>
+               </PortType>
+            </PortTypeSequence>
+         </TUIObjectType>
+      </TUIObjectTypeSequence>
+      <DeviceInstanceSequence>
+         <DeviceInstance name="Unnamed1" typename="MouseDevice">
+            <ParameterGroup name="Client">
+               <Parameter name="PortNr" value="7222"/>
+            </ParameterGroup>
+         </DeviceInstance>
+         <DeviceInstance name="OPCDevice" typename="OPCDev">
+            <ParameterGroup name="Client">
+               <Parameter name="blockWriteVariable" value="Robot1.writeBack"/>
+               <Parameter name="OPCServer" value="Matrikon.OPC.Genie.1"/>
+               <Parameter name="Hostname" value="127.0.0.1"/>
+            </ParameterGroup>
+         </DeviceInstance>
+      </DeviceInstanceSequence>
+      <MSPInstanceSequence/>
+      <TUIObjectInstanceSequence>
+         <TUIObjectInstance name="OPCTUIApp" typename="TestOPC"/>
+      </TUIObjectInstanceSequence>
+      <ConnectorSequence>
+         <Connector>
+            <SrcAddress entityName="Unnamed1" entityType="DEV" portName="m2"/>
+            <DstAddress entityName="OPCDevice" entityType="DEV" portName="mIn"/>
+         </Connector>
+         <Connector>
+            <SrcAddress entityName="OPCDevice" entityType="DEV" portName="iOPC"/>
+            <DstAddress entityName="OPCTUIApp" entityType="TUI" portName="iIn"/>
+         </Connector>
+         <Connector>
+            <SrcAddress entityName="OPCTUIApp" entityType="TUI" portName="dOut"/>
+            <DstAddress entityName="OPCDevice" entityType="DEV" portName="dOPCIn"/>
+         </Connector>
+      </ConnectorSequence>
+   </ServerConfig>
+</document>
