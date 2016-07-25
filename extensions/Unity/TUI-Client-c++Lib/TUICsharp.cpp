@@ -28,6 +28,9 @@ void TUICsharp::connect()
 				case 13:
 					CONNECT(IntegerChangedEvent, it->objectName, it->channelName, TUICsharp, this, &TUICsharp::SignalChanged);
 					break;
+				case 15: // Experimental
+					CONNECT(Matrix4ChangedEvent, it->objectName, it->channelName, TUICsharp, this, &TUICsharp::SignalChanged);
+					break;
 				case 21:
 					CONNECT(MouseEvent, it->objectName, it->channelName, TUICsharp, this, &TUICsharp::SignalChanged);
 					break;
@@ -63,6 +66,9 @@ void TUICsharp::disconnect()
 			case 13:
 				DISCONNECT(IntegerChangedEvent, it->objectName, it->channelName, TUICsharp, this, &TUICsharp::SignalChanged);
 				break;
+			case 15: // Experimental
+				DISCONNECT(Matrix4ChangedEvent, it->objectName, it->channelName, TUICsharp, this, &TUICsharp::SignalChanged);
+				break;
 			case 21:
 				DISCONNECT(MouseEvent, it->objectName, it->channelName, TUICsharp, this, &TUICsharp::SignalChanged);
 				break;
@@ -80,51 +86,60 @@ void TUICsharp::disconnect()
 
 void TUICsharp::connecting(int TUIType, std::string TUIObjectName,std::string portName, integerCallback call)
 {
-	listValues values;
-	values.tuiType = TUIType;
-	values.objectName = TUIObjectName;
-	values.channelName = portName;
-	values.intCall = call;
+	listVal.tuiType = TUIType;
+	listVal.objectName = TUIObjectName;
+	listVal.channelName = portName;
+	listVal.intCall = call;
 
 	// Fügt die Struktur der Liste hinzu.
-	list.push_back(values);
+	list.push_back(listVal);
 }
 
 void TUICsharp::connecting(int TUIType, std::string TUIObjectName, std::string portName, floatCallback call)
 {
-	listValues values;
-	values.tuiType = TUIType;
-	values.objectName = TUIObjectName;
-	values.channelName = portName;
-	values.floatCall = call;
+	listVal.tuiType = TUIType;
+	listVal.objectName = TUIObjectName;
+	listVal.channelName = portName;
+	listVal.floatCall = call;
 
 	// Fügt die Struktur der Liste hinzu.
-	list.push_back(values);
+	list.push_back(listVal);
 }
 
 void TUICsharp::connecting(int TUIType, std::string TUIObjectName, std::string portName, boolCallback call)
 {
-	listValues values;
-	values.tuiType = TUIType;
-	values.objectName = TUIObjectName;
-	values.channelName = portName;
-	values.boolCall = call;
+	listVal.tuiType = TUIType;
+	listVal.objectName = TUIObjectName;
+	listVal.channelName = portName;
+	listVal.boolCall = call;
 
 	// Fügt die Struktur der Liste hinzu.
-	list.push_back(values);
+	list.push_back(listVal);
 }
 
 void TUICsharp::connecting(int TUIType, std::string TUIObjectName, std::string portName, mouseCallback call)
 {
-	listValues values;
-	values.tuiType = TUIType;
-	values.objectName = TUIObjectName;
-	values.channelName = portName;
-	values.mouseCall = call;
+	listVal.tuiType = TUIType;
+	listVal.objectName = TUIObjectName;
+	listVal.channelName = portName;
+	listVal.mouseCall = call;
 
 	// Fügt die Struktur der Liste hinzu.
-	list.push_back(values);
+	list.push_back(listVal);
 }
+
+void TUICsharp::connecting(int TUIType, std::string TUIObjectName, std::string portName, matrix4Callback call)
+{
+	listVal.tuiType = TUIType;
+	listVal.objectName = TUIObjectName;
+	listVal.channelName = portName;
+	listVal.matrix4Call = call;
+
+	// Fügt die Struktur der Liste hinzu.
+	list.push_back(listVal);
+}
+
+
 
 void TUICsharp::SignalChanged(const IntegerChangedEvent * e)
 {
@@ -170,6 +185,18 @@ void TUICsharp::SignalChanged(const MouseEvent * e)
 		{
 			// Ruft die Callback-Funktion auf
 			list.at(i).mouseCall(e->getPayload());
+		}
+	}
+}
+
+void TUICsharp::SignalChanged(const Matrix4ChangedEvent * e)
+{
+	for (int i = 0; i < list.size(); ++i)
+	{
+		if (i == (e->getAddress().getPortNr() - 1))
+		{
+			// Ruft die Callback-Funktion auf
+			list.at(i).matrix4Call(e->getPayload());
 		}
 	}
 }

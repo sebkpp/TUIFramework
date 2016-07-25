@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Runtime.InteropServices;
 
 namespace TUICSharp_Lib
@@ -66,7 +63,7 @@ namespace TUICSharp_Lib
         [DllImport("TUIC++ API DLL.dll")]
         public static extern void connectingParameters(IntPtr instance, int TUIType, string objectName, string channelName, integerCallback call);
 
-        /**
+		/**
         * Übergibt die Channel-Parameter zur Verbindung auf dem TUI-Server.
         * @param instance Die TUI C#-Instanz.
         * @param TUIType ID des TUITypes.
@@ -74,10 +71,10 @@ namespace TUICSharp_Lib
         * @param channelName Name des Channels.
         * @param Callback für Float-Werte.
         */
-        [DllImport("TUIC++ API DLL.dll", EntryPoint="connectingParametersfloat")]
-        public static extern void connectingParameters(IntPtr instance, int TUIType, string objectName, string channelName, floatCallback call);
+		[DllImport("TUIC++ API DLL.dll", EntryPoint = "connectingParametersfloat")]
+		public static extern void connectingParameters(IntPtr instance, int TUIType, string objectName, string channelName, floatCallback call);
 
-        /**
+		/**
         * Übergibt die Channel-Parameter zur Verbindung auf dem TUI-Server.
         * @param instance Die TUI C#-Instanz.
         * @param TUIType ID des TUITypes.
@@ -85,10 +82,10 @@ namespace TUICSharp_Lib
         * @param channelName Name des Channels.
         * @param Callback für Boolean-Werte.
         */
-        [DllImport("TUIC++ API DLL.dll", EntryPoint = "connectingParametersbool")]
-        public static extern void connectingParameters(IntPtr instance, int TUIType, string objectName, string channelName, boolCallback call);
+		[DllImport("TUIC++ API DLL.dll", EntryPoint = "connectingParametersbool")]
+		public static extern void connectingParameters(IntPtr instance, int TUIType, string objectName, string channelName, boolCallback call);
 
-        /**
+		/**
         * ### Experimentel ###
         * Übergibt die Channel-Parameter zur Verbindung auf dem TUI-Server.
         * @param instance Die TUI C#-Instanz.
@@ -97,70 +94,79 @@ namespace TUICSharp_Lib
         * @param channelName Name des Channels.
         * @param Callback für MouseData.
         */
-        [DllImport("TUIC++ API DLL.dll", EntryPoint = "connectingParametersmouse")]
-        public static extern void connectingParameters(IntPtr instance, int TUIType, string objectName, string channelName, mouseCallback call);
+		[DllImport("TUIC++ API DLL.dll", EntryPoint = "connectingParametersmouse")]
+		public static extern void connectingParameters(IntPtr instance, int TUIType, string objectName, string channelName, mouseCallback call);
 
-        /**
+
+		// Experimental
+		[DllImport("TUIC++ API DLL.dll", EntryPoint = "connectingParametersMatrix4")]
+		public static extern void connectingParameters(IntPtr instance, int TUIType, string objectName, string channelName, matrix4Callback call);
+
+
+		/**
         * ### Experimental ###
         * Speichert die MouseDaten in einem String
         * @param mouseData Pointer zu MouseData
         * @param [out]value Speichert die Daten von MouseData in einem String.
         */
-        [DllImport("TUIC++ API DLL.dll")]
-        public static extern void getMouseData(IntPtr mouseData, string value);
+		//[DllImport("TUIC++ API DLL.dll")]
+		//public static extern void getMouseData(IntPtr mouseData, string value);
 
-        /**
+		/**
         * Delegat für das Callback für Integer-Werte
         * @param value integer-Werte.
         */
-        public delegate void integerCallback(int value);
+		public delegate void integerCallback(int value);
 
-        /**
+		/**
         * Delegat für das Callback für Float-Werte
         * @param value Float-Werte.
         */
-        public delegate void floatCallback(float value);
+		public delegate void floatCallback(float value);
 
-        /**
+		/**
         * ### Nicht implementiert bisher ###
         * Delegat für das Callback für Double-Werte
         * @param value Double-Werte.
         */
-        public delegate void doubleCallback(double value);
+		public delegate void doubleCallback(double value);
 
-        /**
+		/**
         * ### Nicht implementiert bisher ###
         * Delegat für das Callback für Byte-Werte
         * @param value Byte-Werte.
         */
-        public delegate void byteCallback(byte value);
+		public delegate void byteCallback(byte value);
 
 
-        /**
+		/**
         * Delegat für das Callback für bool-Werte
         * @param value bool-Werte.
         */
-        public delegate void boolCallback(bool value);
+		public delegate void boolCallback(bool value);
 
-        /**
+		/**
         * ### Nicht implementiert bisher ###
         * Delegat für das Callback für String-Werte
         * @param value String-Werte.
         */
-        public delegate void stringCallback(string value);
+		public delegate void stringCallback(string value);
 
-        /**
+		/**
         * ### Experimental ###
         * Delegat für das Callback für Mousedata
         * @param value MouseData.
         */
-        public delegate void mouseCallback(IntPtr value);
+		public delegate void mouseCallback(IntPtr value);
 
 
-        /**
+		// Experimental
+		public delegate void matrix4Callback(IntPtr value);
+
+		/**
         * Enumeration zum mappen der TUI-Type IDs
         */
-        public enum TUITypes
+		public enum TUITypes
         {
             DigitalChangedEvent = 11,
             AnalogChangedEvent = 12,

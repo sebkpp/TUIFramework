@@ -27,7 +27,7 @@ typedef void(*floatCallback)(float value); // Callback for float Values
 */
 typedef void(*boolCallback)(bool value); // Callback for boolean Values
 
-//typedef void(*doubleCallback)(double value); // Callback for double Values
+typedef void(*doubleCallback)(double value); // Callback for double Values
 
 /**
 * ### Experimentel ###
@@ -35,6 +35,10 @@ typedef void(*boolCallback)(bool value); // Callback for boolean Values
 * @param value Mouse-Werte die an die TUI überwegeben werden sollen.
 */
 typedef void(*mouseCallback)(MouseData value); // Experimental Callback for MouseData
+
+// Experimental
+typedef void(*matrix4Callback)(Matrix4Data value);
+
 
 
 extern "C" 
@@ -112,6 +116,8 @@ extern "C"
 	* @param integerCallBack Funktions-Callback für MouseData.
 	*/
 	TESTFUNCDLL_API void connectingParametersmouse(void* instance, int TUIType, const char* objectName, const char* channelName, mouseCallback call);
+
+	TESTFUNCDLL_API void connectingParametersMatrix4(void* instance, int TUIType, const char* objectName, const char* channelName, matrix4Callback call);
 
 
 	//TESTFUNCDLL_API void getMouseData(void* instance,const char* value);

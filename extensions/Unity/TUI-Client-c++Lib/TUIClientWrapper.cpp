@@ -5,7 +5,6 @@ extern "C"
 
 	bool connectUnityWithTUIServer(int recievePort,int senderPort, const char* serverIPPort, void* tuiInit)
 	{
-		
 		TUIInit init = *(TUIInit*)tuiInit;
 		initTypeRegistration(getEventFactory());
 		CommonTypeReg::registerTypes(&getEventFactory(), &getEventChannelFactory());
@@ -56,6 +55,13 @@ extern "C"
 	}
 
 	void connectingParametersmouse(void* instance, int TUIType, const char* objectName, const char* channelName, mouseCallback call)
+	{
+		TUICsharp* tuiUnity = (TUICsharp*)instance;
+		tuiUnity->connecting(TUIType, std::string(objectName), std::string(channelName), call);
+	}
+	
+	// TESTING
+	void connectingParametersMatrix4(void* instance, int TUIType, const char* objectName, const char* channelName, matrix4Callback call)
 	{
 		TUICsharp* tuiUnity = (TUICsharp*)instance;
 		tuiUnity->connecting(TUIType, std::string(objectName), std::string(channelName), call);

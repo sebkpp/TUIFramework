@@ -10,7 +10,7 @@ namespace TUIClientUnityDemo
 {
     class Program
     {
-        
+        /*
         static void Main(string[] args)
         {
             int rPort = 8998;
@@ -32,6 +32,6 @@ namespace TUIClientUnityDemo
             // Verbindet sich mit dem TUI-server
             Console.Write(TUIClientLibary.connectUnityWithTUIServer(rPort,sPort,serverIP, tuiUnityInit));
         }
-        
+        */
     }
 }

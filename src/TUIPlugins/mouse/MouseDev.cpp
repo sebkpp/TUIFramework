@@ -169,6 +169,7 @@ void MouseDev::executeInputLoop() {
 				MouseEvent * e = new MouseEvent();
 				e->setAddress(EPAddress(this->entityID, md.getId()));
 				e->setPayload(md);
+				cout << md.getDeltaX() << endl;
 				//TFDEBUG(e)
 				eventSink->push(e);
 			}

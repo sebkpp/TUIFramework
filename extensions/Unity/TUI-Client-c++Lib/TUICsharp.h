@@ -23,7 +23,7 @@ typedef void(*floatCallback)(float value); // Callback for float Values
 */
 typedef void(*boolCallback)(bool value); // Callback for boolean Values
 
-//typedef void(*doubleCallback)(double value); // Callback for double Values
+typedef void(*doubleCallback)(double value); // Callback for double Values
 
 /**
 * ### Experimentel ###
@@ -31,6 +31,10 @@ typedef void(*boolCallback)(bool value); // Callback for boolean Values
 * @param value Mouse-Werte die an die TUI überwegeben werden sollen.
 */
 typedef void(*mouseCallback)(MouseData value); // Experimental Callback for MouseData
+
+// Experimental
+typedef void(*matrix4Callback)(Matrix4Data value); // Experimental Callback for MouseData
+
 
 /**
 * Struktur zum Zusammenfassen der Parameter zum Verbinden mit dem TUI-Channel
@@ -44,6 +48,7 @@ struct listValues
 	floatCallback floatCall;
 	boolCallback boolCall;
 	mouseCallback mouseCall;
+	matrix4Callback matrix4Call;
 };
 
 /**
@@ -92,6 +97,11 @@ public:
 	*/
 	void connecting(int TUIType, std::string TUIObjectName, std::string channelName, mouseCallback call);
 
+	// Experimental
+	void connecting(int TUIType, std::string TUIObjectName, std::string channelName, matrix4Callback call);
+
+
+
 	/*
 	* Verbindet die in der Liste enthaltenten Parameter mit dem TUI-Server
 	*/
@@ -101,6 +111,8 @@ public:
 	* Beendet die Verbindung.
 	*/
 	void disconnect();
+
+
 
 	/**
 	* Funktion die ausgeführt wird sobald ein Event ausgelöst wird.
@@ -127,12 +139,16 @@ public:
 	*/
 	void SignalChanged(const MouseEvent * e);
 
+	// Experimental
+	void SignalChanged(const Matrix4ChangedEvent * e);
+
+
 private:
 
 	/**
 	* Struktur die alle Parameter für das verbinden des Channels mit dem TUI-Server enthält.
 	*/
-//	listValues listVal;
+	listValues listVal;
 
 	/**
 	* Vector der alle strukturen mit den Parametern enthält.
