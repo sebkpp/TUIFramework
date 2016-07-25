@@ -99,11 +99,12 @@
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>..\..\..\include; ..\..\..\3rdParty\Pre-built.2\include;</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>HAVE_STRUCT_TIMESPEC;_WINDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <NoEntryPoint>false</NoEntryPoint>
-      <AdditionalLibraryDirectories>..\..\..\3rdParty\Pre-built.2\lib;..\..\..\bin\$(Platform)\$(VisualStudioVersion)\$(PlatformTarget)\$(Configuration)\lib\TUIFramework;..\..\..\bin\$(Platform)\$(VisualStudioVersion)\$(PlatformTarget)\$(Configuration)\lib\TUIPlugins\static;..\..\..\3rdParty\xerces-c-3.1.1-x86-windows-vc-9.0\lib;C:\Program Files %28x86%29\Windows Kits\10\Lib\10.0.10150.0\ucrt\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>Ws2_32.lib; pthreadVC2.lib; TUIFrameworkCore.lib;TUIFrameworkClient.lib;TUILibTUITypes.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\..\3rdParty\Pre-built.2\lib;..\..\..\3rdParty\xerces-c-3.1.1-x86-windows-vc-9.0\lib;C:\Program Files %28x86%29\Windows Kits\10\Lib\10.0.10150.0\ucrt\x64;C:\Users\LegrAmau\Documents\TUIFramework\bin\x64\14.0\x64\Debug\lib\TUIFramework;C:\Users\LegrAmau\Documents\TUIFramework\bin\x64\14.0\x64\Debug\lib\TUIPlugins\static;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>WS2_32.lib;pthreadVC2.lib;Ws2_32.lib;TUIFrameworkCore.lib;TUIFrameworkClient.lib;TUILibTUITypes.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">

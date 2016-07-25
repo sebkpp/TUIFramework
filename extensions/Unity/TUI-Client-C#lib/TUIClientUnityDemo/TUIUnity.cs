@@ -14,40 +14,40 @@ namespace TUIClientUnityDemo
         {
             // Verbindet sich mit den Ports
             TUIClientLibary.connectingParameters(tuiUnityTest, 
-                (int)TUIClientLibary.TUITypes.IntegerChangedEvent,
-                "TUIMouse1", 
-                "DeltaX", 
+                (int)TUIClientLibary.TUITypes.IntegerChangedEvent, 
+                "TUIUnity",
+                "DeltaX",
                 new TUIClientLibary.integerCallback(this.getXValue));
 
             TUIClientLibary.connectingParameters(tuiUnityTest, 
-                (int)TUIClientLibary.TUITypes.IntegerChangedEvent,
-                "TUIMouse1", 
+                (int)TUIClientLibary.TUITypes.IntegerChangedEvent, 
+                "TUIUnity", 
                 "DeltaY", 
                 new TUIClientLibary.integerCallback(this.getYValue));
 
             TUIClientLibary.connectingParameters(tuiUnityTest,
                 (int)TUIClientLibary.TUITypes.DigitalChangedEvent,
-                "TUIMouse1",
-                "LeftButton",
+                "TUIUnity",
+                "leftMouse",
                 new TUIClientLibary.boolCallback(this.getleftMouse));
 
             TUIClientLibary.connectingParameters(tuiUnityTest,
                 (int)TUIClientLibary.TUITypes.DigitalChangedEvent,
-                "TUIMouse1",
-                "RightButton",
+                "TUIUnity",
+                "rightMouse",
                 new TUIClientLibary.boolCallback(this.getrightMouse));
         }
 
         public void getXValue(int value)
         {
-           // xValue = value;
-            System.Console.WriteLine("XValues 1234 " + value);
+            xValue = value;
+            System.Console.WriteLine("XValues 1234 " + xValue);
         }
 
         public void getYValue(int value)
         {
-            //yValue = value;
-            System.Console.WriteLine("YValues "+ value);
+            yValue = value;
+            System.Console.WriteLine("YValues "+ yValue);
         }
 
         public void getleftMouse(bool value)

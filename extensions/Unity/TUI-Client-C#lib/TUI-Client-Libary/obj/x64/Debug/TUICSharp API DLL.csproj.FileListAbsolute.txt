@@ -1,0 +1,7 @@
+C:\Users\LegrAmau\Documents\TUIFramework\bin\Win32\14.0\x64\Debug\extensions\C++_CSharp API\TUICSharp API DLL.dll
+C:\Users\LegrAmau\Documents\TUIFramework\bin\Win32\14.0\x64\Debug\extensions\C++_CSharp API\TUICSharp API DLL.pdb
+C:\Users\LegrAmau\Documents\TUIFramework\extensions\Unity\TUI-Client-C#lib\TUI-Client-Libary\obj\x64\Debug\TUICSharp API DLL.csprojResolveAssemblyReference.cache
+C:\Users\LegrAmau\Documents\TUIFramework\extensions\Unity\TUI-Client-C#lib\TUI-Client-Libary\obj\x64\Debug\TUICSharp API DLL.dll
+C:\Users\LegrAmau\Documents\TUIFramework\extensions\Unity\TUI-Client-C#lib\TUI-Client-Libary\obj\x64\Debug\TUICSharp API DLL.pdb
+C:\Users\LegrAmau\Documents\TUIFramework\bin\x64\14.0\x64\Debug\extensions\C++_CSharp API\TUICSharp API DLL.dll
+C:\Users\LegrAmau\Documents\TUIFramework\bin\x64\14.0\x64\Debug\extensions\C++_CSharp API\TUICSharp API DLL.pdb

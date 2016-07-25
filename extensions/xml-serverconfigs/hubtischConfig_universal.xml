@@ -17,10 +17,10 @@
                <PortType name="dwIn" sink="1" source="0" typename="DWordChannel">
                   <Description/>
                </PortType>
-               <PortType name="wIn" sink="1" source="0" typename="WordChannel">
+               <PortType name="wI" sink="1" source="0" typename="WinModChannel">
                   <Description/>
                </PortType>
-               <PortType name="wI" sink="1" source="0" typename="WinModChannel">
+               <PortType name="wIn" sink="1" source="0" typename="WordChannel">
                   <Description/>
                </PortType>
             </PortTypeSequence>
@@ -38,16 +38,16 @@
       <MSPTypeSequence>
          <MSPType name="WinModDemuxMSP">
             <PortTypeSequence>
-               <PortType name="byteOut" sink="0" source="1" typename="IntegerVectorChannel">
-                  <Description/>
-               </PortType>
                <PortType name="w" sink="1" source="0" typename="WinModChannel">
                   <Description/>
                </PortType>
-               <PortType name="wordOut" sink="0" source="1" typename="WordChannel">
+               <PortType name="byteOut" sink="0" source="1" typename="IntegerVectorChannel">
                   <Description/>
                </PortType>
                <PortType name="floatOut" sink="0" source="1" typename="AnalogVectorChannel">
+                  <Description/>
+               </PortType>
+               <PortType name="wordOut" sink="0" source="1" typename="WordChannel">
                   <Description/>
                </PortType>
                <PortType name="dWordOut" sink="0" source="1" typename="DWordChannel">
@@ -64,16 +64,16 @@
                <PortType name="DWIn" sink="0" source="1" typename="DWordChannel">
                   <Description/>
                </PortType>
-               <PortType name="fIn" sink="0" source="1" typename="AnalogVectorChannel">
-                  <Description/>
-               </PortType>
                <PortType name="fOut" sink="1" source="0" typename="AnalogVectorChannel">
                   <Description/>
                </PortType>
-               <PortType name="BIn" sink="0" source="1" typename="IntegerVectorChannel">
+               <PortType name="fIn" sink="0" source="1" typename="AnalogVectorChannel">
                   <Description/>
                </PortType>
                <PortType name="WOut" sink="1" source="0" typename="WordChannel">
+                  <Description/>
+               </PortType>
+               <PortType name="BIn" sink="0" source="1" typename="IntegerVectorChannel">
                   <Description/>
                </PortType>
                <PortType name="DWOut" sink="1" source="0" typename="DWordChannel">
@@ -98,8 +98,8 @@
                <Parameter name="readOff" value="0"/>
                <Parameter name="writeOff" value="0"/>
                <Parameter name="wordSize" value="-1"/>
-               <Parameter name="readSize" value="8"/>
                <Parameter name="sliderOff" value="0"/>
+               <Parameter name="readSize" value="8"/>
                <Parameter name="sliderCount" value="2"/>
                <Parameter name="IPCName" value="NULL"/>
                <Parameter name="wordOff" value="0"/>
@@ -111,7 +111,7 @@
          <MSPInstance name="WinModDemuxer" typename="WinModDemuxMSP"/>
       </MSPInstanceSequence>
       <TUIObjectInstanceSequence>
-         <TUIObjectInstance name="HT100" typename="TestWinMod"/>
+         <TUIObjectInstance name="Hubtisch" typename="TestWinMod"/>
       </TUIObjectInstanceSequence>
       <ConnectorSequence>
          <Connector>
@@ -120,34 +120,34 @@
          </Connector>
          <Connector>
             <SrcAddress entityName="WinModDemuxer" entityType="MSP" portName="floatOut"/>
-            <DstAddress entityName="HT100" entityType="TUI" portName="fIn"/>
+            <DstAddress entityName="Hubtisch" entityType="TUI" portName="fIn"/>
          </Connector>
          <Connector>
             <SrcAddress entityName="WinModDemuxer" entityType="MSP" portName="byteOut"/>
-            <DstAddress entityName="HT100" entityType="TUI" portName="BIn"/>
+            <DstAddress entityName="Hubtisch" entityType="TUI" portName="BIn"/>
          </Connector>
          <Connector>
             <SrcAddress entityName="WinModDemuxer" entityType="MSP" portName="wordOut"/>
-            <DstAddress entityName="HT100" entityType="TUI" portName="WIn"/>
+            <DstAddress entityName="Hubtisch" entityType="TUI" portName="WIn"/>
          </Connector>
          <Connector>
             <SrcAddress entityName="WinModDemuxer" entityType="MSP" portName="dWordOut"/>
-            <DstAddress entityName="HT100" entityType="TUI" portName="DWIn"/>
+            <DstAddress entityName="Hubtisch" entityType="TUI" portName="DWIn"/>
          </Connector>
          <Connector>
-            <SrcAddress entityName="HT100" entityType="TUI" portName="fOut"/>
+            <SrcAddress entityName="Hubtisch" entityType="TUI" portName="fOut"/>
             <DstAddress entityName="WinModDevice" entityType="DEV" portName="fIn"/>
          </Connector>
          <Connector>
-            <SrcAddress entityName="HT100" entityType="TUI" portName="DWOut"/>
+            <SrcAddress entityName="Hubtisch" entityType="TUI" portName="DWOut"/>
             <DstAddress entityName="WinModDevice" entityType="DEV" portName="dwIn"/>
          </Connector>
          <Connector>
-            <SrcAddress entityName="HT100" entityType="TUI" portName="WOut"/>
+            <SrcAddress entityName="Hubtisch" entityType="TUI" portName="WOut"/>
             <DstAddress entityName="WinModDevice" entityType="DEV" portName="wIn"/>
          </Connector>
          <Connector>
-            <SrcAddress entityName="HT100" entityType="TUI" portName="BOut"/>
+            <SrcAddress entityName="Hubtisch" entityType="TUI" portName="BOut"/>
             <DstAddress entityName="WinModDevice" entityType="DEV" portName="bIn"/>
          </Connector>
       </ConnectorSequence>

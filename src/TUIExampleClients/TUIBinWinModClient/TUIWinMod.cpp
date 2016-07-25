@@ -55,15 +55,13 @@ void TUIWinMod::connect() {
 
 
 void TUIWinMod::disconnect() {
-    try 
-	{
+    try {
 		DISCONNECT(AnalogVectorChangedEvent, "WinModTUIApp", "fIn", TUIWinMod, this, &TUIWinMod::AnalogSignalChanged);
 		DISCONNECT(IntegerVectorChangedEvent, "WinModTUIApp", "bIn", TUIWinMod, this, &TUIWinMod::DigitalSignalChanged);
 		DISCONNECT(WordChangedEvent, "WinModTUIApp", "wIn", TUIWinMod, this, &TUIWinMod::WordSignalChanged);
 		DISCONNECT(DWordChangedEvent, "WinModTUIApp", "dwIn", TUIWinMod, this, &TUIWinMod::dWordSignalChanged);	
 
-    } catch (const Exception & e) 
-	{
+    } catch (const Exception & e) {
         cerr << "Exception" << endl;
         cerr << e.getFormattedString() << endl;
     }
@@ -76,6 +74,9 @@ void TUIWinMod::WordSignalChanged(const WordChangedEvent *e)
 	this->wordValues = e->getPayload();
 	WordChangedEvent *wordChangeEvent = new WordChangedEvent(-1,-1,wordValues);
 	this->wOutChannel->push(wordChangeEvent);
+
+	//delete wordChangeEvent;
+	//delete e;
 }
 
 
@@ -84,6 +85,9 @@ void TUIWinMod::dWordSignalChanged(const DWordChangedEvent *e)
 	this->dWordValues = e->getPayload();
 	DWordChangedEvent *dWordChangeEvent = new DWordChangedEvent(-1,-1,dWordValues);
 	this->dwOutChannel->push(dWordChangeEvent);
+
+	//delete dWordChangeEvent;
+	//delete e;
 }
 
 
