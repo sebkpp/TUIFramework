@@ -36,6 +36,7 @@
       </DeviceTypeSequence>
       <MSPTypeSequence/>
       <TUIObjectTypeSequence>
+         <Image path="images/TUI1.png"/>
          <TUIObjectType name="TestTUIObjectType">
             <PortTypeSequence>
                <PortType name="Transf" sink="0" source="1" typename="Matrix4">

@@ -159,7 +159,7 @@ public:
         }
 
         if (source->getChannelTypeID() != E::EventTypeID()) {
-            throw Exception("channelConnect failed (the type of the delivered IEventChannel differs from the EventTypeID", __FILE__, __LINE__);
+            throw Exception("channelConnect failed (the type of the delivered IEventChannel differs from the EventTypeID (" + std::to_string(source->getChannelTypeID()) + " against " + std::to_string(E::EventTypeID()) + ")", __FILE__, __LINE__);
         }
 
         EventChannelFunctorMap::iterator iter3 = this->eventChannelFunctorMap.find(source);

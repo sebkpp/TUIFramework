@@ -26,12 +26,51 @@
                <Parameter name="PortNr" value="7222"/>
             </ParameterGroup>
          </DeviceType>
+         <DeviceType name="DummyDevMatrix4">
+            <PortTypeSequence>
+               <PortType name="6" sink="0" source="1" typename="Matrix4">
+                  <Description/>
+               </PortType>
+               <PortType name="5" sink="0" source="1" typename="Matrix4">
+                  <Description/>
+               </PortType>
+               <PortType name="4" sink="0" source="1" typename="Matrix4">
+                  <Description/>
+               </PortType>
+               <PortType name="3" sink="0" source="1" typename="Matrix4">
+                  <Description/>
+               </PortType>
+               <PortType name="2" sink="0" source="1" typename="Matrix4">
+                  <Description/>
+               </PortType>
+               <PortType name="1" sink="0" source="1" typename="Matrix4">
+                  <Description/>
+               </PortType>
+               <PortType name="8" sink="0" source="1" typename="Matrix4">
+                  <Description/>
+               </PortType>
+               <PortType name="7" sink="0" source="1" typename="Matrix4">
+                  <Description/>
+               </PortType>
+            </PortTypeSequence>
+            <ParameterTypeDefSequence/>
+            <ParameterTypeSequence/>
+         </DeviceType>
       </DeviceTypeSequence>
       <MSPTypeSequence>
          <Image path="images/DefaultMSP.png"/>
          <MSPType name="MouseDemuxMSP">
             <PortTypeSequence>
+               <PortType name="b1left" sink="0" source="1" typename="DigitalChannel">
+                  <Description/>
+               </PortType>
                <PortType name="m" sink="1" source="0" typename="MouseChannel">
+                  <Description/>
+               </PortType>
+               <PortType name="b2right" sink="0" source="1" typename="DigitalChannel">
+                  <Description/>
+               </PortType>
+               <PortType name="dy" sink="0" source="1" typename="IntegerChannel">
                   <Description/>
                </PortType>
                <PortType name="dx" sink="0" source="1" typename="IntegerChannel">
@@ -46,7 +85,23 @@
          <Image path="images/TUI1.png"/>
          <TUIObjectType name="TUIMouseType">
             <PortTypeSequence>
+               <PortType name="rightMouse" sink="0" source="1" typename="DigitalChannel">
+                  <Description/>
+               </PortType>
+               <PortType name="DeltaY" sink="0" source="1" typename="IntegerChannel">
+                  <Description/>
+               </PortType>
+               <PortType name="leftMouse" sink="0" source="1" typename="DigitalChannel">
+                  <Description/>
+               </PortType>
                <PortType name="DeltaX" sink="0" source="1" typename="IntegerChannel">
+                  <Description/>
+               </PortType>
+            </PortTypeSequence>
+         </TUIObjectType>
+         <TUIObjectType name="TestTUIObjectType">
+            <PortTypeSequence>
+               <PortType name="Transf" sink="0" source="1" typename="Matrix4">
                   <Description/>
                </PortType>
             </PortTypeSequence>
@@ -58,12 +113,14 @@
                <Parameter name="PortNr" value="7222"/>
             </ParameterGroup>
          </DeviceInstance>
+         <DeviceInstance name="Tracker" typename="DummyDevMatrix4"/>
       </DeviceInstanceSequence>
       <MSPInstanceSequence>
          <MSPInstance name="MouseDemux1" typename="MouseDemuxMSP"/>
       </MSPInstanceSequence>
       <TUIObjectInstanceSequence>
          <TUIObjectInstance name="TUIUnity" typename="TUIMouseType"/>
+         <TUIObjectInstance name="TUIUnityM4" typename="TestTUIObjectType"/>
       </TUIObjectInstanceSequence>
       <ConnectorSequence>
          <Connector>
@@ -73,6 +130,22 @@
          <Connector>
             <SrcAddress entityName="MouseDemux1" entityType="MSP" portName="dx"/>
             <DstAddress entityName="TUIUnity" entityType="TUI" portName="DeltaX"/>
+         </Connector>
+         <Connector>
+            <SrcAddress entityName="MouseDemux1" entityType="MSP" portName="dy"/>
+            <DstAddress entityName="TUIUnity" entityType="TUI" portName="DeltaY"/>
+         </Connector>
+         <Connector>
+            <SrcAddress entityName="MouseDemux1" entityType="MSP" portName="b1left"/>
+            <DstAddress entityName="TUIUnity" entityType="TUI" portName="leftMouse"/>
+         </Connector>
+         <Connector>
+            <SrcAddress entityName="MouseDemux1" entityType="MSP" portName="b2right"/>
+            <DstAddress entityName="TUIUnity" entityType="TUI" portName="rightMouse"/>
+         </Connector>
+         <Connector>
+            <SrcAddress entityName="Tracker" entityType="DEV" portName="1"/>
+            <DstAddress entityName="TUIUnityM4" entityType="TUI" portName="Transf"/>
          </Connector>
       </ConnectorSequence>
    </ServerConfig>

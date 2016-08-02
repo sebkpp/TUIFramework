@@ -411,6 +411,7 @@ void DummyDevMatrix4::executeInputLoop() {
 
 					timeStep += 1;
 					if (timeStep > 400){ timeStep = 0; }
+//					cout << mat << endl;
                 }
             }
         }

@@ -3,8 +3,10 @@
 #include <TUIFramework/client/client.h>
 #include <TUIPlugins/tuitypes/common/CommonTypeReg.h>
 #include "TUIInit.h"
+#include "TUICsharp.h"
+#include <functional> // experimental
 
- // Define DLL Export API
+// Define DLL Export API
 #define TESTFUNCDLL_API __declspec(dllexport) 
 
 using namespace tuiframework;
@@ -36,12 +38,12 @@ typedef void(*doubleCallback)(double value); // Callback for double Values
 */
 typedef void(*mouseCallback)(MouseData value); // Experimental Callback for MouseData
 
-// Experimental
-typedef void(*matrix4Callback)(Matrix4Data value);
+/**
+* Matrix4 Callback
+*/
+typedef std::function<void(Matrix4<double>)> matrix4Callback;  //lambda [] (Matrix4<double> val) -> void;
 
-
-
-extern "C" 
+extern "C"
 {
 	/**
 	* Verbindet sich mit dem TUI-Server
@@ -52,7 +54,7 @@ extern "C"
 	* @return true wenn Verbindung erfolgreich
 	*/
 	TESTFUNCDLL_API bool connectUnityWithTUIServer(int recievePort, int senderPort, const char* serverIPPort, void* tuiInit);
-	
+
 	/**
 	* Beendet die Verbindung zum TUI-Server.
 	*/
@@ -105,7 +107,7 @@ extern "C"
 	* @param integerCallBack Funktions-Callback für boolean-Werte.
 	*/
 	TESTFUNCDLL_API void connectingParametersbool(void* instance, int TUIType, const char* objectName, const char* channelName, boolCallback call);
-	
+
 	/**
 	* ### Experimentelle Funktion ###
 	* Setzt die Parameter zum Verbinden mit dem TUI-Channel
@@ -117,8 +119,20 @@ extern "C"
 	*/
 	TESTFUNCDLL_API void connectingParametersmouse(void* instance, int TUIType, const char* objectName, const char* channelName, mouseCallback call);
 
-	TESTFUNCDLL_API void connectingParametersMatrix4(void* instance, int TUIType, const char* objectName, const char* channelName, matrix4Callback call);
-
-
 	//TESTFUNCDLL_API void getMouseData(void* instance,const char* value);
+
+
+	// Matrix4 Data export to Unity
+	TESTFUNCDLL_API void* connectingParametersMatrix4(void* instance, int TUIType, const char* objectName, const char* channelName);
+
+	// Retrieve float data from a matrix4
+	TESTFUNCDLL_API float getMatrix4Data(void* matrix, int row, int col);
+
+	// Get number of links
+	TESTFUNCDLL_API int getParameterCount(void* instance);
+
+	// Pass debug ints to Unity
+	TESTFUNCDLL_API int getDebugMessagesCount(void* instance);
+	TESTFUNCDLL_API int getDebugMessage(void* instance);
+
 }

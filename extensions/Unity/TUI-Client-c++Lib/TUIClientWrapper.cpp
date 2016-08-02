@@ -2,80 +2,90 @@
 
 extern "C"
 {
+	static TUICsharp* CSharpInstance;
 
-	bool connectUnityWithTUIServer(int recievePort,int senderPort, const char* serverIPPort, void* tuiInit)
-	{
+	bool connectUnityWithTUIServer(int recievePort, int senderPort, const char* serverIPPort, void* tuiInit) {
 		TUIInit init = *(TUIInit*)tuiInit;
 		initTypeRegistration(getEventFactory());
 		CommonTypeReg::registerTypes(&getEventFactory(), &getEventChannelFactory());
 
 		getchar();
 
-		connectWithTUIServer(recievePort, senderPort,std::string(serverIPPort),&init,true);
+		connectWithTUIServer(recievePort, senderPort, std::string(serverIPPort), &init, true);
 		return true;
 	}
 
-	void disconnectUnityWithTUIServer()
-	{
+	void disconnectUnityWithTUIServer() {
 		disconnectFromTUIServer();
 	}
 
-	void* createTUICsharpInstance()
-	{
-		return new TUICsharp();
+	void* createTUICsharpInstance() {
+		CSharpInstance = new TUICsharp();
+		return CSharpInstance;
 	}
 
-	void* createTUIInitInstance()
-	{
+	void* createTUIInitInstance() {
 		return new TUIInit();
 	}
 
-	void setTUIInitParameter(void* tuiInitInstance, void* tuiCSharpInstance)
-	{
+	void setTUIInitParameter(void* tuiInitInstance, void* tuiCSharpInstance) {
 		TUIInit* tuiInit = (TUIInit*)tuiInitInstance;
-		tuiInit->setTUICsharp(*(TUICsharp*)tuiCSharpInstance);
+		tuiInit->setTUICsharp((TUICsharp*)tuiCSharpInstance);
 	}
 
-	void connectingParameters(void* instance, int TUIType, const char* objectName, const char* channelName, integerCallback call)
-	{
+	void connectingParameters(void* instance, int TUIType, const char* objectName, const char* channelName, integerCallback call) {
 		TUICsharp* tuiUnity = (TUICsharp*)instance;
 		tuiUnity->connecting(TUIType, std::string(objectName), std::string(channelName), call);
 	}
 
-	void connectingParametersfloat(void* instance, int TUIType, const char* objectName, const char* channelName, floatCallback call)
-	{
+	void connectingParametersfloat(void* instance, int TUIType, const char* objectName, const char* channelName, floatCallback call) {
 		TUICsharp* tuiUnity = (TUICsharp*)instance;
 		tuiUnity->connecting(TUIType, std::string(objectName), std::string(channelName), call);
 	}
 
-	void connectingParametersbool(void* instance, int TUIType, const char* objectName, const char* channelName, boolCallback call)
-	{
+	void connectingParametersbool(void* instance, int TUIType, const char* objectName, const char* channelName, boolCallback call) {
 		TUICsharp* tuiUnity = (TUICsharp*)instance;
 		tuiUnity->connecting(TUIType, std::string(objectName), std::string(channelName), call);
 	}
 
-	void connectingParametersmouse(void* instance, int TUIType, const char* objectName, const char* channelName, mouseCallback call)
-	{
-		TUICsharp* tuiUnity = (TUICsharp*)instance;
-		tuiUnity->connecting(TUIType, std::string(objectName), std::string(channelName), call);
-	}
-	
-	// TESTING
-	void connectingParametersMatrix4(void* instance, int TUIType, const char* objectName, const char* channelName, matrix4Callback call)
-	{
+	void connectingParametersmouse(void* instance, int TUIType, const char* objectName, const char* channelName, mouseCallback call) {
 		TUICsharp* tuiUnity = (TUICsharp*)instance;
 		tuiUnity->connecting(TUIType, std::string(objectName), std::string(channelName), call);
 	}
 
-	void getMouseData(void* instance,const char* value)
-	{
-		//ToDo 
-		//Muss noch bearbeitet werden.
-		MouseData* mouseData = (MouseData*)instance;
-		stringstream ss;
-		ss << mouseData;
-		value = ss.str().c_str();
+	void* connectingParametersMatrix4(void* instance, int TUIType, const char* objectName, const char* channelName) {
+		TUICsharp* tuiUnity = (TUICsharp*)instance;
+		Matrix4<double>* newData = new Matrix4<double>();
+		matrix4Callback call = [newData](Matrix4<double> val) -> void {
+			*newData = val;
+		};
+		tuiUnity->connecting(TUIType, std::string(objectName), std::string(channelName), call);
+		return newData;
 	}
+
+	float getMatrix4Data(void* matrix, int row, int col) {
+		Matrix4<double>* data = (Matrix4<double>*)matrix;
+		return *(*data)[row * 4 + col];
+	}
+
+
+	int getParameterCount(void* instance) {
+		TUICsharp* tuiUnity = (TUICsharp*)instance;
+		return tuiUnity->getParameterCount();
+	}
+
+	int getDebugMessagesCount(void* instance) {
+		TUICsharp* tuiUnity = (TUICsharp*)instance;
+		return tuiUnity->debugMessages.size();
+	}
+
+	int getDebugMessage(void* instance) {
+		TUICsharp* tuiUnity = (TUICsharp*)instance;
+		int tmp = tuiUnity->debugMessages.front();
+		tuiUnity->debugMessages.pop();
+		return tmp;
+	}
+
 }
 
 

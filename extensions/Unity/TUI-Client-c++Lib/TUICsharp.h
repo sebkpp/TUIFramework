@@ -2,6 +2,7 @@
 
 #include <tuiframework/client/client.h>
 #include <TUIPlugins/tuitypes/common/CommonTypeReg.h>
+#include <functional>
 
 using namespace tuiframework;
 
@@ -32,8 +33,10 @@ typedef void(*doubleCallback)(double value); // Callback for double Values
 */
 typedef void(*mouseCallback)(MouseData value); // Experimental Callback for MouseData
 
-// Experimental
-typedef void(*matrix4Callback)(Matrix4Data value); // Experimental Callback for MouseData
+/**
+* Matrix4 Callback
+*/
+typedef std::function<void(Matrix4<double>)> matrix4Callback;
 
 
 /**
@@ -101,7 +104,6 @@ public:
 	void connecting(int TUIType, std::string TUIObjectName, std::string channelName, matrix4Callback call);
 
 
-
 	/*
 	* Verbindet die in der Liste enthaltenten Parameter mit dem TUI-Server
 	*/
@@ -111,8 +113,7 @@ public:
 	* Beendet die Verbindung.
 	*/
 	void disconnect();
-
-
+	
 
 	/**
 	* Funktion die ausgeführt wird sobald ein Event ausgelöst wird.
@@ -139,12 +140,19 @@ public:
 	*/
 	void SignalChanged(const MouseEvent * e);
 
-	// Experimental
-	void SignalChanged(const Matrix4ChangedEvent * e);
+	/** 
+	* Function which is called when a Matrix4Event is fired.
+	*/
+	void SignalChanged(const Matrix4Event * e);
 
+	int getParameterCount();
+
+	// Getting 'int' messages on Unity (strings are a bit harder to pass through)
+	// Another way is to have complete debug messages is to write messages directly in a file.
+	void SendDebugMessage(int i);
+	std::queue<int> debugMessages;
 
 private:
-
 	/**
 	* Struktur die alle Parameter für das verbinden des Channels mit dem TUI-Server enthält.
 	*/

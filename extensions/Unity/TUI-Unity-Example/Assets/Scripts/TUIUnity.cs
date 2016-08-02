@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using System.Net;
 using System.Threading;
-//using TUIClientUnity_Lib;
-using TUICSharp_Lib;
+using TUIClientUnity_Lib;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -31,12 +30,13 @@ public class TUIUnity : MonoBehaviour
     private IntPtr tuiUnityTest;
 
     // Der Thread wird benötigt damit die Verbindung zum TUI-Server die Anwendung nicht blockiert
-    private Thread receiveThread = null;
+    private Thread receiveThread ;
     
 
     public void Start()
     {
         // Initalisiert ein paar Werte für die Buttons
+
         mouseLeft = false;
         mouseRight = false;
         XValues = new Queue<float>();
@@ -62,10 +62,9 @@ public class TUIUnity : MonoBehaviour
     */
     void OnApplicationQuit()
     {
-        if (receiveThread != null)
-        {
-			closeConnection();
-		}
+        receiveThread.Abort();
+        TUIClientLibary.disconnectUnityWithTUIServer();
+        Debug.Log("Disconnected");
     }
 
     /**
@@ -75,8 +74,8 @@ public class TUIUnity : MonoBehaviour
     {
         int rPort = int.Parse(clientReceiverPort.text);
         int sPort = int.Parse(clientSenderPort.text);
-        string serverIP =IP.text +":"+ serverPort.text;
-
+        string serverIP =IP.text +":"+serverPort.text;
+ 
         // Aufruf der API-Funktion zum Verbinden mit dem TUI-Server.
         TUIClientLibary.connectUnityWithTUIServer(rPort, sPort, serverIP, tuiUnityInit);
 
@@ -89,7 +88,7 @@ public class TUIUnity : MonoBehaviour
     public void buttomClick()
     {
         // Überprüft ob die IP und Port des Servers valide sind und startet den Thread falls true.
-        if (validateIP(IP.text, serverPort.text) && receiveThread == null)
+        if (validateIP(IP.text, serverPort.text))
         {   
             receiveThread = new Thread(new ThreadStart(ReceiveData));
             receiveThread.Start();
@@ -105,10 +104,10 @@ public class TUIUnity : MonoBehaviour
     * Soll die Verbindung zum TUI-Server schließen bei Button-Click.
     * Bisher aber nicht funktionsfähig da im TUI-Framework die Disconnect-Funktion bugged ist.
     */
-    public void closeConnection() {
-		TUIClientLibary.disconnectUnityWithTUIServer();
-		receiveThread.Abort();
-		receiveThread = null;
+    public void closeConnection()
+    {
+        receiveThread.Abort();
+        TUIClientLibary.disconnectUnityWithTUIServer();
         Debug.Log("Disconnected");
     }
 
@@ -117,10 +116,11 @@ public class TUIUnity : MonoBehaviour
         lock (_locker)
         {
             // Es wird überprüft ob Daten für Delta-X in der Queue vorhanden sind.
-            while (XValues.Count > 0)
+            if (XValues.Count > 0)
             {
                 try
                 {
+                    Debug.Log("moved X");
                     // Starten eines kritischen Bereichs, erforderlich für Thread-safe Operationen
                     // Lässt den Würfel rotieren
                     cube.transform.Rotate(0, XValues.Dequeue(), 0, Space.World);
@@ -132,34 +132,39 @@ public class TUIUnity : MonoBehaviour
             }
 
             // Es wird überprüft ob Daten für Delta-Y in der Queue vorhanden sind.
-            while (YValues.Count > 0)
+            if (YValues.Count > 0)
             {
                 try
                 {
-					// Starten des Kritischen Bereichs, wird für Thread-safe benötigt.
-					// Lässt den Würfel rotieren
-					cube.transform.Rotate(YValues.Dequeue(), 0 , 0, Space.World);
+                    Debug.Log("moved Y");
+                    // Starten des Kritischen Bereichs, wird für Thread-safe benötigt.
+                
+                        // Lässt den Würfel rotieren.
+                        cube.transform.Rotate(YValues.Dequeue(), 0 , 0, Space.World);
+               
                 }
                 catch (Exception e)
                 {
                     Debug.LogError("Error Output " + e);
                 }
             }
-			
+
             if (mouseLeft)
             {
-                cube.GetComponent<Renderer>().material.color = Color.blue;
+
+                cube.GetComponent<Renderer>().material.color = Color.white;
             }
 
             if (mouseRight)
             {
-                cube.GetComponent<Renderer>().material.color = Color.red;
+
+                cube.GetComponent<Renderer>().material.color = Color.black;
             }
-		}
+        }
 
 
-
-	}
+            
+    }
 
 
     /**
@@ -168,7 +173,7 @@ public class TUIUnity : MonoBehaviour
     */
     public void getMouseXValue(int value)
     {
-        try
+            try
             {
                 //Debug.Log("XValues " + value);
                 // Startet einen kritischen Bereich.
@@ -214,6 +219,7 @@ public class TUIUnity : MonoBehaviour
     {
         try
         {
+            //Debug.Log("YValues " + value);
             // Startet einen kritischen Bereich.
             lock (_locker)
             {
@@ -235,6 +241,7 @@ public class TUIUnity : MonoBehaviour
     {
         try
         {
+            //Debug.Log("YValues " + value);
             // Startet einen kritischen Bereich.
             lock (_locker)
             {
@@ -248,16 +255,6 @@ public class TUIUnity : MonoBehaviour
         }
     }
 
-	public void getMatrix4(IntPtr value) {
-		try {
-			lock (_locker) {
-				Debug.Log("Mat4 received!");
-			}
-		}
-		catch (Exception e) {
-			Debug.LogError("Error Mat4-Input: " + e.ToString());
-		}
-	}
 
     /**
     * Verbindet die Parameter.
@@ -267,9 +264,6 @@ public class TUIUnity : MonoBehaviour
         // Aufruf der C#/C++ API. Übergibt die C#-TUIinstanz, Clientname, Portname und die Funktion zu TUI.
         // Die Namen müssen exakt übereinstimmen mit der TUI-Server Konfiguration.
 
-        Debug.Log("DEBUG: Connecting...");
-
-		/*
         // Verbindet die Parameter für die Bewegungen der Maus in X-Richtung.
         TUIClientLibary.connectingParameters(tuiUnityTest,
             (int)TUIClientLibary.TUITypes.IntegerChangedEvent,
@@ -283,7 +277,7 @@ public class TUIUnity : MonoBehaviour
             "TUIUnity",
             "DeltaY",
             new TUIClientLibary.integerCallback(this.getMouseYValue));
-		
+
         // Verbindet die Parameter für das drücken der linken Maustaste
         TUIClientLibary.connectingParameters(tuiUnityTest,
             (int)TUIClientLibary.TUITypes.DigitalChangedEvent,
@@ -297,23 +291,16 @@ public class TUIUnity : MonoBehaviour
             "TUIUnity",
             "rightMouse",
             new TUIClientLibary.boolCallback(this.getMouseRight));
-		*/
 
-		// Matrix4 Test
-		TUIClientLibary.connectingParameters(tuiUnityTest,
-			(int)TUIClientLibary.TUITypes.Matrix4ChangedEvent,
-			"TUIUnity",
-			"Transf",
-			new TUIClientLibary.matrix4Callback(getMatrix4));
-	}
+    }
 
-	/**
+    /**
     * Validiert die IP adresse und den Port
     * @param IP Die IP-Adresse des TUI-Servers
     * @param port Der Port des TUI-Servers
     * @return true falls valide
     */
-	private bool validateIP(string IP, string port)
+    private bool validateIP(string IP, string port)
     {
         IPAddress address;
         int portValid;

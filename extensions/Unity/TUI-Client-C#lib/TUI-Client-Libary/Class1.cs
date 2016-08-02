@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Runtime.InteropServices;
+using System.Text;
 
 namespace TUICSharp_Lib
 {
@@ -97,11 +98,22 @@ namespace TUICSharp_Lib
 		[DllImport("TUIC++ API DLL.dll", EntryPoint = "connectingParametersmouse")]
 		public static extern void connectingParameters(IntPtr instance, int TUIType, string objectName, string channelName, mouseCallback call);
 
-
 		// Experimental
-		[DllImport("TUIC++ API DLL.dll", EntryPoint = "connectingParametersMatrix4")]
-		public static extern void connectingParameters(IntPtr instance, int TUIType, string objectName, string channelName, matrix4Callback call);
 
+		[DllImport("TUIC++ API DLL.dll", EntryPoint = "connectingParametersMatrix4")]
+		public static extern IntPtr connectingParameters(IntPtr instance, int TUIType, string objectName, string channelName);
+
+		[DllImport("TUIC++ API DLL.dll", EntryPoint = "getMatrix4Data")]
+		public static extern float getMatrix4Data(IntPtr matrix, int row, int col);
+
+		[DllImport("TUIC++ API DLL.dll", EntryPoint = "getParameterCount")]
+		public static extern int getParameterCount(IntPtr instance);
+
+
+		[DllImport("TUIC++ API DLL.dll", EntryPoint = "getDebugMessagesCount")]
+		public static extern int getDebugMessagesCount(IntPtr instance);
+		[DllImport("TUIC++ API DLL.dll", EntryPoint = "getDebugMessage")]
+		public static extern int getDebugMessage(IntPtr instance);
 
 		/**
         * ### Experimental ###
@@ -161,7 +173,7 @@ namespace TUICSharp_Lib
 
 
 		// Experimental
-		public delegate void matrix4Callback(IntPtr value);
+//		public delegate void matrix4Callback(IntPtr value);
 
 		/**
         * Enumeration zum mappen der TUI-Type IDs
