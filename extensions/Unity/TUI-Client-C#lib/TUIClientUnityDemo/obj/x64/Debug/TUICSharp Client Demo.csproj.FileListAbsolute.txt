@@ -5,3 +5,5 @@ C:\Users\LegrAmau\Documents\TUIFramework\extensions\Unity\TUI-Client-C#lib\TUICl
 C:\Users\LegrAmau\Documents\TUIFramework\extensions\Unity\TUI-Client-C#lib\TUIClientUnityDemo\obj\x64\Debug\TUICSharp Client Demo.pdb
 C:\Users\LegrAmau\Documents\TUIFramework\bin\x64\14.0\x64\Debug\extensions\C++_CSharp API\TUICSharp Client Demo.exe
 C:\Users\LegrAmau\Documents\TUIFramework\bin\x64\14.0\x64\Debug\extensions\C++_CSharp API\TUICSharp Client Demo.pdb
+C:\Users\LegrAmau\Documents\GitHub\TUIFramework\extensions\Unity\TUI-Client-C#lib\TUIClientUnityDemo\obj\x64\Debug\TUICSharp Client Demo.exe
+C:\Users\LegrAmau\Documents\GitHub\TUIFramework\extensions\Unity\TUI-Client-C#lib\TUIClientUnityDemo\obj\x64\Debug\TUICSharp Client Demo.pdb

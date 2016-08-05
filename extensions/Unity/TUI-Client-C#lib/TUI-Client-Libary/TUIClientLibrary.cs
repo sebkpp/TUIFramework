@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Runtime.InteropServices;
-using System.Text;
 
 namespace TUICSharp_Lib
 {
@@ -112,17 +111,9 @@ namespace TUICSharp_Lib
 
 		[DllImport("TUIC++ API DLL.dll", EntryPoint = "getDebugMessagesCount")]
 		public static extern int getDebugMessagesCount(IntPtr instance);
+
 		[DllImport("TUIC++ API DLL.dll", EntryPoint = "getDebugMessage")]
 		public static extern int getDebugMessage(IntPtr instance);
-
-		/**
-        * ### Experimental ###
-        * Speichert die MouseDaten in einem String
-        * @param mouseData Pointer zu MouseData
-        * @param [out]value Speichert die Daten von MouseData in einem String.
-        */
-		//[DllImport("TUIC++ API DLL.dll")]
-		//public static extern void getMouseData(IntPtr mouseData, string value);
 
 		/**
         * Delegat für das Callback für Integer-Werte
@@ -170,11 +161,7 @@ namespace TUICSharp_Lib
         * @param value MouseData.
         */
 		public delegate void mouseCallback(IntPtr value);
-
-
-		// Experimental
-//		public delegate void matrix4Callback(IntPtr value);
-
+		
 		/**
         * Enumeration zum mappen der TUI-Type IDs
         */
