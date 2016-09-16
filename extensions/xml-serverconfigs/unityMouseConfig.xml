@@ -69,7 +69,7 @@
          <MSPInstance name="MouseDemux1" typename="MouseDemuxMSP"/>
       </MSPInstanceSequence>
       <TUIObjectInstanceSequence>
-         <TUIObjectInstance name="TestDevice" typename="TUIMouseType"/>
+         <TUIObjectInstance name="CustomDevice" typename="TUIMouseType"/>
       </TUIObjectInstanceSequence>
       <ConnectorSequence>
          <Connector>
@@ -78,11 +78,11 @@
          </Connector>
          <Connector>
             <SrcAddress entityName="MouseDemux1" entityType="MSP" portName="b1left"/>
-            <DstAddress entityName="TestDevice" entityType="TUI" portName="button_0"/>
+            <DstAddress entityName="CustomDevice" entityType="TUI" portName="button_0"/>
          </Connector>
          <Connector>
             <SrcAddress entityName="MouseDemux1" entityType="MSP" portName="b2right"/>
-            <DstAddress entityName="TestDevice" entityType="TUI" portName="button_1"/>
+            <DstAddress entityName="CustomDevice" entityType="TUI" portName="button_1"/>
          </Connector>
       </ConnectorSequence>
    </ServerConfig>

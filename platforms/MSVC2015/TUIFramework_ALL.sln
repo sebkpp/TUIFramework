@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TUIBinTUIClientVRED", "Projects\TUIBinTUIClientVRED\TUIBinTUIClientVRED.vcxproj", "{52F7C011-E8B0-430A-8A76-B8293F2D43F0}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -245,6 +245,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TUICSharp Client Demo", "..\..\extensions\Unity\TUI-Client-C#lib\TUIClientUnityDemo\TUICSharp Client Demo.csproj", "{9C022375-B7DE-4E5A-9BCB-5E05D523D015}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TUICSharpDemo", "TUICSharpDemo", "{53088612-5DB1-44F2-87D3-4C5F7CE2D06A}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TUIDtrackClient", "Projects\TUIDtrackClient\TUIDtrackClient.vcxproj", "{58211981-A484-4F9B-BB7D-2717917E249A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -663,6 +665,14 @@ Global
 		{9C022375-B7DE-4E5A-9BCB-5E05D523D015}.Release|Win32.Build.0 = Release|Any CPU
 		{9C022375-B7DE-4E5A-9BCB-5E05D523D015}.Release|x64.ActiveCfg = Debug|x64
 		{9C022375-B7DE-4E5A-9BCB-5E05D523D015}.Release|x64.Build.0 = Debug|x64
+		{58211981-A484-4F9B-BB7D-2717917E249A}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{58211981-A484-4F9B-BB7D-2717917E249A}.Debug|Win32.ActiveCfg = Debug|Win32
+		{58211981-A484-4F9B-BB7D-2717917E249A}.Debug|Win32.Build.0 = Debug|Win32
+		{58211981-A484-4F9B-BB7D-2717917E249A}.Debug|x64.ActiveCfg = Debug|Win32
+		{58211981-A484-4F9B-BB7D-2717917E249A}.Release|Any CPU.ActiveCfg = Release|Win32
+		{58211981-A484-4F9B-BB7D-2717917E249A}.Release|Win32.ActiveCfg = Release|Win32
+		{58211981-A484-4F9B-BB7D-2717917E249A}.Release|Win32.Build.0 = Release|Win32
+		{58211981-A484-4F9B-BB7D-2717917E249A}.Release|x64.ActiveCfg = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -719,5 +729,6 @@ Global
 		{94B36C99-81AB-4823-88A3-BC52EEE68180} = {36CDC8B9-D0E9-45AF-A6CB-8E046607A94C}
 		{9C022375-B7DE-4E5A-9BCB-5E05D523D015} = {53088612-5DB1-44F2-87D3-4C5F7CE2D06A}
 		{53088612-5DB1-44F2-87D3-4C5F7CE2D06A} = {36CDC8B9-D0E9-45AF-A6CB-8E046607A94C}
+		{58211981-A484-4F9B-BB7D-2717917E249A} = {CEA963E4-EE6B-441A-A084-1F1A4F024590}
 	EndGlobalSection
 EndGlobal

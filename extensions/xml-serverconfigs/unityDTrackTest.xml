@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--document xmlns:xi='http://www.w3.org/2001/XInclude'-->
+<document xmlns:xi="http://www.w3.org/2001/XInclude">
+   <ServerConfig>
+      <ServerStartupConfig/>
+      <DeviceTypeSequence>
+        <DeviceType name="DTrackDevice">
+          <PortTypeSequence>
+            <PortType name="M4OUT1" typename="Matrix4Channel" source="1" sink="0">
+              <Description>
+                6DOF
+              </Description>
+            </PortType>
+            <PortType name="M4OUT2" typename="Matrix4Channel" source="1" sink="0">
+              <Description>
+                6DOF
+              </Description>
+            </PortType>
+            <PortType name="M4OUT3" typename="Matrix4Channel" source="1" sink="0">
+              <Description>
+                6DOF
+              </Description>
+            </PortType>
+            <PortType name="M4OUT4" typename="Matrix4Channel" source="1" sink="0">
+              <Description>
+                6DOF
+              </Description>
+            </PortType>
+            <PortType name="M4OUT5" typename="Matrix4Channel" source="1" sink="0">
+              <Description>
+                6DOF
+              </Description>
+            </PortType>
+            <PortType name="M4OUT6" typename="Matrix4Channel" source="1" sink="0">
+              <Description>
+                6DOF
+              </Description>
+            </PortType>
+            <PortType name="M4OUT7" typename="Matrix4Channel" source="1" sink="0">
+              <Description>
+                6DOF
+              </Description>
+            </PortType>
+            <PortType name="M4OUT8" typename="Matrix4Channel" source="1" sink="0">
+              <Description>
+                6DOF
+              </Description>
+            </PortType>
+          </PortTypeSequence>
+          <ParameterTypeSequence>
+            <ParameterType name="Server" type="IPAddress"/>
+          </ParameterTypeSequence>
+          <!--<ParameterGroup name="Server">
+            <Parameter name="IPAddress" value="192.168.0.0"/>
+          </ParameterGroup>-->
+        </DeviceType>
+      </DeviceTypeSequence>
+     
+     <MSPTypeSequence>
+     <!--  <MSPType name="Matrix4x4Transf">
+         <Description>
+           Matrix transformation.
+         </Description>
+         <PortTypeSequence>
+           <PortType name="IN" typename="Matrix4x4" source="0" sink="1">
+             <Description>
+               Input
+             </Description>
+           </PortType>
+           <PortType name="OUT" typename="Matrix4x4"  source="1" sink="0">
+             <Description>
+               Output
+             </Description>
+           </PortType>
+         </PortTypeSequence>
+
+         <ParameterTypeDefSequence>
+           <ParameterTypeDef name="Row4">
+             <ParameterType name="col1" type="double"/>
+             <ParameterType name="col2" type="double"/>
+             <ParameterType name="col3" type="double"/>
+             <ParameterType name="col4" type="double"/>
+           </ParameterTypeDef>
+           <ParameterTypeDef name="Matrix">
+             <ParameterType name="row1" type="Row4"/>
+             <ParameterType name="row2" type="Row4"/>
+             <ParameterType name="row3" type="Row4"/>
+             <ParameterType name="row4" type="Row4"/>
+           </ParameterTypeDef>
+         </ParameterTypeDefSequence>
+
+         <ParameterTypeSequence>
+           <ParameterType name="transf" type="Matrix"/>
+         </ParameterTypeSequence>
+
+         <ParameterGroup name="transf">
+           <ParameterGroup name="row1">
+             <Parameter name="col1" value="1"/>
+             <Parameter name="col2" value="0"/>
+             <Parameter name="col3" value="0"/>
+             <Parameter name="col4" value="0"/>
+           </ParameterGroup>
+           <ParameterGroup name="row2">
+             <Parameter name="col1" value="0"/>
+             <Parameter name="col2" value="1"/>
+             <Parameter name="col3" value="0"/>
+             <Parameter name="col4" value="0"/>
+           </ParameterGroup>
+           <ParameterGroup name="row3">
+             <Parameter name="col1" value="0"/>
+             <Parameter name="col2" value="0"/>
+             <Parameter name="col3" value="1"/>
+             <Parameter name="col4" value="0"/>
+           </ParameterGroup>
+           <ParameterGroup name="row4">
+             <Parameter name="col1" value="10"/>
+             <Parameter name="col2" value="0"/>
+             <Parameter name="col3" value="0"/>
+             <Parameter name="col4" value="1"/>
+           </ParameterGroup>
+         </ParameterGroup>
+       </MSPType> -->
+     </MSPTypeSequence>
+
+     <TUIObjectTypeSequence>
+       <TUIObjectType name="Body">
+         <Description>
+           Dummy description
+         </Description>
+         <PortTypeSequence>
+           <PortType name="Transf" typename="Matrix4Channel" source="1" sink="0">
+             <Description>
+               Transformation Matrix.
+             </Description>
+           </PortType>
+         </PortTypeSequence>
+       </TUIObjectType>
+	   <!--
+       <TUIObjectType name="TestTUIObjectType">
+          <PortTypeSequence>
+             <PortType name="Transf" sink="0" source="1" typename="Matrix4">
+                <Description/>
+             </PortType>
+          </PortTypeSequence>
+       </TUIObjectType>
+	   -->
+     </TUIObjectTypeSequence>
+
+     <DeviceInstanceSequence>
+       <DeviceInstance name="TrackerDevice" typename="DTrackDevice">
+         <ParameterGroup name="Server">
+		 <!--
+           <Parameter name="IPAddress" value="100.100.100.132"/>
+		   -->
+           <Parameter name="IPAddress" value="169.254.142.251"/>
+         </ParameterGroup>
+       </DeviceInstance>
+     </DeviceInstanceSequence>
+     
+     <TUIObjectInstanceSequence>
+       <TUIObjectInstance name="UnityM4" typename="Body"/>
+     </TUIObjectInstanceSequence>
+     
+     
+     <ConnectorSequence>
+       <Connector>
+         <SrcAddress entityType="DEV" entityName="TrackerDevice" portName="M4OUT1"/>
+         <DstAddress entityType="TUI" entityName="UnityM4" portName="Transf"/>
+       </Connector>
+	   <!--
+         <Connector>
+            <SrcAddress entityName="Tracker" entityType="DEV" portName="1"/>
+            <DstAddress entityName="TUIUnityM4" entityType="TUI" portName="Transf"/>
+         </Connector>
+		 -->
+     </ConnectorSequence>
+   </ServerConfig>
+</document>
+
+<!--
+      <TUIObjectInstanceSequence>
+         <TUIObjectInstance name="TestDevice" typename="TUIMouseType"/>
+      </TUIObjectInstanceSequence>
+      <ConnectorSequence>
+         <Connector>
+            <SrcAddress entityName="Mouse1" entityType="DEV" portName="m2"/>
+            <DstAddress entityName="MouseDemux1" entityType="MSP" portName="m"/>
+         </Connector>
+         <Connector>
+            <SrcAddress entityName="MouseDemux1" entityType="MSP" portName="dwheel"/>
+            <DstAddress entityName="TestDevice" entityType="TUI" portName="DeltaWheel"/>
+         </Connector>
+         <Connector>
+            <SrcAddress entityName="MouseDemux1" entityType="MSP" portName="dx"/>
+            <DstAddress entityName="TestDevice" entityType="TUI" portName="DeltaX"/>
+         </Connector>
+         <Connector>
+            <SrcAddress entityName="MouseDemux1" entityType="MSP" portName="dy"/>
+            <DstAddress entityName="TestDevice" entityType="TUI" portName="DeltaY"/>
+         </Connector>
+         <Connector>
+            <SrcAddress entityName="MouseDemux1" entityType="MSP" portName="b5"/>
+            <DstAddress entityName="TestDevice" entityType="TUI" portName="button_4"/>
+         </Connector>
+         <Connector>
+            <SrcAddress entityName="MouseDemux1" entityType="MSP" portName="b4"/>
+            <DstAddress entityName="TestDevice" entityType="TUI" portName="button_3"/>
+         </Connector>
+         <Connector>
+            <SrcAddress entityName="MouseDemux1" entityType="MSP" portName="b1left"/>
+            <DstAddress entityName="TestDevice" entityType="TUI" portName="button_0"/>
+         </Connector>
+         <Connector>
+            <SrcAddress entityName="MouseDemux1" entityType="MSP" portName="b2right"/>
+            <DstAddress entityName="TestDevice" entityType="TUI" portName="button_1"/>
+         </Connector>
+         <Connector>
+            <SrcAddress entityName="MouseDemux1" entityType="MSP" portName="b3middle"/>
+            <DstAddress entityName="TestDevice" entityType="TUI" portName="button_2"/>
+         </Connector>
+      </ConnectorSequence>
+-->
