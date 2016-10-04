@@ -1,5 +1,6 @@
-tuiframework
+tuiframework (####This is the current maintained and supported respository####)
 ============
+
 An Object-centric Interaction Framework for Tangible Interfaces in Virtual Environments (TUI-Framework)
 
 The aim of this TUI-framework is to support the development of physically enriched VR applications. It focuses on the spatial and manipulative properties of tangible user interfaces (TUI-objects), leaving it to the application to implement interaction techniques, semantics and expressive physical/digital couplings.
@@ -14,7 +15,7 @@ Israel, J. H., Belaifa, O., Gispen, A., & Stark, R. (2011). An Object-centric In
 
 A video showing an example TUI-Server configuration (optical tracking and eye tracking) can be found here: http://www.youtube.com/embed/2Uq74gZKkA0?list=PL1Sfv6_XKslitnKci7wtCjlBMM5C9F5K5
 
-For further information please contact oliver.belaifa@ipk.fraunhofer.de or johann.habakuk.israel@ipk.fraunhofer.de.
+For further information please contact sebastian.keppler@ipk.fraunhofer.de, oliver@belaifa.de or JohannHabakuk.Israel@htw-berlin.de.
 
 Copyright (C) 2010, 2011, 2012 The Fraunhofer Institute for Production Systems and Design Technology IPK. All rights reserved.
 
