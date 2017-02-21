@@ -1,0 +1,219 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{3A5DB29C-BC64-441D-A479-2215FFC1E02C}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>TUIFrameworkServer</RootNamespace>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSDK_IncludePath);C:\Program Files (x86)\Windows Kits\10\Include\10.0.10150.0\ucrt</IncludePath>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <OutDir>..\..\..\..\bin\$(Platform)\$(VisualStudioVersion)\$(PlatformTarget)\$(Configuration)\lib\TUIFramework</OutDir>
+    <IntDir>..\..\$(PlatformTarget)\$(Configuration)\$(MSBuildProjectName)</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IncludePath>$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSDK_IncludePath);C:\Program Files (x86)\Windows Kits\10\Include\10.0.10150.0\ucrt</IncludePath>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <OutDir>..\..\..\..\bin\$(Platform)\$(VisualStudioVersion)\$(PlatformTarget)\$(Configuration)\lib\TUIFramework</OutDir>
+    <IntDir>..\..\$(PlatformTarget)\$(Configuration)\$(MSBuildProjectName)</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>..\..\..\..\bin\$(Platform)\$(VisualStudioVersion)\$(PlatformTarget)\$(Configuration)\lib\TUIFramework</OutDir>
+    <IntDir>..\..\$(PlatformTarget)\$(Configuration)\$(MSBuildProjectName)</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>..\..\..\..\bin\$(Platform)\$(VisualStudioVersion)\$(PlatformTarget)\$(Configuration)\lib\TUIFramework</OutDir>
+    <IntDir>..\..\$(PlatformTarget)\$(Configuration)\$(MSBuildProjectName)</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;HAVE_STRUCT_TIMESPEC;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\..\3rdParty\Pre-built.2\include;..\..\..\..\include;$(IncludePath);$(UniversalCRT_IncludePath);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;HAVE_STRUCT_TIMESPEC;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\..\3rdParty\Pre-built.2\include;..\..\..\..\include;$(IncludePath);$(UniversalCRT_IncludePath);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;HAVE_STRUCT_TIMESPEC;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\..\3rdParty\Pre-built.2\include;..\..\..\..\include;$(IncludePath);$(UniversalCRT_IncludePath);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DebugInformationFormat>None</DebugInformationFormat>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;HAVE_STRUCT_TIMESPEC;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\..\3rdParty\Pre-built.2\include;..\..\..\..\include;$(IncludePath);$(UniversalCRT_IncludePath);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DebugInformationFormat>None</DebugInformationFormat>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\..\src\TUIFramework\server\Connector.cpp" />
+    <ClCompile Include="..\..\..\..\src\TUIFramework\server\DeviceConfig.cpp" />
+    <ClCompile Include="..\..\..\..\src\TUIFramework\server\DeviceContainer.cpp" />
+    <ClCompile Include="..\..\..\..\src\TUIFramework\server\DeviceDescriptor.cpp" />
+    <ClCompile Include="..\..\..\..\src\TUIFramework\server\DeviceFactory.cpp" />
+    <ClCompile Include="..\..\..\..\src\TUIFramework\server\DeviceFactorySingleton.cpp" />
+    <ClCompile Include="..\..\..\..\src\TUIFramework\server\DeviceInstance.cpp" />
+    <ClCompile Include="..\..\..\..\src\TUIFramework\server\DeviceType.cpp" />
+    <ClCompile Include="..\..\..\..\src\TUIFramework\server\EPAddressTranslator.cpp" />
+    <ClCompile Include="..\..\..\..\src\TUIFramework\server\MSPBase.cpp" />
+    <ClCompile Include="..\..\..\..\src\TUIFramework\server\MSPConfig.cpp" />
+    <ClCompile Include="..\..\..\..\src\TUIFramework\server\MSPContainer.cpp" />
+    <ClCompile Include="..\..\..\..\src\TUIFramework\server\MSPFactory.cpp" />
+    <ClCompile Include="..\..\..\..\src\TUIFramework\server\MSPFactorySingleton.cpp" />
+    <ClCompile Include="..\..\..\..\src\TUIFramework\server\MSPInstance.cpp" />
+    <ClCompile Include="..\..\..\..\src\TUIFramework\server\MSPType.cpp" />
+    <ClCompile Include="..\..\..\..\src\TUIFramework\server\ParameterGroup.cpp" />
+    <ClCompile Include="..\..\..\..\src\TUIFramework\server\PluginLibWin32.cpp" />
+    <ClCompile Include="..\..\..\..\src\TUIFramework\server\PluginShelf.cpp" />
+    <ClCompile Include="..\..\..\..\src\TUIFramework\server\PluginShelfSingleton.cpp" />
+    <ClCompile Include="..\..\..\..\src\TUIFramework\server\PortAddress.cpp" />
+    <ClCompile Include="..\..\..\..\src\TUIFramework\server\ServerConfig.cpp" />
+    <ClCompile Include="..\..\..\..\src\TUIFramework\server\ServerStartupConfig.cpp" />
+    <ClCompile Include="..\..\..\..\src\TUIFramework\server\TUIServerApp.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\..\include\TUIFramework\server\Connector.h" />
+    <ClInclude Include="..\..\..\..\include\TUIFramework\server\DeviceConfig.h" />
+    <ClInclude Include="..\..\..\..\include\TUIFramework\server\DeviceContainer.h" />
+    <ClInclude Include="..\..\..\..\include\TUIFramework\server\DeviceDescriptor.h" />
+    <ClInclude Include="..\..\..\..\include\TUIFramework\server\DeviceFactory.h" />
+    <ClInclude Include="..\..\..\..\include\TUIFramework\server\DeviceFactorySingleton.h" />
+    <ClInclude Include="..\..\..\..\include\TUIFramework\server\DeviceInstance.h" />
+    <ClInclude Include="..\..\..\..\include\TUIFramework\server\DeviceType.h" />
+    <ClInclude Include="..\..\..\..\include\TUIFramework\server\EPAddressTranslator.h" />
+    <ClInclude Include="..\..\..\..\include\TUIFramework\server\IDeviceFactory.h" />
+    <ClInclude Include="..\..\..\..\include\TUIFramework\server\IMSPFactory.h" />
+    <ClInclude Include="..\..\..\..\include\TUIFramework\server\MSPBase.h" />
+    <ClInclude Include="..\..\..\..\include\TUIFramework\server\MSPConfig.h" />
+    <ClInclude Include="..\..\..\..\include\TUIFramework\server\MSPContainer.h" />
+    <ClInclude Include="..\..\..\..\include\TUIFramework\server\MSPDescriptor.h" />
+    <ClInclude Include="..\..\..\..\include\TUIFramework\server\MSPFactory.h" />
+    <ClInclude Include="..\..\..\..\include\TUIFramework\server\MSPFactorySingleton.h" />
+    <ClInclude Include="..\..\..\..\include\TUIFramework\server\MSPInstance.h" />
+    <ClInclude Include="..\..\..\..\include\TUIFramework\server\MSPType.h" />
+    <ClInclude Include="..\..\..\..\include\TUIFramework\server\ParameterGroup.h" />
+    <ClInclude Include="..\..\..\..\include\TUIFramework\server\PluginLibWin32.h" />
+    <ClInclude Include="..\..\..\..\include\TUIFramework\server\PluginShelf.h" />
+    <ClInclude Include="..\..\..\..\include\TUIFramework\server\PluginShelfSingleton.h" />
+    <ClInclude Include="..\..\..\..\include\TUIFramework\server\PortAddress.h" />
+    <ClInclude Include="..\..\..\..\include\TUIFramework\server\ServerConfig.h" />
+    <ClInclude Include="..\..\..\..\include\TUIFramework\server\ServerStartupConfig.h" />
+    <ClInclude Include="..\..\..\..\include\TUIFramework\server\TUIServerApp.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

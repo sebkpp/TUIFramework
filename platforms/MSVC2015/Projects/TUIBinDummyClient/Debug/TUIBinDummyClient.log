@@ -1,0 +1,18 @@
+﻿C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.CppBuild.targets(368,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
+  Init.cpp
+c:\users\cadamano\documents\tui_return_windmod_10_02_17\include\tuiplugins\tuitypes\common\vectorlist.h(191): warning C4018: "<": Konflikt zwischen "signed" und "unsigned"
+  c:\users\cadamano\documents\tui_return_windmod_10_02_17\include\tuiplugins\tuitypes\common\vectorlist.h(184): note: Bei der Kompilierung der Klassen-template der "std::ostream &VectorList<int>::serialize(std::ostream &) const"-Memberfunktion
+  c:\users\cadamano\documents\tui_return_windmod_10_02_17\include\tuiplugins\tuitypes\common\winmoddata.h(229): note: Siehe Verweis auf die Instanziierung der gerade kompilierten Klassen-template "VectorList<int>".
+  Code wird generiert...
+  Kompilieren...
+  tuiclient.cpp
+c:\users\cadamano\documents\tui_return_windmod_10_02_17\include\tuiplugins\tuitypes\common\vectorlist.h(191): warning C4018: "<": Konflikt zwischen "signed" und "unsigned"
+  c:\users\cadamano\documents\tui_return_windmod_10_02_17\include\tuiplugins\tuitypes\common\vectorlist.h(184): note: Bei der Kompilierung der Klassen-template der "std::ostream &VectorList<int>::serialize(std::ostream &) const"-Memberfunktion
+  c:\users\cadamano\documents\tui_return_windmod_10_02_17\include\tuiplugins\tuitypes\common\winmoddata.h(229): note: Siehe Verweis auf die Instanziierung der gerade kompilierten Klassen-template "VectorList<int>".
+  MyTUIObject.cpp
+c:\users\cadamano\documents\tui_return_windmod_10_02_17\include\tuiplugins\tuitypes\common\vectorlist.h(191): warning C4018: "<": Konflikt zwischen "signed" und "unsigned"
+  c:\users\cadamano\documents\tui_return_windmod_10_02_17\include\tuiplugins\tuitypes\common\vectorlist.h(184): note: Bei der Kompilierung der Klassen-template der "std::ostream &VectorList<int>::serialize(std::ostream &) const"-Memberfunktion
+  c:\users\cadamano\documents\tui_return_windmod_10_02_17\include\tuiplugins\tuitypes\common\winmoddata.h(229): note: Siehe Verweis auf die Instanziierung der gerade kompilierten Klassen-template "VectorList<int>".
+  Code wird generiert...
+  TUIBinDummyClient.vcxproj -> C:\Users\cadamano\Documents\TUI_return_windMOD_10_02_17\platforms\MSVC2015\Projects\TUIBinDummyClient\..\..\..\..\bin\Win32\14.0\x86\Debug\tuiexampleclients\TUIBinDummyClient\TUIBinDummyClient.exe
+  TUIBinDummyClient.vcxproj -> ..\..\..\..\bin\Win32\14.0\x86\Debug\tuiexampleclients\TUIBinDummyClient\TUIBinDummyClient.pdb (Partial PDB)

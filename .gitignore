@@ -1,0 +1,27 @@
+bin/
+platforms/MSVC2015/x86/
+extensions/Unity/TUI-Unity-Example/Library/
+extensions/MouseServer/x86/
+extensions/Unity/TUI-Client-c++Lib/x86/
+extensions/Unity/TUI-Client-C#lib/TUIClientUnityDemo/obj/x64/Debug/TUICSharp Client Demo.pdb
+extensions/Unity/TUI-Client-C#lib/TUIClientUnityDemo/obj/
+extensions/Unity/TUI-Client-C#lib/TUI-Client-Libary/obj/
+extensions/Unity/TUI-Unity-Example/Temp/
+src/TUIExampleClients/tuipythonclient/build/temp.win32-3.5/Release/consoleAction.cp35-win32.exp
+src/TUIExampleClients/tuipythonclient/build/
+*.suo
+*.opendb
+*.pdb
+*.sdf
+*.zip
+doc/
+extensions/tuiclientpyext/tuiclientpyext/.svn/text-base/TUIClient.cpp.svn-base
+extensions/tuiclientpyext/tuiclientpyext/.svn/text-base/TUIClient.h.svn-base
+extensions/tuiclientpyext/tuiclientpyext/.svn/text-base/TUIClientPythonModule.cpp.svn-base
+extensions/tuiclientpyext/tuiclientpyext/.svn/text-base/eventDelegationRegistration.cpp.svn-base
+extensions/tuiclientpyext/tuiclientpyext/.svn/text-base/eventDelegationRegistration.h.svn-base
+extensions/tuiclientpyext/tuiclientpyext/.svn/text-base/setup.py.svn-base
+extensions/tuiclientpyext/tuiclientpyext/.svn/text-base/test.py.svn-base
+extensions/tuiclientpyext/tuiclientpyext/.svn/
+extensions/tuiclientpyext/build/temp.win-amd64-3.5/Release/TUIClientPythonModule.obj
+extensions/tuiclientpyext/build/

@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='us-ascii'?> 
+<SceneGraph>
+	<SceneObject name="HT300">
+		<parameter name="xPosition">0.1</parameter>
+		<parameter name="yPosition">0.2</parameter>
+		<SceneObject name="Fliesband01">
+			<parameter name="xPosition">0.3</parameter>
+			<parameter name="yPosition">0.4</parameter>
+			<SceneObject name="Schraube01">
+				<parameter name="xPosition">0.7</parameter>
+				<parameter name="yPosition">0.8</parameter>
+			</SceneObject>
+			<SceneObject name="Schraube02">
+				<parameter name="xPosition">0.9</parameter>
+				<parameter name="yPosition">1</parameter>
+			</SceneObject>
+		</SceneObject>
+	</SceneObject>
+	<SceneObject name="HT200">
+		<parameter name="xPosition">0.5</parameter>
+		<parameter name="yPosition">0.6</parameter>
+	</SceneObject>
+</SceneGraph>

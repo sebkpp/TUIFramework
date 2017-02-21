@@ -1,0 +1,86 @@
+{
+    "HT100": {
+        "HT.MO1.$v_ist": {
+            "Constraint_Min": "-170",
+            "Value": 0.0,
+            "Transformation_Type": "trans",
+            "Constraint_Max": "170",
+            "Description": "HT_sub25"
+        },
+        "HT.MO2.$pos_ist": {
+            "Constraint_Min": "-170",
+            "Value": 0.0,
+            "Transformation_Type": "trans",
+            "Constraint_Max": "170",
+            "Description": "HT_sub25"
+        }
+    },
+    "FB120": {
+        "FB.MO1.$v_ist": {
+            "Constraint_Min": "-170",
+            "Value": 0.0,
+            "Transformation_Type": "trans",
+            "Constraint_Max": "170",
+            "Description": "FB_sub_59"
+        }
+    },
+    "FB150": {
+        "FB.MO1.$v_ist": {
+            "Constraint_Min": "-170",
+            "Value": 0.0,
+            "Transformation_Type": "trans",
+            "Constraint_Max": "170",
+            "Description": "FB_sub_59"
+        }
+    },
+    "FB110": {
+        "FB.MO1.$v_ist": {
+            "Constraint_Min": "-170",
+            "Value": 0.0,
+            "Transformation_Type": "trans",
+            "Constraint_Max": "170",
+            "Description": "FB_sub_59"
+        }
+    },
+    "HT160": {
+        "HT.MO1.$v_ist": {
+            "Constraint_Min": "-170",
+            "Value": 0.0,
+            "Transformation_Type": "trans",
+            "Constraint_Max": "170",
+            "Description": "HT_sub25"
+        },
+        "HT.MO2.$pos_ist": {
+            "Constraint_Min": "-170",
+            "Value": 0.0,
+            "Transformation_Type": "trans",
+            "Constraint_Max": "170",
+            "Description": "HT_sub25"
+        }
+    },
+    "FB140": {
+        "FB.MO1.$v_ist": {
+            "Constraint_Min": "-170",
+            "Value": 0.0,
+            "Transformation_Type": "trans",
+            "Constraint_Max": "170",
+            "Description": "FB_sub_59"
+        }
+    },
+    "HT130": {
+        "HT.MO1.$v_ist": {
+            "Constraint_Min": "-170",
+            "Value": 0.0,
+            "Transformation_Type": "trans",
+            "Constraint_Max": "170",
+            "Description": "HT_sub25"
+        },
+        "HT.MO2.$pos_ist": {
+            "Constraint_Min": "-170",
+            "Value": 0.0,
+            "Transformation_Type": "trans",
+            "Constraint_Max": "170",
+            "Description": "HT_sub25"
+        }
+    }
+}

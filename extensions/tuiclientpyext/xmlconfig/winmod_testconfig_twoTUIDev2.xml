@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--document xmlns:xi='http://www.w3.org/2001/XInclude'--><document xmlns:xi="http://www.w3.org/2001/XInclude">
+   <ServerConfig>
+      <ServerStartupConfig/>
+      <DeviceTypeSequence>
+         <DeviceType name="WinModDev">
+            <PortTypeSequence>
+               <PortType name="fO" sink="0" source="1" typename="PackedAnalog">
+                  <Description/>
+               </PortType>
+            </PortTypeSequence>
+            <ParameterTypeDefSequence/>
+            <ParameterTypeSequence/>
+            <ParameterGroup name="Client">
+               <Parameter name="readSize" value="8"/>
+               <Parameter name="writeOff" value="8"/>
+               <Parameter name="IPCName" value="NULL"/>
+               <Parameter name="readOff" value="0"/>
+               <Parameter name="writeSize" value="8"/>
+            </ParameterGroup>
+         </DeviceType>
+      </DeviceTypeSequence>
+      <MSPTypeSequence>
+         <MSPType name="PackedFloatToFloatMSP">
+            <PortTypeSequence>
+               <PortType name="in" sink="1" source="0" typename="PackedAnalog">
+                  <Description/>
+               </PortType>
+               <PortType name="out" sink="0" source="1" typename="AnalogChannel">
+                  <Description/>
+               </PortType>
+               <PortType name="outPacked" sink="0" source="1" typename="PackedAnalog">
+                  <Description/>
+               </PortType>
+            </PortTypeSequence>
+            <ParameterTypeDefSequence/>
+            <ParameterTypeSequence/>
+            <ParameterGroup name="Convert">
+               <Parameter name="id" value="0"/>
+            </ParameterGroup>
+         </MSPType>
+         <MSPType name="FloatToFloatPackage">
+            <PortTypeSequence>
+               <PortType name="in0" sink="1" source="0" typename="AnalogChannel">
+                  <Description/>
+				  </PortType>
+			<PortType name="in1" sink="1" source="0" typename="AnalogChannel">
+                  <Description/>
+				  </PortType>
+               <PortType name="outPacked" sink="0" source="1" typename="PackedAnalog">
+                  <Description/>
+               </PortType>
+            </PortTypeSequence>
+            <ParameterTypeDefSequence/>
+            <ParameterTypeSequence/>
+            <ParameterGroup name="Convert">
+               <Parameter name="id" value="0"/>
+			   <Parameter name="floatSize" value="2"/>
+            </ParameterGroup>
+         </MSPType>
+      </MSPTypeSequence>
+      <TUIObjectTypeSequence>
+         <TUIObjectType name="Test_Dev">
+            <PortTypeSequence>
+               <PortType name="in1" sink="0" source="1" typename="AnalogChannel">
+                 <Constraint>
+					<Min>-170</Min>
+					<Max>170</Max>
+				 </Constraint>
+							<MetaElement> 
+								<TrafoType>rot</TrafoType>
+							</MetaElement>
+						<Description>LBR_A2</Description>
+               </PortType>
+               <PortType name="in1Out" sink="1" source="0" typename="AnalogChannel">
+                  <Constraint>
+								<Min>-170</Min>
+								<Max>170</Max>
+							</Constraint>
+							<MetaElement> 
+								<TrafoType>rot</TrafoType>
+							</MetaElement>
+						<Description>HT</Description>
+               </PortType>
+            </PortTypeSequence>
+         </TUIObjectType>
+      </TUIObjectTypeSequence>
+      <DeviceInstanceSequence>
+         <DeviceInstance name="WinModDevice" typename="WinModDev">
+            <ParameterGroup name="Client">
+               <Parameter name="writeSize" value="32"/>
+               <Parameter name="buttonCount" value="4"/>
+               <Parameter name="dWordSize" value="1"/>
+               <Parameter name="dWordOff" value="20"/>
+               <Parameter name="readOff" value="0"/>
+               <Parameter name="writeOff" value="32"/>
+               <Parameter name="wordSize" value="1"/>
+               <Parameter name="readSize" value="32"/>
+               <Parameter name="sliderOff" value="0"/>
+               <Parameter name="sliderCount" value="3"/>
+               <Parameter name="IPCName" value="NULL"/>
+               <Parameter name="wordOff" value="16"/>
+               <Parameter name="buttonOff" value="12"/>
+            </ParameterGroup>
+         </DeviceInstance>
+      </DeviceInstanceSequence>
+      <MSPInstanceSequence>
+         <MSPInstance name="mux" typename="FloatToFloatPackage">
+            <ParameterGroup name="Convert">
+               <Parameter name="id" value="0"/>
+			   <Parameter name="floatSize" value="2"/>
+            </ParameterGroup>
+         </MSPInstance>
+         <MSPInstance name="Analog1" typename="PackedFloatToFloatMSP">
+            <ParameterGroup name="Convert">
+               <Parameter name="id" value="0"/>
+            </ParameterGroup>
+         </MSPInstance>
+		 <MSPInstance name="Analog2" typename="PackedFloatToFloatMSP">
+            <ParameterGroup name="Convert">
+               <Parameter name="id" value="1"/>
+            </ParameterGroup>
+         </MSPInstance>
+		 <MSPInstance name="Analog3" typename="PackedFloatToFloatMSP">
+            <ParameterGroup name="Convert">
+               <Parameter name="id" value="1"/>
+            </ParameterGroup>
+         </MSPInstance>
+      </MSPInstanceSequence>
+      <TUIObjectInstanceSequence>
+         <TUIObjectInstance name="TUI1" typename="Test_Dev"/>
+		 <TUIObjectInstance name="TUI2" typename="Test_Dev"/>
+      </TUIObjectInstanceSequence>
+      <ConnectorSequence>
+         <Connector>
+            <SrcAddress entityName="Analog1" entityType="MSP" portName="out"/>
+            <DstAddress entityName="TUI1" entityType="TUI" portName="in1"/>
+         </Connector>
+         <Connector>
+            <SrcAddress entityName="WinModDevice" entityType="DEV" portName="fO"/>
+            <DstAddress entityName="Analog1" entityType="MSP" portName="in"/>
+         </Connector>
+         <Connector>
+            <SrcAddress entityName="TUI1" entityType="TUI" portName="in1Out"/>
+            <DstAddress entityName="mux" entityType="MSP" portName="in0"/>
+         </Connector>
+		  <Connector>
+            <SrcAddress entityName="Analog1" entityType="MSP" portName="outPacked"/>
+            <DstAddress entityName="Analog2" entityType="MSP" portName="in"/>
+         </Connector>
+		  <Connector>
+            <SrcAddress entityName="Analog2" entityType="MSP" portName="out"/>
+            <DstAddress entityName="TUI2" entityType="TUI" portName="in1"/>
+         </Connector>
+		 <Connector>
+            <SrcAddress entityName="TUI2" entityType="TUI" portName="in1Out"/>
+            <DstAddress entityName="mux" entityType="MSP" portName="in1"/>
+         </Connector> 
+		 <Connector>
+            <SrcAddress entityName="mux" entityType="MSP" portName="outPacked"/>
+            <DstAddress entityName="Analog3" entityType="MSP" portName="in"/>
+         </Connector> 
+      </ConnectorSequence>
+   </ServerConfig>
+</document>
