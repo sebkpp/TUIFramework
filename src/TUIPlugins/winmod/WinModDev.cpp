@@ -242,7 +242,7 @@ void WinModDev::executeInputLoop() {
 						vector<pair<int, float>> vf;
 						for (int i = 0; i < floatSize; i++)
 						{
-							pair<int, float> value_pair(i,fltCurrentData[i]);
+							pair<int, float> value_pair(i, fltCurrentData[i]);
 							vf.push_back(value_pair);
 						}
 						pf.setItems(vf);
@@ -291,7 +291,7 @@ void WinModDev::executeInputLoop() {
 							event2->setAddress(EPAddress(this->entityID, this->deviceDescriptor.getNameChannelNrMap()[map]));
 							event2->setPayload((int)iCurrentData[i]);
 							
-							cout << "In Byte " << i+1 << ": " << (int)iCurrentData[i] << endl;
+							//cout << "In Byte " << i+1 << ": " << (int)iCurrentData[i] << endl;
 						
 						
 							//unsigned char testVal = event2->getPayload();
@@ -398,7 +398,7 @@ void WinModDev::executeOutputLoop() {
 					for (int i = 0; i < size; i++)
 					{
 						floatVector.push_back(pf.getItems().at(i).second);
-						cout << "Value: " << floatVector.at(i) << endl;
+						//cout << "Value: " << floatVector.at(i) << endl;
 					}
 
 					
