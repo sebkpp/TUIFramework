@@ -1,0 +1,210 @@
+<?xml version='1.0' encoding='us-ascii'?> 
+<SceneGraph>
+	<SceneObject name="LBR100">
+		<SceneObject name="M01">
+			<parameter name="$A1">0.0</parameter>
+		</SceneObject>
+		<SceneObject name="M02">
+			<parameter name="$A2">0.0</parameter>
+		</SceneObject>
+		<SceneObject name="M03">
+			<parameter name="$A3">0.0</parameter>
+		</SceneObject>
+		<SceneObject name="M04">
+			<parameter name="$A4">0.0</parameter>
+		</SceneObject>
+		<SceneObject name="M05">
+			<parameter name="$A5">0.0</parameter>
+		</SceneObject>
+		<SceneObject name="M06">
+			<parameter name="$A6">0.0</parameter>
+		</SceneObject>
+		<SceneObject name="M07">
+			<parameter name="$A7">0.0</parameter>
+		</SceneObject>
+		<SceneObject name="GR">
+			<parameter name="$pos">0.0</parameter>
+		</SceneObject>
+	</SceneObject>
+	<SceneObject name="LBR200">
+		<SceneObject name="M01">
+			<parameter name="$A1">0.0</parameter>
+		</SceneObject>
+		<SceneObject name="M02">
+			<parameter name="$A2">0.0</parameter>
+		</SceneObject>
+		<SceneObject name="M03">
+			<parameter name="$A3">0.0</parameter>
+		</SceneObject>
+		<SceneObject name="M04">
+			<parameter name="$A4">0.0</parameter>
+		</SceneObject>
+		<SceneObject name="M05">
+			<parameter name="$A5">0.0</parameter>
+		</SceneObject>
+		<SceneObject name="M06">
+			<parameter name="$A6">0.0</parameter>
+		</SceneObject>
+		<SceneObject name="M07">
+			<parameter name="$A7">0.0</parameter>
+		</SceneObject>
+		<SceneObject name="GR">
+			<parameter name="$pos">0.0</parameter>
+		</SceneObject>
+	</SceneObject>
+	<SceneObject name="LBR300">
+		<SceneObject name="M01">
+			<parameter name="$A1">0.0</parameter>
+		</SceneObject>
+		<SceneObject name="M02">
+			<parameter name="$A2">0.0</parameter>
+		</SceneObject>
+		<SceneObject name="M03">
+			<parameter name="$A3">0.0</parameter>
+		</SceneObject>
+		<SceneObject name="M04">
+			<parameter name="$A4">0.0</parameter>
+		</SceneObject>
+		<SceneObject name="M05">
+			<parameter name="$A5">0.0</parameter>
+		</SceneObject>
+		<SceneObject name="M06">
+			<parameter name="$A6">0.0</parameter>
+		</SceneObject>
+		<SceneObject name="M07">
+			<parameter name="$A7">0.0</parameter>
+		</SceneObject>
+		<SceneObject name="GR">
+			<parameter name="$pos">0.0</parameter>
+		</SceneObject>
+	</SceneObject>
+	<SceneObject name="LBR400">
+		<SceneObject name="M01">
+			<parameter name="$A1">0.0</parameter>
+		</SceneObject>
+		<SceneObject name="M02">
+			<parameter name="$A2">0.0</parameter>
+		</SceneObject>
+		<SceneObject name="M03">
+			<parameter name="$A3">0.0</parameter>
+		</SceneObject>
+		<SceneObject name="M04">
+			<parameter name="$A4">0.0</parameter>
+		</SceneObject>
+		<SceneObject name="M05">
+			<parameter name="$A5">0.0</parameter>
+		</SceneObject>
+		<SceneObject name="M06">
+			<parameter name="$A6">0.0</parameter>
+		</SceneObject>
+		<SceneObject name="M07">
+			<parameter name="$A7">0.0</parameter>
+		</SceneObject>
+		<SceneObject name="GR">
+			<parameter name="$pos">0.0</parameter>
+		</SceneObject>
+	</SceneObject>
+	<SceneObject name="LBR500">
+		<SceneObject name="M01">
+			<parameter name="$A1">0.0</parameter>
+		</SceneObject>
+		<SceneObject name="M02">
+			<parameter name="$A2">0.0</parameter>
+		</SceneObject>
+		<SceneObject name="M03">
+			<parameter name="$A3">0.0</parameter>
+		</SceneObject>
+		<SceneObject name="M04">
+			<parameter name="$A4">0.0</parameter>
+		</SceneObject>
+		<SceneObject name="M05">
+			<parameter name="$A5">0.0</parameter>
+		</SceneObject>
+		<SceneObject name="M06">
+			<parameter name="$A6">0.0</parameter>
+		</SceneObject>
+		<SceneObject name="M07">
+			<parameter name="$A7">0.0</parameter>
+		</SceneObject>
+		<SceneObject name="GR">
+			<parameter name="$pos">0.0</parameter>
+		</SceneObject>
+	</SceneObject>
+	<SceneObject name="LBR600">
+		<SceneObject name="M01">
+			<parameter name="$A1">0.0</parameter>
+		</SceneObject>
+		<SceneObject name="M02">
+			<parameter name="$A2">0.0</parameter>
+		</SceneObject>
+		<SceneObject name="M03">
+			<parameter name="$A3">0.0</parameter>
+		</SceneObject>
+		<SceneObject name="M04">
+			<parameter name="$A4">0.0</parameter>
+		</SceneObject>
+		<SceneObject name="M05">
+			<parameter name="$A5">0.0</parameter>
+		</SceneObject>
+		<SceneObject name="M06">
+			<parameter name="$A6">0.0</parameter>
+		</SceneObject>
+		<SceneObject name="M07">
+			<parameter name="$A7">0.0</parameter>
+		</SceneObject>
+		<SceneObject name="GR">
+			<parameter name="$pos">0.0</parameter>
+		</SceneObject>
+	</SceneObject>
+	<SceneObject name="LBR700">
+		<SceneObject name="M01">
+			<parameter name="$A1">0.0</parameter>
+		</SceneObject>
+		<SceneObject name="M02">
+			<parameter name="$A2">0.0</parameter>
+		</SceneObject>
+		<SceneObject name="M03">
+			<parameter name="$A3">0.0</parameter>
+		</SceneObject>
+		<SceneObject name="M04">
+			<parameter name="$A4">0.0</parameter>
+		</SceneObject>
+		<SceneObject name="M05">
+			<parameter name="$A5">0.0</parameter>
+		</SceneObject>
+		<SceneObject name="M06">
+			<parameter name="$A6">0.0</parameter>
+		</SceneObject>
+		<SceneObject name="M07">
+			<parameter name="$A7">0.0</parameter>
+		</SceneObject>
+		<SceneObject name="GR">
+			<parameter name="$pos">0.0</parameter>
+		</SceneObject>
+	</SceneObject>
+		<SceneObject name="M01">
+			<parameter name="$A1">0.0</parameter>
+		</SceneObject>
+		<SceneObject name="M02">
+			<parameter name="$A2">0.0</parameter>
+		</SceneObject>
+		<SceneObject name="M03">
+			<parameter name="$A3">0.0</parameter>
+		</SceneObject>
+		<SceneObject name="M04">
+			<parameter name="$A4">0.0</parameter>
+		</SceneObject>
+		<SceneObject name="M05">
+			<parameter name="$A5">0.0</parameter>
+		</SceneObject>
+		<SceneObject name="M06">
+			<parameter name="$A6">0.0</parameter>
+		</SceneObject>
+		<SceneObject name="M07">
+			<parameter name="$A7">0.0</parameter>
+		</SceneObject>
+		<SceneObject name="GR">
+			<parameter name="$pos">0.0</parameter>
+		</SceneObject>
+	</SceneObject>
+</SceneGraph>

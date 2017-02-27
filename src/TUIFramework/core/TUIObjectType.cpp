@@ -29,6 +29,8 @@
 namespace tuiframework {
 
 TUIObjectType::TUIObjectType() {
+	this->name = "";
+	this->description = "dummy";
 }
 
 
@@ -51,7 +53,7 @@ void TUIObjectType::setDescription(const std::string & description) {
 }
 
 
-const std::string & TUIObjectType::getDescription() {
+const std::string & TUIObjectType::getDescription() const {
     return this->description;
 }
 
@@ -71,35 +73,53 @@ void TUIObjectType::setPortMap(const std::map<std::string, Port> & portMap) {
 }
 
 
-std::ostream & TUIObjectType::serialize(std::ostream & os) const {
-    //os << this->tuiObjectTypeName << " " << this->description << " ";
-    os << this->name << " ";
-    os << static_cast<int>(this->portMap.size());
+std::ostream & TUIObjectType::serialize(std::ostream & os) const 
+{
 
-    std::map<std::string, Port>::const_iterator i = this->portMap.begin();
-    std::map<std::string, Port>::const_iterator e = this->portMap.end();
-    while (i != e) {
-        os << " ";
-        os << (*i).second;
-        i++;
-    }
+
+	os << this->name << " ";
+    //os << " " << this->name << " " << this->description << " ";
+    //os << static_cast<int>(this->portMap.size());
+
+	{
+		os << static_cast<int>(this->portMap.size());
+
+		std::map<std::string, Port>::const_iterator i = this->portMap.begin();
+		std::map<std::string, Port>::const_iterator e = this->portMap.end();
+		while (i != e) 
+		{
+			os << " ";
+			os << (*i).second;
+			i++;
+		}
+	}
+  
+
+	std::string tmpString = this->description;
+	std::cout << "Ein String : " << this->portMap.size() << std::endl;
+
 
     return os;
 }
 
 
-std::istream & TUIObjectType::deSerialize(std::istream & is) {
-    //is >> this->tuiObjectTypeName >> this->description;
+std::istream & TUIObjectType::deSerialize(std::istream & is) 
+{
+	//is >> this->name >> this->description;
     is >> this->name;
-    int portCount;
-    is >> portCount;
-
     this->portMap.clear();
+
+	int portCount = 0;
+	is >> portCount;
+
     for (int i = 0; i < portCount; i++) {
         Port port;
         is >> port;
+		std::cout << "Ein Wert : " << port << std::endl;
+
         this->portMap[port.getName()] = port;
     }
+
 
     return is;
 }

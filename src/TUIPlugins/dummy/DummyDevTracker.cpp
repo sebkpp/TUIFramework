@@ -23,7 +23,7 @@
 
 
 
-#include <TUIPlugins/dummy/DummyDevTracker.h>
+#include <TUIPlugins\dummy\DummyDevTracker.h>
 
 #include <tuiframework/core/ITUIServer.h>
 #include <tuiframework/core/IEvent.h>
@@ -222,7 +222,7 @@ void DummyDevTracker::executeOutputLoop() {
         IEvent * event = this->outputEventQueue.pop();
         if (event) {
             cout << "DummyDevTracker: " << event->getEventTypeID() << " " << event << endl;
-            //delete event;
+            delete event;
         }
     }
 }

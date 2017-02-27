@@ -43,7 +43,7 @@ public:
 	void customButton1Changed(const DigitalChangedEvent * e);
 	void customButton2Changed(const DigitalChangedEvent * e);
 
-	void deltaXChanged(const IntegerChangedEvent * e);
+	void deltaXChanged(const AnalogChangedEvent * e);
 	void deltaYChanged(const IntegerChangedEvent * e);
 	void deltaWheelChanged(const IntegerChangedEvent * e);
 

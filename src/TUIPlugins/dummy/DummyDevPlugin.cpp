@@ -24,7 +24,7 @@
 
 
 
-#include <TUIPlugins/dummy/DummyDevPlugin.h>
+#include "DummyDevPlugin.h"
 
 #include <tuiframework/server/DeviceFactorySingleton.h>
 
@@ -33,11 +33,11 @@
 #include <tuiframework/server/DeviceConfig.h>
 #include <tuiframework/server/IDeviceFactory.h>
 
-#include <TUIPlugins/dummy/DummyDevPlugin.h>
-#include <TUIPlugins/dummy/DummyDevDA.h>
-#include <TUIPlugins/dummy/DummyDevTracker.h>
-#include <TUIPlugins/dummy/DummyDevMatrix4.h>
-#include <TUIPlugins/dummy/DummyDevPackedVector4.h>
+#include "DummyDevPlugin.h"
+#include "DummyDevDA.h"
+#include "DummyDevTracker.h"
+#include "DummyDevMatrix4.h"
+#include "DummyDevPackedVector4.h"
 
 using namespace tuidevices;
 using namespace tuiframework;

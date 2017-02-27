@@ -40,6 +40,8 @@ MyTUIObject::~MyTUIObject() {
 
 void MyTUIObject::connect() {
     try {
+		
+		
         CONNECT(Matrix4Event, "MyTUIObjectInstance", "Transf",
                 MyTUIObject, this, &MyTUIObject::transfChanged);
         CONNECT(DigitalChangedEvent, "MyTUIObjectInstance", "Button",
@@ -77,19 +79,23 @@ void MyTUIObject::disconnect() {
 void MyTUIObject::transfChanged(const Matrix4Event * e) {
     this->transf = e->getPayload();
     cout << "MyTUIObject: transformation changed: " << this->transf << endl;
+	delete e;
+
 }
 
 
 void MyTUIObject::buttonChanged(const DigitalChangedEvent * e) {
     this->button = e->getPayload();
     cout << "MyTUIObject: state of button changed: " << (this->button ? "True" : "False") << endl;
-
-    this->ledChannel->push(new DigitalChangedEvent(-1, -1, this->button));
+	delete e;
+    //this->ledChannel->push(new DigitalChangedEvent(-1, -1, this->button));
 }
 
 
 void MyTUIObject::pressureChanged(const AnalogChangedEvent * e) {
     this->pressure = e->getPayload();
     cout << "MyTUIObject: state of button changed: " << this->pressure << endl;
+	delete e;
+
 }
 

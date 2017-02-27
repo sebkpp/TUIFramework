@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--document xmlns:xi='http://www.w3.org/2001/XInclude'--><document xmlns:xi="http://www.w3.org/2001/XInclude">
+   <ServerConfig>
+      <ServerStartupConfig/>
+      <DeviceTypeSequence>
+         <Image path="images/TUI1.png"/>
+         <DeviceType name="XControllerDevice">
+            <PortTypeSequence>
+               <PortType name="x4" sink="0" source="1" typename="XControllerChannel">
+                  <Description/>
+               </PortType>
+               <PortType name="x3" sink="0" source="1" typename="XControllerChannel">
+                  <Description/>
+               </PortType>
+               <PortType name="x2" sink="0" source="1" typename="XControllerChannel">
+                  <Description/>
+               </PortType>
+               <PortType name="x1" sink="0" source="1" typename="XControllerChannel">
+                  <Description/>
+               </PortType>
+            </PortTypeSequence>
+            <ParameterTypeDefSequence/>
+            <ParameterTypeSequence/>
+            <ParameterGroup name="Client"/>
+         </DeviceType>
+      </DeviceTypeSequence>
+      <MSPTypeSequence>
+         <Image path="images/DefaultMSP.png"/>
+         <MSPType name="XControllerDemuxMSP">
+            <PortTypeSequence>
+               <PortType name="b4-y" sink="0" source="1" typename="DigitalChannel">
+                  <Description/>
+               </PortType>
+               <PortType name="b11-dPadUp" sink="0" source="1" typename="DigitalChannel">
+                  <Description/>
+               </PortType>
+               <PortType name="b14-dPadRight" sink="0" source="1" typename="DigitalChannel">
+                  <Description/>
+               </PortType>
+               <PortType name="rightThumb DeltaY" sink="0" source="1" typename="IntegerChannel">
+                  <Description/>
+               </PortType>
+               <PortType name="b10-rightThumb" sink="0" source="1" typename="DigitalChannel">
+                  <Description/>
+               </PortType>
+               <PortType name="rightThumb DeltaX" sink="0" source="1" typename="IntegerChannel">
+                  <Description/>
+               </PortType>
+               <PortType name="x" sink="1" source="0" typename="XControllerChannel">
+                  <Description/>
+               </PortType>
+               <PortType name="b12-dPadDown" sink="0" source="1" typename="DigitalChannel">
+                  <Description/>
+               </PortType>
+               <PortType name="b5-start" sink="0" source="1" typename="DigitalChannel">
+                  <Description/>
+               </PortType>
+               <PortType name="b2-b" sink="0" source="1" typename="DigitalChannel">
+                  <Description/>
+               </PortType>
+               <PortType name="b6-back" sink="0" source="1" typename="DigitalChannel">
+                  <Description/>
+               </PortType>
+               <PortType name="b3-x" sink="0" source="1" typename="DigitalChannel">
+                  <Description/>
+               </PortType>
+               <PortType name="b13-dPadLeft" sink="0" source="1" typename="DigitalChannel">
+                  <Description/>
+               </PortType>
+               <PortType name="b8-rightShoulder" sink="0" source="1" typename="DigitalChannel">
+                  <Description/>
+               </PortType>
+               <PortType name="rightShoulder Delta" sink="0" source="1" typename="IntegerChannel">
+                  <Description/>
+               </PortType>
+               <PortType name="b7-leftShoulder" sink="0" source="1" typename="DigitalChannel">
+                  <Description/>
+               </PortType>
+               <PortType name="leftThumb DeltaY" sink="0" source="1" typename="IntegerChannel">
+                  <Description/>
+               </PortType>
+               <PortType name="leftThumb DeltaX" sink="0" source="1" typename="IntegerChannel">
+                  <Description/>
+               </PortType>
+               <PortType name="b9-leftThumb" sink="0" source="1" typename="DigitalChannel">
+                  <Description/>
+               </PortType>
+               <PortType name="leftShoulder Delta" sink="0" source="1" typename="IntegerChannel">
+                  <Description/>
+               </PortType>
+               <PortType name="b1-a" sink="0" source="1" typename="DigitalChannel">
+                  <Description/>
+               </PortType>
+            </PortTypeSequence>
+            <ParameterTypeDefSequence/>
+            <ParameterTypeSequence/>
+         </MSPType>
+      </MSPTypeSequence>
+      <TUIObjectTypeSequence>
+         <Image path="images/TUI1.png"/>
+         <TUIObjectType name="TestXController">
+            <PortTypeSequence>
+               <PortType name="B-Button" sink="0" source="1" typename="DigitalChannel">
+                  <Description/>
+               </PortType>
+               <PortType name="Y-Button" sink="0" source="1" typename="DigitalChannel">
+                  <Description/>
+               </PortType>
+               <PortType name="Right-Shoulder-Button" sink="0" source="1" typename="DigitalChannel">
+                  <Description/>
+               </PortType>
+               <PortType name="RShoulder-Delta" sink="0" source="1" typename="IntegerChannel">
+                  <Description/>
+               </PortType>
+               <PortType name="Start-Button" sink="0" source="1" typename="DigitalChannel">
+                  <Description/>
+               </PortType>
+               <PortType name="RThumbStick-DeltaY" sink="0" source="1" typename="IntegerChannel">
+                  <Description/>
+               </PortType>
+               <PortType name="RThumbStick-DeltaX" sink="0" source="1" typename="IntegerChannel">
+                  <Description/>
+               </PortType>
+               <PortType name="LThumbStick-DeltaY" sink="0" source="1" typename="IntegerChannel">
+                  <Description/>
+               </PortType>
+               <PortType name="LThumbStick-DeltaX" sink="0" source="1" typename="IntegerChannel">
+                  <Description/>
+               </PortType>
+               <PortType name="Back-Button" sink="0" source="1" typename="DigitalChannel">
+                  <Description/>
+               </PortType>
+               <PortType name="A-Button" sink="0" source="1" typename="DigitalChannel">
+                  <Description/>
+               </PortType>
+               <PortType name="Left-ThumbStick" sink="0" source="1" typename="DigitalChannel">
+                  <Description/>
+               </PortType>
+               <PortType name="X-Button" sink="0" source="1" typename="DigitalChannel">
+                  <Description/>
+               </PortType>
+               <PortType name="Right-ThumbStick" sink="0" source="1" typename="DigitalChannel">
+                  <Description/>
+               </PortType>
+               <PortType name="Left-Shoulder-Button" sink="0" source="1" typename="DigitalChannel">
+                  <Description/>
+               </PortType>
+               <PortType name="dPad-Left" sink="0" source="1" typename="DigitalChannel">
+                  <Description/>
+               </PortType>
+               <PortType name="LShoulder-Delta" sink="0" source="1" typename="IntegerChannel">
+                  <Description/>
+               </PortType>
+               <PortType name="dPad-Right" sink="0" source="1" typename="DigitalChannel">
+                  <Description/>
+               </PortType>
+               <PortType name="dPad-Up" sink="0" source="1" typename="DigitalChannel">
+                  <Description/>
+               </PortType>
+               <PortType name="dPad-Down" sink="0" source="1" typename="DigitalChannel">
+                  <Description/>
+               </PortType>
+            </PortTypeSequence>
+         </TUIObjectType>
+      </TUIObjectTypeSequence>
+      <DeviceInstanceSequence>
+         <DeviceInstance name="XController1" typename="XControllerDevice">
+            <ParameterGroup name="Client"/>
+         </DeviceInstance>
+      </DeviceInstanceSequence>
+      <MSPInstanceSequence>
+         <MSPInstance name="XControllerDemux1" typename="XControllerDemuxMSP"/>
+      </MSPInstanceSequence>
+      <TUIObjectInstanceSequence>
+         <TUIObjectInstance name="TUIXController1" typename="TestXController"/>
+      </TUIObjectInstanceSequence>
+      <ConnectorSequence>
+         <Connector>
+            <SrcAddress entityName="XController1" entityType="DEV" portName="x1"/>
+            <DstAddress entityName="XControllerDemux1" entityType="MSP" portName="x"/>
+         </Connector>
+         <Connector>
+            <SrcAddress entityName="XControllerDemux1" entityType="MSP" portName="b1-a"/>
+            <DstAddress entityName="TUIXController1" entityType="TUI" portName="A-Button"/>
+         </Connector>
+         <Connector>
+            <SrcAddress entityName="XControllerDemux1" entityType="MSP" portName="b2-b"/>
+            <DstAddress entityName="TUIXController1" entityType="TUI" portName="B-Button"/>
+         </Connector>
+         <Connector>
+            <SrcAddress entityName="XControllerDemux1" entityType="MSP" portName="b5-start"/>
+            <DstAddress entityName="TUIXController1" entityType="TUI" portName="Start-Button"/>
+         </Connector>
+         <Connector>
+            <SrcAddress entityName="XControllerDemux1" entityType="MSP" portName="b6-back"/>
+            <DstAddress entityName="TUIXController1" entityType="TUI" portName="Back-Button"/>
+         </Connector>
+         <Connector>
+            <SrcAddress entityName="XControllerDemux1" entityType="MSP" portName="b3-x"/>
+            <DstAddress entityName="TUIXController1" entityType="TUI" portName="X-Button"/>
+         </Connector>
+         <Connector>
+            <SrcAddress entityName="XControllerDemux1" entityType="MSP" portName="b4-y"/>
+            <DstAddress entityName="TUIXController1" entityType="TUI" portName="Y-Button"/>
+         </Connector>
+         <Connector>
+            <SrcAddress entityName="XControllerDemux1" entityType="MSP" portName="b7-leftShoulder"/>
+            <DstAddress entityName="TUIXController1" entityType="TUI" portName="Left-Shoulder-Button"/>
+         </Connector>
+         <Connector>
+            <SrcAddress entityName="XControllerDemux1" entityType="MSP" portName="b8-rightShoulder"/>
+            <DstAddress entityName="TUIXController1" entityType="TUI" portName="Right-Shoulder-Button"/>
+         </Connector>
+         <Connector>
+            <SrcAddress entityName="XControllerDemux1" entityType="MSP" portName="b9-leftThumb"/>
+            <DstAddress entityName="TUIXController1" entityType="TUI" portName="Left-ThumbStick"/>
+         </Connector>
+         <Connector>
+            <SrcAddress entityName="XControllerDemux1" entityType="MSP" portName="b10-rightThumb"/>
+            <DstAddress entityName="TUIXController1" entityType="TUI" portName="Right-ThumbStick"/>
+         </Connector>
+         <Connector>
+            <SrcAddress entityName="XControllerDemux1" entityType="MSP" portName="b11-dPadUp"/>
+            <DstAddress entityName="TUIXController1" entityType="TUI" portName="dPad-Up"/>
+         </Connector>
+         <Connector>
+            <SrcAddress entityName="XControllerDemux1" entityType="MSP" portName="b12-dPadDown"/>
+            <DstAddress entityName="TUIXController1" entityType="TUI" portName="dPad-Down"/>
+         </Connector>
+         <Connector>
+            <SrcAddress entityName="XControllerDemux1" entityType="MSP" portName="b13-dPadLeft"/>
+            <DstAddress entityName="TUIXController1" entityType="TUI" portName="dPad-Left"/>
+         </Connector>
+         <Connector>
+            <SrcAddress entityName="XControllerDemux1" entityType="MSP" portName="b14-dPadRight"/>
+            <DstAddress entityName="TUIXController1" entityType="TUI" portName="dPad-Right"/>
+         </Connector>
+         <Connector>
+            <SrcAddress entityName="XControllerDemux1" entityType="MSP" portName="leftShoulder Delta"/>
+            <DstAddress entityName="TUIXController1" entityType="TUI" portName="LShoulder-Delta"/>
+         </Connector>
+         <Connector>
+            <SrcAddress entityName="XControllerDemux1" entityType="MSP" portName="leftThumb DeltaX"/>
+            <DstAddress entityName="TUIXController1" entityType="TUI" portName="LThumbStick-DeltaX"/>
+         </Connector>
+         <Connector>
+            <SrcAddress entityName="XControllerDemux1" entityType="MSP" portName="leftThumb DeltaY"/>
+            <DstAddress entityName="TUIXController1" entityType="TUI" portName="LThumbStick-DeltaY"/>
+         </Connector>
+         <Connector>
+            <SrcAddress entityName="XControllerDemux1" entityType="MSP" portName="rightShoulder Delta"/>
+            <DstAddress entityName="TUIXController1" entityType="TUI" portName="RShoulder-Delta"/>
+         </Connector>
+         <Connector>
+            <SrcAddress entityName="XControllerDemux1" entityType="MSP" portName="rightThumb DeltaX"/>
+            <DstAddress entityName="TUIXController1" entityType="TUI" portName="RThumbStick-DeltaX"/>
+         </Connector>
+         <Connector>
+            <SrcAddress entityName="XControllerDemux1" entityType="MSP" portName="rightThumb DeltaY"/>
+            <DstAddress entityName="TUIXController1" entityType="TUI" portName="RThumbStick-DeltaY"/>
+         </Connector>
+      </ConnectorSequence>
+   </ServerConfig>
+</document>

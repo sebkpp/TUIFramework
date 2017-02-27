@@ -48,7 +48,7 @@ void TUIMouse::connect() {
                 TUIMouse, this, &TUIMouse::customButton1Changed);
         CONNECT(DigitalChangedEvent, "TUIMouse1", "CustomButton2",
                 TUIMouse, this, &TUIMouse::customButton2Changed);
-        CONNECT(IntegerChangedEvent, "TUIMouse1", "DeltaX",
+        CONNECT(AnalogChangedEvent, "TUIMouse1", "DeltaX",
                 TUIMouse, this, &TUIMouse::deltaXChanged);
         CONNECT(IntegerChangedEvent, "TUIMouse1", "DeltaY",
                 TUIMouse, this, &TUIMouse::deltaYChanged);
@@ -74,7 +74,7 @@ void TUIMouse::disconnect() {
                 TUIMouse, this, &TUIMouse::customButton1Changed);
         DISCONNECT(DigitalChangedEvent, "TUIMouse1", "CustomButton2",
                 TUIMouse, this, &TUIMouse::customButton2Changed);
-        DISCONNECT(IntegerChangedEvent, "TUIMouse1", "DeltaX",
+        DISCONNECT(AnalogChangedEvent, "TUIMouse1", "DeltaX",
                 TUIMouse, this, &TUIMouse::deltaXChanged);
         DISCONNECT(IntegerChangedEvent, "TUIMouse1", "DeltaY",
                 TUIMouse, this, &TUIMouse::deltaYChanged);
@@ -113,7 +113,7 @@ void TUIMouse::customButton2Changed(const DigitalChangedEvent * e) {
 }
 
 
-void TUIMouse::deltaXChanged(const IntegerChangedEvent * e) {
+void TUIMouse::deltaXChanged(const AnalogChangedEvent * e) {
 	cout << "TUIMouse: DX: " << e->getPayload() << endl;
 }
 

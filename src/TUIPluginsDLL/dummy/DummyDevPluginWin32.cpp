@@ -12,6 +12,7 @@
 #include <TUIPlugins/dummy/DummyDevTracker.h>
 #include <TUIPlugins/dummy/DummyDevMatrix4.h>
 #include <TUIPlugins/dummy/DummyDevPackedVector4.h>
+#include <TUIPlugins\dummy\DummyDevWinMod.h>
 
 using namespace tuidevices;
 using namespace tuiframework;
@@ -26,11 +27,14 @@ void dllInitPlugin() {
     DeviceFactorySingleton::getInstance()->registerCreateFunction(DummyDevTracker::getDeviceName(), DummyDevTracker::createFunction);
     DeviceFactorySingleton::getInstance()->registerCreateFunction(DummyDevMatrix4::getDeviceName(), DummyDevMatrix4::createFunction);
     DeviceFactorySingleton::getInstance()->registerCreateFunction(DummyDevPackedVector4::getDeviceName(), DummyDevPackedVector4::createFunction);
-    
+	DeviceFactorySingleton::getInstance()->registerCreateFunction(DummyDevWinMod::getDeviceName(), DummyDevWinMod::createFunction);
+
     deviceTypeNameVector.push_back(DummyDevDA::getDeviceName());
     deviceTypeNameVector.push_back(DummyDevTracker::getDeviceName());
     deviceTypeNameVector.push_back(DummyDevMatrix4::getDeviceName());
-    deviceTypeNameVector.push_back(DummyDevPackedVector4::getDeviceName());    
+    deviceTypeNameVector.push_back(DummyDevPackedVector4::getDeviceName());
+	deviceTypeNameVector.push_back(DummyDevWinMod::getDeviceName());
+
 }
 
 
@@ -49,6 +53,8 @@ void dllDeviceRegistration(IDeviceFactory * deviceFactory) {
     deviceFactory->registerCreateFunction(DummyDevTracker::getDeviceName(), DummyDevTracker::createFunction);
     deviceFactory->registerCreateFunction(DummyDevMatrix4::getDeviceName(), DummyDevMatrix4::createFunction);
     deviceFactory->registerCreateFunction(DummyDevPackedVector4::getDeviceName(), DummyDevPackedVector4::createFunction);
+	deviceFactory->registerCreateFunction(DummyDevWinMod::getDeviceName(), DummyDevWinMod::createFunction);
+
 }
 
 

@@ -28,7 +28,6 @@
 #include "../core/HostAddress.h"
 
 #include <winsock2.h>
-
 #include <pthread.h>
 #include <set>
 

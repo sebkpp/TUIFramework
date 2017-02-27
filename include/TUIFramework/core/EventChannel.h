@@ -77,7 +77,8 @@ public:
     virtual void push(IEvent * event) {
     	//std::cout << "Eventchannel: " << this->portNr << "  " << event << std::endl;
         EPEventMsg<T, typeID> * e = static_cast<EPEventMsg<T, typeID> *>(event);
-        this->setValue(e->getPayload());
+		this->setValue(e->getPayload());
+		//delete e;
     }
 
         /// Returns the last passed value of type T.
@@ -100,7 +101,7 @@ public:
             EPEventMsg<T, typeID> * event = new EPEventMsg<T, typeID>(this->entityID, this->portNr, this->value);
             //std::cout << channelEvent << std::endl;
             (*i)->push(event);
-           // delete event;
+            //delete event;
             ++i;
         }
     }

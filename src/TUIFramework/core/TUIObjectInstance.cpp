@@ -94,7 +94,7 @@ void TUIObjectInstance::setNameChannelNrMap(const std::map<std::string, int> & n
 
 std::ostream & TUIObjectInstance::serialize(std::ostream & os) const {
     //os << this->name << " " << this->tuiTypeName << " " << this->description;
-    os << this->name << " " << this->typeName << " " << this->id;
+    os << this->name << " " << this->typeName << " "  << this->id;
 
     os << " " << static_cast<int>(this->nameChannelNrMap.size());
     {
@@ -112,7 +112,7 @@ std::ostream & TUIObjectInstance::serialize(std::ostream & os) const {
 
 std::istream & TUIObjectInstance::deSerialize(std::istream & is) {
     //is >> this->name >> this->tuiTypeName >> this->description;
-    is >> this->name >> this->typeName >> this->id;
+    is >> this->name >> this->typeName >>this->id;
 
     int nameChannelNrCount;
     is >> nameChannelNrCount;

@@ -77,8 +77,8 @@ ostream & AttachedObjects::serialize(ostream & os) const {
         }
     }
     {
-        os << this->tuiObjectInstanceVector.size() << " ";
-        vector<TUIObjectInstance>::const_iterator i = this->tuiObjectInstanceVector.begin();
+		os << this->tuiObjectInstanceVector.size() << " ";
+		vector<TUIObjectInstance>::const_iterator i = this->tuiObjectInstanceVector.begin();
         vector<TUIObjectInstance>::const_iterator e = this->tuiObjectInstanceVector.end();
         while (i != e) {
             os << *i << " ";
@@ -90,7 +90,7 @@ ostream & AttachedObjects::serialize(ostream & os) const {
 
 
 istream & AttachedObjects::deSerialize(istream & is) {
-    int count;
+    int count = 0;
 
     is >> count;
     for (int i = 0; i < count; ++i) {
@@ -98,6 +98,7 @@ istream & AttachedObjects::deSerialize(istream & is) {
         is >> tuiObjectType;
         this->tuiObjectTypeVector.push_back(tuiObjectType);
     }
+
     is >> count;
     for (int i = 0; i < count; ++i) {
         TUIObjectInstance tuiObjectInstance;

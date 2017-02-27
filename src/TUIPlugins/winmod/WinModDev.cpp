@@ -39,13 +39,12 @@ WinModDev::WinModDev(const DeviceConfig & deviceConfig)
     map<string, Port> portMap;
 
 	// Port Mapping of In-/Output Ports
-	portMap["wO"] = Port("wO","WinModChannel", Port::Sink);
-	portMap["wI"] = Port("wI","WinModChannel", Port::Source);
+	portMap["fO"] = Port("fO","PackedAnalog", Port::Sink);
 
-	portMap["wIn"] = Port("wIn","WordChannel", Port::Source);
-	portMap["dwIn"] = Port("dwIn","DWordChannel", Port::Source);
-	portMap["fIn"] = Port("fIn","AnalogVectorChannel", Port::Source);
-	portMap["bIn"] = Port("bIn","IntegerVectorChannel", Port::Source);
+	portMap["fIn"] = Port("fIn","PackedAnalog", Port::Source);
+
+	portMap["byteOut"] = Port("byteOut", "PackedByte", Port::Sink);
+	portMap["byteIn"] = Port("byteIn", "PackedByte", Port::Source);
 
 	DeviceType deviceType;
     deviceType.setPortMap(portMap);
@@ -124,7 +123,7 @@ bool WinModDev::deviceExecute() {
 		// Starts the Input-Thread
         int rc = pthread_create(&this->inputLoopThread, NULL, WinModDev::inputLoopThread_run, this);
         if (rc) {
-            printf("ERROR; return code from pthread_create() is %d\n", rc);
+			printf("ERROR; return code from pthread_create() is %d\n", rc);
         }
 		
     }
@@ -199,12 +198,13 @@ void WinModDev::executeInputLoop() {
 	{
 		float *fltCurrentData = (float*) calloc(floatSize,sizeof(float));
 		unsigned char *iCurrentData = (unsigned char*) calloc(byteSize,sizeof(unsigned char));
-		unsigned short *wordCurrentData = (unsigned short*) calloc(wordSize,sizeof(unsigned short));
-		unsigned long *dWordCurrentData = (unsigned long*) calloc(dWordSize,sizeof(unsigned long));
+		//unsigned short *wordCurrentData = (unsigned short*) calloc(wordSize,sizeof(unsigned short));
+		//unsigned long *dWordCurrentData = (unsigned long*) calloc(dWordSize,sizeof(unsigned long));
 
-		WinModData wd;
+		//WinModData wd;
 
-		while (this->inputLoopRunning) {
+		while (this->inputLoopRunning) 
+		{
 			// Debug for Time-Measures
 			//chrono::high_resolution_clock::time_point t1 = chrono::high_resolution_clock::now();
 			
@@ -223,32 +223,49 @@ void WinModDev::executeInputLoop() {
 			#endif
 
 			#ifdef _WIN32
-					Sleep(10);
+					Sleep(100);
 			#endif
 			
 			// If floatOff Parameter from the XML-Configuration is not disabled with -1
-			if(floatOff != -1)
-			{	// Read the Float-Block from Memory
-				if(WMY200ReadBlockFloat(m_hRange,fltCurrentData,this->floatOff/4,this->floatSize)==WM_Y200_S_OK) // Float-Daten aus Prozessdatenabbild holen
+			if (floatOff != -1)
+			{ 
+				HRESULT hr = WMY200ReadBlockFloat(m_hRange, fltCurrentData, this->floatOff / 4, this->floatSize);
+				// Read the Float-Block from Memory
+				if(hr==WM_Y200_S_OK) // Float-Daten aus Prozessdatenabbild holen
 				{
 					// If Output-Port is ready
 					if (this->eventSink) 
 					{
+
+						PackedAnalogEvent *event = new PackedAnalogEvent();
+						PackedType <float> pf;
+						vector<pair<int, float>> vf;
+						for (int i = 0; i < floatSize; i++)
+						{
+							pair<int, float> value_pair(i, fltCurrentData[i]);
+							vf.push_back(value_pair);
+						}
+						pf.setItems(vf);
 						// Encapsulate the Float-Values in the WinMod-Data Object
-						wd.setFloats(fltCurrentData,floatSize);
+						//wd.setFloats(fltCurrentData,floatSize);
+						event->setAddress(EPAddress(this->entityID, this->deviceDescriptor.getNameChannelNrMap()["fO"]));
+
+						event->setPayload(pf);
+						// Pushes the Event in the EventSink
+						eventSink->push(event);
 					}
 				}
 
 				// If Reading from Float-Memory wasnt successfull print Error Messages
-				if(WMY200ReadBlockFloat(m_hRange,fltCurrentData,this->floatOff/4,this->floatSize)==WM_Y200_E_INVALID_READ_PARAM)
+				if(hr==WM_Y200_E_INVALID_READ_PARAM)
 				{
 					cout << "Y200 - Invalid Read-Parameter" << endl;
 				}
-				if(WMY200ReadBlockFloat(m_hRange,fltCurrentData,this->floatOff/4,this->floatSize)==WM_Y200_E_NO_SHARED_MEM)
+				if(hr==WM_Y200_E_NO_SHARED_MEM)
 				{
 					cout << "Y200 - No Shared Memory" << endl;
 				}
-				if(WMY200ReadBlockFloat(m_hRange,fltCurrentData,this->floatOff/4,this->floatSize)==WM_Y200_E_INVALID_HANDLE)
+				if(hr==WM_Y200_E_INVALID_HANDLE)
 				{
 					cout << "Y200 - Invalid Handle" << endl;
 				}
@@ -266,15 +283,15 @@ void WinModDev::executeInputLoop() {
 						// ToDo Reactivate Byte-Values
 						for(int i = 0 ; i < byteSize ; i++){
 							//ByteChangedEvent *event2 = new ByteChangedEvent();
-							//IntegerChangedEvent *event2 = new IntegerChangedEvent();
+							IntegerChangedEvent *event2 = new IntegerChangedEvent();
 						
-							//string map = "DO";
-							//map.append(std::to_string(i+1));
+							string map = "DO";
+							map.append(std::to_string(i+1));
 
-							//event2->setAddress(EPAddress(this->entityID, this->deviceDescriptor.getNameChannelNrMap()[map]));
-							//event2->setPayload((int)iCurrentData[i]);
+							event2->setAddress(EPAddress(this->entityID, this->deviceDescriptor.getNameChannelNrMap()[map]));
+							event2->setPayload((int)iCurrentData[i]);
 							
-							//cout << "In Byte " << i+1 << ": " << (int)iCurrentData[i];
+							//cout << "In Byte " << i+1 << ": " << (int)iCurrentData[i] << endl;
 						
 						
 							//unsigned char testVal = event2->getPayload();
@@ -282,9 +299,8 @@ void WinModDev::executeInputLoop() {
 							//	cout << ((testVal >> j) & 1);
 							//}
 						
-							//cout << endl;
 							
-							//eventSink->push(event2);
+							eventSink->push(event2);
 							//byteValues.push_back(iCurrentData[i]);
 							//cout <<"Bytes: "  << byteValues.at(i)<< endl;
 
@@ -296,7 +312,7 @@ void WinModDev::executeInputLoop() {
 				}
 			}
 			
-			// If WordOffset is not disabled with -1 in XML-Configuration
+		/*	// If WordOffset is not disabled with -1 in XML-Configuration
 			if(wordOff != -1)
 			{
 				// Read from Word-Block
@@ -324,20 +340,20 @@ void WinModDev::executeInputLoop() {
 						wd.setDWords(dWordCurrentData,dWordSize);
 					}
 				}
-			}
+			}*/
 
 
 			// Create a new WinModEvent
-			WinModEvent *event = new WinModEvent();
+			//WinModEvent *event = new WinModEvent();
 			// Set Address of the WinMod Event
-			event->setAddress(EPAddress(this->entityID, this->deviceDescriptor.getNameChannelNrMap()["wO"]));
+			//event->setAddress(EPAddress(this->entityID, this->deviceDescriptor.getNameChannelNrMap()["wO"]));
 			// Set the WinMod-Data Object as Payload for the Event
-			event->setPayload(wd);
+			//event->setPayload(wd);
 			// Pushes the Event in the EventSink
-			eventSink->push(event);
+			//eventSink->push(event);
 
-			// Delete to prevent Memory-Leak
-			delete event;
+			// Delete to avoid Memory-Leak
+		//delete event;
 		}
 	}
 
@@ -349,6 +365,7 @@ void WinModDev::executeInputLoop() {
 void WinModDev::executeOutputLoop() {
 	
     this->outputLoopRunning = true;
+	
 	
     while (outputLoopRunning)
 	{
@@ -363,20 +380,31 @@ void WinModDev::executeOutputLoop() {
 			
 			// If WinMod-IPC-Handler is valid
 			if(m_hRange)
-			{	
+			{
 				// Check if event is eventType for Float-Values 	
-				if(event->getEventTypeID() == AnalogVectorChangedEvent::EventTypeID())
+				if(event->getEventTypeID() == PackedAnalogEvent::EventTypeID())
 				{
-					// Casting the IEvent to AnalogVectorChangedEvent
-					AnalogVectorChangedEvent* analogEvent = (AnalogVectorChangedEvent*)event;
+					// Casting the IEvent to PackedAnalogChangedEvent
+					PackedAnalogEvent* analogEvent = (PackedAnalogEvent*)event;
 					// Get the floatValues
-					VectorList<float> f = analogEvent->getPayload();
+					PackedType<float> pf = analogEvent->getPayload();
 					// Size of floatvalues
-					int size = f.size();
+					int size = pf.getItems().size();
 					// Get the Pointer to the floatValues
-					const float *value = f.getData().data();
+					//const float *value = pf.getValues().data();
+					
+					vector<float> floatVector;
+					cout << "Size: " << size << endl;
+					for (int i = 0; i < size; i++)
+					{
+						floatVector.push_back(pf.getItems().at(i).second);
+						//cout << "Value: " << floatVector.at(i) << endl;
+					}
+
+					
+					//cout << value[0] << " " << value[1] << endl;
 					// Write FloatValues to WinMod shared-Memory process
-					if(WMY200WriteBlockFloat(m_hRange,value,floatOff,size) == WM_Y200_S_OK){}
+					if(WMY200WriteBlockFloat(m_hRange, floatVector.data(),floatOff,size) == WM_Y200_S_OK){}
 					
 					//delete analogEvent;
 					//delete value;
@@ -443,16 +471,17 @@ void WinModDev::executeOutputLoop() {
 				}
 				
 				// Check if Event is EventType for WordEvents
-				else if(event->getEventTypeID() == WordChangedEvent::EventTypeID())
+				/*else if(event->getEventTypeID() == WordChangedEvent::EventTypeID())
 				{
+
 					// Casting Event to WordChangedEvent
-					WordChangedEvent* wordEvent = (WordChangedEvent*)event;
+					PackedWORDEvent* wordEvent = (PackedWORDEvent*)event;
 					// Get WordValues from Event
-					VectorList<WORD> w = wordEvent->getPayload();
+					PackedType<WORD> pw = wordEvent->getPayload();
 					// Size of WordValues
-					int size = w.size();
+					int size = pw.getItems().size();
 					// get Pointer to WordValues
-					const WORD *value = (w.getData().data());
+					const WORD *value = pw.getValues().data();
 					// Write WordValues to WinMod Shared Memory Process
 					if(WMY200WriteBlock16(m_hRange,value,(wordOff/4),size) == WM_Y200_S_OK){};
 				}
@@ -461,23 +490,23 @@ void WinModDev::executeOutputLoop() {
 				else if(event->getEventTypeID() == DWordChangedEvent::EventTypeID())
 				{
 					// Casting Event to DWordChangeEvent
-					DWordChangedEvent* dWordEvent = (DWordChangedEvent*)event;
+					PackedDWORDEvent* dWordEvent = (PackedDWORDEvent*)event;
 					// Get DWordValues from Event
-					VectorList<DWORD> dw = dWordEvent->getPayload();
+					PackedType<DWORD> pdw = dWordEvent->getPayload();
 					// Size of DWordValues
-					int size = dw.size();
+					int size = pdw.getItems().size();
 					// Get Pointer of DWordValues
-					const DWORD *value = (dw.getData().data());
+					const DWORD *value = (pdw.getValues().data());
 					// Write DWordValues to WinMod shared Memory process.
 					if(WMY200WriteBlock32(m_hRange,value,(dWordOff/4),size) == WM_Y200_S_OK){};
-				}
+				}*/
 				
 			}
            //if(SUCCEEDED(WMY200DestroyIPCRange(m_hRange)));
 		   //m_hRange = NULL;
         }
 
-		// delete event;
+		// delete event;*/
     }
 }
 

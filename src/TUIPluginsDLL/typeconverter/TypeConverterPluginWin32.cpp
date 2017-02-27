@@ -32,6 +32,11 @@
 #include <TUIPlugins/typeconverter/AnalogToDigitalMSP.h>
 #include <TUIPlugins/typeconverter/DigitalToAnalogMSP.h>
 #include <TUIPlugins/typeconverter/TrackerToMatrix4MSP.h>
+#include <TUIPlugins/typeconverter/PackedByteToByteMSP.h>
+
+#include <TUIPlugins/typeconverter/PackedFloatToFloatMSP.h>
+#include <TUIPlugins/typeconverter/PackedWordToWordMSP.h>
+#include <TUIPlugins/typeconverter/PackedDWordToDWordMSP.h>
 
 #include <vector>
 
@@ -57,6 +62,18 @@ void dllInitPlugin() {
 	
 	MSPFactorySingleton::getInstance()->registerCreateFunction(TrackerToMatrix4MSP::getMSPTypeName(), TrackerToMatrix4MSP::createFunction);
     mspTypeNameVector.push_back(TrackerToMatrix4MSP::getMSPTypeName());
+
+	MSPFactorySingleton::getInstance()->registerCreateFunction(PackedByteToByteMSP::getMSPTypeName(), PackedByteToByteMSP::createFunction);
+	mspTypeNameVector.push_back(PackedByteToByteMSP::getMSPTypeName());
+
+	MSPFactorySingleton::getInstance()->registerCreateFunction(PackedFloatToFloatMSP::getMSPTypeName(), PackedFloatToFloatMSP::createFunction);
+	mspTypeNameVector.push_back(PackedFloatToFloatMSP::getMSPTypeName());
+
+	MSPFactorySingleton::getInstance()->registerCreateFunction(PackedWordToWordMSP::getMSPTypeName(), PackedWordToWordMSP::createFunction);
+	mspTypeNameVector.push_back(PackedWordToWordMSP::getMSPTypeName());
+
+	MSPFactorySingleton::getInstance()->registerCreateFunction(PackedDWordToDWordMSP::getMSPTypeName(), PackedDWordToDWordMSP::createFunction);
+	mspTypeNameVector.push_back(PackedDWordToDWordMSP::getMSPTypeName());
 }
 
 
@@ -73,7 +90,13 @@ std::string dllGetDLLVersion() {
 void dllMSPRegistration(IMSPFactory * MSPFactory) {
     MSPFactory->registerCreateFunction(AnalogToDigitalMSP::getMSPTypeName(), AnalogToDigitalMSP::createFunction);
 	MSPFactory->registerCreateFunction(DigitalToAnalogMSP::getMSPTypeName(), DigitalToAnalogMSP::createFunction);
-	MSPFactory->registerCreateFunction(TrackerToMatrix4MSP::getMSPTypeName(), TrackerToMatrix4MSP::createFunction);   
+	MSPFactory->registerCreateFunction(TrackerToMatrix4MSP::getMSPTypeName(), TrackerToMatrix4MSP::createFunction);
+
+	MSPFactory->registerCreateFunction(PackedByteToByteMSP::getMSPTypeName(), PackedByteToByteMSP::createFunction);
+	MSPFactory->registerCreateFunction(PackedFloatToFloatMSP::getMSPTypeName(), PackedFloatToFloatMSP::createFunction);
+	MSPFactory->registerCreateFunction(PackedWordToWordMSP::getMSPTypeName(), PackedWordToWordMSP::createFunction);
+	MSPFactory->registerCreateFunction(PackedDWordToDWordMSP::getMSPTypeName(), PackedDWordToDWordMSP::createFunction);
+
 }
 
 

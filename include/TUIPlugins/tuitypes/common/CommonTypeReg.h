@@ -47,6 +47,9 @@
 #include "PackedType.h"
 #include "WinModData.h"
 #include "OPCType.h"
+#include "SceneObject.h"
+
+#include "TUIPair.h"
 
 #include <tuiframework/core/EPEventMsg.h>
 #include <tuiframework/core/IEventFactory.h>
@@ -92,9 +95,9 @@ typedef tuiframework::EPEventMsg<PackedType<Matrix4<double> >, 26>      PackedMa
 /** \brief Defines an alias representing a vectorList of byte-Values as event. */
 typedef tuiframework::EPEventMsg<VectorList<unsigned char>,27>					ByteChangedEvent;
 /** \brief Defines an alias representing a vectorLis of Word-Values as event. */
-typedef tuiframework::EPEventMsg<VectorList<unsigned short>,28>					WordChangedEvent;
+typedef tuiframework::EPEventMsg<VectorList<WORD>,28>					WordVectorChangedEvent;
 /** \brief Defines an alias representing a vectorList of Dword-Values as event. */
-typedef tuiframework::EPEventMsg<VectorList<unsigned long>,29>					DWordChangedEvent;
+typedef tuiframework::EPEventMsg<VectorList<DWORD>,29>					DWordVectorChangedEvent;
 /** \brief Defines an alias representing a vectorList of float-Values as event. */
 typedef tuiframework::EPEventMsg<VectorList<float>,30>					AnalogVectorChangedEvent;
 /** \brief Defines an alias representing a vectorList of integer-Values as event. */
@@ -113,6 +116,20 @@ typedef tuiframework::EPEventMsg<OPCType<float>, 35>	AnalogChangedOPCEvent;
 typedef tuiframework::EPEventMsg<OPCType<int>, 36>	IntegerChangedOPCEvent;
 /** \brief Defines an alias representing OPC-boolean-Values as Event */
 typedef tuiframework::EPEventMsg<OPCType<string>, 37>	StringChangedOPCEvent;
+
+/** \brief Defines an alias representing SceneObject */
+typedef tuiframework::EPEventMsg<SceneObject, 38 > SceneObjectEvent;
+
+typedef tuiframework::EPEventMsg<PackedType<float>, 100> PackedAnalogEvent;
+typedef tuiframework::EPEventMsg<PackedType<int>, 101> PackedIntegerEvent;
+typedef tuiframework::EPEventMsg<PackedType<WORD>, 102> PackedWORDEvent;
+typedef tuiframework::EPEventMsg<PackedType<DWORD>, 103> PackedDWORDEvent;
+
+/** \brief Defines an alias representing a vectorLis of Word-Values as event. */
+typedef tuiframework::EPEventMsg<WORD, 104>					WordChangedEvent;
+/** \brief Defines an alias representing a vectorList of Dword-Values as event. */
+typedef tuiframework::EPEventMsg<DWORD, 105>					DWordChangedEvent;
+
 
 namespace CommonTypeReg {
 

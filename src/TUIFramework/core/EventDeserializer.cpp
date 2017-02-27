@@ -116,6 +116,7 @@ void EventDeserializer::run() {
              //  cout << event << endl;
                this->eventSink.push(event);
            }
+		   //delete event;
        }
     }
 

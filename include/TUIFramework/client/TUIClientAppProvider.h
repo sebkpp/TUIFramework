@@ -64,6 +64,7 @@ void processEvents(int index = 0);
 
 IEventFactory & getEventFactory(int index = 0);
 IEventChannelFactory & getEventChannelFactory(int index = 0);
+AttachedObjects getAttachedObjects(int index = 0);
 
 }
 

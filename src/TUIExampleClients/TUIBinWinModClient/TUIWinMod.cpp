@@ -18,10 +18,10 @@ TUIWinMod::~TUIWinMod(void)
 void TUIWinMod::connect() {
 	
     try {
-		CONNECT(AnalogVectorChangedEvent, "WinModTUIApp", "fIn", TUIWinMod, this, &TUIWinMod::AnalogSignalChanged);
-		CONNECT(IntegerVectorChangedEvent, "WinModTUIApp", "bIn", TUIWinMod, this, &TUIWinMod::DigitalSignalChanged);
-		CONNECT(WordChangedEvent, "WinModTUIApp", "wIn", TUIWinMod, this, &TUIWinMod::WordSignalChanged);
-		CONNECT(DWordChangedEvent, "WinModTUIApp", "dwIn", TUIWinMod, this, &TUIWinMod::dWordSignalChanged);	
+		CONNECT(PackedAnalogEvent, "WinModTUIApp", "fIn", TUIWinMod, this, &TUIWinMod::AnalogSignalChanged);
+		CONNECT(PackedIntegerEvent, "WinModTUIApp", "bIn", TUIWinMod, this, &TUIWinMod::DigitalSignalChanged);
+		CONNECT(PackedWORDEvent, "WinModTUIApp", "wIn", TUIWinMod, this, &TUIWinMod::WordSignalChanged);
+		CONNECT(PackedDWORDEvent, "WinModTUIApp", "dwIn", TUIWinMod, this, &TUIWinMod::dWordSignalChanged);	
 
 		// Output Sink
 		
@@ -57,10 +57,10 @@ void TUIWinMod::connect() {
 void TUIWinMod::disconnect() {
     try 
 	{
-		DISCONNECT(AnalogVectorChangedEvent, "WinModTUIApp", "fIn", TUIWinMod, this, &TUIWinMod::AnalogSignalChanged);
-		DISCONNECT(IntegerVectorChangedEvent, "WinModTUIApp", "bIn", TUIWinMod, this, &TUIWinMod::DigitalSignalChanged);
-		DISCONNECT(WordChangedEvent, "WinModTUIApp", "wIn", TUIWinMod, this, &TUIWinMod::WordSignalChanged);
-		DISCONNECT(DWordChangedEvent, "WinModTUIApp", "dwIn", TUIWinMod, this, &TUIWinMod::dWordSignalChanged);	
+		DISCONNECT(PackedAnalogEvent, "WinModTUIApp", "fIn", TUIWinMod, this, &TUIWinMod::AnalogSignalChanged);
+		DISCONNECT(PackedIntegerEvent, "WinModTUIApp", "bIn", TUIWinMod, this, &TUIWinMod::DigitalSignalChanged);
+		DISCONNECT(PackedWORDEvent, "WinModTUIApp", "wIn", TUIWinMod, this, &TUIWinMod::WordSignalChanged);
+		DISCONNECT(PackedDWORDEvent, "WinModTUIApp", "dwIn", TUIWinMod, this, &TUIWinMod::dWordSignalChanged);
 
     } catch (const Exception & e) 
 	{
@@ -70,25 +70,25 @@ void TUIWinMod::disconnect() {
 }
 
 
-void TUIWinMod::WordSignalChanged(const WordChangedEvent *e)
+void TUIWinMod::WordSignalChanged(const PackedWORDEvent *e)
 {
 	
 	this->wordValues = e->getPayload();
-	WordChangedEvent *wordChangeEvent = new WordChangedEvent(-1,-1,wordValues);
+	PackedWORDEvent *wordChangeEvent = new PackedWORDEvent(-1,-1,wordValues);
 	this->wOutChannel->push(wordChangeEvent);
 }
 
 
-void TUIWinMod::dWordSignalChanged(const DWordChangedEvent *e)
+void TUIWinMod::dWordSignalChanged(const PackedDWORDEvent *e)
 {
 	this->dWordValues = e->getPayload();
-	DWordChangedEvent *dWordChangeEvent = new DWordChangedEvent(-1,-1,dWordValues);
+	PackedDWORDEvent *dWordChangeEvent = new PackedDWORDEvent(-1,-1,dWordValues);
 	this->dwOutChannel->push(dWordChangeEvent);
 }
 
 
 
-void TUIWinMod::AnalogSignalChanged(const AnalogVectorChangedEvent * e) {
+void TUIWinMod::AnalogSignalChanged(const PackedAnalogEvent * e) {
 	
 	this->floatValues = e->getPayload();
 	
@@ -149,7 +149,7 @@ void TUIWinMod::Matrix1SignalChanged(const Matrix4Event * e) {
 }
 */
 
-void TUIWinMod::DigitalSignalChanged(const IntegerVectorChangedEvent * e) {
+void TUIWinMod::DigitalSignalChanged(const PackedIntegerEvent * e) {
 	//this->byteValues = e->getPayload();
 	
 	

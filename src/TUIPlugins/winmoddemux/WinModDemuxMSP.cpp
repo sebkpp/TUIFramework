@@ -106,17 +106,18 @@ void WinModDemuxMSP::handleWinModEvent(WinModEvent * e) {
 
 	if(this->out[OUT_LTY])
 	{
-		AnalogVectorChangedEvent* event2 = new AnalogVectorChangedEvent(-1,-1,wd.getFloats());
+		PackedAnalogEvent* event = new PackedAnalogEvent(-1, -1, wd.getFloatList());
+		//AnalogVectorChangedEvent* event2 = new AnalogVectorChangedEvent(-1,-1,wd.getFloats());
 		//cout <<"MSPOut: Floats: "  << event2->getPayload().getData()[0] << endl;
 		   //for(int i=0;i<wd.getFloats().size();i++)
 			 //cout <<"MSPOut: Floats: "  << event2->getPayload().at(i)<< endl;
 		
-		this->out[OUT_LTY]->push(event2);
+		this->out[OUT_LTY]->push(event);
 	}
 
 	if(this->out[OUT_LTX])
 	{
-		IntegerVectorChangedEvent* event = new IntegerVectorChangedEvent(-1,-1,wd.getBytes());
+		PackedIntegerEvent* event = new PackedIntegerEvent(-1,-1,wd.getByteList());
 		//for(int i=0;i<wd.getBytes().size();i++)
 			//cout <<"MSPOut: Bytes: "  << event->getPayload().at(i)<< endl;
 		this->out[OUT_LTX]->push(event);
@@ -125,19 +126,19 @@ void WinModDemuxMSP::handleWinModEvent(WinModEvent * e) {
 
 	if(this->out[OUT_RTX])
 	{
-		WordChangedEvent* event3 = new WordChangedEvent(-1,-1,wd.getWords());
+		PackedWORDEvent* event = new PackedWORDEvent(-1,-1,wd.getWordList());
 		//for(int i=0;i<wd.getWords().size();i++)
 		//	cout <<"MSPOut: Words: "  << event3->getPayload().at(i)<< endl;
-		this->out[OUT_RTX]->push(event3);
+		this->out[OUT_RTX]->push(event);
 	}
 
 	if(this->out[OUT_RTY])
 	{
-		DWordChangedEvent* event4 = new DWordChangedEvent(-1,-1,wd.getDWords());
+		PackedDWORDEvent* event = new PackedDWORDEvent(-1,-1,wd.getDWordList());
 		//for(int i=0;i<wd.getDWords().size();i++)
 		//	cout <<"MSPOut: DWords: "  << event4->getPayload().at(i)<< endl;
 		
-		this->out[OUT_RTY]->push(event4);
+		this->out[OUT_RTY]->push(event);
 	}
 }
 

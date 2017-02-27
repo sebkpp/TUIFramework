@@ -6,7 +6,7 @@
 #include <windows.h> 
 #include <tuiframework/core/ISerializable.h>
 #include "VectorList.h"
-#include "Pointer.h"
+#include "PackedType.h"
 
 using namespace std;
 
@@ -204,16 +204,34 @@ public:
 
 	void setBytes(int* floats,int byteSize);
 
-protected:
-	/** \brief A VectorList of DWord-Values. */
-	VectorList<unsigned long> dWordValues;
-	/** \brief A VectorList of Word-Values */
-	VectorList<unsigned short> wordValues;
-	/** \brief A VectorList of Float-Values */
-	VectorList<float> floatValues;
-	/** \brief A VectorList of Byte-Values */
-	VectorList<int> byteValues;
 
+	PackedType<float> getFloatList() const;
+	PackedType<int> getByteList() const;
+	PackedType<WORD> getWordList() const;
+	PackedType<DWORD> getDWordList() const;
+
+protected: 
+	/** \brief A VectorList of DWord-Values.
+		old stuff, will be deleted
+	*/
+	VectorList<unsigned long> dWordValues;
+	/** \brief A VectorList of Word-Values
+		old stuff, will be deleted
+	*/
+	VectorList<unsigned short> wordValues;
+	/** \brief A VectorList of Float-Values 
+		old stuff, will be deleted
+	*/
+	VectorList<float> floatValues;
+	/** \brief A VectorList of Byte-Values 
+		old stuff, will be deleted
+	*/
+	VectorList<int> byteValues;
+	
+	PackedType<int> byteValues2;
+	PackedType<float> floatValues2;
+	PackedType<WORD> wordValues2;
+	PackedType<DWORD> dWordValues2;
 private:
 
 };

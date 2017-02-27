@@ -57,8 +57,8 @@ void registerTypes(IEventFactory * eventFactory, IEventChannelFactory * eventCha
 
 	// Not completly tested yet
 	tuiframework::registerType<VectorList<unsigned char>, 27>(eventFactory, eventChannelFactory, "ByteChannel");
-	tuiframework::registerType<VectorList<unsigned short>, 28>(eventFactory,eventChannelFactory, "WordChannel");
-	tuiframework::registerType<VectorList<unsigned long>, 29>(eventFactory,eventChannelFactory, "DWordChannel");
+	tuiframework::registerType<VectorList<unsigned short>, 28>(eventFactory,eventChannelFactory, "WordVectorChannel");
+	tuiframework::registerType<VectorList<unsigned long>, 29>(eventFactory,eventChannelFactory, "DWordVectorChannel");
 	tuiframework::registerType<VectorList<float>, 30>(eventFactory,eventChannelFactory, "AnalogVectorChannel");
 	tuiframework::registerType<VectorList<int>, 31>(eventFactory,eventChannelFactory, "IntegerVectorChannel");
 
@@ -70,6 +70,20 @@ void registerTypes(IEventFactory * eventFactory, IEventChannelFactory * eventCha
 	tuiframework::registerType<OPCType<float>, 35>(eventFactory, eventChannelFactory, "AnalogOPCChannel");
 	tuiframework::registerType<OPCType<int>, 36>(eventFactory, eventChannelFactory,  "IntegerOPCChannel");
 	tuiframework::registerType<OPCType<string>, 37>(eventFactory, eventChannelFactory, "StringOPCChannel");
+
+	// SceneGraph
+	tuiframework::registerType<SceneObject, 38>(eventFactory, eventChannelFactory, "SceneChannel");
+
+	// PackedTypes
+	tuiframework::registerType<PackedType<float >, 101>(eventFactory, eventChannelFactory, "PackedAnalog");
+	tuiframework::registerType<PackedType<int >, 102>(eventFactory, eventChannelFactory, "PackageInteger");
+	tuiframework::registerType<PackedType<WORD >, 103>(eventFactory, eventChannelFactory, "PackedWORD");
+	tuiframework::registerType<PackedType<DWORD >, 104>(eventFactory, eventChannelFactory, "PackedDWORD");
+
+	tuiframework::registerType<WORD, 105>(eventFactory, eventChannelFactory, "WordChannel");
+	tuiframework::registerType<DWORD, 106>(eventFactory, eventChannelFactory, "DWordChannel");
+
+
 }
 
 }

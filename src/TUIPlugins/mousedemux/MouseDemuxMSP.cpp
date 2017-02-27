@@ -113,7 +113,7 @@ void MouseDemuxMSP::handleMouseEvent(MouseEvent * e) {
 
     if (this->out[OUT_DX]) {
         if (md.getDeltaX()) {
-            this->out[OUT_DX]->push(new IntegerChangedEvent(-1, -1, md.getDeltaX()));
+            this->out[OUT_DX]->push(new AnalogChangedEvent(-1, -1, md.getDeltaX()));
         }
     }
     if (this->out[OUT_DY]) {

@@ -38,7 +38,7 @@ public:
     virtual void push(tuiframework::IEvent * e);
 
 protected:
-	SceneGraphObject sceneGraphObject;
+	SceneGraph sceneGraph;
 };
 
 

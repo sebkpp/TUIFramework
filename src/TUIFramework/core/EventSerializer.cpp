@@ -107,7 +107,7 @@ void EventSerializer::run() {
             memcpy(buffer, str.c_str(), str.size() + 1);
             this->serializedDataSink.push(pair<char *, int>(buffer, str.size() + 1));
             
-            delete event;
+            //delete event;
         }
     }
     pthread_cleanup_pop(1);

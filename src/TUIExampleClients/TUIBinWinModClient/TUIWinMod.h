@@ -12,19 +12,19 @@ public:
 	//// Connecting Signals and Slots
 	void connect();
     void disconnect();
-	void AnalogSignalChanged(const AnalogVectorChangedEvent * e);
+	void AnalogSignalChanged(const PackedAnalogEvent * e);
 	//void MatrixSignalChanged(const PackedMatrix4Event * e);
 	//void Matrix1SignalChanged(const Matrix4Event * e);
 
-	void DigitalSignalChanged(const IntegerVectorChangedEvent * e);
-	void WordSignalChanged(const WordChangedEvent *e);
-	void dWordSignalChanged(const DWordChangedEvent *e);
+	void DigitalSignalChanged(const PackedIntegerEvent * e);
+	void WordSignalChanged(const PackedWORDEvent *e);
+	void dWordSignalChanged(const PackedDWORDEvent *e);
 
 private:
-	VectorList<int> byteValues;
-	VectorList<float> floatValues;
-	VectorList<WORD> wordValues;
-	VectorList<DWORD> dWordValues;
+	PackedType<int> byteValues;
+	PackedType<float> floatValues;
+	PackedType<WORD> wordValues;
+	PackedType<DWORD> dWordValues;
 
 	tuiframework::IEventChannel * dOutChannel;
 	tuiframework::IEventChannel * aOutChannel;

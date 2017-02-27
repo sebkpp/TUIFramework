@@ -108,8 +108,21 @@ void TUIClientApp::cancel() {
 void TUIClientApp::handleAttachedObjectsMsg(AttachedObjectsMsg * event) {
     TFDEBUG("TUIClientApp::handleAttachedObjectsMsg " << event);
     if ( ! this->connectedWithServer) {
+		cout << "AttachedObjectMSG: " << event->getPayload().getTUIObjectTypeVector().at(0) << endl;
         this->stubContainer.createStubs(event->getPayload().getTUIObjectInstanceVector(), event->getPayload().getTUIObjectTypeVector());
         this->attachedObjects = event->getPayload();
+
+		/*
+		for (int i = 0; i < this->attachedObjects.getTUIObjectInstanceVector().size(); ++i)
+		{
+			cout << "TUIObject Instance Vector ####" << this->attachedObjects.getTUIObjectInstanceVector().at(i).getName();
+			for (std::map<string, int>::const_iterator it = this->attachedObjects.getTUIObjectInstanceVector().at(i).getNameChannelNrMap().cbegin(); it != this->attachedObjects.getTUIObjectInstanceVector().at(i).getNameChannelNrMap().cend(); ++it)
+			{
+				cout << it->first << " => " << it->second << endl;
+			}
+
+		}
+		*/
         this->connectedWithServer = true;
         if (this->systemNotificationSink) {
             this->systemNotificationSink->push(new SystemMsg(CONNECTION_ESTABLISHED));

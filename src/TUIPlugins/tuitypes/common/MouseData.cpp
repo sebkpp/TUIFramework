@@ -33,8 +33,8 @@ void MouseData::setId(int id) {
 }
 
 
-void MouseData::setDeltaX(int deltaX) {
-	this->deltaX = deltaX;
+void MouseData::setDeltaX(float deltaX) {
+	this->deltaX = deltaX / 10.0f;
 }
 
 
@@ -58,7 +58,7 @@ int MouseData::getId() const {
 }
 
 
-int MouseData::getDeltaX() const {
+float MouseData::getDeltaX() const {
 	return this->deltaX;
 }
 
@@ -91,6 +91,9 @@ std::ostream & MouseData::serialize(std::ostream & os) const {
 
 std::istream & MouseData::deSerialize(std::istream & is) {
 	int version;
+
+	std::cout << is.gcount() << std::endl;
+
 	is >> version;
 	if (version != MOUSE_DATA_VERSION) {
 		// @@TODO throw exception

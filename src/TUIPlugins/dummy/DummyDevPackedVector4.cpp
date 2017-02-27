@@ -23,13 +23,12 @@
 
 
 
-#include <TUIPlugins/dummy/DummyDevPackedVector4.h>
+#include <TUIPlugins\dummy\DummyDevPackedVector4.h>
 
 #include <tuiframework/core/ITUIServer.h>
 #include <tuiframework/core/IEvent.h>
 #include <tuiframework/server/DeviceConfig.h>
 #include <TUIPlugins/tuitypes/common/CommonTypeReg.h>
-
 #define USE_TFDEBUG
 #include <tuiframework/logging/Logger.h>
 
@@ -225,7 +224,7 @@ void DummyDevPackedVector4::executeOutputLoop() {
         IEvent * event = this->outputEventQueue.pop();
         if (event) {
             cout << "DummyDevPackedVector4: " << event->getEventTypeID() << " " << event << endl;
-            //delete event;
+            delete event;
         }
     }
 }

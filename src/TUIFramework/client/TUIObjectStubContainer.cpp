@@ -62,29 +62,52 @@ void TUIObjectStubContainer::handleEvent(IEventMsg<EPAddress> * eventMsg) {
 void TUIObjectStubContainer::createStubs(const std::vector<TUIObjectInstance> & instanceVector,
         const std::vector<TUIObjectType> & typeVector) {
 
+	cout <<" TYPE SIZE:" <<typeVector.size();
+	
+	string typeName = "";
+	int portSize = 0;
+	string typeDescription = "";
+
+	string instanceName = "";
+	int instanceID = 0;
+
     map<string, TUIObjectType> typeMap;
     {
         std::vector<TUIObjectType>::const_iterator i = typeVector.begin();
         std::vector<TUIObjectType>::const_iterator e = typeVector.end();
         while (i != e) {
-            typeMap[(*i).getName()] = *i;
+			typeName = (*i).getName();
+			portSize = (*i).getPortMap().size();
+			typeDescription = (*i).getDescription();
 
-            TFINFO("Added TUIObjectType: '" << (*i).getName() << "'");
-            ++i;
+            typeMap[typeName] = *i;
+			TFINFO("Added TUIObjectType: '" << typeName << " PortSize: " << portSize << " typeDescription: " << typeDescription << "'");
+			++i;
         }
     }
 
+	cout << " INSTANCE SIZE: " << instanceVector.size();
     {
         std::vector<TUIObjectInstance>::const_iterator i = instanceVector.begin();
         std::vector<TUIObjectInstance>::const_iterator e = instanceVector.end();
         while (i != e) {
-            this->nameIDMap[(*i).getName()] = (*i).getID();
+			instanceName = (*i).getName();
+			typeName = (*i).getTypeName();
+			instanceID = (*i).getID();
+
+			this->nameIDMap[instanceName] = instanceID;
+
 
             stringstream ss;
-            TFINFO("Added TUIObjectInstance '" << (*i).getName() << "' of Type '" << (*i).getTypeName() << "' with ID = " << (*i).getID());
-            map<string, TUIObjectType>::const_iterator iter = typeMap.find((*i).getTypeName());
-            TUIObjectStub * stub = new TUIObjectStub(*i, (*iter).second, this->eventSink, this->eventChannelFactory);
-            this->stubMap[(*i).getID()] = stub;
+            TFINFO("Added TUIObjectInstance '" << instanceName << "' of Type '" << typeName << "' with ID = " << instanceID);
+			
+			map<string, TUIObjectType>::const_iterator iter = typeMap.find(typeName);
+
+			if (iter != typeMap.end())
+			{
+				TUIObjectStub * stub = new TUIObjectStub(*i, (*iter).second, this->eventSink, this->eventChannelFactory);
+				this->stubMap[instanceID] = stub;
+			}
 
             ++i;
         }

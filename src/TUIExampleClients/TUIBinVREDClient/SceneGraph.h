@@ -29,21 +29,26 @@
 #include <tuiframework/client/client.h>
 #include <TUIPlugins/tuitypes/common/CommonTypeReg.h>
 
-class SceneGraphObject {
+#include <vector>
+
+using namespace tuiframework;
+using namespace std;
+
+class SceneGraph {
 public:
-	SceneGraphObject();
-    virtual ~SceneGraphObject(void);
+	SceneGraph();
+    virtual ~SceneGraph(void);
 
     void connect();
     void disconnect();
 
-    void ht100Changed(const AnalogVectorChangedEvent * e);
-	void ht200Changed(const AnalogVectorChangedEvent * e);
+    void analogValueChanged(const AnalogChangedEvent * e);
+	void digitalValueChanged(const DigitalChangedEvent * e);
+private:
+	std::vector<TUIObjectInstance> objectInstances;
+	std::vector<TUIObjectType> objectTypes;
 
-
-public:
-	float pressure;
-    tuiframework::IEventChannel * ledChannel;
+	
 };
 
 #endif

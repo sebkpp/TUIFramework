@@ -254,11 +254,15 @@ void TUIServerApp::init(const ServerConfig & serverConfig) {
                         new EventMsgRouter<EPAddress, IEventSink, EPAddress::CompareByChannelNr>();
             this->tuiChannelRouterMap[tuiID] = tuiChannelRouter;
             this->tuiRouter.addRoutingTableEntry(EPAddress(tuiID, -1), tuiChannelRouter);
+
             map<string, TUIObjectType>::const_iterator iter = tuiObjectTypeMap.find((*i).second.getTypeName());
-            if (iter == tuiObjectTypeMap.end()) {
-                iter = serverConfig.getTUIObjectTypeMap().find((*i).second.getTypeName());
-                tuiObjectTypeMap[(*i).second.getName()] = (*iter).second;
-                tuiObjectTypeVector.push_back((*iter).second);
+			if (iter == tuiObjectTypeMap.end()) 
+			{
+				//cout << "::::TypeName:::" << (*i).second.getTypeName() << endl;
+
+				iter = serverConfig.getTUIObjectTypeMap().find((*i).second.getTypeName());
+				tuiObjectTypeMap[(*i).second.getTypeName()] = (*iter).second;
+				tuiObjectTypeVector.push_back((*iter).second);
             }
 
             map<string, int> nameChannelNrMap;
@@ -280,6 +284,8 @@ void TUIServerApp::init(const ServerConfig & serverConfig) {
         ++tuiID;
         ++i;
         }
+		cout << "####### TUIInstanceSize: " << tuiObjectInstanceVector.size() << endl;
+
     }
 
     this->createEntityGraph(tuiObjectInstanceMap, serverConfig.getConnectorVector());
@@ -287,6 +293,7 @@ void TUIServerApp::init(const ServerConfig & serverConfig) {
    // cout << "SIZE OF tuiObjectTypeMap: " << this->tuiObjectTypeMap.size();
     //cout << "SIZE OF tuiObjectTypeMap: " << this->tuiObjectTypeMap.size();
     //this->attachedObjects.setDeviceDescriptorVector(deviceContainer.getDeviceDescriptorVector());
+
     this->attachedObjects.setTUIObjectTypeVector(tuiObjectTypeVector);
     this->attachedObjects.setTUIObjectInstanceVector(tuiObjectInstanceVector);
     
@@ -511,6 +518,7 @@ void TUIServerApp::handleSystemCmdMsg(HostEvent * msg) {
             {
                 AttachedObjectsMsg * event = new AttachedObjectsMsg();
                 event->setPayload(this->attachedObjects);
+				cout <<"!'!'!'!'!'!" << this->attachedObjects.getTUIObjectTypeVector().at(0) << endl;
                 this->outEventQueue.push(event);
             }
 

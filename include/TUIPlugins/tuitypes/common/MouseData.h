@@ -26,13 +26,13 @@ public:
 	virtual ~MouseData();
 
 	void setId(int id);
-	void setDeltaX(int deltaX);
+	void setDeltaX(float deltaX);
 	void setDeltaY(int deltaY);
 	void setDeltaWheel(int deltaWheel);
 	void setButtonCode(unsigned int buttonCode);
 
 	int getId() const;
-	int getDeltaX() const;
+	float getDeltaX() const;
 	int getDeltaY() const;
 	int getDeltaWheel() const;
 	bool getButtonStateChange(CODE code) const;
@@ -44,7 +44,7 @@ public:
 
 protected:
 	int id;
-	int deltaX;
+	float deltaX;
 	int deltaY;
 	int deltaWheel;
 	unsigned int buttonCode;

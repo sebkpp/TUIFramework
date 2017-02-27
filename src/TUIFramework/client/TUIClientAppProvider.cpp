@@ -76,5 +76,10 @@ void processEvents(int index) {
     TUIClientAppProvider::getInstance(index)->processEvents();
 }
 
+AttachedObjects getAttachedObjects(int index)
+{
+	return TUIClientAppProvider::getInstance(index)->getAttachedObjects();
+}
+
 }
 

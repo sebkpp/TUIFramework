@@ -23,7 +23,7 @@
 
 
 
-#include <TUIPlugins/dummy/DummyDevDA.h>
+#include <TUIPlugins\dummy\DummyDevDA.h>
 
 #include <tuiframework/core/ITUIServer.h>
 #include <tuiframework/core/IEvent.h>
@@ -210,7 +210,7 @@ void DummyDevDA::executeInputLoop() {
 #endif
 
 #ifdef _WIN32
-        Sleep(1000);
+        Sleep(10);
 #endif
 
         if (this->eventSink) {
@@ -228,10 +228,10 @@ void DummyDevDA::executeInputLoop() {
                 eventSink->push(event);
             }
 
-            if (ac1 % 7 == 0) {
+            if (ac1 % 3 == 0) {
                 DigitalChangedEvent * event = new DigitalChangedEvent();
                 event->setAddress(EPAddress(this->entityID, this->deviceDescriptor.getNameChannelNrMap()["DO2"]));
-                event->setPayload(ac1 % 14 == 0);
+                event->setPayload(ac1 % 6 == 0);
                 eventSink->push(event);
             }            
             
@@ -247,8 +247,8 @@ void DummyDevDA::executeOutputLoop() {
         this->outputEventQueue.waitForData();
         IEvent * event = this->outputEventQueue.pop();
         if (event) {
-            cout << "DummyDevDA: " << event->getEventTypeID() << " " << event << endl;
-            //delete event;
+			cout << "DummyDevDA: " << " EventType: " << event->getEventTypeID() << "  Event: " << event << endl;
+            delete event;
         }
     }
 }
