@@ -43,8 +43,8 @@ WinModDev::WinModDev(const DeviceConfig & deviceConfig)
 
 	portMap["fIn"] = Port("fIn","PackedAnalog", Port::Source);
 
-	portMap["byteOut"] = Port("byteOut", "PackedByte", Port::Sink);
-	portMap["byteIn"] = Port("byteIn", "PackedByte", Port::Source);
+	/*portMap["byteOut"] = Port("byteOut", "PackedByte", Port::Sink);
+	portMap["byteIn"] = Port("byteIn", "PackedByte", Port::Source);*/
 
 	DeviceType deviceType;
     deviceType.setPortMap(portMap);
@@ -242,7 +242,7 @@ void WinModDev::executeInputLoop() {
 						vector<pair<int, float>> vf;
 						for (int i = 0; i < floatSize; i++)
 						{
-							pair<int, float> value_pair(i,fltCurrentData[i]);
+							pair<int, float> value_pair(i, fltCurrentData[i]);
 							vf.push_back(value_pair);
 						}
 						pf.setItems(vf);
@@ -271,7 +271,7 @@ void WinModDev::executeInputLoop() {
 				}
 			}
 			
-			// If Byte-Offset(Buttons) is not disabled in XML-Configuration
+			/*// If Byte-Offset(Buttons) is not disabled in XML-Configuration
 			if(byteOff != -1)
 			{
 				// Read from Byte-Block
@@ -291,7 +291,7 @@ void WinModDev::executeInputLoop() {
 							event2->setAddress(EPAddress(this->entityID, this->deviceDescriptor.getNameChannelNrMap()[map]));
 							event2->setPayload((int)iCurrentData[i]);
 							
-							cout << "In Byte " << i+1 << ": " << (int)iCurrentData[i] << endl;
+							//cout << "In Byte " << i+1 << ": " << (int)iCurrentData[i] << endl;
 						
 						
 							//unsigned char testVal = event2->getPayload();
@@ -310,7 +310,7 @@ void WinModDev::executeInputLoop() {
 					}
 				
 				}
-			}
+			}*/
 			
 		/*	// If WordOffset is not disabled with -1 in XML-Configuration
 			if(wordOff != -1)
@@ -398,7 +398,7 @@ void WinModDev::executeOutputLoop() {
 					for (int i = 0; i < size; i++)
 					{
 						floatVector.push_back(pf.getItems().at(i).second);
-						cout << "Value: " << floatVector.at(i) << endl;
+						//cout << "Value: " << floatVector.at(i) << endl;
 					}
 
 					

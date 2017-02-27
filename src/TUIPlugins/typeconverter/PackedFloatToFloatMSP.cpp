@@ -81,8 +81,9 @@ namespace tuiframework {
 		if (this->out[0])
 		{
 			AnalogChangedEvent* event = new AnalogChangedEvent(-1, -1, e->getPayload().getItems().at(this->id).second);
+			//cout << "GetPayload : " << e->getPayload() << endl;
 			//for(int i=0;i<wd.getFloats().size();i++)
-			//cout <<"MSPOut: Floats: "  << event2->getPayload().at(i)<< endl;
+				//cout <<"MSPOut: Floats: "  << event2->getPayload().at(i)<< endl;
 			//cout << "MSPOut: Floats: " << e->getPayload() << endl;
 
 			this->out[0]->push(event);

@@ -27,7 +27,6 @@ def dstmethod(name, portname, value, description, constraintMin, constraintMax, 
 
 	print("TUI_Instance: " + name + " ; port: " + portname + " ; value: " + value)
 	JSONdict[name][portname]['Value'] = float(value) #we update the value of the corresponding port in the dictionary we use for the TCP connection
-	
 	PortName = portname + "Out"
 
 	tuiclient.sendEvent(name, PortName, value)

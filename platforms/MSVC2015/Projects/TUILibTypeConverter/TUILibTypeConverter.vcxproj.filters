@@ -35,6 +35,9 @@
     <ClCompile Include="..\..\..\..\src\TUIPlugins\typeconverter\PackedWordToWordMSP.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\src\TUIPlugins\typeconverter\FloatToPackedFloatMSP.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\include\TUIPlugins\typeconverter\AnalogToDigitalMSP.h">
@@ -56,6 +59,9 @@
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\include\TUIPlugins\typeconverter\TrackerToMatrix4MSP.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\include\TUIPlugins\typeconverter\FloatToPackedFloatMSP.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>

@@ -15,8 +15,6 @@ static const char * in8Tag = "in8";
 static const char * in9Tag = "in9";
 static const char * outTagPacked = "outPacked";
 
-int Combi=0;
-int Combi_temp=0;
 
 
 namespace tuiframework {
@@ -122,40 +120,39 @@ namespace tuiframework {
 
 	void FloatToFloatPackage::handleEvent(AnalogChangedEvent * e)
 	{
-		//cout << e->getPayload() << endl;
-		//cout << "I'm here" << endl;
+
 		//cout << "Event Address:" << e->getAddress() << " EventAdresstype: " <<e->getAddressTypeID() << "Event: " <<e << endl;
 
 
 		if (this->out)
-			{
+		{
 			/*pair<int, float> value_pair(0,e->getPayload());
 			vector<pair<int, float>> value_vector;
 			value_vector.push_back(value_pair);*/
 			int entityID = e->getAddress().getEntityID();
 			int portID = e->getAddress().getPortNr();
 
-			//packedFloat.setItems(value_vector);
-			//cout << "Value " << value_vector.size() << endl;
 			//cout << "Packed Float event" << endl << packedFloat << endl;
-			//cout << "EntityID : " << entityID << "    port ID :  " << portID << endl;
 			
 			if (this->index <= this->floatSize - 1)
 				initEvent(entityID, portID);
 			
 			//cout <<"PackedFloatSize: " <<packedFloat.getItems().size() << endl;
-
-
+			map<std::string, int>::iterator m;
+			for (m = eventOrder.begin(); m != eventOrder.end(); m++)
+			{
+				cout << "EntityID+portID : " << m->first << endl;
+				cout << " index du packedFloat : " << m->second << endl;
+			}
 
 			//packedFloat.getItems().at(entityID-1).second = e->getPayload();
-			
 			packedFloat.getItems().at(this->eventOrder[std::to_string(entityID) + std::to_string(portID)]).second = e->getPayload();
 			//packedFloat.getItems().at(0).second = e->getPayload();
 			PackedAnalogEvent* event = new PackedAnalogEvent(-1, -1, packedFloat);
 
 
 			this->out->push(event);
-			//cout << "Packed : " << packedFloat << endl;
+			cout << "Packed : " << packedFloat << endl;
 		}
 	}
 
