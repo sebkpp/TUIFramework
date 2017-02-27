@@ -22,9 +22,9 @@
 */
 
 
-#include <TUIFramework\core\GUIDEventTypeIDVector.h>
+#include "GUIDEventTypeIDVector.h"
 
-#include <TUIFramework\logging\Logger.h>
+#include "..\logging\Logger.h"
 
 #include <iostream>
 

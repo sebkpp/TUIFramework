@@ -1,4 +1,4 @@
-#include <TUIPlugins\tuitypes\common\XControllerData.h>
+#include "XControllerData.h"
 
 #include <iostream>
 

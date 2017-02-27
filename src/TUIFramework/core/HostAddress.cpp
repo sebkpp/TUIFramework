@@ -22,8 +22,8 @@
 */
 
 
-#include <TUIFramework\core\HostAddress.h>
-#include <TUIFramework\core\Exception.h>
+#include "HostAddress.h"
+#include "Exception.h"
 
 #include <istream>
 #include <ostream>

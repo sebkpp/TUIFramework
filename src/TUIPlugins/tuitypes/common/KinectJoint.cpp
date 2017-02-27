@@ -24,7 +24,7 @@
 
 
 
-#include <TUIPlugins\tuitypes\common\KinectJoint.h>
+#include "KinectJoint.h"
 
 KinectJoint::KinectJoint()
 : userId(1), jointId(0), confidence(0), position() {}

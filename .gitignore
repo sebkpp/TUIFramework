@@ -30,3 +30,5 @@ extensions/tuiclientpyext/build/
 extensions/WinMOD_Projectv2/
 extensions/WinMOD-Project_HT+FB_V1/
 WinMOD-Project_HT+FB_V1_ohneFB140+150_Vorlaufig/
+build/
+install/

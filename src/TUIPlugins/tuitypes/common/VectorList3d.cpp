@@ -23,7 +23,7 @@
 */
 
 
-#include <TUIPlugins\tuitypes\common\VectorList3d.h>
+#include "VectorList3d.h"
 
 
 VectorList3d::VectorList3d()

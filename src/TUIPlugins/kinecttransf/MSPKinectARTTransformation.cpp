@@ -21,10 +21,10 @@
     along with the TUIFramework.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include <tuiframework/logging/Logger.h>
-#include <tuiframework/core/Exception.h>
+#include "../../tuiframework/logging/Logger.h"
+#include "../../tuiframework/core/Exception.h"
 
-#include <TUIPlugins/kinecttransf/MSPKinectARTTransformation.h>
+#include "MSPKinectARTTransformation.h"
 
 using namespace std;
 

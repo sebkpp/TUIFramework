@@ -69,9 +69,9 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <OutDir>..\..\..\..\bin\$(Platform)\$(VisualStudioVersion)\$(PlatformTarget)\$(Configuration)\lib\TUIPlugins\static</OutDir>
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);C:\Program Files (x86)\Windows Kits\10\Include\10.0.10150.0\ucrt</IncludePath>
-    <IntDir>..\..\$(PlatformTarget)\$(Configuration)\$(MSBuildProjectName)</IntDir>
+    <OutDir>..\..\..\..\install\lib\$(PlatformTarget)\TUIFramework</OutDir>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+    <IntDir>..\..\..\..\build\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>..\..\..\..\bin\$(Platform)\$(VisualStudioVersion)\$(PlatformTarget)\$(Configuration)\lib\TUIPlugins\static</OutDir>
@@ -93,12 +93,15 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>../../../../include;../../../../3rdParty/Pre-built.2/include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\3rdParty\Pre-built.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <Lib>
+      <OutputFile>$(OutDir)$(TargetName)D$(TargetExt)</OutputFile>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -153,9 +156,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <Text Include="ReadMe.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="..\..\..\..\src\TUIPlugins\matrix4op\Matrix4DuplicateMSP.cpp" />
     <ClCompile Include="..\..\..\..\src\TUIPlugins\matrix4op\Matrix4GetTranslationMSP.cpp" />
     <ClCompile Include="..\..\..\..\src\TUIPlugins\matrix4op\Matrix4InverseMSP.cpp" />
@@ -169,17 +169,17 @@
     <ClCompile Include="..\..\..\..\src\TUIPlugins\matrix4op\Vector4TimesMSP.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\..\include\TUIPlugins\matrix4op\Matrix4DuplicateMSP.h" />
-    <ClInclude Include="..\..\..\..\include\TUIPlugins\matrix4op\Matrix4GetTranslationMSP.h" />
-    <ClInclude Include="..\..\..\..\include\TUIPlugins\matrix4op\Matrix4InverseMSP.h" />
-    <ClInclude Include="..\..\..\..\include\TUIPlugins\matrix4op\Matrix4MultiplicationMSP.h" />
-    <ClInclude Include="..\..\..\..\include\TUIPlugins\matrix4op\Matrix4PackedDuplicateMSP.h" />
-    <ClInclude Include="..\..\..\..\include\TUIPlugins\matrix4op\Matrix4SetTranslationMSP.h" />
-    <ClInclude Include="..\..\..\..\include\TUIPlugins\matrix4op\Matrix4TimesMSP.h" />
-    <ClInclude Include="..\..\..\..\include\TUIPlugins\matrix4op\Vector4DuplicateMSP.h" />
-    <ClInclude Include="..\..\..\..\include\TUIPlugins\matrix4op\Vector4Matrix4MultiplicationMSP.h" />
-    <ClInclude Include="..\..\..\..\include\TUIPlugins\matrix4op\Vector4PackedDuplicateMSP.h" />
-    <ClInclude Include="..\..\..\..\include\TUIPlugins\matrix4op\Vector4TimesMSP.h" />
+    <ClInclude Include="..\..\..\..\src\TUIPlugins\matrix4op\Matrix4DuplicateMSP.h" />
+    <ClInclude Include="..\..\..\..\src\TUIPlugins\matrix4op\Matrix4GetTranslationMSP.h" />
+    <ClInclude Include="..\..\..\..\src\TUIPlugins\matrix4op\Matrix4InverseMSP.h" />
+    <ClInclude Include="..\..\..\..\src\TUIPlugins\matrix4op\Matrix4MultiplicationMSP.h" />
+    <ClInclude Include="..\..\..\..\src\TUIPlugins\matrix4op\Matrix4PackedDuplicateMSP.h" />
+    <ClInclude Include="..\..\..\..\src\TUIPlugins\matrix4op\Matrix4SetTranslationMSP.h" />
+    <ClInclude Include="..\..\..\..\src\TUIPlugins\matrix4op\Matrix4TimesMSP.h" />
+    <ClInclude Include="..\..\..\..\src\TUIPlugins\matrix4op\Vector4DuplicateMSP.h" />
+    <ClInclude Include="..\..\..\..\src\TUIPlugins\matrix4op\Vector4Matrix4MultiplicationMSP.h" />
+    <ClInclude Include="..\..\..\..\src\TUIPlugins\matrix4op\Vector4PackedDuplicateMSP.h" />
+    <ClInclude Include="..\..\..\..\src\TUIPlugins\matrix4op\Vector4TimesMSP.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

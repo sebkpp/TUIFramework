@@ -1,8 +1,8 @@
-#include <TUIPlugins/typeconverter/PackedFloatToFloatMSP.h>
+#include "PackedFloatToFloatMSP.h"
 
-#include <tuiframework/core/Exception.h>
+#include "../../tuiframework/core/Exception.h"
 #define USE_TFDEBUG
-#include <tuiframework/logging/Logger.h>
+#include "../../TUIFramework/logging/Logger.h"
 
 static const char * inTag = "in";
 static const char * outTagValue = "out";

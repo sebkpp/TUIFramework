@@ -22,7 +22,7 @@
 */
 
 
-#include <TUIFramework\core\TUIObjectInstance.h>
+#include "TUIObjectInstance.h"
 
 #include <iostream>
 

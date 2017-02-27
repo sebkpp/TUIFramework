@@ -1,7 +1,9 @@
 #include "ByteToBytePackage.h"
-#include <tuiframework/core/Exception.h>
+
+
+#include "../../tuiframework/core/Exception.h"
 #define USE_TFDEBUG
-#include <tuiframework/logging/Logger.h>
+#include "../../tuiframework/logging/Logger.h"
 
 static const char * in0Tag = "in0";
 static const char * in1Tag = "in1";

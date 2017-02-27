@@ -23,10 +23,10 @@
 
 
 
-#include <TUIPlugins\tuitypes\common\CommonTUITypesPlugin.h>
-#include <TUIPlugins\tuitypes\common\CommonTypeReg.h>
+#include "CommonTUITypesPlugin.h"
+#include "CommonTypeReg.h"
 
-#include <tuiframework/core/Version.h>
+#include "../../../tuiframework/core/Version.h"
 
 
 void soInitPlugin() {

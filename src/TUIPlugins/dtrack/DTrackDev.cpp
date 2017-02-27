@@ -22,17 +22,17 @@
 */
 
 
-#include <TUIPlugins/dtrack/DTrackDev.h>
+#include "DTrackDev.h"
 
-#include <tuiframework/core/ITUIServer.h>
-#include <tuiframework/core/IEvent.h>
-#include <tuiframework/core/EPAddress.h>
-#include <tuiframework/core/Exception.h>
-#include <tuiframework/server/DeviceConfig.h>
-#include <TUIPlugins/tuitypes/common/CommonTypeReg.h>
+#include "../../TUIFramework/core/ITUIServer.h"
+#include "../../TUIFramework/core/IEvent.h"
+#include "../../TUIFramework/core/EPAddress.h"
+#include "../../TUIFramework/core/Exception.h"
+#include "../../tuiframework/server/DeviceConfig.h"
+#include "../tuitypes/common/CommonTypeReg.h"
 
 #define USE_TFDEBUG
-#include <tuiframework/logging/Logger.h>
+#include "../../tuiframework/logging/Logger.h"
 
 #include <stdio.h>
 #include <iostream>

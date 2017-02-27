@@ -22,7 +22,7 @@
 */
 
 
-#include <TUIFramework\server\MSPInstance.h>
+#include "MSPInstance.h"
 
 #include <iostream>
 

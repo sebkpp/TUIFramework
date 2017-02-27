@@ -22,7 +22,7 @@
 */
 
 
-#include <TUIFramework\server\DeviceType.h>
+#include "DeviceType.h"
 
 #include <iostream>
 

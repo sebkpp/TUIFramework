@@ -68,14 +68,14 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSDK_IncludePath);C:\Program Files (x86)\Windows Kits\10\Include\10.0.10150.0\ucrt</IncludePath>
-    <OutDir>..\..\..\..\bin\$(Platform)\$(VisualStudioVersion)\$(PlatformTarget)\$(Configuration)\lib\TUIFramework</OutDir>
-    <IntDir>..\..\$(PlatformTarget)\$(Configuration)\$(MSBuildProjectName)</IntDir>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+    <OutDir>..\..\..\..\install\lib\$(PlatformTarget)\TUIFramework</OutDir>
+    <IntDir>..\..\..\..\build\</IntDir>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
-    <IncludePath>$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSDK_IncludePath);C:\Program Files (x86)\Windows Kits\10\Include\10.0.10150.0\ucrt</IncludePath>
+    <IncludePath>$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSDK_IncludePath);C:\Program Files (x86)\Windows Kits\10src10.0.10150.0\ucrt</IncludePath>
     <OutDir>..\..\..\..\bin\$(Platform)\$(VisualStudioVersion)\$(PlatformTarget)\$(Configuration)\lib\TUIFramework</OutDir>
     <IntDir>..\..\$(PlatformTarget)\$(Configuration)\$(MSBuildProjectName)</IntDir>
   </PropertyGroup>
@@ -94,12 +94,15 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;HAVE_STRUCT_TIMESPEC;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\..\..\..\3rdParty\Pre-built.2\include; ..\..\..\..\include;$(IncludePath);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\3rdParty\Pre-built.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <Lib>
+      <OutputFile>$(OutDir)$(TargetName)D$(TargetExt)</OutputFile>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -154,65 +157,62 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <Text Include="ReadMe.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\..\..\..\include\TUIFramework\core\AttachedObjects.h" />
-    <ClInclude Include="..\..\..\..\include\TUIFramework\core\EPAddress.h" />
-    <ClInclude Include="..\..\..\..\include\TUIFramework\core\EPEventMsg.h" />
-    <ClInclude Include="..\..\..\..\include\TUIFramework\core\Event.h" />
-    <ClInclude Include="..\..\..\..\include\TUIFramework\core\EventChannel.h" />
-    <ClInclude Include="..\..\..\..\include\TUIFramework\core\EventChannelFactory.h" />
-    <ClInclude Include="..\..\..\..\include\TUIFramework\core\EventDelegate.h" />
-    <ClInclude Include="..\..\..\..\include\TUIFramework\core\EventDeserializer.h" />
-    <ClInclude Include="..\..\..\..\include\TUIFramework\core\EventFactory.h" />
-    <ClInclude Include="..\..\..\..\include\TUIFramework\core\EventMsg.h" />
-    <ClInclude Include="..\..\..\..\include\TUIFramework\core\EventMsgRouter.h" />
-    <ClInclude Include="..\..\..\..\include\TUIFramework\core\EventQueue.h" />
-    <ClInclude Include="..\..\..\..\include\TUIFramework\core\EventRouter.h" />
-    <ClInclude Include="..\..\..\..\include\TUIFramework\core\EventSerializer.h" />
-    <ClInclude Include="..\..\..\..\include\TUIFramework\core\EventTerminator.h" />
-    <ClInclude Include="..\..\..\..\include\TUIFramework\core\Exception.h" />
-    <ClInclude Include="..\..\..\..\include\TUIFramework\core\Factory.h" />
-    <ClInclude Include="..\..\..\..\include\TUIFramework\core\FactoryDS.h" />
-    <ClInclude Include="..\..\..\..\include\TUIFramework\core\GUIDEventTypeIDVector.h" />
-    <ClInclude Include="..\..\..\..\include\TUIFramework\core\HostAddress.h" />
-    <ClInclude Include="..\..\..\..\include\TUIFramework\core\HostEventMsg.h" />
-    <ClInclude Include="..\..\..\..\include\TUIFramework\core\HostMsg.h" />
-    <ClInclude Include="..\..\..\..\include\TUIFramework\core\HostMsgDispatcher.h" />
-    <ClInclude Include="..\..\..\..\include\TUIFramework\core\HostMsgQueue.h" />
-    <ClInclude Include="..\..\..\..\include\TUIFramework\core\IDevice.h" />
-    <ClInclude Include="..\..\..\..\include\TUIFramework\core\IEvent.h" />
-    <ClInclude Include="..\..\..\..\include\TUIFramework\core\IEventChannel.h" />
-    <ClInclude Include="..\..\..\..\include\TUIFramework\core\IEventChannelFactory.h" />
-    <ClInclude Include="..\..\..\..\include\TUIFramework\core\IEventFactory.h" />
-    <ClInclude Include="..\..\..\..\include\TUIFramework\core\IEventMsg.h" />
-    <ClInclude Include="..\..\..\..\include\TUIFramework\core\IEventSink.h" />
-    <ClInclude Include="..\..\..\..\include\TUIFramework\core\IEventSource.h" />
-    <ClInclude Include="..\..\..\..\include\TUIFramework\core\IHostMsgSink.h" />
-    <ClInclude Include="..\..\..\..\include\TUIFramework\core\IHostMsgSource.h" />
-    <ClInclude Include="..\..\..\..\include\TUIFramework\core\IMSP.h" />
-    <ClInclude Include="..\..\..\..\include\TUIFramework\core\ISerializable.h" />
-    <ClInclude Include="..\..\..\..\include\TUIFramework\core\ISerializedDataSink.h" />
-    <ClInclude Include="..\..\..\..\include\TUIFramework\core\ISerializedDataSource.h" />
-    <ClInclude Include="..\..\..\..\include\TUIFramework\core\IThreadMessageSink.h" />
-    <ClInclude Include="..\..\..\..\include\TUIFramework\core\ITUIServer.h" />
-    <ClInclude Include="..\..\..\..\include\TUIFramework\core\Multiton.h" />
-    <ClInclude Include="..\..\..\..\include\TUIFramework\core\Port.h" />
-    <ClInclude Include="..\..\..\..\include\TUIFramework\core\Queue.h" />
-    <ClInclude Include="..\..\..\..\include\TUIFramework\core\SerializedDataQueue.h" />
-    <ClInclude Include="..\..\..\..\include\TUIFramework\core\Singleton.h" />
-    <ClInclude Include="..\..\..\..\include\TUIFramework\core\SystemCmd.h" />
-    <ClInclude Include="..\..\..\..\include\TUIFramework\core\TUIObjectDescriptor.h" />
-    <ClInclude Include="..\..\..\..\include\TUIFramework\core\TUIObjectInstance.h" />
-    <ClInclude Include="..\..\..\..\include\TUIFramework\core\TUIObjectType.h" />
-    <ClInclude Include="..\..\..\..\include\TUIFramework\core\TypeRegistration.h" />
-    <ClInclude Include="..\..\..\..\include\TUIFramework\core\Version.h" />
-    <ClInclude Include="..\..\..\..\include\TUIFramework\logging\Logger.h" />
-    <ClInclude Include="..\..\..\..\include\TUIFramework\logging\SStreamSingleton.h" />
-    <ClInclude Include="..\..\..\..\include\TUIFramework\sockets\MulticastListenerWinSock2.h" />
-    <ClInclude Include="..\..\..\..\include\TUIFramework\sockets\UDPReceiverWinSock2.h" />
-    <ClInclude Include="..\..\..\..\include\TUIFramework\sockets\UDPSenderWinSock2.h" />
+    <ClInclude Include="..\..\..\..\src\TUIFramework\core\AttachedObjects.h" />
+    <ClInclude Include="..\..\..\..\src\TUIFramework\core\EPAddress.h" />
+    <ClInclude Include="..\..\..\..\src\TUIFramework\core\EPEventMsg.h" />
+    <ClInclude Include="..\..\..\..\src\TUIFramework\core\Event.h" />
+    <ClInclude Include="..\..\..\..\src\TUIFramework\core\EventChannel.h" />
+    <ClInclude Include="..\..\..\..\src\TUIFramework\core\EventChannelFactory.h" />
+    <ClInclude Include="..\..\..\..\src\TUIFramework\core\EventDelegate.h" />
+    <ClInclude Include="..\..\..\..\src\TUIFramework\core\EventDeserializer.h" />
+    <ClInclude Include="..\..\..\..\src\TUIFramework\core\EventFactory.h" />
+    <ClInclude Include="..\..\..\..\src\TUIFramework\core\EventMsg.h" />
+    <ClInclude Include="..\..\..\..\src\TUIFramework\core\EventMsgRouter.h" />
+    <ClInclude Include="..\..\..\..\src\TUIFramework\core\EventQueue.h" />
+    <ClInclude Include="..\..\..\..\src\TUIFramework\core\EventRouter.h" />
+    <ClInclude Include="..\..\..\..\src\TUIFramework\core\EventSerializer.h" />
+    <ClInclude Include="..\..\..\..\src\TUIFramework\core\EventTerminator.h" />
+    <ClInclude Include="..\..\..\..\src\TUIFramework\core\Exception.h" />
+    <ClInclude Include="..\..\..\..\src\TUIFramework\core\Factory.h" />
+    <ClInclude Include="..\..\..\..\src\TUIFramework\core\FactoryDS.h" />
+    <ClInclude Include="..\..\..\..\src\TUIFramework\core\GUIDEventTypeIDVector.h" />
+    <ClInclude Include="..\..\..\..\src\TUIFramework\core\HostAddress.h" />
+    <ClInclude Include="..\..\..\..\src\TUIFramework\core\HostEventMsg.h" />
+    <ClInclude Include="..\..\..\..\src\TUIFramework\core\HostMsg.h" />
+    <ClInclude Include="..\..\..\..\src\TUIFramework\core\HostMsgDispatcher.h" />
+    <ClInclude Include="..\..\..\..\src\TUIFramework\core\HostMsgQueue.h" />
+    <ClInclude Include="..\..\..\..\src\TUIFramework\core\IDevice.h" />
+    <ClInclude Include="..\..\..\..\src\TUIFramework\core\IEvent.h" />
+    <ClInclude Include="..\..\..\..\src\TUIFramework\core\IEventChannel.h" />
+    <ClInclude Include="..\..\..\..\src\TUIFramework\core\IEventChannelFactory.h" />
+    <ClInclude Include="..\..\..\..\src\TUIFramework\core\IEventFactory.h" />
+    <ClInclude Include="..\..\..\..\src\TUIFramework\core\IEventMsg.h" />
+    <ClInclude Include="..\..\..\..\src\TUIFramework\core\IEventSink.h" />
+    <ClInclude Include="..\..\..\..\src\TUIFramework\core\IEventSource.h" />
+    <ClInclude Include="..\..\..\..\src\TUIFramework\core\IHostMsgSink.h" />
+    <ClInclude Include="..\..\..\..\src\TUIFramework\core\IHostMsgSource.h" />
+    <ClInclude Include="..\..\..\..\src\TUIFramework\core\IMSP.h" />
+    <ClInclude Include="..\..\..\..\src\TUIFramework\core\ISerializable.h" />
+    <ClInclude Include="..\..\..\..\src\TUIFramework\core\ISerializedDataSink.h" />
+    <ClInclude Include="..\..\..\..\src\TUIFramework\core\ISerializedDataSource.h" />
+    <ClInclude Include="..\..\..\..\src\TUIFramework\core\IThreadMessageSink.h" />
+    <ClInclude Include="..\..\..\..\src\TUIFramework\core\ITUIServer.h" />
+    <ClInclude Include="..\..\..\..\src\TUIFramework\core\Multiton.h" />
+    <ClInclude Include="..\..\..\..\src\TUIFramework\core\Port.h" />
+    <ClInclude Include="..\..\..\..\src\TUIFramework\core\Queue.h" />
+    <ClInclude Include="..\..\..\..\src\TUIFramework\core\SerializedDataQueue.h" />
+    <ClInclude Include="..\..\..\..\src\TUIFramework\core\Singleton.h" />
+    <ClInclude Include="..\..\..\..\src\TUIFramework\core\SystemCmd.h" />
+    <ClInclude Include="..\..\..\..\src\TUIFramework\core\TUIObjectDescriptor.h" />
+    <ClInclude Include="..\..\..\..\src\TUIFramework\core\TUIObjectInstance.h" />
+    <ClInclude Include="..\..\..\..\src\TUIFramework\core\TUIObjectType.h" />
+    <ClInclude Include="..\..\..\..\src\TUIFramework\core\TypeRegistration.h" />
+    <ClInclude Include="..\..\..\..\src\TUIFramework\core\Version.h" />
+    <ClInclude Include="..\..\..\..\src\TUIFramework\logging\Logger.h" />
+    <ClInclude Include="..\..\..\..\src\TUIFramework\logging\SStreamSingleton.h" />
+    <ClInclude Include="..\..\..\..\src\TUIFramework\sockets\MulticastListenerWinSock2.h" />
+    <ClInclude Include="..\..\..\..\src\TUIFramework\sockets\UDPReceiverWinSock2.h" />
+    <ClInclude Include="..\..\..\..\src\TUIFramework\sockets\UDPSenderWinSock2.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\..\src\TUIFramework\core\AttachedObjects.cpp" />

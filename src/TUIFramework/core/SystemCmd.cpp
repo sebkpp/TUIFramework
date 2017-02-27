@@ -22,7 +22,7 @@
 */
 
 
-#include <TUIFramework\core\SystemCmd.h>
+#include "SystemCmd.h"
 
 #include <iostream>
 

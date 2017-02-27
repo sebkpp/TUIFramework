@@ -22,11 +22,11 @@
 */
 
 
-#include <TUIFramework\core\HostMsgDispatcher.h>
+#include "HostMsgDispatcher.h"
 
-#include <TUIFramework\core\HostAddress.h>
-#include <TUIFramework\core\IHostMsgSink.h>
-#include <TUIFramework\core\HostMsg.h>
+#include "HostAddress.h"
+#include "IHostMsgSink.h"
+#include "HostMsg.h"
 
 using namespace std;
 

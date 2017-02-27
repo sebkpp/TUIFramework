@@ -21,11 +21,11 @@ You should have received a copy of the GNU Lesser General Public License
 along with the TUIFramework. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include <TUIPlugins/typeconverter/TrackerToMatrix4MSP.h>
+#include "TrackerToMatrix4MSP.h"
 
-#include <tuiframework/core/Exception.h>
+#include "../../tuiframework/core/Exception.h"
 #define USE_TFDEBUG
-#include <tuiframework/logging/Logger.h>
+#include "../../tuiframework/logging/Logger.h"
 
 static const char * inTag = "in";
 static const char * outTag = "out";

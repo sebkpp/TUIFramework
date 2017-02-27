@@ -21,7 +21,7 @@
     along with the TUIFramework.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include <TUIFramework\server\PortAddress.h>
+#include "PortAddress.h"
 
 #include <iostream>
 
