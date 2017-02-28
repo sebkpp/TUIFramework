@@ -30,6 +30,24 @@
          </DeviceType>
       </DeviceTypeSequence>
       <MSPTypeSequence>
+	   <MSPType name="PackedByteToByteMSP">
+            <PortTypeSequence>
+               <PortType name="in" sink="1" source="0" typename="PackedInteger">
+                  <Description/>
+               </PortType>
+               <PortType name="out" sink="0" source="1" typename="IntegerChannel">
+                  <Description/>
+               </PortType>
+               <PortType name="outPacked" sink="0" source="1" typename="PackedInteger">
+                  <Description/>
+               </PortType>
+            </PortTypeSequence>
+            <ParameterTypeDefSequence/>
+            <ParameterTypeSequence/>
+            <ParameterGroup name="Convert">
+               <Parameter name="id" value="0"/>
+            </ParameterGroup>
+         </MSPType>
          <MSPType name="PackedFloatToFloatMSP">
             <PortTypeSequence>
                <PortType name="in" sink="1" source="0" typename="PackedAnalog">
@@ -67,7 +85,7 @@
             <ParameterTypeSequence/>
             <ParameterGroup name="Convert">
                <Parameter name="id" value="0"/>
-			   <Parameter name="floatSize" value="2"/>
+			   <Parameter name="floatSize" value="3"/>
             </ParameterGroup>
          </MSPType>
 		 <MSPType name="ByteToBytePackage">
@@ -208,7 +226,7 @@
          <MSPInstance name="mux" typename="FloatToFloatPackage">
             <ParameterGroup name="Convert">
                <Parameter name="id" value="0"/>
-			   <Parameter name="floatSize" value="2"/>
+			   <Parameter name="floatSize" value="3"/>
             </ParameterGroup>
          </MSPInstance>
 		   <MSPInstance name="mux1" typename="ByteToBytePackage">

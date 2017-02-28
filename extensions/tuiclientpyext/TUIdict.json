@@ -1,86 +1,27 @@
 {
-    "HT130": {
-        "HT.MO2.$pos_ist": {
-            "Constraint_Min": "-170",
-            "Value": 0.0,
-            "Constraint_Max": "170",
-            "Description": "HT_sub25",
-            "Transformation_Type": "trans"
-        },
-        "HT.MO1.$v_ist": {
-            "Constraint_Min": "-170",
-            "Value": 0.0,
-            "Constraint_Max": "170",
-            "Description": "HT_sub25",
-            "Transformation_Type": "trans"
-        }
-    },
-    "HT160": {
-        "HT.MO2.$pos_ist": {
-            "Constraint_Min": "-170",
-            "Value": 0.0,
-            "Constraint_Max": "170",
-            "Description": "HT_sub25",
-            "Transformation_Type": "trans"
-        },
-        "HT.MO1.$v_ist": {
-            "Constraint_Min": "-170",
-            "Value": 0.0,
-            "Constraint_Max": "170",
-            "Description": "HT_sub25",
-            "Transformation_Type": "trans"
-        }
-    },
-    "FB150": {
-        "FB.MO1.$v_ist": {
-            "Constraint_Min": "-170",
-            "Value": 0.0,
-            "Constraint_Max": "170",
-            "Description": "FB_sub_59",
-            "Transformation_Type": "trans"
-        }
-    },
     "HT100": {
         "HT.MO2.$pos_ist": {
             "Constraint_Min": "-170",
-            "Value": 0.0,
+            "Transformation_Type": "trans",
             "Constraint_Max": "170",
-            "Description": "HT_sub25",
-            "Transformation_Type": "trans"
+            "Value": 0.0,
+            "Description": "HT_sub_59"
         },
         "HT.MO1.$v_ist": {
             "Constraint_Min": "-170",
-            "Value": 0.0,
+            "Transformation_Type": "trans",
             "Constraint_Max": "170",
-            "Description": "HT_sub25",
-            "Transformation_Type": "trans"
-        }
-    },
-    "FB140": {
-        "FB.MO1.$v_ist": {
-            "Constraint_Min": "-170",
             "Value": 0.0,
-            "Constraint_Max": "170",
-            "Description": "FB_sub_59",
-            "Transformation_Type": "trans"
+            "Description": "HT_sub_59"
         }
     },
     "FB110": {
         "FB.MO1.$v_ist": {
             "Constraint_Min": "-170",
-            "Value": 0.0,
+            "Transformation_Type": "trans",
             "Constraint_Max": "170",
-            "Description": "FB_sub_59",
-            "Transformation_Type": "trans"
-        }
-    },
-    "FB120": {
-        "FB.MO1.$v_ist": {
-            "Constraint_Min": "-170",
             "Value": 0.0,
-            "Constraint_Max": "170",
-            "Description": "FB_sub_59",
-            "Transformation_Type": "trans"
+            "Description": "FB_sub_59"
         }
     }
 }

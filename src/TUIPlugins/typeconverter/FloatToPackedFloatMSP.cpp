@@ -23,10 +23,9 @@ namespace tuiframework {
 		return typeName;
 	}
 
-	FloatToPackedFloatMSP::FloatToPackedFloatMSP(const MSPConfig & config) :
-		config(config) {
-
-		this->eventDelegate.setReceiver(this, &FloatToPackedFloatMSP::handleEvent);
+	FloatToPackedFloatMSP::FloatToPackedFloatMSP(const MSPConfig & config) 
+		:config(config), eventAnalog(INT32_MIN) 
+	{
 
 		this->out= 0;
 
@@ -35,7 +34,7 @@ namespace tuiframework {
 		try {
 			this->id = config.getParameterGroup().getInt("Convert|id");
 			this->size = config.getParameterGroup().getInt("Convert|size");
-
+			
 			TFDEBUG("ID = " << this->id);
 			TFDEBUG("size = " << this->size);
 
@@ -43,6 +42,12 @@ namespace tuiframework {
 		catch (Exception & e) {
 			TFERROR(e.getFormattedString());
 		}
+
+
+
+			
+		this->eventDelegate.setReceiver(this, &FloatToPackedFloatMSP::handleEvent);
+		this->eventDelegate2.setReceiver(this, &FloatToPackedFloatMSP::handleEvent2);
 
 		std::vector<std::pair<int, float>> floatVector;
 		for (int i = 0; i < this->size; i++)
@@ -65,7 +70,7 @@ namespace tuiframework {
 	IEventSink * FloatToPackedFloatMSP::getEventSink(const std::string & name)
 	{
 		if (name.compare(inTag) == 0) {
-			return &eventDelegate;
+			return &eventDelegate2;
 		}
 		if (name.compare(inTagPacked) == 0) {
 			return &eventDelegate;
@@ -91,22 +96,36 @@ namespace tuiframework {
 
 		if (this->out)
 		{
+
 			//pair<int, float> value_pair(0, e->getPayload().getItems.at(0).second);
 			cout << "Content event getPayload at id : " << this->id << "Content : " << e->getPayload().getItems().at(this->id).second << endl;
-			//if (this->id == 1)
-			//{
-			//	packedFloat.getItems().at(0).second = e->getPayload().getItems().at(this->nameToIdMap[inTag]).second;
-			//}
+
+			packedFloat = e->getPayload();
+			packedFloat.getItems().at(this->id).second = this->eventAnalog;
+
 			//else
 			//{
 			//	packedFloat.getItems().at(0).second = e->getPayload().getItems().at(this->nameToIdMap[inTagPacked]).second;
-			//	packedFloat.getItems().at(1).second = e->getPayload().getItems().at(this->nameToIdMap[inTag]).second;
 			//}
 			
-			//PackedAnalogEvent* event = new PackedAnalogEvent(-1, -1, packedFloat);
+			PackedAnalogEvent* event = new PackedAnalogEvent(-1, -1, packedFloat);
 
-			//this->out->push(event);
+			this->out->push(event);
 
 		}
+	}
+
+	void FloatToPackedFloatMSP::handleEvent2(AnalogChangedEvent * e)
+	{
+		if (this->out)
+		{
+			this->eventAnalog = e->getPayload();
+			packedFloat.getItems().at(this->id).second = this->eventAnalog;
+			cout << "PackedFloat : " << this->packedFloat << endl;
+			PackedAnalogEvent* event = new PackedAnalogEvent(-1, -1, packedFloat);
+			this->out->push(event);
+
+		}
+		
 	}
 }

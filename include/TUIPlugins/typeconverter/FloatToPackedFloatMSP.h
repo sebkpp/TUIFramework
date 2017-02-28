@@ -34,6 +34,7 @@ class FloatToPackedFloatMSP :
 		EventDelegateNC < AnalogChangedEvent, FloatToPackedFloatMSP > eventDelegate2;
 
 		PackedType<float> packedFloat;
+		float eventAnalog;
 		IEventSink * out;
 		std::map<std::string, int> nameToIdMap;
 

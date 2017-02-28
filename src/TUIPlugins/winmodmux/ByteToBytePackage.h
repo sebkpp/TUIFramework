@@ -29,6 +29,7 @@ namespace tuiframework {
 		MSPType type;
 
 		EventDelegateNC<DigitalChangedEvent, ByteToBytePackage> eventDelegate;
+		void initInTag();
 
 		IEventSink * out;
 		std::map<std::string, int> nameToIdMap;
@@ -36,6 +37,7 @@ namespace tuiframework {
 		int index = 0;
 
 		PackedType <int> packedByte;
+		vector<std::string> inTag;
 		int id;
 		int byteSize;
 	};

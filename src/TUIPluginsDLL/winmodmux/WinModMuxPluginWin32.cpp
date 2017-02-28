@@ -5,8 +5,8 @@
 #include <tuiframework/server/mspConfig.h>
 #include <tuiframework/server/IMSPFactory.h>
 
-#include <C:/Users/cadamano/Documents/TUI_return_windMOD_10_02_17/src/TUIPlugins/winmodmux/FloatToFloatPackage.h>
-#include <C:/Users/cadamano/Documents/TUI_return_windMOD_10_02_17/src/TUIPlugins/winmodmux/ByteToBytePackage.h>
+#include <../src/TUIPlugins/winmodmux/FloatToFloatPackage.h>
+#include <../src/TUIPlugins/winmodmux/ByteToBytePackage.h>
 
 using namespace tuiframework;
 

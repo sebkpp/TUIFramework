@@ -40,6 +40,7 @@
             <ParameterTypeSequence/>
             <ParameterGroup name="Convert">
                <Parameter name="id" value="0"/>
+			   <Parameter name="size" value="3"/>
             </ParameterGroup>
          </MSPType>
          <MSPType name="PackedFloatToFloatMSP">
@@ -171,32 +172,35 @@
       <MSPInstanceSequence>
          <MSPInstance name="analog12" typename="PackedFloatToFloatMSP">
             <ParameterGroup name="Convert">
-               <Parameter name="id" value="3"/>
+               <Parameter name="id" value="2"/>
             </ParameterGroup>
          </MSPInstance>
          <MSPInstance name="analog11" typename="PackedFloatToFloatMSP">
             <ParameterGroup name="Convert">
-               <Parameter name="id" value="2"/>
+               <Parameter name="id" value="1"/>
             </ParameterGroup>
          </MSPInstance>
          <MSPInstance name="analog10" typename="PackedFloatToFloatMSP">
             <ParameterGroup name="Convert">
-               <Parameter name="id" value="1"/>
+               <Parameter name="id" value="0"/>
             </ParameterGroup>
          </MSPInstance>
 		 <MSPInstance name="Packed1" typename="FloatToPackedFloatMSP">
             <ParameterGroup name="Convert">
-               <Parameter name="id" value="1"/>
+               <Parameter name="id" value="0"/>
+			   <Parameter name="size" value="3"/>
             </ParameterGroup>
          </MSPInstance>
 		 <MSPInstance name="Packed2" typename="FloatToPackedFloatMSP">
             <ParameterGroup name="Convert">
-               <Parameter name="id" value="2"/>
+               <Parameter name="id" value="1"/>
+			   <Parameter name="size" value="3"/>
             </ParameterGroup>
          </MSPInstance>
 		 <MSPInstance name="Packed3" typename="FloatToPackedFloatMSP">
             <ParameterGroup name="Convert">
-               <Parameter name="id" value="3"/>
+               <Parameter name="id" value="2"/>
+			   <Parameter name="size" value="3"/>
             </ParameterGroup>
          </MSPInstance>
       </MSPInstanceSequence>
@@ -253,7 +257,10 @@
             <SrcAddress entityName="Packed3" entityType="MSP" portName="outPacked"/>
             <DstAddress entityName="WinModDevice" entityType="DEV" portName="fIn"/>
          </Connector>			 
-
+         <Connector>
+            <SrcAddress entityName="analog12" entityType="MSP" portName="outPacked"/>
+            <DstAddress entityName="Packed1" entityType="MSP" portName="nPacked"/>
+         </Connector>	
       </ConnectorSequence>
    </ServerConfig>
 </document>

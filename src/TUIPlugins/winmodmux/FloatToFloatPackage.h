@@ -29,11 +29,13 @@ namespace tuiframework {
 		MSPType type;
 
 		EventDelegateNC<AnalogChangedEvent, FloatToFloatPackage> eventDelegate;
+		void initInTag();
 
 		IEventSink * out;
 		std::map<std::string, int> nameToIdMap;
 		std::map<std::string, int> eventOrder;
 		int index = 0;
+		vector < std::string > inTag;
 
 		PackedType <float> packedFloat;
 		int id;
