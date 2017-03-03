@@ -1,11 +1,11 @@
-#include <tuiframework/server/MSPFactorySingleton.h>
+#include "../../tuiframework/server/MSPFactorySingleton.h"
 
-#include <tuiframework/core/Version.h>
-#include <tuiframework/core/Imsp.h>
-#include <tuiframework/server/mspConfig.h>
-#include <tuiframework/server/IMSPFactory.h>
+#include "../../tuiframework/core/Version.h"
+#include "../../tuiframework/core/Imsp.h"
+#include "../../tuiframework/server/mspConfig.h"
+#include "../../tuiframework/server/IMSPFactory.h"
 
-#include <TUIPlugins/xcontrollerdemux/XControllerDemuxMSP.h>
+#include "../../TUIPlugins/xcontrollerdemux/XControllerDemuxMSP.h"
 
 using namespace tuiframework;
 

@@ -28,7 +28,7 @@ Boston, MA  02111-1307, USA.
 
 //#include <tuiframework/core/IEventSink.h>
 //#include <tuiframework/server/DeviceDescriptor.h>
-#include <tuiframework/core/EventQueue.h>
+#include "../../tuiframework/core/EventQueue.h"
 //#include <tuiframework/core/IDevice.h>
 
 #include "OPCClient.h"

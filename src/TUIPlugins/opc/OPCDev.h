@@ -2,12 +2,12 @@
 #include <Windows.h>
 #include <chrono>
 
-#include <tuiframework/core/EventQueue.h>
-#include <tuiframework/core/IDevice.h>
-#include <tuiframework/core/IEventSink.h>
-#include <tuiframework/server/DeviceDescriptor.h>
+#include "../../tuiframework/core/EventQueue.h"
+#include "../../tuiframework/core/IDevice.h"
+#include "../../tuiframework/core/IEventSink.h"
+#include "../../tuiframework/server/DeviceDescriptor.h"
 
-#include <TUIPlugins/tuitypes/common/CommonTypeReg.h>
+#include "../../TUIPlugins/tuitypes/common/CommonTypeReg.h"
 
 #include <iostream>
 #include <cstdio>

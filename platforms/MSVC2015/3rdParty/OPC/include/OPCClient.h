@@ -33,8 +33,8 @@ Boston, MA  02111-1307, USA.
 #pragma once
 #endif // _MSC_VER > 1000
 
-#include <tuiframework/core/IEventSink.h>
-#include <tuiframework/server/DeviceDescriptor.h>
+#include "../../tuiframework/core/IEventSink.h"
+#include "../../tuiframework/server/DeviceDescriptor.h"
 
 #include <atlbase.h>
 #include <atlstr.h>

@@ -24,13 +24,13 @@
 
 #define USE_TFDEBUG
 
-#include <tuiframework/server/PluginShelfSingleton.h>
-#include <tuiframework/xml/ServerConfigXMLReader.h>
-#include <tuiframework/server/ServerConfig.h>
+#include "../tuiframework/server/PluginShelfSingleton.h"
+#include "../tuiframework/xml/ServerConfigXMLReader.h"
+#include "../tuiframework/server/ServerConfig.h"
 
-#include <tuiframework/server/TUIServerApp.h>
-#include <tuiframework/core/TypeRegistration.h>
-#include <tuiframework/logging/Logger.h>
+#include "../tuiframework/server/TUIServerApp.h"
+#include "../tuiframework/core/TypeRegistration.h"
+#include "../tuiframework/logging/Logger.h"
 
 #include <map>
 #include <string>

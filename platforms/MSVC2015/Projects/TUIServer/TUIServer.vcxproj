@@ -72,10 +72,10 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <LinkIncremental>true</LinkIncremental>
-    <OutDir>..\..\..\..\bin\$(Platform)\$(VisualStudioVersion)\$(PlatformTarget)\$(Configuration)\tuiserver\</OutDir>
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);C:\Program Files (x86)\Windows Kits\10\Include\10.0.10150.0\ucrt</IncludePath>
-    <IntDir>..\..\$(PlatformTarget)\$(Configuration)\$(MSBuildProjectName)</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>..\..\..\..\install\bin\$(PlatformTarget)\TUIFramework</OutDir>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+    <IntDir>..\..\..\..\build\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
@@ -100,14 +100,19 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;HAVE_STRUCT_TIMESPEC;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\..\..\..\include;..\..\..\..\3rdParty\Pre-built.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\3rdParty\Pre-built.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>pthreadVCE2.lib;Ws2_32.lib;xerces-c_3D.lib; TUIFrameworkServer.lib; TUIFrameworkCore.lib; TUIFrameworkXML.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\..\..\..\bin\$(Platform)\$(VisualStudioVersion)\$(PlatformTarget)\$(Configuration)\lib\TUIFramework;..\..\..\..\bin\lib\$(Platform)\$(VisualStudioVersion)\$(PlatformTarget)\$(Configuration)\TUIPlugins\static;..\..\..\..\3rdParty\xerces-c-3.1.1-x86-windows-vc-9.0\lib;..\..\..\..\3rdParty\Pre-built.2\lib;C:\Program Files %28x86%29\Windows Kits\10\Lib\10.0.10150.0\ucrt\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>pthreadVCE2.lib;Ws2_32.lib;xerces-c_3.lib; TUIFrameworkServerD.lib; TUIFrameworkCoreD.lib; TUIFrameworkXMLD.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)3rdParty\Pre-built.2\lib;..\..\..\..\install\lib\$(PlatformTarget)\TUIFramework;$(SolutionDir)3rdParty\xerces-c-3.1.1-x86-windows-vc-9.0\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <ProgramDatabaseFile>$(OutDir)debug\$(TargetName).pdb</ProgramDatabaseFile>
     </Link>
+    <PostBuildEvent>
+      <Command>copy "$(SolutionDir)3rdParty\Pre-built.2\lib\pthreadVCE2.dll" "$(SolutionDir)..\..\install\bin\$(PlatformTarget)\TUIFramework\"
+copy "$(SolutionDir)3rdParty\xerces-c-3.1.1-x86-windows-vc-9.0\lib\xerces-c_3_1.dll" "$(SolutionDir)..\..\install\bin\$(PlatformTarget)\TUIFramework\"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>

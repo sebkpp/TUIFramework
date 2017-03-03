@@ -1,5 +1,5 @@
 #include "TUIXController.h"
-#include <tuiframework/client/TUIEventHandlerSingleton.h>
+#include "../../tuiframework/client/TUIEventHandlerSingleton.h"
 
 using namespace tuiframework;
 using namespace std;

@@ -27,7 +27,7 @@ along with the TUIFramework.  If not, see <http://www.gnu.org/licenses/>.
 #define _MyTUIObject_h_
 
 #include <tuiframework/client/client.h>
-#include <TUIPlugins/tuitypes/common/CommonTypeReg.h>
+#include "../../TUIPlugins/tuitypes/common/CommonTypeReg.h"
 
 class TUIOPC {
 public:

@@ -163,7 +163,7 @@
     <ClCompile Include="..\..\..\..\src\TUIFramework\client\TUIObjectStubContainer.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\..\src\TUIFramework\client\client.h" />
+    <ClInclude Include="..\..\..\..\include\TUIFramework\client\client.h" />
     <ClInclude Include="..\..\..\..\src\TUIFramework\client\TUIClientApp.h" />
     <ClInclude Include="..\..\..\..\src\TUIFramework\client\TUIClientAppProvider.h" />
     <ClInclude Include="..\..\..\..\src\TUIFramework\client\TUIEventHandler.h" />

@@ -68,7 +68,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <LinkIncremental>true</LinkIncremental>
+    <LinkIncremental>false</LinkIncremental>
     <OutDir>..\..\..\..\install\bin\$(PlatformTarget)\TUIFramework</OutDir>
     <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
     <IntDir>..\..\..\..\build\</IntDir>
@@ -106,6 +106,8 @@
       <AdditionalLibraryDirectories>$(SolutionDir)3rdParty\Pre-built.2\lib;..\..\..\..\install\lib\$(PlatformTarget)\TUIFramework;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <ModuleDefinitionFile>..\..\..\..\src\TUIPluginsDLL\dummy\TUILibDummyDLL.def</ModuleDefinitionFile>
       <OutputFile>$(OutDir)$(TargetName)D$(TargetExt)</OutputFile>
+      <ImportLibrary>$(OutDir)linker\$(TargetName).lib</ImportLibrary>
+      <ProgramDatabaseFile>$(OutDir)debug\$(TargetName).pdb</ProgramDatabaseFile>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">

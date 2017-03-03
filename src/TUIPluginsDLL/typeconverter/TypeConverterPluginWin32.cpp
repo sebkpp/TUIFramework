@@ -22,21 +22,21 @@
     along with the TUIFramework.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include <tuiframework/server/MSPFactorySingleton.h>
+#include "../../tuiframework/server/MSPFactorySingleton.h"
 
-#include <tuiframework/core/Version.h>
-#include <tuiframework/core/Imsp.h>
-#include <tuiframework/server/mspConfig.h>
-#include <tuiframework/server/IMSPFactory.h>
+#include "../../tuiframework/core/Version.h"
+#include "../../tuiframework/core/Imsp.h"
+#include "../../tuiframework/server/mspConfig.h"
+#include "../../tuiframework/server/IMSPFactory.h"
 
-#include <TUIPlugins/typeconverter/AnalogToDigitalMSP.h>
-#include <TUIPlugins/typeconverter/DigitalToAnalogMSP.h>
-#include <TUIPlugins/typeconverter/TrackerToMatrix4MSP.h>
-#include <TUIPlugins/typeconverter/PackedByteToByteMSP.h>
+#include "../../TUIPlugins/typeconverter/AnalogToDigitalMSP.h"
+#include "../../TUIPlugins/typeconverter/DigitalToAnalogMSP.h"
+#include "../../TUIPlugins/typeconverter/TrackerToMatrix4MSP.h"
+#include "../../TUIPlugins/typeconverter/PackedByteToByteMSP.h"
 
-#include <TUIPlugins/typeconverter/PackedFloatToFloatMSP.h>
-#include <TUIPlugins/typeconverter/PackedWordToWordMSP.h>
-#include <TUIPlugins/typeconverter/PackedDWordToDWordMSP.h>
+#include "../../TUIPlugins/typeconverter/PackedFloatToFloatMSP.h"
+#include "../../TUIPlugins/typeconverter/PackedWordToWordMSP.h"
+#include "../../TUIPlugins/typeconverter/PackedDWordToDWordMSP.h"
 
 #include <vector>
 

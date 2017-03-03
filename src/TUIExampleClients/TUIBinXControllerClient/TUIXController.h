@@ -1,6 +1,6 @@
 #pragma once
 
-#include <TUIPlugins/tuitypes/common/CommonTypeReg.h>
+#include "../../TUIPlugins/tuitypes/common/CommonTypeReg.h"
 
 class TUIXController
 {
