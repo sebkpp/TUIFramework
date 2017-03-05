@@ -11,7 +11,7 @@ ECHO Press 0 to set the winMOD config, 1 to set the mouse config
 SET /P xmlchoice=
 
 IF %xmlchoice%==0 (
-	set xmlConfiguration=./xmlconfig/TUIconfig_winMOD_ProjectFloGol_ohneByte_TestnewMSPType_simple.xml
+	set xmlConfiguration=./xmlconfig/TUIconfig_winMOD_ProjectFloGol_ohneByte_ohne_returnLoop_v2.xml
 ) ELSE (
 	set xmlConfiguration=./xmlconfig/TUIconfig_mouse.xml
 	:: The Execution of the Mouse Server
@@ -25,4 +25,4 @@ set libPath=../../bin/Win32/14.0/x86/Debug/lib/TUIPlugins/shared
 start "TUI Server" ../../bin/Win32/14.0/x86/Debug/tuiserver/TUIBinTUIServer.exe %recieverPort% %senderPort% %xmlConfiguration% %libPath%
 
 :: The Execution of the Python Interface
-start "Python Interface Output" python_d python_interface_JSON_TCP.py %xmlConfiguration%
+start "Python Interface Output" python_d python_interface_JSON_UDP.py %xmlConfiguration%

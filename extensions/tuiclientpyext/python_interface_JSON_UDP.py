@@ -25,8 +25,9 @@ def dstmethod(name, portname, value, description, constraintMin, constraintMax, 
 
 	initDict(name, portname, description, constraintMin, constraintMax, trafoType)
 
-	print("TUI_Instance: " + name + " ; port: " + portname + " ; value: " + value)
+	#print("TUI_Instance: " + name + " ; port: " + portname + " ; value: " + value)
 	JSONdict[name][portname]['Value'] = float(value) #we update the value of the corresponding port in the dictionary we use for the TCP connection
+	
 	PortName = portname + "Out"
 
 	tuiclient.sendEvent(name, PortName, value)
@@ -41,6 +42,9 @@ def initDict(name, portname, description, constraintMin, constraintMax, trafoTyp
 		Port = TUIdict[name]
 		if (portname in TUIdict[name]):
 			return
+
+	description = description.split('_')
+	description = name + '_' + description[1] + '_' + description[2]
 
 	values['Constraint_Max'] = constraintMax
 	values['Constraint_Min'] = constraintMin
@@ -84,41 +88,15 @@ def initJSON():
 def recv(tmp):
 	global JSONdict
 
-	host = ''
-	port = 12800
+	UDP_IP = "127.0.0.1"
+	UDP_PORT = 5005
 
-	principale_connection = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-	principale_connection.bind((host, port))
-	principale_connection.listen(5)
-	print("The server listens on the port {}".format(port))
+	sock = socket.socket(socket.AF_INET, # Internet
+						 socket.SOCK_DGRAM) # UDP
 
-	server_launched = True
-	connected_clients = []
-	while server_launched:
-
-		asked_connections, wlist, xlist = select.select([principale_connection],
-			[], [], 0.005)
-		
-		for connection in asked_connections:
-			connection_with_client, infos_connection = connection.accept()
-			connected_clients.append(connection_with_client)
-
-		to_read_clients = []
-		try:
-			to_read_clients, wlist, xlist = select.select(connected_clients,
-					[], [], 0.005)
-		except select.error:
-			pass
-		else:
-			for client in to_read_clients:
-
-				jsonDict = json.dumps(JSONdict) #transforms the dictionary in a JSON str, to make it easier to deal with in the client (we can directly transform it into a dictionary in the client, see the socketClient in the example_clients folder)
-				received_msg = client.recv(1024) #receives another msg from the client
-
-				received_msg = received_msg.decode()
-				print("Received {}".format(received_msg))
-
-				client.send(jsonDict.encode('utf-8')) #sends the dictionary
+	while True:
+		jsonDict = json.dumps(JSONdict)
+		sock.sendto(jsonDict.encode('utf-8'), (UDP_IP, UDP_PORT))
 
 
 tuiclient.init()

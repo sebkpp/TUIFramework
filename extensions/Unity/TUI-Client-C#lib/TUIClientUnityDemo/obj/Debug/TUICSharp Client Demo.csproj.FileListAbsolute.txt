@@ -8,3 +8,8 @@ C:\Users\cadamano\Documents\TUI_return_windMOD_10_02_17\bin\Win32\14.0\x86\Debug
 C:\Users\cadamano\Documents\TUI_return_windMOD_10_02_17\extensions\Unity\TUI-Client-C#lib\TUIClientUnityDemo\obj\Debug\TUICSharp Client Demo.csprojResolveAssemblyReference.cache
 C:\Users\cadamano\Documents\TUI_return_windMOD_10_02_17\extensions\Unity\TUI-Client-C#lib\TUIClientUnityDemo\obj\Debug\TUICSharp Client Demo.exe
 C:\Users\cadamano\Documents\TUI_return_windMOD_10_02_17\extensions\Unity\TUI-Client-C#lib\TUIClientUnityDemo\obj\Debug\TUICSharp Client Demo.pdb
+C:\Users\micka\Documents\Fraunhofer_2016_2017\TUIFramework_Github\bin\Win32\14.0\x86\Debug\extensions\C++_CSharp API\TUICSharp Client Demo.exe
+C:\Users\micka\Documents\Fraunhofer_2016_2017\TUIFramework_Github\bin\Win32\14.0\x86\Debug\extensions\C++_CSharp API\TUICSharp Client Demo.pdb
+C:\Users\micka\Documents\Fraunhofer_2016_2017\TUIFramework_Github\extensions\Unity\TUI-Client-C#lib\TUIClientUnityDemo\obj\Debug\TUICSharp Client Demo.csprojResolveAssemblyReference.cache
+C:\Users\micka\Documents\Fraunhofer_2016_2017\TUIFramework_Github\extensions\Unity\TUI-Client-C#lib\TUIClientUnityDemo\obj\Debug\TUICSharp Client Demo.exe
+C:\Users\micka\Documents\Fraunhofer_2016_2017\TUIFramework_Github\extensions\Unity\TUI-Client-C#lib\TUIClientUnityDemo\obj\Debug\TUICSharp Client Demo.pdb

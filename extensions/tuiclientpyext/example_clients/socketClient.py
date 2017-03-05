@@ -16,14 +16,7 @@ connexion_avec_serveur.connect((hote, port))
 print("Connection established on the port {}".format(port))
 
 while True:
-    msg_a_envoyer = "Size"
-
-    msg_a_envoyer = msg_a_envoyer.encode()
-
-    connexion_avec_serveur.send(msg_a_envoyer)
-    msg_recu = connexion_avec_serveur.recv(1024)
-    print(msg_recu.decode())
-    byteSize = int(msg_recu.decode())
+    byteSize = int(1024)
 
     msg_a_envoyer = "Received"
 
