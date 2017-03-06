@@ -43,9 +43,6 @@ namespace tuiframework {
 			TFERROR(e.getFormattedString());
 		}
 
-
-
-			
 		this->eventDelegate.setReceiver(this, &FloatToPackedFloatMSP::handleEvent);
 		this->eventDelegate2.setReceiver(this, &FloatToPackedFloatMSP::handleEvent2);
 
@@ -96,17 +93,8 @@ namespace tuiframework {
 
 		if (this->out)
 		{
-
-			//pair<int, float> value_pair(0, e->getPayload().getItems.at(0).second);
-			cout << "Content event getPayload at id : " << this->id << "Content : " << e->getPayload().getItems().at(this->id).second << endl;
-
 			packedFloat = e->getPayload();
 			packedFloat.getItems().at(this->id).second = this->eventAnalog;
-
-			//else
-			//{
-			//	packedFloat.getItems().at(0).second = e->getPayload().getItems().at(this->nameToIdMap[inTagPacked]).second;
-			//}
 			
 			PackedAnalogEvent* event = new PackedAnalogEvent(-1, -1, packedFloat);
 
@@ -121,7 +109,7 @@ namespace tuiframework {
 		{
 			this->eventAnalog = e->getPayload();
 			packedFloat.getItems().at(this->id).second = this->eventAnalog;
-			cout << "PackedFloat : " << this->packedFloat << endl;
+
 			PackedAnalogEvent* event = new PackedAnalogEvent(-1, -1, packedFloat);
 			this->out->push(event);
 

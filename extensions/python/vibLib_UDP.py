@@ -9,7 +9,7 @@ TUIdict = dict()				#TUIFramework signal is a dict
 ConfigDict = dict()				#configuration dictionary, loaded from a JSON file
 nodesList = dict()				#principal data structure
 receive = False
-path = "C:/Users/cadamano/Documents/TUI_return_windMOD_10_02_17/extensions/tuiclientpyext/TUIdict.json"
+path = "C:/Users/VIB_SHP/Documents/Test_CaPa_TUI_2016-2017/TUI_demo_v3/extensions/tuiclientpyext/TUIdict.json"
 connection = True
 
 #################################################################################################################################
@@ -18,34 +18,34 @@ connection = True
 
 ##### Call the recursive function for each child node of each instance #####
 def recurseFindNodes( instances ):
-    global nodesList
+	global nodesList
 
-    for instance in instances.keys():
-    	if len(instances[instance]) == 0:
-    		print("Instance: " + instance + " is not found!")
-    		del(nodesList[instance])
-    		print(nodesList)
-    		continue
-        children = instances[instance][0].getNChildren()
-        if children > 0:
-        	for child in xrange(0, children):
-        		researchNode(str(instance), instances[instance][0].getChild(child), nodesList[instance].keys())
+	for instance in instances.keys():
+		if len(instances[instance]) == 0:
+			print("Instance: " + instance + " is not found!")
+			del(nodesList[instance])
+			#print(nodesList)
+			continue
+		children = instances[instance][0].getNChildren()
+		if children > 0:
+			for child in xrange(0, children):
+				researchNode(str(instance), instances[instance][0].getChild(child), nodesList[instance].keys())
 
 ##### Recursive function which looks if the child in parameter is a moving node and then call itself for all the children of the child #####
 def researchNode( instanceName, instanceChild, portName ):
-    global nodesList
-    
-    for port in portName:
-        if instanceChild.getName() == nodesList[instanceName][port]['Description']:
-            key = 'Pointer'
-            if nodesList[instanceName][port].has_key(key) is False:
-                setRotationAndPosition(instanceName, port, instanceChild)
+	global nodesList
+	
+	for port in portName:
+		if instanceChild.getName() == nodesList[instanceName][port]['Description']:
+			key = 'Pointer'
+			if nodesList[instanceName][port].has_key(key) is False:
+				setRotationAndPosition(instanceName, port, instanceChild)
 
-    children = instanceChild.getNChildren()
+	children = instanceChild.getNChildren()
 
-    if children > 0:
-        for child in xrange(0, children):
-            researchNode(instanceName, instanceChild.getChild(child), nodesList[instanceName].keys())
+	if children > 0:
+		for child in xrange(0, children):
+			researchNode(instanceName, instanceChild.getChild(child), nodesList[instanceName].keys())
 
 ##### Set the node pointer, its original position, its rotation position and its receive value in the dictionary nodesList #####
 def setRotationAndPosition( instanceName, port, nodePtr ):
@@ -79,38 +79,25 @@ def recv(tmp):
 	global receive
 	global connection
 
-	hote = "localhost"
-	port = 12800
+	UDP_IP = "127.0.0.1"
+	UDP_PORT = 5005
 
-	connexion_avec_serveur = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-	connexion_avec_serveur.connect((hote, port))
-	print("Connexion établie avec le serveur sur le port {}".format(port))
+	sock = socket.socket(socket.AF_INET, # Internet
+						socket.SOCK_DGRAM) # UDP
+	sock.bind((UDP_IP, UDP_PORT))
+	print("CONNECTION ESTABLISHED")
 
-	connection = True
-	while connection:
-		msg_a_envoyer = "Size"
-	    # Peut planter si vous tapez des caractères spéciaux
-	    msg_a_envoyer = msg_a_envoyer.encode()
-	    # On envoie le message
-	    connexion_avec_serveur.send(msg_a_envoyer)
-	    msg_recu = connexion_avec_serveur.recv(1024)
-	    #print(msg_recu.decode()) # Là encore, peut planter s'il y a des accents
-	    byteSize = int(msg_recu.decode())
+	while True:
+		data, addr = sock.recvfrom(1024) # buffer size is 1024 bytes
 
-	    msg_a_envoyer = "Receive"
-	    # Peut planter si vous tapez des caractères spéciaux
-	    msg_a_envoyer = msg_a_envoyer.encode()
-	    # On envoie le message
-	    connexion_avec_serveur.send(msg_a_envoyer)
+		TUIdict = json.loads(data.decode())
 
-	    msg_recu = connexion_avec_serveur.recv(byteSize)
-	    #print(msg_recu.decode()) # Là encore, peut planter s'il y a des accents
-	    TUIdict = json.loads(msg_recu.decode())
+		if receive is False:
+			findInterestingNodes()
+			receive = True
+			print("Receiving started")
 
-	    if receive is False:
-	    	findInterestingNodes()
-	    	receive = True
-	connexion_avec_serveur.close()
+	sock.close()
 	print("Socket closed")
 
 #################################################################################################################################
@@ -121,7 +108,7 @@ def recv(tmp):
 def loadJSON():
 	global ConfigDict
 	global path
-	
+
 	try:
 		with open(path) as json_file:
 			ConfigDict = json.load(json_file)
@@ -136,7 +123,7 @@ def loadJSON():
 
 ##### Calculate the local position of the node pointed by nodePtr #####
 def calculateLocalPosition( nodePtr ):
-	position = nodePtr.getLocalTranslation()
+	position = nodePtr.getWorldTranslation()
 	matrix = nodePtr.getWorldTransform()
 
 	xl = matrix[0] * position[0] + matrix[1] * position[1] + matrix[2] * position[2]
@@ -155,23 +142,24 @@ def operate():
 	global nodesList
 	global receive
 
-	if receive is True:
-		#print(TUIdict)
-		for instance in nodesList.keys():
-			for port in nodesList[instance].keys():
-				nodePtr = nodesList[instance][port]['Pointer']
-				
-				#if nodesList[instance][port]['Value'] != TUIdict[instance][port]['Value']:
+	if receive is False:
+		return
+	#print("Operate")    
+
+	#print(TUIdict)
+	for instance in nodesList.keys():
+		for port in nodesList[instance].keys():
+			nodePtr = nodesList[instance][port]['Pointer']
+			
+			if nodesList[instance][port]['Value'] != TUIdict[instance][port]['Value']:
 				nodesList[instance][port]['Value'] = TUIdict[instance][port]['Value']
 
-				if nodesList[instance][port]['Transformation_Type'] == 'trans' :
+				if nodesList[instance][port]['Transformation_Type'] == 'rot' :
 					rotationOperate (nodePtr, instance, port)
 
 				else:
 					translationOperate(nodePtr, instance, port)
-					print("Translation!")
-				#pass
-	pass
+			pass
 
 ##### Operate rotation on the node pointed by nodePtr using the value stored in the dictionary #####
 def rotationOperate (nodePtr, instance, port):
@@ -195,20 +183,20 @@ def translationOperate ( nodePtr, instance, port ):
 	translate_y = nodesList[instance][port]['Original_Position'][1]
 	translate_z = nodesList[instance][port]['Original_Position'][2]
 
-	position = nodePtr.getLocalTranslation()
+	position = nodePtr.getWorldTranslation()
 	matrix = nodePtr.getWorldTransform()
 	local_position = calculateLocalPosition(nodePtr)
 
 	if nodesList[instance][port]['Sign'] is True:
-		d = nodesList[instance][port]['Value'] * hvpData.timeStep #calculate the distance from the velocity that we receive from WinMod
+		d = nodesList[instance][port]['Value'] - abs(translate_y - local_position[1])
 		if nodesList[instance][port]['Value'] < 0:
 			nodesList[instance][port]['Sign'] = False
 	else:
-		d = nodesList[instance][port]['Value'] * hvpData.timeStep
+		d = nodesList[instance][port]['Value'] + abs(translate_y - local_position[1])
 		if nodesList[instance][port]['Value'] >= 0:
 			nodesList[instance][port]['Sign'] = True
 
-	nodePtr.setLocalTranslation(matrix[1] * d + position[0], matrix[5] * d + position[1], matrix[9] * d + position[2])
+	nodePtr.setWorldTranslation(matrix[1] * d + position[0], matrix[5] * d + position[1], matrix[9] * d + position[2])
 
 #################################################################################################################################
 ######################################################    SETUP SCENE    ########################################################

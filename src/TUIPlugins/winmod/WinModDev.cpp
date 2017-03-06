@@ -394,7 +394,6 @@ void WinModDev::executeOutputLoop() {
 					//const float *value = pf.getValues().data();
 					
 					vector<float> floatVector;
-					cout << "Size: " << size << endl;
 					for (int i = 0; i < size; i++)
 					{
 						floatVector.push_back(pf.getItems().at(i).second);

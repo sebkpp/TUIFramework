@@ -6,8 +6,6 @@
 #include <sstream>
 #include <stdio.h>
 
-#include <C:/Users/cadamano/AppData/Local/Programs/Python/Python35-32/include/Python.h>
-
 
 using namespace std;
 using namespace tuiframework;
@@ -49,20 +47,16 @@ void TUIClient::setEventCallback(PyObject * callback) {
 			if (typeIt->getName() == it->getTypeName())
 				for (map<string, tuiframework::Port>::iterator typeMapIt2 = typeIt->getPortMap().begin();typeMapIt2 != typeIt->getPortMap().end();typeMapIt2++)
 				{
-					cout << "Data Flow " << typeMapIt2->second.getDataFlowDirection() << endl;
-					cout << " TUIname: " << it->getName() << " portName: " << typeMapIt2->second.getName() << endl;
+					if (typeMapIt2->second.getDataFlowDirection() == 2)
+						continue;
+
 					TUIObjectStubContainer & tc = TUIClientAppProvider::getInstance()->getTUIObjectStubContainer();
 					TUIObjectStub * t = tc.getStub(it->getName());
-					IEventChannel * iec = nullptr;
-					if (typeMapIt2->second.getDataFlowDirection() == 2) {
-						
-						continue;
-					}
-					
-					iec = t->getSourceChannel(typeMapIt2->second.getName());
-	
+
+					IEventChannel * iec = t->getSourceChannel(typeMapIt2->second.getName());
 
 					IEventDelegation * ied = EventDelegationFactorySingleton::getInstance()->createInstance(iec->getChannelTypeID());
+
 					int tuiObjectNr = t->getID();
 					int portNr = iec->getPortNr();
 
@@ -70,7 +64,6 @@ void TUIClient::setEventCallback(PyObject * callback) {
 					this->eventDelegationMap[pair<int, int>(tuiObjectNr, portNr)] = ied;
 					
 					ied->createConnection(it->getName(), typeMapIt2->second.getName(), callback, typeMapIt2->second.getDescription(), typeMapIt2->second.getConstraintMin(), typeMapIt2->second.getConstraintMax(), typeMapIt2->second.getTransfoType());
-					cout << "I'm " << endl;
 				}
 }
 
@@ -102,7 +95,7 @@ void TUIClient::sendEvent(const std::string & tuiObjectName, const std::string &
         ss << "-1 -1 " << serializedPayload;
         //ss.str(serializedPayload);
         ss >> event;
-        cout << "payload: " << serializedPayload << "Event: " <<  event << endl;
+        //cout << "payload: " << serializedPayload << "Event: " <<  event << endl;
         iec->push(event);
     }
 }

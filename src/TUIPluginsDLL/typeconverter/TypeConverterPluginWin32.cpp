@@ -29,8 +29,6 @@
 #include <tuiframework/server/mspConfig.h>
 #include <tuiframework/server/IMSPFactory.h>
 
-#include <TUIPlugins/typeconverter/FirstFloatToPackedFloatMSP.h>
-
 #include <TUIPlugins/typeconverter/AnalogToDigitalMSP.h>
 #include <TUIPlugins/typeconverter/DigitalToAnalogMSP.h>
 #include <TUIPlugins/typeconverter/TrackerToMatrix4MSP.h>
@@ -58,9 +56,6 @@ static std::vector<std::string> mspTypeNameVector;
 void dllInitPlugin() {
 	MSPFactorySingleton::getInstance()->registerCreateFunction(AnalogToDigitalMSP::getMSPTypeName(), AnalogToDigitalMSP::createFunction);
     mspTypeNameVector.push_back(AnalogToDigitalMSP::getMSPTypeName());
-
-	MSPFactorySingleton::getInstance()->registerCreateFunction(FirstFloatToPackedFloatMSP::getMSPTypeName(), FirstFloatToPackedFloatMSP::createFunction);
-	mspTypeNameVector.push_back(FirstFloatToPackedFloatMSP::getMSPTypeName());
 
 	MSPFactorySingleton::getInstance()->registerCreateFunction(DigitalToAnalogMSP::getMSPTypeName(), DigitalToAnalogMSP::createFunction);
     mspTypeNameVector.push_back(DigitalToAnalogMSP::getMSPTypeName());
@@ -98,7 +93,6 @@ std::string dllGetDLLVersion() {
 
 void dllMSPRegistration(IMSPFactory * MSPFactory) {
     MSPFactory->registerCreateFunction(AnalogToDigitalMSP::getMSPTypeName(), AnalogToDigitalMSP::createFunction);
-	MSPFactory->registerCreateFunction(FirstFloatToPackedFloatMSP::getMSPTypeName(), FirstFloatToPackedFloatMSP::createFunction);
 
 	MSPFactory->registerCreateFunction(DigitalToAnalogMSP::getMSPTypeName(), DigitalToAnalogMSP::createFunction);
 	MSPFactory->registerCreateFunction(TrackerToMatrix4MSP::getMSPTypeName(), TrackerToMatrix4MSP::createFunction);

@@ -5,7 +5,6 @@ import json
 from time import sleep
 import _thread
 import socket
-import select
 
 TUIdict = dict() #dictionary where we store all the values, and the meta datas
 JSONdict = dict() #dictionary used for the TCP connection, filled only with the values
@@ -16,10 +15,11 @@ def systemMsgSink(msg):
 
 		tuiclient.setEventCallback(dstmethod) #we call only one time this function, all the connections between the TUI objects and the server are done, based on the XML file, in the C++ code
 
-		print("EVENT CALLBACK SUCEED")
+		print("EVENT CALLBACK SUCEEDED")
+		print("PYTHON INTERFACE READY")
 
 #This function is called automatically each time a value changes.
-#As this funcsttion also handles the initialization of the dictionnary, it is called for each TUI objects before any connection to make sure they are all stored into the dictionary (and so into the JSON file)
+#As this function also handles the initialization of the dictionnary, it is called for each TUI objects before any connection to make sure they are all stored into the dictionary (and so into the JSON file)
 def dstmethod(name, portname, value, description, constraintMin, constraintMax, trafoType):
 	global JSONdict
 
@@ -93,6 +93,7 @@ def recv(tmp):
 
 	sock = socket.socket(socket.AF_INET, # Internet
 						 socket.SOCK_DGRAM) # UDP
+	print("UDP CONNECTION SUCCEEDED")
 
 	while True:
 		jsonDict = json.dumps(JSONdict)

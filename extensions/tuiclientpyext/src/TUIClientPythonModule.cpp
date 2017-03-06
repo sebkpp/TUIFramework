@@ -4,7 +4,7 @@
 #include <TUIPlugins/tuitypes/common/CommonTypeReg.h>
 
 
-#include <C:/Users/cadamano/AppData/Local/Programs/Python/Python35-32/include/Python.h>
+#include <Python.h>
 
 #include <iostream>
 

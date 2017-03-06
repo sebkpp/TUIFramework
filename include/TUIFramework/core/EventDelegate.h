@@ -62,7 +62,7 @@ public:
         /// Forwards the delivered event to the destination method.
     virtual void push(IEvent * event) {
         E * e = static_cast<E *>(event);
-		cout << "pushed" << endl;
+		//cout << "pushed" << endl;
         (this->receiver->*this->method)(e);
     }
 

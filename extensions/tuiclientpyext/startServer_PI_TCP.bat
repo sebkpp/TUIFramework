@@ -11,7 +11,7 @@ ECHO Press 0 to set the winMOD config, 1 to set the mouse config
 SET /P xmlchoice=
 
 IF %xmlchoice%==0 (
-	set xmlConfiguration=./xmlconfig/TUIconfig_winMOD_ProjectFloGol_ohneByte_TestnewMSPType_simple.xml
+	set xmlConfiguration=./xmlconfig/TUIconfig_winMOD_wayBack.xml
 ) ELSE (
 	set xmlConfiguration=./xmlconfig/TUIconfig_mouse.xml
 	:: The Execution of the Mouse Server

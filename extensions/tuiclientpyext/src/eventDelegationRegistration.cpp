@@ -32,6 +32,7 @@ void eventDelegationRegistration() {
     doRegistration<Matrix4Data, 15>();
     doRegistration<HapticAngle, 16>();
     doRegistration<Matrix4<double>, 25 >();
+	doRegistration<DWORD, 106 >();
 }
 
 

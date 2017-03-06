@@ -30,7 +30,7 @@ public:
     }
 
     virtual void createConnection(const std::string & tuiObjectName, const std::string & portName, PyObject * callback, const std::string & description, const std::string & constraintMin, const std::string & constraintMax, const std::string & trafoType) {
-        this->callback = callback;
+		this->callback = callback;
         this->tuiObjectName = tuiObjectName;
         this->portName = portName;
 		this->description = description;
@@ -38,7 +38,7 @@ public:
 		this->constraintMax = constraintMax;
 		this->trafoType = trafoType;
 		std::string value = "0.0";
-
+		
 		//Permits to initialize the dictionnary in the Python Interface
 		{
 			PyObject * arglist = Py_BuildValue("sssssss", this->tuiObjectName.c_str(), this->portName.c_str(), value.c_str(), this->description.c_str(), this->constraintMin.c_str(), this->constraintMax.c_str(), this->trafoType.c_str());
@@ -61,7 +61,6 @@ public:
     
 
     void changed(const tuiframework::EPEventMsg<T, typeID> * e) {
-        std::cout << *e << std::endl;
         const T & payload = e->getPayload();
         this->ss.str("");
         this->ss << payload;

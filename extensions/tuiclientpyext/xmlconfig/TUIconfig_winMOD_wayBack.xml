@@ -24,22 +24,6 @@
          </DeviceType>
       </DeviceTypeSequence>
 	  <MSPTypeSequence>
-	   <MSPType name="FirstFloatToPackedFloatMSP">
-            <PortTypeSequence>
-               <PortType name="in" sink="1" source="0" typename="AnalogChannel">
-                  <Description/>
-               </PortType>
-               <PortType name="outPacked" sink="0" source="1" typename="PackedAnalog">
-                  <Description/>
-               </PortType>
-            </PortTypeSequence>
-            <ParameterTypeDefSequence/>
-            <ParameterTypeSequence/>
-            <ParameterGroup name="Convert">
-               <Parameter name="id" value="0"/>
-			   <Parameter name="size" value="3"/>
-            </ParameterGroup>
-         </MSPType>
          <MSPType name="FloatToPackedFloatMSP">
             <PortTypeSequence>
                <PortType name="in" sink="1" source="0" typename="AnalogChannel">
@@ -201,7 +185,7 @@
                <Parameter name="id" value="0"/>
             </ParameterGroup>
          </MSPInstance>
-		 <MSPInstance name="Packed1" typename="FirstFloatToPackedFloatMSP">
+		 <MSPInstance name="Packed1" typename="FloatToPackedFloatMSP">
             <ParameterGroup name="Convert">
                <Parameter name="id" value="0"/>
 			   <Parameter name="size" value="3"/>
