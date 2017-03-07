@@ -1,5 +1,6 @@
 #pragma once
 
+#include <tuiframework/client/client.h>
 #include "../../TUIPlugins/tuitypes/common/CommonTypeReg.h"
 
 class TUIXController

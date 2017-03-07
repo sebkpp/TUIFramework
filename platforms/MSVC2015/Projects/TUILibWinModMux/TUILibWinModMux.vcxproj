@@ -71,8 +71,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
-    <OutDir>..\..\..\..\install\lib\$(PlatformTarget)\TUIFramework</OutDir>
-    <IntDir>..\..\..\..\build\</IntDir>
+    <OutDir>$(SolutionDir)..\..\install\lib\$(PlatformTarget)\TUIFramework</OutDir>
+    <IntDir>$(SolutionDir)..\..\build\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -84,6 +84,7 @@
       <SDLCheck>
       </SDLCheck>
       <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>/FS %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>

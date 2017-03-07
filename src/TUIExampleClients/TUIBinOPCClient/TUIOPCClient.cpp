@@ -34,7 +34,7 @@ using namespace std;
 
 int main(int argc, char* argv[]) {
 	if (argc != 4) {
-		cout << "Usage TUIXControllerClient <sender port> <receiver port> <ipaddress:port>" << endl;
+		cout << "Usage tuiOPCclient <sender port> <receiver port> <ipaddress:port>" << endl;
 		return 1;
 	}
 

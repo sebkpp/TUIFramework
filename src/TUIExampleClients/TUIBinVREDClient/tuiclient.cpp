@@ -25,10 +25,7 @@
 
 #include "Init.h"
 
-#include <tuiframework/client/client.h>
-#include <TUIPlugins/tuitypes/common/CommonTypeReg.h>
 
-#include <iostream>
 #include <stdlib.h>
 #include <cstdio>
 

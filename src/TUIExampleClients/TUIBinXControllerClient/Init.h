@@ -28,7 +28,6 @@
 
 #include "TUIXController.h"
 
-#include <TUIFramework\client\client.h>
 class Init : public tuiframework::IEventSink {
 public:
     Init();
