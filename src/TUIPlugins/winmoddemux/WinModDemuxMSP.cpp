@@ -23,7 +23,7 @@
 */
 
 
-#include <TUIPlugins/winmoddemux/WinModDemuxMSP.h>
+#include "WinModDemuxMSP.h"
 
 using namespace std;
 

@@ -1,6 +1,5 @@
-#include <TUIPlugins/tuitypes/common/CommonTypeReg.h>
-
-#include <tuiframework/core/Version.h>
+#include "../../TUIPlugins/tuitypes/common/CommonTypeReg.h"
+#include "../../tuiframework/core/Version.h"
 
 
 void dllInitPlugin() {

@@ -43,17 +43,16 @@ and connected to the TUIServer via network and sockets ( in this class ).
 #else
 */
 
-#include <TUIPlugins/kinect/KinectDev.h>
+#include "KinectDev.h"
 
+#include "../../tuiframework/core/ITUIServer.h"
+#include "../../tuiframework/core/IEvent.h"
+#include "../../tuiframework/server/DeviceConfig.h"
+#include "../../TUIPlugins/tuitypes/common/CommonTypeReg.h"
 
-#include <tuiframework/core/ITUIServer.h>
-#include <tuiframework/core/IEvent.h>
-#include <tuiframework/server/DeviceConfig.h>
-#include <TUIPlugins/tuitypes/common/CommonTypeReg.h>
-
-#include <tuiframework/core/SerializedDataQueue.h>
+#include "../../tuiframework/core/SerializedDataQueue.h"
 #ifdef _WIN32
-#include <tuiframework/sockets/UDPReceiverWinSock2.h>
+#include "../../tuiframework/sockets/UDPReceiverWinSock2.h"
 #else
 #include <tuiframework/sockets/UDPReceiverSocket.h>
 #endif

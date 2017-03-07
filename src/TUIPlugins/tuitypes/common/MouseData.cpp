@@ -1,4 +1,4 @@
-#include <TUIPlugins\tuitypes\common\MouseData.h>
+#include "MouseData.h"
 
 #include <iostream>
 

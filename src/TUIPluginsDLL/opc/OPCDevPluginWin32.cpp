@@ -1,11 +1,13 @@
-#include <tuiframework/server/DeviceFactorySingleton.h>
+#include "../../tuiframework/server/DeviceFactorySingleton.h"
 
-#include <tuiframework/core/Version.h>
-#include <tuiframework/core/IDevice.h>
-#include <tuiframework/server/DeviceConfig.h>
-#include <tuiframework/server/IDeviceFactory.h>
+#include "../../tuiframework/core/Version.h"
+#include "../../tuiframework/core/IDevice.h"
+#include "../../tuiframework/server/DeviceConfig.h"
+#include "../../tuiframework/server/IDeviceFactory.h"
 
-#include <TUIPlugins/opc/OPCDev.h>
+#include "../../TUIPlugins/opc/OPCDev.h"
+
+#include <vector>
 
 using namespace tuidevices;
 using namespace tuiframework;

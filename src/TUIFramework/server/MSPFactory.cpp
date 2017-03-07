@@ -22,7 +22,7 @@
 */
 
 
-#include <TUIFramework\server\MSPFactory.h>
+#include "MSPFactory.h"
 
 namespace tuiframework {
     

@@ -65,7 +65,7 @@
 	#include <winsock.h>
 #endif
 
-#include <TUIPlugins/dtrack/DTrack2.h>
+#include "DTrack2.h"
 
 
 // DTrack2 parameter:

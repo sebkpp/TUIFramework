@@ -19,17 +19,17 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\..\extensions\tuiclientpyext\src\EventDelegation.h" />
-    <ClInclude Include="..\..\..\..\extensions\tuiclientpyext\src\EventDelegationFactory.h" />
-    <ClInclude Include="..\..\..\..\extensions\tuiclientpyext\src\eventDelegationRegistration.h" />
-    <ClInclude Include="..\..\..\..\extensions\tuiclientpyext\src\IEventDelegation.h" />
-    <ClInclude Include="..\..\..\..\extensions\tuiclientpyext\src\TUIClient.h" />
+    <ClInclude Include="..\..\..\..\src\TUIExampleClients\TUIPythonClient\EventDelegation.h" />
+    <ClInclude Include="..\..\..\..\src\TUIExampleClients\TUIPythonClient\EventDelegationFactory.h" />
+    <ClInclude Include="..\..\..\..\src\TUIExampleClients\TUIPythonClient\eventDelegationRegistration.h" />
+    <ClInclude Include="..\..\..\..\src\TUIExampleClients\TUIPythonClient\IEventDelegation.h" />
+    <ClInclude Include="..\..\..\..\src\TUIExampleClients\TUIPythonClient\TUIClient.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\..\extensions\tuiclientpyext\src\EventDelegationFactory.cpp" />
-    <ClCompile Include="..\..\..\..\extensions\tuiclientpyext\src\eventDelegationRegistration.cpp" />
-    <ClCompile Include="..\..\..\..\extensions\tuiclientpyext\src\TUIClient.cpp" />
-    <ClCompile Include="..\..\..\..\extensions\tuiclientpyext\src\TUIClientPythonModule.cpp" />
+    <ClCompile Include="..\..\..\..\src\TUIExampleClients\TUIPythonClient\EventDelegationFactory.cpp" />
+    <ClCompile Include="..\..\..\..\src\TUIExampleClients\TUIPythonClient\eventDelegationRegistration.cpp" />
+    <ClCompile Include="..\..\..\..\src\TUIExampleClients\TUIPythonClient\TUIClient.cpp" />
+    <ClCompile Include="..\..\..\..\src\TUIExampleClients\TUIPythonClient\TUIClientPythonModule.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{B04B6DD8-EFB5-47C0-B8AA-FA76D79042A4}</ProjectGuid>
@@ -82,9 +82,10 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <OutDir>..\..\..\..\bin\$(Platform)\$(VisualStudioVersion)\$(PlatformTarget)\$(Configuration)\tuiexampleclients\$(TargetName)</OutDir>
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);C:\Program Files (x86)\Windows Kits\10\Include\10.0.10150.0\ucrt</IncludePath>
-    <IntDir>..\..\$(PlatformTarget)\$(Configuration)\$(MSBuildProjectName)</IntDir>
+    <OutDir>$(SolutionDir)..\..\install\bin\$(PlatformTarget)\TUIFramework</OutDir>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+    <IntDir>$(SolutionDir)..\..\build\$(ProjectName)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>..\..\..\..\bin\$(Platform)\$(VisualStudioVersion)\$(PlatformTarget)\$(Configuration)\tuiexampleclients\$(TargetName)</OutDir>
@@ -96,12 +97,13 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>
       </SDLCheck>
-      <AdditionalIncludeDirectories>../../../../include;..\..\..\..\3rdParty\Pre-built.2\include;C:\Program Files\Python35\include;C:\Users\micka\AppData\Local\Programs\Python\Python36-32\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\3rdParty\Pre-built.2\include;$(SolutionDir)..\..\include;%(AdditionalIncludeDirectories);C:\Program Files\Python35\include</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;HAVE_STRUCT_TIMESPEC;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>..\..\..\..\bin\$(Platform)\$(VisualStudioVersion)\$(PlatformTarget)\$(Configuration)\lib\TUIFramework;..\..\..\..\bin\$(Platform)\$(VisualStudioVersion)\$(PlatformTarget)\$(Configuration)\lib\TUIPlugins\static;..\..\..\..\3rdParty\xerces-c-3.1.1-x86-windows-vc-9.0\lib;..\..\..\..\3rdParty\Pre-built.2\lib;C:\Program Files %28x86%29\Windows Kits\10\Lib\10.0.10150.0\ucrt\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>pthreadVCE2.lib;Ws2_32.lib;TUIFrameworkCore.lib;TUIFrameworkClient.lib;TUILibTUITypes.lib;python35.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)3rdParty\Pre-built.2\lib;$(SolutionDir)..\..\install\lib\$(PlatformTarget)\TUIFramework;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>pthreadVCE2.lib;Ws2_32.lib;TUIFrameworkCoreD.lib;TUIFrameworkClientD.lib;TUILibTUITypesD.lib;python35.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ProgramDatabaseFile>$(OutDir)debug\$(TargetName).pdb</ProgramDatabaseFile>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">

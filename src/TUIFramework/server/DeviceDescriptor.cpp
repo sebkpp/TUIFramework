@@ -22,7 +22,7 @@
 */
 
 
-#include <TUIFramework\server\DeviceDescriptor.h>
+#include "DeviceDescriptor.h"
 
 #include <iostream>
 

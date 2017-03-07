@@ -45,7 +45,7 @@
     <ClInclude Include="..\..\..\..\3rdParty\OPC\include\OPCProperties.h" />
     <ClInclude Include="..\..\..\..\3rdParty\OPC\include\OPCServer.h" />
     <ClInclude Include="..\..\..\..\3rdParty\OPC\include\Transaction.h" />
-    <ClInclude Include="..\..\..\..\include\TUIPlugins\opc\OPCDev.h" />
+    <ClInclude Include="..\..\..\..\src\TUIPlugins\opc\OPCDev.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{31A02084-0F5E-4895-9125-2D50A1C39B8D}</ProjectGuid>
@@ -98,9 +98,9 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <OutDir>..\..\..\..\bin\$(Platform)\$(VisualStudioVersion)\$(PlatformTarget)\$(Configuration)\lib\TUIPlugins\static</OutDir>
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);C:\Program Files %28x86%29\Windows Kits\10\Include\10.0.10150.0\ucrt;$(IncludePath)</IncludePath>
-    <IntDir>..\..\$(PlatformTarget)\$(Configuration)\$(MSBuildProjectName)</IntDir>
+    <OutDir>..\..\..\..\install\lib\$(PlatformTarget)\TUIFramework</OutDir>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+    <IntDir>..\..\..\..\build\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>..\..\..\..\bin\$(Platform)\$(VisualStudioVersion)\$(PlatformTarget)\$(Configuration)\lib\TUIPlugins\static</OutDir>
@@ -117,9 +117,12 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>../../../../include;../../../../3rdParty/Pre-built.2/include; ../../../../3rdParty/OPC/include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)/3rdParty/Pre-built.2/include; $(SolutionDir)/3rdParty/OPC/include;</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;HAVE_STRUCT_TIMESPEC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)$(TargetName)D$(TargetExt)</OutputFile>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>

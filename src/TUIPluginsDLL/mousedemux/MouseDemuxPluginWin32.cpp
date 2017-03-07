@@ -1,11 +1,11 @@
-#include <tuiframework/server/MSPFactorySingleton.h>
+#include "../../tuiframework/server/MSPFactorySingleton.h"
 
-#include <tuiframework/core/Version.h>
-#include <tuiframework/core/Imsp.h>
-#include <tuiframework/server/mspConfig.h>
-#include <tuiframework/server/IMSPFactory.h>
+#include "../../tuiframework/core/Version.h"
+#include "../../tuiframework/core/Imsp.h"
+#include "../../tuiframework/server/mspConfig.h"
+#include "../../tuiframework/server/IMSPFactory.h"
 
-#include <TUIPlugins/mousedemux/MouseDemuxMSP.h>
+#include "../../TUIPlugins/mousedemux/MouseDemuxMSP.h"
 
 #include <vector>
 

@@ -22,7 +22,7 @@
 */
 
 
-#include <TUIFramework\xml\XMLDOMErrorReporter.h>
+#include "XMLDOMErrorReporter.h"
 
 #include <xercesc/util/XMLString.hpp>
 #include <xercesc/dom/DOMError.hpp>

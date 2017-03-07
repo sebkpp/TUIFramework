@@ -25,10 +25,6 @@ along with the TUIFramework.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "Init.h"
 
-#include <tuiframework/client/client.h>
-#include <TUIPlugins/tuitypes/common/CommonTypeReg.h>
-
-#include <iostream>
 #include <stdlib.h>
 #include <cstdio>
 

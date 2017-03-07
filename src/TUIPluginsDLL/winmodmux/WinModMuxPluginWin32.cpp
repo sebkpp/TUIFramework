@@ -1,12 +1,12 @@
-#include <tuiframework/server/MSPFactorySingleton.h>
+#include "../../tuiframework/server/MSPFactorySingleton.h"
 
-#include <tuiframework/core/Version.h>
-#include <tuiframework/core/Imsp.h>
-#include <tuiframework/server/mspConfig.h>
-#include <tuiframework/server/IMSPFactory.h>
+#include "../../tuiframework/core/Version.h"
+#include "../../tuiframework/core/Imsp.h"
+#include "../../tuiframework/server/mspConfig.h"
+#include "../../tuiframework/server/IMSPFactory.h"
 
-#include <../src/TUIPlugins/winmodmux/FloatToFloatPackage.h>
-#include <../src/TUIPlugins/winmodmux/ByteToBytePackage.h>
+#include "../../TUIPlugins/winmodmux/FloatToFloatPackage.h"
+#include "../../TUIPlugins/winmodmux/ByteToBytePackage.h"
 
 using namespace tuiframework;
 

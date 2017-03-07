@@ -28,8 +28,6 @@
 
 #include "TUIWinMod.h"
 
-#include <tuiframework/client/client.h>
-
 class Init : public tuiframework::IEventSink {
 public:
     Init();

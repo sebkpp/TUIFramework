@@ -1,12 +1,12 @@
 
-#include <TUIPlugins/winmod/WinModDev.h>
+#include "WinModDev.h"
 
-#include <tuiframework/core/ITUIServer.h>
-#include <tuiframework/core/IEvent.h>
-#include <tuiframework/server/DeviceConfig.h>
-#include <tuiframework/core/Exception.h>
+#include "../../tuiframework/core/ITUIServer.h"
+#include "../../tuiframework/core/IEvent.h"
+#include "../../tuiframework/server/DeviceConfig.h"
+#include "../../tuiframework/core/Exception.h"
 
-#include <TUIPlugins/tuitypes/common/CommonTypeReg.h>
+#include "../../TUIPlugins/tuitypes/common/CommonTypeReg.h"
 
 #include <iostream>
 #include <sstream>
@@ -409,8 +409,8 @@ void WinModDev::executeOutputLoop() {
 					//delete value;
 				}
 				
-				else if(event->getEventTypeID() == IntegerVectorChangedEvent::EventTypeID())
-				{
+				//else if(event->getEventTypeID() == IntegerVectorChangedEvent::EventTypeID())
+				//{
 					//IntegerVectorChangedEvent* byteEvent = (IntegerVectorChangedEvent*)event;
 					//cout << "event: "<<byteEvent << endl;
 					//std::stringstream buffer;
@@ -467,7 +467,7 @@ void WinModDev::executeOutputLoop() {
 
 					//delete byteEvent;
 					//delete byteArray;
-				}
+				//}
 				
 				// Check if Event is EventType for WordEvents
 				/*else if(event->getEventTypeID() == WordChangedEvent::EventTypeID())

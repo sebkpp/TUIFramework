@@ -23,7 +23,7 @@
 */
 
 
-#include <TUIPlugins/xcontrollerdemux/XControllerDemuxMSP.h>
+#include "XControllerDemuxMSP.h"
 
 // Mapping the sink-port names
 static const char * xControllerDataInTag = "x";

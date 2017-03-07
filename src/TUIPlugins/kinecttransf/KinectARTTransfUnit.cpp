@@ -21,10 +21,10 @@
     along with the TUIFramework.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include <TUIPlugins/kinecttransf/KinectARTTransfUnit.h>
+#include "KinectARTTransfUnit.h"
 
-#include <tuiframework/logging/Logger.h>
-#include <TUIPlugins/tuitypes/common/CommonTypeReg.h>
+#include "../../tuiframework/logging/Logger.h"
+#include "../../TUIPlugins/tuitypes/common/CommonTypeReg.h"
 #include <sstream>
 
 using namespace std;

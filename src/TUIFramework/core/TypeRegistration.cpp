@@ -22,7 +22,7 @@
 */
 
 
-#include <TUIFramework\core\TypeRegistration.h>
+#include "TypeRegistration.h"
 #include <map>
 
 using namespace std;

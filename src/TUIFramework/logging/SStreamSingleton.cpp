@@ -22,7 +22,7 @@
 */
 
 
-#include <TUIFramework\logging\SStreamSingleton.h>
+#include "..\logging\SStreamSingleton.h"
 
 #include <pthread.h>
 

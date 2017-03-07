@@ -22,7 +22,7 @@
 */
 
 
-#include <TUIFramework\core\TUIObjectType.h>
+#include "TUIObjectType.h"
 
 #include <iostream>
 

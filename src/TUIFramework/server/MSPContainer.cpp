@@ -21,16 +21,16 @@
     along with the TUIFramework.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+#include "IMSPFactory.h"
+#include "MSPContainer.h"
+#include "MSPFactorySingleton.h"
+#include "MSPConfig.h"
 
-#include <TUIFramework\server\MSPContainer.h>
+#include "..\core\IEventSink.h"
+#include "..\core\IMSP.h"
+#include "..\logging\Logger.h"
 
-#include <TUIFramework\server\MSPFactorySingleton.h>
 
-#include <TUIFramework\core\IEventSink.h>
-#include <TUIFramework\core\IMSP.h>
-#include <TUIFramework\server\IMSPFactory.h>
-#include <TUIFramework\server\MSPConfig.h>
-#include <TUIFramework\logging\Logger.h>
 
 #include <sstream>
 

@@ -22,13 +22,13 @@
 */
 
 
-#include <TUIFramework\server\DeviceContainer.h>
+#include "DeviceContainer.h"
 
-#include <TUIFramework\server\DeviceFactory.h>
-#include <TUIFramework\server\DeviceConfig.h>
-#include <TUIFramework\core\IDevice.h>
-#include <TUIFramework\core\Exception.h>
-#include <TUIFramework\logging\Logger.h>
+#include "DeviceFactory.h"
+#include "DeviceConfig.h"
+#include "..\core\IDevice.h"
+#include "..\core\Exception.h"
+#include "..\logging\Logger.h"
 
 #include <iostream>
 

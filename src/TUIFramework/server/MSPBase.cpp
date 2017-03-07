@@ -22,9 +22,9 @@
 */
 
 
-#include <TUIFramework\server\MSPBase.h>
+#include "MSPBase.h"
 
-#include <TUIFramework\core\Exception.h>
+#include "..\core\Exception.h"
 
 using namespace std;
 

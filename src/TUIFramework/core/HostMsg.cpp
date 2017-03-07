@@ -22,9 +22,9 @@
 */
 
 
-#include <TUIFramework\core\HostMsg.h>
+#include "HostMsg.h"
 
-#include <string.h>
+#include <string>
 
 using namespace std;
 

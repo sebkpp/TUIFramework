@@ -23,7 +23,7 @@
 */
 
 
-#include <TUIPlugins/mousedemux/MouseDemuxMSP.h>
+#include "MouseDemuxMSP.h"
 
 static const char * mouseDataInTag = "m";
 static const char * outDXTag = "dx";

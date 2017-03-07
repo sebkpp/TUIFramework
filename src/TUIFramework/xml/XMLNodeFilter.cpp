@@ -22,7 +22,7 @@
 */
 
 
-#include <TUIFramework\xml\XMLNodeFilter.h>
+#include "XMLNodeFilter.h"
 
 using namespace XERCES_CPP_NAMESPACE;
 
