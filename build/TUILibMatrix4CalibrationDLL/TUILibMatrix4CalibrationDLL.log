@@ -1,0 +1,13 @@
+﻿C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.CppBuild.targets(368,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
+  TUILibMatrix4CalibrationDLL.cpp
+  stdafx.cpp
+  Matrix4CalibrationPluginWin32.cpp
+  dllmain.cpp
+  Generating Code...
+C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.CppBuild.targets(1189,5): warning MSB8012: TargetPath(C:\Users\micka\Documents\Fraunhofer_2016_2017\TUIFramework_Github\platforms\MSVC2015\..\..\install\bin\x86\TUIFramework\TUILibMatrix4CalibrationDLL.dll) does not match the Linker's OutputFile property value (C:\Users\micka\Documents\Fraunhofer_2016_2017\TUIFramework_Github\install\bin\x86\TUIFramework\TUILibMatrix4CalibrationDLLD.dll). This may cause your project to build incorrectly. To correct this, please make sure that $(OutDir), $(TargetName) and $(TargetExt) property values match the value specified in %(Link.OutputFile).
+C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.CppBuild.targets(1191,5): warning MSB8012: TargetName(TUILibMatrix4CalibrationDLL) does not match the Linker's OutputFile property value (TUILibMatrix4CalibrationDLLD). This may cause your project to build incorrectly. To correct this, please make sure that $(OutDir), $(TargetName) and $(TargetExt) property values match the value specified in %(Link.OutputFile).
+dllmain.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/OPT:LBR' specification
+     Creating library C:\Users\micka\Documents\Fraunhofer_2016_2017\TUIFramework_Github\platforms\MSVC2015\..\..\install\bin\x86\TUIFramework\linker\TUILibMatrix4CalibrationDLL.lib and object C:\Users\micka\Documents\Fraunhofer_2016_2017\TUIFramework_Github\platforms\MSVC2015\..\..\install\bin\x86\TUIFramework\linker\TUILibMatrix4CalibrationDLL.exp
+TUILibMatrix4CalibrationDLL.exp : warning LNK4070: /OUT:TUILibMatrix4CalibrationDLL.dll directive in .EXP differs from output filename 'C:\Users\micka\Documents\Fraunhofer_2016_2017\TUIFramework_Github\platforms\MSVC2015\..\..\install\bin\x86\TUIFramework\TUILibMatrix4CalibrationDLLD.dll'; ignoring directive
+  TUILibMatrix4CalibrationDLL.vcxproj -> C:\Users\micka\Documents\Fraunhofer_2016_2017\TUIFramework_Github\platforms\MSVC2015\..\..\install\bin\x86\TUIFramework\TUILibMatrix4CalibrationDLL.dll
+  TUILibMatrix4CalibrationDLL.vcxproj -> C:\Users\micka\Documents\Fraunhofer_2016_2017\TUIFramework_Github\platforms\MSVC2015\..\..\install\bin\x86\TUIFramework\debug\TUILibMatrix4CalibrationDLL.pdb (Full PDB)

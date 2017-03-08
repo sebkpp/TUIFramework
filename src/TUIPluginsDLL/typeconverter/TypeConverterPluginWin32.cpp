@@ -34,6 +34,7 @@
 #include <TUIPlugins/typeconverter/TrackerToMatrix4MSP.h>
 #include <TUIPlugins/typeconverter/PackedByteToByteMSP.h>
 #include <TUIPlugins/typeconverter/FloatToPackedFloatMSP.h>
+#include <TUIPlugins/typeconverter/ByteToPackedByteMSP.h>
 #include <TUIPlugins/typeconverter/PackedFloatToFloatMSP.h>
 #include <TUIPlugins/typeconverter/PackedWordToWordMSP.h>
 #include <TUIPlugins/typeconverter/PackedDWordToDWordMSP.h>
@@ -78,6 +79,9 @@ void dllInitPlugin() {
 	MSPFactorySingleton::getInstance()->registerCreateFunction(FloatToPackedFloatMSP::getMSPTypeName(), FloatToPackedFloatMSP::createFunction);
 	mspTypeNameVector.push_back(FloatToPackedFloatMSP::getMSPTypeName());
 
+	MSPFactorySingleton::getInstance()->registerCreateFunction(ByteToPackedByteMSP::getMSPTypeName(), ByteToPackedByteMSP::createFunction);
+	mspTypeNameVector.push_back(ByteToPackedByteMSP::getMSPTypeName());
+
 }
 
 
@@ -97,6 +101,7 @@ void dllMSPRegistration(IMSPFactory * MSPFactory) {
 	MSPFactory->registerCreateFunction(DigitalToAnalogMSP::getMSPTypeName(), DigitalToAnalogMSP::createFunction);
 	MSPFactory->registerCreateFunction(TrackerToMatrix4MSP::getMSPTypeName(), TrackerToMatrix4MSP::createFunction);
 	MSPFactory->registerCreateFunction(FloatToPackedFloatMSP::getMSPTypeName(), FloatToPackedFloatMSP::createFunction);
+	MSPFactory->registerCreateFunction(ByteToPackedByteMSP::getMSPTypeName(), ByteToPackedByteMSP::createFunction);
 
 	MSPFactory->registerCreateFunction(PackedByteToByteMSP::getMSPTypeName(), PackedByteToByteMSP::createFunction);
 	MSPFactory->registerCreateFunction(PackedFloatToFloatMSP::getMSPTypeName(), PackedFloatToFloatMSP::createFunction);

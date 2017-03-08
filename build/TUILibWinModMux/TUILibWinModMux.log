@@ -1,0 +1,22 @@
+﻿C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.CppBuild.targets(368,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
+  FloatToFloatPackage.cpp
+c:\program files (x86)\microsoft visual studio 14.0\vc\include\utility(172): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+  c:\users\micka\documents\fraunhofer_2016_2017\tuiframework_github\src\tuiplugins\winmodmux\floattofloatpackage.cpp(49): note: see reference to function template instantiation 'std::pair<int,T>::pair<int&,int,void,0>(_Other1,_Other2 &&) noexcept' being compiled
+          with
+          [
+              T=float,
+              _Other1=int &,
+              _Other2=int
+          ]
+  c:\users\micka\documents\fraunhofer_2016_2017\tuiframework_github\src\tuiplugins\winmodmux\floattofloatpackage.cpp(49): note: see reference to function template instantiation 'std::pair<int,T>::pair<int&,int,void,0>(_Other1,_Other2 &&) noexcept' being compiled
+          with
+          [
+              T=float,
+              _Other1=int &,
+              _Other2=int
+          ]
+  ByteToBytePackage.cpp
+  Generating Code...
+C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.CppBuild.targets(1357,5): warning MSB8012: TargetPath(C:\Users\micka\Documents\Fraunhofer_2016_2017\TUIFramework_Github\platforms\MSVC2015\..\..\install\lib\x86\TUIFramework\TUILibWinModMux.lib) does not match the Library's OutputFile property value (C:\Users\micka\Documents\Fraunhofer_2016_2017\TUIFramework_Github\install\lib\x86\TUIFramework\TUILibWinModMuxD.lib). This may cause your project to build incorrectly. To correct this, please make sure that $(OutDir), $(TargetName) and $(TargetExt) property values match the value specified in %(Lib.OutputFile).
+C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.CppBuild.targets(1359,5): warning MSB8012: TargetName(TUILibWinModMux) does not match the Library's OutputFile property value (TUILibWinModMuxD). This may cause your project to build incorrectly. To correct this, please make sure that $(OutDir), $(TargetName) and $(TargetExt) property values match the value specified in %(Lib.OutputFile).
+  TUILibWinModMux.vcxproj -> C:\Users\micka\Documents\Fraunhofer_2016_2017\TUIFramework_Github\platforms\MSVC2015\..\..\install\lib\x86\TUIFramework\TUILibWinModMux.lib

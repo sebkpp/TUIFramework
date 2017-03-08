@@ -156,6 +156,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\..\src\TUIPlugins\typeconverter\AnalogToDigitalMSP.cpp" />
+    <ClCompile Include="..\..\..\..\src\TUIPlugins\typeconverter\ByteToPackedByteMSP.cpp" />
     <ClCompile Include="..\..\..\..\src\TUIPlugins\typeconverter\DigitalToAnalogMSP.cpp" />
     <ClCompile Include="..\..\..\..\src\TUIPlugins\typeconverter\FloatToPackedFloatMSP.cpp" />
     <ClCompile Include="..\..\..\..\src\TUIPlugins\typeconverter\PackedByteToByteMSP.cpp" />
@@ -166,8 +167,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\include\TUIPlugins\typeconverter\AnalogToDigitalMSP.h" />
+    <ClInclude Include="..\..\..\..\include\TUIPlugins\typeconverter\ByteToPackedByteMSP.h" />
     <ClInclude Include="..\..\..\..\include\TUIPlugins\typeconverter\DigitalToAnalogMSP.h" />
     <ClInclude Include="..\..\..\..\include\TUIPlugins\typeconverter\FloatToPackedFloatMSP.h" />
+    <ClInclude Include="..\..\..\..\include\TUIPlugins\typeconverter\PackedByteToByteMSP.h" />
     <ClInclude Include="..\..\..\..\include\TUIPlugins\typeconverter\PackedDWordToDWordMSP.h" />
     <ClInclude Include="..\..\..\..\include\TUIPlugins\typeconverter\PackedFloatToFloatMSP.h" />
     <ClInclude Include="..\..\..\..\include\TUIPlugins\typeconverter\PackedWordToWordMSP.h" />

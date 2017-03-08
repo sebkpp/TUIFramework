@@ -16,8 +16,6 @@ class FloatToPackedFloatMSP :
 		static IMSP * createFunction(void * arg);
 		static std::string getMSPTypeName();
 
-
-
 		virtual const std::string & getTypeName() const;
 		virtual IEventSink * getEventSink(const std::string & name);
 		virtual void registerEventSink(const std::string & name, IEventSink * eventSink);

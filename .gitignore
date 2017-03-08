@@ -27,3 +27,5 @@ extensions/tuiclientpyext/build/temp.win-amd64-3.5/Release/TUIClientPythonModule
 extensions/tuiclientpyext/build/
 extensions/WinMOD_Projectv2/
 WinMOD-Project_HT+FB_V1_ohneFB140+150_Vorlaufig/
+tuiclientpyext/
+install/
