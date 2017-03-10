@@ -1,26 +1,61 @@
 {
-    "FB110": {
-        "FB.MO1.$v_ist": {
+    "TUI1": {
+        "dig1": {
             "Constraint_Max": "170",
             "Constraint_Min": "-170",
             "Transformation_Type": "trans",
-            "Description": "FB110_sub_59",
+            "Description": "LBR_A2",
+            "Value": 0.0
+        },
+        "dig2": {
+            "Constraint_Max": "170",
+            "Constraint_Min": "-170",
+            "Transformation_Type": "trans",
+            "Description": "LBR_A2",
+            "Value": 0.0
+        },
+        "dig3": {
+            "Constraint_Max": "170",
+            "Constraint_Min": "-170",
+            "Transformation_Type": "trans",
+            "Description": "LBR_A2",
+            "Value": 0.0
+        },
+        "in1": {
+            "Constraint_Max": "170",
+            "Constraint_Min": "-170",
+            "Transformation_Type": "trans",
+            "Description": "LBR_A2",
             "Value": 0.0
         }
     },
-    "HT100": {
-        "HT.MO1.$v_ist": {
+    "TUI2": {
+        "dig1": {
             "Constraint_Max": "170",
             "Constraint_Min": "-170",
             "Transformation_Type": "trans",
-            "Description": "HT100_sub_59",
+            "Description": "LBR_A2",
             "Value": 0.0
         },
-        "HT.MO2.$pos_ist": {
+        "dig2": {
             "Constraint_Max": "170",
             "Constraint_Min": "-170",
             "Transformation_Type": "trans",
-            "Description": "HT100_sub_59",
+            "Description": "LBR_A2",
+            "Value": 0.0
+        },
+        "dig3": {
+            "Constraint_Max": "170",
+            "Constraint_Min": "-170",
+            "Transformation_Type": "trans",
+            "Description": "LBR_A2",
+            "Value": 0.0
+        },
+        "in1": {
+            "Constraint_Max": "170",
+            "Constraint_Min": "-170",
+            "Transformation_Type": "trans",
+            "Description": "LBR_A2",
             "Value": 0.0
         }
     }

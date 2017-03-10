@@ -1,5 +1,6 @@
 import socket
 import json
+import sys
 
 input("Press ENTER when the Python Interface is ready")
 
@@ -13,3 +14,4 @@ sock.bind((UDP_IP, UDP_PORT))
 while True:
     data, addr = sock.recvfrom(1024) # buffer size is 1024 bytes
     print(json.loads(data.decode()))
+    print(sys.getsizeof(data))

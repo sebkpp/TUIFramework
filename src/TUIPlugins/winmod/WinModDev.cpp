@@ -12,6 +12,7 @@
 #include <sstream>
 #include <array>
 
+
 using namespace tuiframework;
 using namespace std;
 
@@ -43,7 +44,7 @@ WinModDev::WinModDev(const DeviceConfig & deviceConfig)
 
 	portMap["fIn"] = Port("fIn","PackedAnalog", Port::Source);
 
-	portMap["byteOut"] = Port("byteOut", "PackedByte", Port::Sink);
+	portMap["byteOut"] = Port("byteOut", "PackedInteger", Port::Sink);
 	portMap["byteIn"] = Port("byteIn", "PackedByte", Port::Source);
 
 	DeviceType deviceType;
@@ -283,30 +284,34 @@ void WinModDev::executeInputLoop() {
 						// ToDo Reactivate Byte-Values
 						for(int i = 0 ; i < byteSize ; i++){
 							//ByteChangedEvent *event2 = new ByteChangedEvent();
-							IntegerChangedEvent *event2 = new IntegerChangedEvent();
+	
 						
-							string map = "DO";
-							map.append(std::to_string(i+1));
+							//string map = "DO";
+							//map.append(std::to_string(i+1));
 
-							event2->setAddress(EPAddress(this->entityID, this->deviceDescriptor.getNameChannelNrMap()[map]));
-							event2->setPayload((int)iCurrentData[i]);
+	
+							//event2->setPayload((int)iCurrentData[i]);
 							
-							//cout << "In Byte " << i+1 << ": " << (int)iCurrentData[i] << endl;
+							//cout << "In Byte " << i+1 << ": " << iCurrentData[i] << endl;
 						
-						
+							this->packedInteger.init(byteSize);
+							this->packedInteger.getItems().at(i).second = (int)iCurrentData[i];
 							//unsigned char testVal = event2->getPayload();
 							//for(int j=0; j < 8; j++){
 							//	cout << ((testVal >> j) & 1);
 							//}
 						
 							
-							eventSink->push(event2);
+							
 							//byteValues.push_back(iCurrentData[i]);
-							//cout <<"Bytes: "  << byteValues.at(i)<< endl;
+							//cout <<"Bytes: "  << event2<< endl;
 
 						}
 						//wd.setBytes(iCurrentData,byteSize);
-
+						PackedIntegerEvent *event2 = new PackedIntegerEvent();
+						event2->setAddress(EPAddress(this->entityID, this->deviceDescriptor.getNameChannelNrMap()["byteOut"]));
+						event2->setPayload(packedInteger);
+						eventSink->push(event2);
 					}
 				
 				}
@@ -394,6 +399,7 @@ void WinModDev::executeOutputLoop() {
 					//const float *value = pf.getValues().data();
 					
 					vector<float> floatVector;
+					//cout << "Size: " << size << endl;
 					for (int i = 0; i < size; i++)
 					{
 						floatVector.push_back(pf.getItems().at(i).second);
@@ -409,103 +415,36 @@ void WinModDev::executeOutputLoop() {
 					//delete value;
 				}
 				
-				else if(event->getEventTypeID() == IntegerVectorChangedEvent::EventTypeID())
+				else if(event->getEventTypeID() == PackedIntegerEvent::EventTypeID())
 				{
-					//IntegerVectorChangedEvent* byteEvent = (IntegerVectorChangedEvent*)event;
-					//cout << "event: "<<byteEvent << endl;
-					//std::stringstream buffer;
-					//buffer << byteEvent;
+					PackedIntegerEvent* byteEvent = (PackedIntegerEvent*)event;
 
-					//stringstream ssID;
-					//int id;
-					
-					//ssValue << this->splitPayloadString(buffer.str(), ' ').at(2);
-					//ssValue >> b;
-					
-					//ssID << this->splitPayloadString(buffer.str(), ' ').at(1);
-					//ssID >> id;
-					
-					//unsigned char b = static_cast<unsigned char>(byteEvent->getPayload());
 
-					//VectorList<int> b = byteEvent->getPayload();
-					//int size = b.size();
-					//BYTE *byteArray =  (BYTE*)b.getData().data();
-					//const int *intArray = b.getData().data();
+					PackedType<int> b = byteEvent->getPayload();
+					std::vector<int> intArray;
+					int size = b.getItems().size();
 
-					//memcpy(byteArray,intArray,sizeof(int)*size);
+
+					for (int i = 0; i < size; i++) {
+						intArray.push_back(b.getItems().at(i).second);
+					}
+
 					
-					//BYTE byteArray;
-					//const BYTE* begin = reinterpret_cast<const BYTE*>(std::addressof(intArray));
-					//const BYTE* end = begin + sizeof(int);
+					vector<BYTE*> byteArray;
 
-					//std::copy(begin,end,std::begin(byteArray));
-					//
-					//cout << byteArray[0] << endl;
-					//cout << byteArray[1] << endl;
-					//cout << byteArray[2] << endl;
-					//cout << byteArray[3] << endl;
-					//cout << byteArray[4] << endl;
-					//
-					//vector<BYTE> byteArray2;
-					//for(int i=0;i<size;i++)
-					//{
-					//	byteArray2.push_back(byteArray[i*size]);
-					//}
-					
-					//cout << byteArray2[0] << endl;
-					//cout << byteArray2[1] << endl;
-					//cout << byteArray2[2] << endl;
-					//cout << byteArray2[3] << endl;
-					
-					//if(WMY200WriteBlock8(m_hRange,byteArray2.data(),byteOff,size) == WM_Y200_S_OK){}
+					for (int i = 0; i < size; i++) {
+						byteArray.push_back((BYTE*)(intArray.data() + i));
+					}
 
-					//for(int i=0;i<b.size();i++)
-					//{
-					//	cout << "ServerIn Byte: "<< b.at(i) << endl;
-					//	float value = f.at(i);
-					//}
 
-					//delete byteEvent;
-					//delete byteArray;
+					for (int i = 0; i < size; i++) {
+						// Write Bytes to WinMod shared-Memory process
+						if (WMY200WriteBlock8(m_hRange, *(byteArray.data() + i), byteOff + i, size) == WM_Y200_S_OK) {}
+					}
+
 				}
-				
-				// Check if Event is EventType for WordEvents
-				/*else if(event->getEventTypeID() == WordChangedEvent::EventTypeID())
-				{
-
-					// Casting Event to WordChangedEvent
-					PackedWORDEvent* wordEvent = (PackedWORDEvent*)event;
-					// Get WordValues from Event
-					PackedType<WORD> pw = wordEvent->getPayload();
-					// Size of WordValues
-					int size = pw.getItems().size();
-					// get Pointer to WordValues
-					const WORD *value = pw.getValues().data();
-					// Write WordValues to WinMod Shared Memory Process
-					if(WMY200WriteBlock16(m_hRange,value,(wordOff/4),size) == WM_Y200_S_OK){};
-				}
-				
-				// Check if Event is EventType for DWordEvents
-				else if(event->getEventTypeID() == DWordChangedEvent::EventTypeID())
-				{
-					// Casting Event to DWordChangeEvent
-					PackedDWORDEvent* dWordEvent = (PackedDWORDEvent*)event;
-					// Get DWordValues from Event
-					PackedType<DWORD> pdw = dWordEvent->getPayload();
-					// Size of DWordValues
-					int size = pdw.getItems().size();
-					// Get Pointer of DWordValues
-					const DWORD *value = (pdw.getValues().data());
-					// Write DWordValues to WinMod shared Memory process.
-					if(WMY200WriteBlock32(m_hRange,value,(dWordOff/4),size) == WM_Y200_S_OK){};
-				}*/
-				
 			}
-           //if(SUCCEEDED(WMY200DestroyIPCRange(m_hRange)));
-		   //m_hRange = NULL;
         }
-
-		// delete event;*/
     }
 }
 

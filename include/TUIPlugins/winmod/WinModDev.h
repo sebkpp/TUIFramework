@@ -293,5 +293,6 @@ namespace tuidevices{
 		int dWordOff;
 		/** \brief Size of DwOrd-Values. */
 		int dWordSize;
+		PackedType<int> packedInteger;
 	};
 }

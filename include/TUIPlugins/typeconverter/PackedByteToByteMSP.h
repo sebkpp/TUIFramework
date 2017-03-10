@@ -29,7 +29,7 @@ namespace tuiframework {
 
 		EventDelegateNC<PackedIntegerEvent, PackedByteToByteMSP> eventDelegate;
 
-		IEventSink * out[2];
+		IEventSink * out[9];
 		std::map<std::string, int> nameToIdMap;
 
 		int id;

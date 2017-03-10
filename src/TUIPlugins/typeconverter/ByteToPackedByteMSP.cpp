@@ -25,7 +25,7 @@ namespace tuiframework {
 	}
 
 	ByteToPackedByteMSP::ByteToPackedByteMSP(const MSPConfig & config)
-		:config(config), eventDigital(INT32_MIN)
+		:config(config), eventDigital(0)
 	{
 
 		this->out = 0;
@@ -97,7 +97,6 @@ namespace tuiframework {
 			packedInt = e->getPayload();
 
 			packedInt.getItems().at(this->intToChange).second = changeByteVector();
-			cout << "Packed Event: " << packedInt << std::endl;
 			PackedIntegerEvent* event = new PackedIntegerEvent(-1, -1, packedInt);
 
 			this->out->push(event);
@@ -112,8 +111,8 @@ namespace tuiframework {
 			this->eventDigital = e->getPayload();
 
 			packedInt.getItems().at(this->intToChange).second = changeByteVector();
-			cout << "Digital Event: " << packedInt << std::endl;
 			PackedIntegerEvent* event = new PackedIntegerEvent(-1, -1, packedInt);
+
 			this->out->push(event);
 
 		}
@@ -123,7 +122,7 @@ namespace tuiframework {
 	void ByteToPackedByteMSP::findIntToChange()
 	{
 		for (int i = 1; i <= this->size; i++) {
-			if (this->id < i * this->size) {
+			if (this->id < i * SIZE_VECTOR) {
 				this->intToChange = i - 1;
 				return;
 			}
@@ -138,9 +137,6 @@ namespace tuiframework {
 			binary[i] = intToBinary % 2;
 			intToBinary /= 2;
 		}
-		for (auto bit : binary)
-			std::cout << bit;
-		std::cout << std::endl;
 		return binary;
 	}
 
@@ -148,10 +144,11 @@ namespace tuiframework {
 	{
 		int pow = 0;
 		int returnInt = 0;
-		for (int currentInt : bitToInt)
+		for (int currentInt : bitToInt) {
 			returnInt += std::pow(2, pow) * currentInt;
+			pow += 1;
+		}
 
-		std::cout << returnInt << std::endl;
 		return returnInt;
 	}
 

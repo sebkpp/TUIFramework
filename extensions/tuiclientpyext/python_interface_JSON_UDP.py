@@ -43,8 +43,8 @@ def initDict(name, portname, description, constraintMin, constraintMax, trafoTyp
 		if (portname in TUIdict[name]):
 			return
 
-	description = description.split('_')
-	description = name + '_' + description[1] + '_' + description[2]
+	#description = description.split('_')
+	#description = name + '_' + description[0] + '_' + description[2]
 
 	values['Constraint_Max'] = constraintMax
 	values['Constraint_Min'] = constraintMin
