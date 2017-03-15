@@ -20,12 +20,12 @@ def systemMsgSink(msg):
 
 #This function is called automatically each time a value changes.
 #As this function also handles the initialization of the dictionnary, it is called for each TUI objects before any connection to make sure they are all stored into the dictionary (and so into the JSON file)
-def dstmethod(name, portname, value, description, constraintMin, constraintMax, trafoType):
+def dstmethod(name, portname, value, description, constraintMin, constraintMax, trafoType, trafoNo):
 	global JSONdict
 
-	initDict(name, portname, description, constraintMin, constraintMax, trafoType)
+	initDict(name, portname, description, constraintMin, constraintMax, trafoType, trafoNo)
 
-	#print("TUI_Instance: " + name + " ; port: " + portname + " ; value: " + value)
+	#print("TUI_Instance: " + name + " ; port: " + portname + " ; value: " + value + " ; trafoNo: " + trafoNo)
 	JSONdict[name][portname]['Value'] = float(value) #we update the value of the corresponding port in the dictionary we use for the TCP connection
 	
 	PortName = portname + "Out"
@@ -33,7 +33,7 @@ def dstmethod(name, portname, value, description, constraintMin, constraintMax, 
 	tuiclient.sendEvent(name, PortName, value)
 
 #initialize the dictionary if it is not already done
-def initDict(name, portname, description, constraintMin, constraintMax, trafoType):
+def initDict(name, portname, description, constraintMin, constraintMax, trafoType, trafoNo):
 	global TUIdict
 	Port = dict()
 	values = dict()
@@ -43,12 +43,14 @@ def initDict(name, portname, description, constraintMin, constraintMax, trafoTyp
 		if (portname in TUIdict[name]):
 			return
 
-	#description = description.split('_')
-	#description = name + '_' + description[0] + '_' + description[2]
+	#if description != "empty":
+	#	description = description.split('_')
+	#	description = name + '_' + description[1] + '_' + description[2]
 
-	values['Constraint_Max'] = constraintMax
-	values['Constraint_Min'] = constraintMin
-	values['Transformation_Type'] = trafoType
+	values['ConstraintMax'] = constraintMax
+	values['ConstraintMin'] = constraintMin
+	values['TrafoType'] = trafoType
+	values['TrafoNo'] = trafoNo
 	values['Description'] = description
 	values['Value'] = 0.0
 

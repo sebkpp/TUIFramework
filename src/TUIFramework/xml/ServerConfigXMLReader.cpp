@@ -156,28 +156,35 @@ namespace tuiframework {
 					node = domTreeWalker->nextNode();
 
 					if (XMLString::compareString(XMLString::transcode(node->getNodeName()), "Parameter") == 0) {
-						nodeMap = node->getAttributes();
-						nameAttribute = nodeMap->getNamedItem(XMLString::transcode("name"));
-						DOMNode * valueAttribute = nodeMap->getNamedItem(XMLString::transcode("value"));
-						std::string value = XMLString::transcode(valueAttribute->getNodeValue());
+						for (int index = 0; index < 2; index++) {
+							nodeMap = node->getAttributes();
+							nameAttribute = nodeMap->getNamedItem(XMLString::transcode("name"));
+							DOMNode * valueAttribute = nodeMap->getNamedItem(XMLString::transcode("value"));
+							std::string value = XMLString::transcode(valueAttribute->getNodeValue());
 
-						if (XMLString::compareString(XMLString::transcode(nameAttribute->getNodeValue()), "TrafoType") == 0) {
-							if (!value.empty())
-								port.setTransfoType(value);
-							else
-								port.setTransfoType("empty");
+							if (XMLString::compareString(XMLString::transcode(nameAttribute->getNodeValue()), "TrafoType") == 0) {
+								if (!value.empty())
+									port.setTrafoType(value);
+								else
+									port.setTrafoType("empty");
+								node = domTreeWalker->nextNode();
+							}
+							else if (XMLString::compareString(XMLString::transcode(nameAttribute->getNodeValue()), "TrafoNo") == 0) {
+								if (!value.empty())
+									port.setTrafoNo(value);
+								else
+									port.setTrafoNo("empty");
+							}
 						}
 					}
 					else {
 						node = domTreeWalker->previousNode();
-						port.setTransfoType("empty");
+						port.setTrafoType("empty");
+						port.setTrafoNo("empty");
 					}
 				}
 			}
 			node = domTreeWalker->nextNode();
-			cout << port.getConstraintMin() << endl;
-			cout << port.getConstraintMax() << endl;
-			cout << port.getTransfoType() << endl;
 		}
 
 		return port;

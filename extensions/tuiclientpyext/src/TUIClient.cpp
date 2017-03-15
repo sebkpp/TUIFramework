@@ -63,7 +63,7 @@ void TUIClient::setEventCallback(PyObject * callback) {
 					this->eventDelegationMap.erase(pair<int, int>(tuiObjectNr, portNr));
 					this->eventDelegationMap[pair<int, int>(tuiObjectNr, portNr)] = ied;
 					
-					ied->createConnection(it->getName(), typeMapIt2->second.getName(), callback, typeMapIt2->second.getDescription(), typeMapIt2->second.getConstraintMin(), typeMapIt2->second.getConstraintMax(), typeMapIt2->second.getTransfoType());
+					ied->createConnection(it->getName(), typeMapIt2->second.getName(), callback, typeMapIt2->second.getDescription(), typeMapIt2->second.getConstraintMin(), typeMapIt2->second.getConstraintMax(), typeMapIt2->second.getTrafoType(), typeMapIt2->second.getTrafoNo());
 				}
 }
 

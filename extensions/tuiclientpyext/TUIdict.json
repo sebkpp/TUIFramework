@@ -1,61 +1,249 @@
 {
-    "TUI1": {
-        "dig1": {
-            "Constraint_Max": "170",
-            "Constraint_Min": "-170",
-            "Transformation_Type": "trans",
-            "Description": "LBR_A2",
+    "HT10": {
+        "M01.$v_Ist": {
+            "ConstraintMax": "300.0",
+            "ConstraintMin": "-300.0",
+            "TrafoType": "trans",
+            "TrafoNo": "1",
+            "Description": "HT_sub_59",
             "Value": 0.0
         },
-        "dig2": {
-            "Constraint_Max": "170",
-            "Constraint_Min": "-170",
-            "Transformation_Type": "trans",
-            "Description": "LBR_A2",
+        "M01.C_rueck": {
+            "ConstraintMax": "empty",
+            "ConstraintMin": "empty",
+            "TrafoType": "empty",
+            "TrafoNo": "empty",
+            "Description": "empty",
             "Value": 0.0
         },
-        "dig3": {
-            "Constraint_Max": "170",
-            "Constraint_Min": "-170",
-            "Transformation_Type": "trans",
-            "Description": "LBR_A2",
+        "M01.C_vor": {
+            "ConstraintMax": "empty",
+            "ConstraintMin": "empty",
+            "TrafoType": "empty",
+            "TrafoNo": "empty",
+            "Description": "empty",
             "Value": 0.0
         },
-        "in1": {
-            "Constraint_Max": "170",
-            "Constraint_Min": "-170",
-            "Transformation_Type": "trans",
-            "Description": "LBR_A2",
+        "M02.$pos_Ist": {
+            "ConstraintMax": "800.0",
+            "ConstraintMin": "0.0",
+            "TrafoType": "trans",
+            "TrafoNo": "2",
+            "Description": "HT_sub_59",
+            "Value": 0.0
+        },
+        "M02.C_ab": {
+            "ConstraintMax": "empty",
+            "ConstraintMin": "empty",
+            "TrafoType": "empty",
+            "TrafoNo": "empty",
+            "Description": "empty",
+            "Value": 0.0
+        },
+        "M02.C_auf": {
+            "ConstraintMax": "empty",
+            "ConstraintMin": "empty",
+            "TrafoType": "empty",
+            "TrafoNo": "empty",
+            "Description": "empty",
             "Value": 0.0
         }
     },
-    "TUI2": {
-        "dig1": {
-            "Constraint_Max": "170",
-            "Constraint_Min": "-170",
-            "Transformation_Type": "trans",
+    "HT20": {
+        "M01.$v_Ist": {
+            "ConstraintMax": "300.0",
+            "ConstraintMin": "-300.0",
+            "TrafoType": "trans",
+            "TrafoNo": "1",
+            "Description": "HT_sub_59",
+            "Value": 0.0
+        },
+        "M01.C_rueck": {
+            "ConstraintMax": "empty",
+            "ConstraintMin": "empty",
+            "TrafoType": "empty",
+            "TrafoNo": "empty",
+            "Description": "empty",
+            "Value": 0.0
+        },
+        "M01.C_vor": {
+            "ConstraintMax": "empty",
+            "ConstraintMin": "empty",
+            "TrafoType": "empty",
+            "TrafoNo": "empty",
+            "Description": "empty",
+            "Value": 0.0
+        },
+        "M02.$pos_Ist": {
+            "ConstraintMax": "800.0",
+            "ConstraintMin": "0.0",
+            "TrafoType": "trans",
+            "TrafoNo": "2",
+            "Description": "HT_sub_59",
+            "Value": 0.0
+        },
+        "M02.C_ab": {
+            "ConstraintMax": "empty",
+            "ConstraintMin": "empty",
+            "TrafoType": "empty",
+            "TrafoNo": "empty",
+            "Description": "empty",
+            "Value": 0.0
+        },
+        "M02.C_auf": {
+            "ConstraintMax": "empty",
+            "ConstraintMin": "empty",
+            "TrafoType": "empty",
+            "TrafoNo": "empty",
+            "Description": "empty",
+            "Value": 0.0
+        }
+    },
+    "HT30": {
+        "M01.$v_Ist": {
+            "ConstraintMax": "300.0",
+            "ConstraintMin": "-300.0",
+            "TrafoType": "trans",
+            "TrafoNo": "1",
+            "Description": "HT_sub_59",
+            "Value": 0.0
+        },
+        "M01.C_rueck": {
+            "ConstraintMax": "empty",
+            "ConstraintMin": "empty",
+            "TrafoType": "empty",
+            "TrafoNo": "empty",
+            "Description": "empty",
+            "Value": 0.0
+        },
+        "M01.C_vor": {
+            "ConstraintMax": "empty",
+            "ConstraintMin": "empty",
+            "TrafoType": "empty",
+            "TrafoNo": "empty",
+            "Description": "empty",
+            "Value": 0.0
+        },
+        "M02.$pos_Ist": {
+            "ConstraintMax": "800.0",
+            "ConstraintMin": "0.0",
+            "TrafoType": "trans",
+            "TrafoNo": "2",
+            "Description": "HT_sub_59",
+            "Value": 0.0
+        },
+        "M02.C_ab": {
+            "ConstraintMax": "empty",
+            "ConstraintMin": "empty",
+            "TrafoType": "empty",
+            "TrafoNo": "empty",
+            "Description": "empty",
+            "Value": 0.0
+        },
+        "M02.C_auf": {
+            "ConstraintMax": "empty",
+            "ConstraintMin": "empty",
+            "TrafoType": "empty",
+            "TrafoNo": "empty",
+            "Description": "empty",
+            "Value": 0.0
+        }
+    },
+    "LBR80": {
+        "CTR.AntriebeSindAn": {
+            "ConstraintMax": "empty",
+            "ConstraintMin": "empty",
+            "TrafoType": "empty",
+            "TrafoNo": "empty",
+            "Description": "empty",
+            "Value": 0.0
+        },
+        "CTR.GreiferIstAuf": {
+            "ConstraintMax": "empty",
+            "ConstraintMin": "empty",
+            "TrafoType": "empty",
+            "TrafoNo": "empty",
+            "Description": "empty",
+            "Value": 0.0
+        },
+        "CTR.GreiferIstZu": {
+            "ConstraintMax": "empty",
+            "ConstraintMin": "empty",
+            "TrafoType": "empty",
+            "TrafoNo": "empty",
+            "Description": "empty",
+            "Value": 0.0
+        },
+        "GR.$pos_l": {
+            "ConstraintMax": "25.0",
+            "ConstraintMin": "0.0",
+            "TrafoType": "trans",
+            "TrafoNo": "1",
+            "Description": "GR_links",
+            "Value": 0.0
+        },
+        "GR.$pos_r": {
+            "ConstraintMax": "26.0",
+            "ConstraintMin": "0.0",
+            "TrafoType": "trans",
+            "TrafoNo": "1",
+            "Description": "GR_rechts",
+            "Value": 0.0
+        },
+        "M01.$A1": {
+            "ConstraintMax": "170.0",
+            "ConstraintMin": "-170.0",
+            "TrafoType": "rot",
+            "TrafoNo": "3",
+            "Description": "LBR_A1",
+            "Value": 0.0
+        },
+        "M02.$A2": {
+            "ConstraintMax": "120.0",
+            "ConstraintMin": "-120.0",
+            "TrafoType": "rot",
+            "TrafoNo": "3",
             "Description": "LBR_A2",
             "Value": 0.0
         },
-        "dig2": {
-            "Constraint_Max": "170",
-            "Constraint_Min": "-170",
-            "Transformation_Type": "trans",
-            "Description": "LBR_A2",
+        "M03.$A3": {
+            "ConstraintMax": "170.0",
+            "ConstraintMin": "-170.0",
+            "TrafoType": "rot",
+            "TrafoNo": "3",
+            "Description": "LBR_A3",
             "Value": 0.0
         },
-        "dig3": {
-            "Constraint_Max": "170",
-            "Constraint_Min": "-170",
-            "Transformation_Type": "trans",
-            "Description": "LBR_A2",
+        "M04.$A4": {
+            "ConstraintMax": "120.0",
+            "ConstraintMin": "-120.0",
+            "TrafoType": "rot",
+            "TrafoNo": "3",
+            "Description": "LBR_A4",
             "Value": 0.0
         },
-        "in1": {
-            "Constraint_Max": "170",
-            "Constraint_Min": "-170",
-            "Transformation_Type": "trans",
-            "Description": "LBR_A2",
+        "M05.$A5": {
+            "ConstraintMax": "170.0",
+            "ConstraintMin": "-170.0",
+            "TrafoType": "rot",
+            "TrafoNo": "3",
+            "Description": "LBR_A5",
+            "Value": 0.0
+        },
+        "M06.$A6": {
+            "ConstraintMax": "120.0",
+            "ConstraintMin": "-120.0",
+            "TrafoType": "rot",
+            "TrafoNo": "3",
+            "Description": "LBR_A6",
+            "Value": 0.0
+        },
+        "M07.$A7": {
+            "ConstraintMax": "175.0",
+            "ConstraintMin": "-175.0",
+            "TrafoType": "rot",
+            "TrafoNo": "3",
+            "Description": "LBR_A7",
             "Value": 0.0
         }
     }
