@@ -6,6 +6,7 @@
 #include "../../tuiframework/core/IDevice.h"
 #include "../../tuiframework/core/IEventSink.h"
 #include "../../tuiframework/server/DeviceDescriptor.h"
+#include "../../TUIPlugins/tuitypes/common/CommonTypeReg.h"
 
 #include <iostream>
 

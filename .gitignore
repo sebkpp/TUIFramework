@@ -33,3 +33,10 @@ src/TUIExampleClients/tuipythonclient/build/
 extensions/WinMOD_Projectv2/
 extensions/WinMOD-Project_HT+FB_V1/
 WinMOD-Project_HT+FB_V1_ohneFB140+150_Vorlaufig/
+platforms/
+extensions/tuiclientpyext/xmlconfig/TUIconfig_winMOD_noWayBack_new.xml
+extensions/tuiclientpyext/xmlconfig/test.xml
+extensions/tuiclientpyext/xmlconfig/winmod_testconfig_eightTUIDev2_returnBytes.xml
+extensions/tuiclientpyext/xmlconfig/winmod_testconfig_fourTUIDev2_returnBytes.xml
+extensions/tuiclientpyext/xmlconfig/winmod_testconfig_twoTUIDev2.xml
+extensions/MouseServer/

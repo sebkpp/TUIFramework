@@ -1,11 +1,11 @@
 {
-    "HT10": {
+    "HT100": {
         "M01.$v_Ist": {
             "ConstraintMax": "300.0",
             "ConstraintMin": "-300.0",
             "TrafoType": "trans",
             "TrafoNo": "1",
-            "Description": "HT_sub_59",
+            "Description": "empty",
             "Value": 0.0
         },
         "M01.C_rueck": {
@@ -29,7 +29,7 @@
             "ConstraintMin": "0.0",
             "TrafoType": "trans",
             "TrafoNo": "2",
-            "Description": "HT_sub_59",
+            "Description": "HT100_sub_59",
             "Value": 0.0
         },
         "M02.C_ab": {
@@ -49,13 +49,13 @@
             "Value": 0.0
         }
     },
-    "HT20": {
+    "HT200": {
         "M01.$v_Ist": {
             "ConstraintMax": "300.0",
             "ConstraintMin": "-300.0",
             "TrafoType": "trans",
             "TrafoNo": "1",
-            "Description": "HT_sub_59",
+            "Description": "empty",
             "Value": 0.0
         },
         "M01.C_rueck": {
@@ -79,7 +79,7 @@
             "ConstraintMin": "0.0",
             "TrafoType": "trans",
             "TrafoNo": "2",
-            "Description": "HT_sub_59",
+            "Description": "HT200_sub_59",
             "Value": 0.0
         },
         "M02.C_ab": {
@@ -99,13 +99,13 @@
             "Value": 0.0
         }
     },
-    "HT30": {
+    "HT300": {
         "M01.$v_Ist": {
             "ConstraintMax": "300.0",
             "ConstraintMin": "-300.0",
             "TrafoType": "trans",
             "TrafoNo": "1",
-            "Description": "HT_sub_59",
+            "Description": "empty",
             "Value": 0.0
         },
         "M01.C_rueck": {
@@ -129,7 +129,7 @@
             "ConstraintMin": "0.0",
             "TrafoType": "trans",
             "TrafoNo": "2",
-            "Description": "HT_sub_59",
+            "Description": "HT300_sub_59",
             "Value": 0.0
         },
         "M02.C_ab": {
@@ -149,7 +149,7 @@
             "Value": 0.0
         }
     },
-    "LBR80": {
+    "LBR100": {
         "CTR.AntriebeSindAn": {
             "ConstraintMax": "empty",
             "ConstraintMin": "empty",
@@ -179,7 +179,7 @@
             "ConstraintMin": "0.0",
             "TrafoType": "trans",
             "TrafoNo": "1",
-            "Description": "GR_links",
+            "Description": "GR100_links",
             "Value": 0.0
         },
         "GR.$pos_r": {
@@ -187,7 +187,7 @@
             "ConstraintMin": "0.0",
             "TrafoType": "trans",
             "TrafoNo": "1",
-            "Description": "GR_rechts",
+            "Description": "GR100_rechts",
             "Value": 0.0
         },
         "M01.$A1": {
@@ -195,7 +195,7 @@
             "ConstraintMin": "-170.0",
             "TrafoType": "rot",
             "TrafoNo": "3",
-            "Description": "LBR_A1",
+            "Description": "LBR100_A1",
             "Value": 0.0
         },
         "M02.$A2": {
@@ -203,7 +203,7 @@
             "ConstraintMin": "-120.0",
             "TrafoType": "rot",
             "TrafoNo": "3",
-            "Description": "LBR_A2",
+            "Description": "LBR100_A2",
             "Value": 0.0
         },
         "M03.$A3": {
@@ -211,7 +211,7 @@
             "ConstraintMin": "-170.0",
             "TrafoType": "rot",
             "TrafoNo": "3",
-            "Description": "LBR_A3",
+            "Description": "LBR100_A3",
             "Value": 0.0
         },
         "M04.$A4": {
@@ -219,7 +219,7 @@
             "ConstraintMin": "-120.0",
             "TrafoType": "rot",
             "TrafoNo": "3",
-            "Description": "LBR_A4",
+            "Description": "LBR100_A4",
             "Value": 0.0
         },
         "M05.$A5": {
@@ -227,7 +227,7 @@
             "ConstraintMin": "-170.0",
             "TrafoType": "rot",
             "TrafoNo": "3",
-            "Description": "LBR_A5",
+            "Description": "LBR100_A5",
             "Value": 0.0
         },
         "M06.$A6": {
@@ -235,7 +235,7 @@
             "ConstraintMin": "-120.0",
             "TrafoType": "rot",
             "TrafoNo": "3",
-            "Description": "LBR_A6",
+            "Description": "LBR100_A6",
             "Value": 0.0
         },
         "M07.$A7": {
@@ -243,7 +243,7 @@
             "ConstraintMin": "-175.0",
             "TrafoType": "rot",
             "TrafoNo": "3",
-            "Description": "LBR_A7",
+            "Description": "LBR100_A7",
             "Value": 0.0
         }
     }

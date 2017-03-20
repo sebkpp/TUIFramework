@@ -1,8 +1,10 @@
-#include <TUIPlugins/typeconverter/ByteToPackedByteMSP.h>
-#include <tuiframework/core/Exception.h>
+#include "ByteToPackedByteMSP.h"
+#include "../../tuiframework/core/Exception.h"
 #define USE_TFDEBUG
+#include "../../TUIFramework/logging/Logger.h"
+
 #define SIZE_VECTOR 8
-#include <tuiframework/logging/Logger.h>
+
 
 static const char * inTag = "in";
 static const char * inTagPacked = "inPacked";

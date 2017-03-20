@@ -7,7 +7,7 @@ import _thread
 import socket
 
 TUIdict = dict() #dictionary where we store all the values, and the meta datas
-JSONdict = dict() #dictionary used for the TCP connection, filled only with the values
+JSONdict = dict() #dictionary used for the UDP connection, filled only with the values
 
 def systemMsgSink(msg):
 	if msg == 1:
@@ -26,7 +26,7 @@ def dstmethod(name, portname, value, description, constraintMin, constraintMax, 
 	initDict(name, portname, description, constraintMin, constraintMax, trafoType, trafoNo)
 
 	#print("TUI_Instance: " + name + " ; port: " + portname + " ; value: " + value + " ; trafoNo: " + trafoNo)
-	JSONdict[name][portname]['Value'] = float(value) #we update the value of the corresponding port in the dictionary we use for the TCP connection
+	JSONdict[name][portname]['Value'] = float(value) #we update the value of the corresponding port in the dictionary we use for the UDP connection
 	
 	PortName = portname + "Out"
 
@@ -43,10 +43,15 @@ def initDict(name, portname, description, constraintMin, constraintMax, trafoTyp
 		if (portname in TUIdict[name]):
 			return
 
-	#if description != "empty":
-	#	description = description.split('_')
-	#	description = name + '_' + description[1] + '_' + description[2]
-
+	if description != "empty":
+		description = description.split('_')
+		if description[0] == "HT":
+			description = name + '_' + description[1] + '_' + description[2]
+		if description[0] == "LBR":
+			description = name + '_' + description[1]
+		if description[0] == "GR":
+			description = "GR100" + '_' + description[1]
+		
 	values['ConstraintMax'] = constraintMax
 	values['ConstraintMin'] = constraintMin
 	values['TrafoType'] = trafoType
@@ -69,7 +74,7 @@ def initDict(name, portname, description, constraintMin, constraintMax, trafoTyp
 	initJSON()
 	return
 
-#initialize the dictionary useful for the TCP connection
+#initialize the dictionary useful for the UDP connection
 def initJSON():
 	global TUIdict
 	global JSONdict
@@ -86,7 +91,7 @@ def initJSON():
 		JSONdict[name] = Port
 		Port = dict()
 
-#TCP server
+#UDP server
 def recv(tmp):
 	global JSONdict
 
