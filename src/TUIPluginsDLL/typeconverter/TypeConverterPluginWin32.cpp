@@ -22,22 +22,21 @@
     along with the TUIFramework.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include <tuiframework/server/MSPFactorySingleton.h>
+#include "../../tuiframework/server/MSPFactorySingleton.h"
 
-#include <tuiframework/core/Version.h>
-#include <tuiframework/core/Imsp.h>
-#include <tuiframework/server/mspConfig.h>
-#include <tuiframework/server/IMSPFactory.h>
+#include "../../tuiframework/core/Version.h"
+#include "../../tuiframework/core/Imsp.h"
+#include "../../tuiframework/server/mspConfig.h"
+#include "../../tuiframework/server/IMSPFactory.h"
 
-#include <TUIPlugins/typeconverter/AnalogToDigitalMSP.h>
-#include <TUIPlugins/typeconverter/DigitalToAnalogMSP.h>
-#include <TUIPlugins/typeconverter/TrackerToMatrix4MSP.h>
-#include <TUIPlugins/typeconverter/PackedByteToByteMSP.h>
-#include <TUIPlugins/typeconverter/FloatToPackedFloatMSP.h>
-#include <TUIPlugins/typeconverter/ByteToPackedByteMSP.h>
-#include <TUIPlugins/typeconverter/PackedFloatToFloatMSP.h>
-#include <TUIPlugins/typeconverter/PackedWordToWordMSP.h>
-#include <TUIPlugins/typeconverter/PackedDWordToDWordMSP.h>
+#include "../../TUIPlugins/typeconverter/AnalogToDigitalMSP.h"
+#include "../../TUIPlugins/typeconverter/DigitalToAnalogMSP.h"
+#include "../../TUIPlugins/typeconverter/TrackerToMatrix4MSP.h"
+#include "../../TUIPlugins/typeconverter/PackedByteToByteMSP.h"
+
+#include "../../TUIPlugins/typeconverter/PackedFloatToFloatMSP.h"
+#include "../../TUIPlugins/typeconverter/PackedWordToWordMSP.h"
+#include "../../TUIPlugins/typeconverter/PackedDWordToDWordMSP.h"
 
 #include <vector>
 
@@ -75,13 +74,6 @@ void dllInitPlugin() {
 
 	MSPFactorySingleton::getInstance()->registerCreateFunction(PackedDWordToDWordMSP::getMSPTypeName(), PackedDWordToDWordMSP::createFunction);
 	mspTypeNameVector.push_back(PackedDWordToDWordMSP::getMSPTypeName());
-	
-	MSPFactorySingleton::getInstance()->registerCreateFunction(FloatToPackedFloatMSP::getMSPTypeName(), FloatToPackedFloatMSP::createFunction);
-	mspTypeNameVector.push_back(FloatToPackedFloatMSP::getMSPTypeName());
-
-	MSPFactorySingleton::getInstance()->registerCreateFunction(ByteToPackedByteMSP::getMSPTypeName(), ByteToPackedByteMSP::createFunction);
-	mspTypeNameVector.push_back(ByteToPackedByteMSP::getMSPTypeName());
-
 }
 
 
@@ -97,11 +89,8 @@ std::string dllGetDLLVersion() {
 
 void dllMSPRegistration(IMSPFactory * MSPFactory) {
     MSPFactory->registerCreateFunction(AnalogToDigitalMSP::getMSPTypeName(), AnalogToDigitalMSP::createFunction);
-
 	MSPFactory->registerCreateFunction(DigitalToAnalogMSP::getMSPTypeName(), DigitalToAnalogMSP::createFunction);
 	MSPFactory->registerCreateFunction(TrackerToMatrix4MSP::getMSPTypeName(), TrackerToMatrix4MSP::createFunction);
-	MSPFactory->registerCreateFunction(FloatToPackedFloatMSP::getMSPTypeName(), FloatToPackedFloatMSP::createFunction);
-	MSPFactory->registerCreateFunction(ByteToPackedByteMSP::getMSPTypeName(), ByteToPackedByteMSP::createFunction);
 
 	MSPFactory->registerCreateFunction(PackedByteToByteMSP::getMSPTypeName(), PackedByteToByteMSP::createFunction);
 	MSPFactory->registerCreateFunction(PackedFloatToFloatMSP::getMSPTypeName(), PackedFloatToFloatMSP::createFunction);

@@ -27,7 +27,7 @@
 #define _TUIMouse_h_
 
 #include <tuiframework/client/client.h>
-#include <TUIPlugins/tuitypes/common/CommonTypeReg.h>
+#include "../../TUIPlugins/tuitypes/common/CommonTypeReg.h"
 
 class TUIMouse {
 public:

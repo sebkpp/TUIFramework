@@ -23,7 +23,7 @@
 */
 
 
-#include <TUIFramework\server\PluginShelfSingleton.h>
+#include "PluginShelfSingleton.h"
 
 namespace tuiframework {
 

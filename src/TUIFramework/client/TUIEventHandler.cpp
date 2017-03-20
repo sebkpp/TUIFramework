@@ -22,7 +22,7 @@
 */
 
 
-#include <TUIFramework/client/TUIEventHandler.h>
+#include "TUIEventHandler.h"
 
 namespace tuiframework {
 

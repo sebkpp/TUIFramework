@@ -22,13 +22,13 @@
 */
 
 
-#include <TUIFramework\xml\ServerConfigXMLReader.h>
+#include "ServerConfigXMLReader.h"
 
-#include <TUIFramework\xml\XMLParseErrorReporter.h>
-#include <TUIFramework\xml\XMLDOMErrorReporter.h>
-#include <TUIFramework\xml\XMLNodeFilter.h>
+#include "XMLParseErrorReporter.h"
+#include "XMLDOMErrorReporter.h"
+#include "XMLNodeFilter.h"
 
-#include <TUIFramework\logging\Logger.h>
+#include "..\logging\Logger.h"
 
 #include <xercesc/parsers/XercesDOMParser.hpp>
 #include <xercesc/util/PlatformUtils.hpp>

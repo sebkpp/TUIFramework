@@ -1,2 +1,0 @@
-﻿  FloatToFloatPackage.cpp
-c:\users\micka\documents\fraunhofer_2016_2017\tui_return_windmod_10_02_17\src\tuiplugins\winmodmux\floattofloatpackage.cpp(130): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "stdafx.h"' to your source?

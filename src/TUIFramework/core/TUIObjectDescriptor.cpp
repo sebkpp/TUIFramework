@@ -22,7 +22,7 @@
 */
 
 
-#include <TUIFramework\core\TUIObjectDescriptor.h>
+#include "TUIObjectDescriptor.h"
 
 #include <iostream>
 

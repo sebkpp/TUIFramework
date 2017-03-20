@@ -1,9 +1,9 @@
-#include <TUIPlugins/xcontroller/XControllerDev.h>
+#include "XControllerDev.h"
 
-#include <tuiframework/core/ITUIServer.h>
-#include <tuiframework/core/IEvent.h>
-#include <tuiframework/server/DeviceConfig.h>
-#include <tuiframework/core/Exception.h>
+#include "../../tuiframework/core/ITUIServer.h"
+#include "../../tuiframework/core/IEvent.h"
+#include "../../tuiframework/server/DeviceConfig.h"
+#include "../../tuiframework/core/Exception.h"
 
 #include <iostream>
 #include <sstream>

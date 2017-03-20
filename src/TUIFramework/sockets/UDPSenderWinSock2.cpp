@@ -21,16 +21,16 @@
     along with the TUIFramework.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-
-#include <TUIFramework\sockets\UDPSenderWinSock2.h>
-
 #define USE_TFDEBUG
-#include <TUIFramework\logging\Logger.h>
 
-#include <TUIFramework\core\IHostMsgSource.h>
-#include <TUIFramework\core\HostMsg.h>
-#include <TUIFramework\core\Exception.h>
-#include <TUIFramework\core\IThreadMessageSink.h>
+#include "..\sockets\UDPSenderWinSock2.h"
+
+#include "..\logging\Logger.h"
+
+#include "..\core\IHostMsgSource.h"
+#include "..\core\HostMsg.h"
+#include "..\core\Exception.h"
+#include "..\core\IThreadMessageSink.h"
 
 #include <map>
 #include <vector>

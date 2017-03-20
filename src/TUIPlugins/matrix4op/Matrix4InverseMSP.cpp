@@ -23,12 +23,12 @@
 */
 
 
-#include <TUIPlugins/matrix4op/Matrix4InverseMSP.h>
+#include "Matrix4InverseMSP.h"
 
-#include <tuiframework/server/ParameterGroup.h>
-#include <tuiframework/core/Exception.h>
+#include "../../tuiframework/server/ParameterGroup.h"
+#include "../../tuiframework/core/Exception.h"
 #define USE_TFDEBUG
-#include <tuiframework/logging/Logger.h>
+#include "../../tuiframework/logging/Logger.h"
 
 static const char * inTag = "A";
 static const char * inPackedTag = "AP";

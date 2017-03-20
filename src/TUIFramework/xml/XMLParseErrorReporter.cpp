@@ -22,7 +22,7 @@
 */
 
 
-#include <TUIFramework\xml\XMLParseErrorReporter.h>
+#include "XMLParseErrorReporter.h"
 
 #include <xercesc/sax/SAXParseException.hpp>
 #include <xercesc/util/XMLString.hpp>

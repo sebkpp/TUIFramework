@@ -22,7 +22,7 @@
 */
 
 
-#include <TUIFramework\core\EventChannelFactory.h>
+#include "EventChannelFactory.h"
 
 namespace tuiframework {
     

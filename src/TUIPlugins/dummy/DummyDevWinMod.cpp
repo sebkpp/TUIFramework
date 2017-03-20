@@ -1,7 +1,4 @@
-#include <tuiframework/core/ITUIServer.h>
-#include <tuiframework/core/IEvent.h>
-#include <tuiframework/server/DeviceConfig.h>
-#include <TUIPlugins/tuitypes/common/CommonTypeReg.h>
+
 #include <cstdlib> // GCC 4.3 related build problem
 
 #include <ctime>
@@ -13,9 +10,12 @@
 #include <windows.h>
 #endif
 
+#include "../../tuiframework/core/ITUIServer.h"
+#include "../../tuiframework/core/IEvent.h"
+#include "../../tuiframework/server/DeviceConfig.h"
+#include "../../TUIPlugins/tuitypes/common/CommonTypeReg.h"
 
-
-#include <TUIPlugins\dummy\DummyDevWinMod.h>
+#include "DummyDevWinMod.h"
 
 using namespace tuiframework;
 using namespace std;

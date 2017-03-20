@@ -22,7 +22,7 @@
 */
 
 
-#include <TUIFramework\core\Exception.h>
+#include "Exception.h"
 
 #include <ostream>
 #include <istream>

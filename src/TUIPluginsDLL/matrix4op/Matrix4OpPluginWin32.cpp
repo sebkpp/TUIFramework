@@ -1,21 +1,21 @@
-#include <tuiframework/server/MSPFactorySingleton.h>
+#include  "../../tuiframework/server/MSPFactorySingleton.h"
 
-#include <tuiframework/core/Version.h>
-#include <tuiframework/core/Imsp.h>
-#include <tuiframework/server/mspConfig.h>
-#include <tuiframework/server/IMSPFactory.h>
+#include  "../../tuiframework/core/Version.h"
+#include  "../../tuiframework/core/Imsp.h"
+#include  "../../tuiframework/server/mspConfig.h"
+#include  "../../tuiframework/server/IMSPFactory.h"
 
-#include <TUIPlugins/matrix4op/Matrix4DuplicateMSP.h>
-#include <TUIPlugins/matrix4op/Matrix4GetTranslationMSP.h>
-#include <TUIPlugins/matrix4op/Matrix4InverseMSP.h>
-#include <TUIPlugins/matrix4op/Matrix4MultiplicationMSP.h>
-#include <TUIPlugins/matrix4op/Matrix4PackedDuplicateMSP.h>
-#include <TUIPlugins/matrix4op/Matrix4SetTranslationMSP.h>
-#include <TUIPlugins/matrix4op/Matrix4TimesMSP.h>
-#include <TUIPlugins/matrix4op/Vector4DuplicateMSP.h>
-#include <TUIPlugins/matrix4op/Vector4Matrix4MultiplicationMSP.h>
-#include <TUIPlugins/matrix4op/Vector4PackedDuplicateMSP.h>
-#include <TUIPlugins/matrix4op/Vector4TimesMSP.h>
+#include  "../../TUIPlugins/matrix4op/Matrix4DuplicateMSP.h"
+#include  "../../TUIPlugins/matrix4op/Matrix4GetTranslationMSP.h"
+#include  "../../TUIPlugins/matrix4op/Matrix4InverseMSP.h"
+#include  "../../TUIPlugins/matrix4op/Matrix4MultiplicationMSP.h"
+#include  "../../TUIPlugins/matrix4op/Matrix4PackedDuplicateMSP.h"
+#include  "../../TUIPlugins/matrix4op/Matrix4SetTranslationMSP.h"
+#include  "../../TUIPlugins/matrix4op/Matrix4TimesMSP.h"
+#include  "../../TUIPlugins/matrix4op/Vector4DuplicateMSP.h"
+#include  "../../TUIPlugins/matrix4op/Vector4Matrix4MultiplicationMSP.h"
+#include  "../../TUIPlugins/matrix4op/Vector4PackedDuplicateMSP.h"
+#include  "../../TUIPlugins/matrix4op/Vector4TimesMSP.h"
 
 #include <vector>
 

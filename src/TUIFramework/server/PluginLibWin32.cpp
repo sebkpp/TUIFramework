@@ -21,12 +21,12 @@
     You should have received a copy of the GNU Lesser General Public License
     along with the TUIFramework.  If not, see <http://www.gnu.org/licenses/>.
 */
-
-#include <TUIFramework\server\PluginLibWin32.h>
-
-#include <TUIFramework\core\Version.h>
 #define USE_TFDEBUG
-#include <TUIFramework\logging\Logger.h>
+
+#include "PluginLibWin32.h"
+
+#include "..\core\Version.h"
+#include "..\logging\Logger.h"
 
 namespace tuiframework {
 

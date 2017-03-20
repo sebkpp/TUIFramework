@@ -22,21 +22,21 @@
 */
 
 
-#include <TUIFramework/client/TUIClientApp.h>
+#include "TUIClientApp.h"
 
-#include <TUIFramework/client/TUIObjectStub.h>
+#include "TUIObjectStub.h"
 
-#include <TUIFramework/core/IEvent.h>
-#include <TUIFramework/core/IDevice.h>
-#include <TUIFramework/core/HostAddress.h>
-#include <TUIFramework/core/EventMsgRouter.h>
-#include <TUIFramework/core/EventRouter.h>
+#include "../core/IEvent.h"
+#include "../core/IDevice.h"
+#include "../core/HostAddress.h"
+#include "../core/EventMsgRouter.h"
+#include "../core/EventRouter.h"
 
 #define USE_TFDEBUG
-#include <TUIFramework/logging/Logger.h>
-#include <TUIFramework/core/TypeRegistration.h>
+#include "../logging/Logger.h"
+#include "../core/TypeRegistration.h"
 
-#include <TUIPlugins/tuitypes/common/CommonTypeReg.h>
+#include "../../TUIPlugins/tuitypes/common/CommonTypeReg.h"
 
 #include <sstream>
 #include <string>

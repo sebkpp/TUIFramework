@@ -21,7 +21,7 @@
     along with the TUIFramework.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include <TUIPlugins\tuitypes\common\TrackerData.h>
+#include "TrackerData.h"
 
 #include <iostream>
 

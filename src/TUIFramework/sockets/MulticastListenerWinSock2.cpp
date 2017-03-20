@@ -21,18 +21,8 @@
     along with the TUIFramework.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-
-#include <TUIFramework\sockets\MulticastListenerWinSock2.h>
-
-#include <TUIFramework\core\ISerializedDataSink.h>
 #define USE_TFDEBUG
-#include <TUIFramework\logging\Logger.h>
-
-#include <TUIFramework\core\IThreadMessageSink.h>
-
-
-#include <TUIFramework\core\HostAddress.h>
-#include <TUIFramework\core\TypeRegistration.h>
+#define DEFAULT_PORT    9163
 
 #include <Ws2tcpip.h>
 
@@ -41,7 +31,14 @@
 
 #include <cstring> // GCC 4.3 related build problem
 
-#define DEFAULT_PORT    9163
+#include "MulticastListenerWinSock2.h"
+
+#include "../core/ISerializedDataSink.h"
+#include "../core/IThreadMessageSink.h"
+#include "../core/HostAddress.h"
+#include "../core/TypeRegistration.h"
+
+#include "../logging/Logger.h"
 
 using namespace std;
 

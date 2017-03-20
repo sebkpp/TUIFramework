@@ -23,14 +23,14 @@
 
 
 
-#include <TUIPlugins\dummy\DummyDevPackedVector4.h>
+#include "DummyDevPackedVector4.h"
 
-#include <tuiframework/core/ITUIServer.h>
-#include <tuiframework/core/IEvent.h>
-#include <tuiframework/server/DeviceConfig.h>
-#include <TUIPlugins/tuitypes/common/CommonTypeReg.h>
+#include "../../tuiframework/core/ITUIServer.h"
+#include "../../tuiframework/core/IEvent.h"
+#include "../../tuiframework/server/DeviceConfig.h"
+#include "../../TUIPlugins/tuitypes/common/CommonTypeReg.h"
 #define USE_TFDEBUG
-#include <tuiframework/logging/Logger.h>
+#include "../../tuiframework/logging/Logger.h"
 
 #include <cstdlib> // GCC 4.3 related build problem
 

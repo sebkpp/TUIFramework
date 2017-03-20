@@ -22,14 +22,14 @@
 */
 
 
-#include <TUIFramework/client/TUIObjectStubContainer.h>
+#include "TUIObjectStubContainer.h"
+#include "TUIObjectStub.h"
 
-#include <TUIFramework/client/TUIObjectStub.h>
-#include <TUIFramework/core/IEventChannel.h>
-#include <TUIFramework/core/IEventChannelFactory.h>
+#include "../core/IEventChannel.h"
+#include "../core/IEventChannelFactory.h"
 
-#include <TUIFramework/core/TypeRegistration.h>
-#include <TUIFramework/logging/Logger.h>
+#include "../core/TypeRegistration.h"
+#include "../logging/Logger.h"
 
 #include <sstream>
 

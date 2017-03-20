@@ -23,12 +23,12 @@
 
 
 
-#include <TUIPlugins\dummy\DummyDevMatrix4.h>
+#include "DummyDevMatrix4.h"
 
-#include <tuiframework/core/ITUIServer.h>
-#include <tuiframework/core/IEvent.h>
-#include <tuiframework/server/DeviceConfig.h>
-#include <TUIPlugins/tuitypes/common/CommonTypeReg.h>
+#include "../../tuiframework/core/ITUIServer.h"
+#include "../../tuiframework/core/IEvent.h"
+#include "../../tuiframework/server/DeviceConfig.h"
+#include "../../TUIPlugins/tuitypes/common/CommonTypeReg.h"
 
 #include <cstdlib> // GCC 4.3 related build problem
 

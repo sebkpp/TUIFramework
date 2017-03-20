@@ -22,11 +22,11 @@
 */
 
 
-#include <TUIFramework\core\EventTerminator.h>
+#include "EventTerminator.h"
 
-#include <TUIFramework\logging\Logger.h>
-#include <TUIFramework\core\IEventMsg.h>
-#include <TUIFramework\core\EPAddress.h>
+#include "IEventMsg.h"
+#include "EPAddress.h"
+#include "..\logging\Logger.h"
 
 #include <sstream>
 

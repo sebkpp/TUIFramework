@@ -22,7 +22,7 @@
 */
 
 
-#include <TUIFramework\server\MSPType.h>
+#include"MSPType.h"
 
 namespace tuiframework {
 

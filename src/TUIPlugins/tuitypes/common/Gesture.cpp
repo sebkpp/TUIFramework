@@ -1,4 +1,4 @@
-#include <TUIPlugins\tuitypes\common\Gesture.h>
+#include "Gesture.h"
 
 
 Gesture::Gesture()

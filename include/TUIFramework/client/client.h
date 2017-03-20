@@ -25,10 +25,10 @@
 #ifndef _tuiframework_client_h_
 #define _tuiframework_client_h_
 
-#include "TUIClientAppProvider.h"
-#include "TUIEventHandlerSingleton.h"
-#include "../core/TypeRegistration.h"
-#include "../logging/Logger.h"
+#include "../../../src/TUIFramework/client/TUIEventHandlerSingleton.h"
+#include "../../../src/TUIFramework/core/TypeRegistration.h"
+#include "../../../src/TUIFramework/logging/Logger.h"
+#include "../../../src/TUIFramework/client/TUIClientAppProvider.h"
 
 #endif
 

@@ -1,4 +1,4 @@
-#include <TUIPlugins\tuitypes\common\SceneObject.h>
+#include "SceneObject.h"
 
 
 SceneObject::SceneObject()

@@ -22,7 +22,7 @@
 */
 
 
-#include <TUIFramework\server\DeviceInstance.h>
+#include "DeviceInstance.h"
 
 #include <iostream>
 

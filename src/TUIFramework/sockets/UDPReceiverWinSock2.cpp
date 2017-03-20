@@ -21,12 +21,12 @@
     along with the TUIFramework.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include <TUIFramework\sockets\UDPReceiverWinSock2.h>
-#include <TUIFramework\core\ISerializedDataSink.h>
-#include <TUIFramework\core\IThreadMessageSink.h>
-#include <TUIFramework\core\HostAddress.h>
-#include <TUIFramework\core\TypeRegistration.h>
-#include <TUIFramework\logging\Logger.h>
+#include "..\sockets\UDPReceiverWinSock2.h"
+#include "..\core\ISerializedDataSink.h"
+#include "..\core\IThreadMessageSink.h"
+#include "..\core\HostAddress.h"
+#include "..\core\TypeRegistration.h"
+#include "..\logging\Logger.h"
 
 #include <iostream>
 #include <sstream>

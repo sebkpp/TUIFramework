@@ -22,12 +22,12 @@
 */
 
 
-#include <TUIFramework\server\EPAddressTranslator.h>
+#include "EPAddressTranslator.h"
 
-#include <TUIFramework\core\IEventMsg.h>
-#include <TUIFramework\core\EPAddress.h>
+#include "..\core\IEventMsg.h"
+#include "..\core\EPAddress.h"
 
-#include <TUIFramework\logging\Logger.h>
+#include "..\logging\Logger.h"
 
 using namespace std;
 

@@ -22,7 +22,7 @@
 */
 
 
-#include <TUIFramework\core\EPAddress.h>
+#include "EPAddress.h"
 
 #include <iostream>
 

@@ -68,9 +68,9 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <OutDir>..\..\..\..\bin\$(Platform)\$(VisualStudioVersion)\$(PlatformTarget)\$(Configuration)\lib\TUIPlugins\static</OutDir>
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);C:\Program Files (x86)\Windows Kits\10\Include\10.0.10150.0\ucrt</IncludePath>
-    <IntDir>..\..\$(PlatformTarget)\$(Configuration)\$(MSBuildProjectName)</IntDir>
+    <OutDir>$(SolutionDir)..\..\install\lib\$(PlatformTarget)\TUIFramework</OutDir>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+    <IntDir>$(SolutionDir)..\..\build\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>..\..\..\..\bin\$(Platform)\$(VisualStudioVersion)\$(PlatformTarget)\$(Configuration)\lib\TUIPlugins\static</OutDir>
@@ -92,12 +92,16 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>../../../../include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>/FS %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <Lib>
+      <OutputFile>$(OutDir)$(TargetName)D$(TargetExt)</OutputFile>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -152,9 +156,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <Text Include="ReadMe.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="..\..\..\..\src\TUIPlugins\tuitypes\common\CommonTUITypesPlugin.cpp" />
     <ClCompile Include="..\..\..\..\src\TUIPlugins\tuitypes\common\CommonTypeReg.cpp" />
     <ClCompile Include="..\..\..\..\src\TUIPlugins\tuitypes\common\Gesture.cpp" />
@@ -164,33 +165,29 @@
     <ClCompile Include="..\..\..\..\src\TUIPlugins\tuitypes\common\MouseData.cpp" />
     <ClCompile Include="..\..\..\..\src\TUIPlugins\tuitypes\common\SceneObject.cpp" />
     <ClCompile Include="..\..\..\..\src\TUIPlugins\tuitypes\common\TrackerData.cpp" />
-    <ClCompile Include="..\..\..\..\src\TUIPlugins\tuitypes\common\TUIPair.cpp" />
     <ClCompile Include="..\..\..\..\src\TUIPlugins\tuitypes\common\Vector3d.cpp" />
-    <ClCompile Include="..\..\..\..\src\TUIPlugins\tuitypes\common\VectorList.cpp" />
     <ClCompile Include="..\..\..\..\src\TUIPlugins\tuitypes\common\VectorList3d.cpp" />
     <ClCompile Include="..\..\..\..\src\TUIPlugins\tuitypes\common\WinModData.cpp" />
     <ClCompile Include="..\..\..\..\src\TUIPlugins\tuitypes\common\XControllerData.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\..\include\TUIPlugins\tuitypes\common\CommonTUITypesPlugin.h" />
-    <ClInclude Include="..\..\..\..\include\TUIPlugins\tuitypes\common\CommonTypeReg.h" />
-    <ClInclude Include="..\..\..\..\include\TUIPlugins\tuitypes\common\Gesture.h" />
-    <ClInclude Include="..\..\..\..\include\TUIPlugins\tuitypes\common\HapticAngle.h" />
-    <ClInclude Include="..\..\..\..\include\TUIPlugins\tuitypes\common\KinectJoint.h" />
-    <ClInclude Include="..\..\..\..\include\TUIPlugins\tuitypes\common\Matrix4.h" />
-    <ClInclude Include="..\..\..\..\include\TUIPlugins\tuitypes\common\Matrix4Data.h" />
-    <ClInclude Include="..\..\..\..\include\TUIPlugins\tuitypes\common\MouseData.h" />
-    <ClInclude Include="..\..\..\..\include\TUIPlugins\tuitypes\common\PackedType.h" />
-    <ClInclude Include="..\..\..\..\include\TUIPlugins\tuitypes\common\SceneObject.h" />
-    <ClInclude Include="..\..\..\..\include\TUIPlugins\tuitypes\common\SkeletonJointID.h" />
-    <ClInclude Include="..\..\..\..\include\TUIPlugins\tuitypes\common\TrackerData.h" />
-    <ClInclude Include="..\..\..\..\include\TUIPlugins\tuitypes\common\TUIPair.h" />
-    <ClInclude Include="..\..\..\..\include\TUIPlugins\tuitypes\common\Vector3d.h" />
-    <ClInclude Include="..\..\..\..\include\TUIPlugins\tuitypes\common\Vector4.h" />
-    <ClInclude Include="..\..\..\..\include\TUIPlugins\tuitypes\common\VectorList.h" />
-    <ClInclude Include="..\..\..\..\include\TUIPlugins\tuitypes\common\VectorList3d.h" />
-    <ClInclude Include="..\..\..\..\include\TUIPlugins\tuitypes\common\WinModData.h" />
-    <ClInclude Include="..\..\..\..\include\TUIPlugins\tuitypes\common\XControllerData.h" />
+    <ClInclude Include="..\..\..\..\src\TUIPlugins\tuitypes\common\CommonTUITypesPlugin.h" />
+    <ClInclude Include="..\..\..\..\src\TUIPlugins\tuitypes\common\CommonTypeReg.h" />
+    <ClInclude Include="..\..\..\..\src\TUIPlugins\tuitypes\common\Gesture.h" />
+    <ClInclude Include="..\..\..\..\src\TUIPlugins\tuitypes\common\HapticAngle.h" />
+    <ClInclude Include="..\..\..\..\src\TUIPlugins\tuitypes\common\KinectJoint.h" />
+    <ClInclude Include="..\..\..\..\src\TUIPlugins\tuitypes\common\Matrix4.h" />
+    <ClInclude Include="..\..\..\..\src\TUIPlugins\tuitypes\common\Matrix4Data.h" />
+    <ClInclude Include="..\..\..\..\src\TUIPlugins\tuitypes\common\MouseData.h" />
+    <ClInclude Include="..\..\..\..\src\TUIPlugins\tuitypes\common\PackedType.h" />
+    <ClInclude Include="..\..\..\..\src\TUIPlugins\tuitypes\common\SceneObject.h" />
+    <ClInclude Include="..\..\..\..\src\TUIPlugins\tuitypes\common\SkeletonJointID.h" />
+    <ClInclude Include="..\..\..\..\src\TUIPlugins\tuitypes\common\TrackerData.h" />
+    <ClInclude Include="..\..\..\..\src\TUIPlugins\tuitypes\common\Vector3d.h" />
+    <ClInclude Include="..\..\..\..\src\TUIPlugins\tuitypes\common\Vector4.h" />
+    <ClInclude Include="..\..\..\..\src\TUIPlugins\tuitypes\common\VectorList3d.h" />
+    <ClInclude Include="..\..\..\..\src\TUIPlugins\tuitypes\common\WinModData.h" />
+    <ClInclude Include="..\..\..\..\src\TUIPlugins\tuitypes\common\XControllerData.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

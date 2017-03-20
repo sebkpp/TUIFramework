@@ -23,13 +23,13 @@
 
 
 
-#include <TUIFramework\core\AttachedObjects.h>
+#include "AttachedObjects.h"
 
 #if _debug_AttachedObjects_cpp_ && !USE_TFDEBUG
 #define USE_TFDEBUG
 #endif
 
-#include <TUIFramework\logging\Logger.h>
+#include "../logging/Logger.h"
 
 #include <iostream>
 
