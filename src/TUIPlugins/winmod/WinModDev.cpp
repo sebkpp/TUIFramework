@@ -1,12 +1,12 @@
 
-#include <TUIPlugins/winmod/WinModDev.h>
+#include "../../TUIPlugins/winmod/WinModDev.h"
 
-#include <tuiframework/core/ITUIServer.h>
-#include <tuiframework/core/IEvent.h>
-#include <tuiframework/server/DeviceConfig.h>
-#include <tuiframework/core/Exception.h>
+#include "../../tuiframework/core/ITUIServer.h"
+#include "../../tuiframework/core/IEvent.h"
+#include "../../tuiframework/server/DeviceConfig.h"
+#include "../../tuiframework/core/Exception.h"
 
-#include <TUIPlugins/tuitypes/common/CommonTypeReg.h>
+#include "../../TUIPlugins/tuitypes/common/CommonTypeReg.h"
 
 #include <iostream>
 #include <sstream>
