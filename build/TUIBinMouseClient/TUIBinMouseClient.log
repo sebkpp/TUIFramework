@@ -1,8 +1,0 @@
-﻿C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.CppBuild.targets(368,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
-  tuimouseclient.cpp
-  TUIMouse.cpp
-  Init.cpp
-  Generating Code...
-Init.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/OPT:LBR' specification
-  TUIBinMouseClient.vcxproj -> C:\Users\micka\Documents\Fraunhofer_2016_2017\TUIFramework_Github\platforms\MSVC2015\..\..\install\bin\x86\TUIFramework\TUIBinMouseClient.exe
-  TUIBinMouseClient.vcxproj -> C:\Users\micka\Documents\Fraunhofer_2016_2017\TUIFramework_Github\platforms\MSVC2015\..\..\install\bin\x86\TUIFramework\debug\TUIBinMouseClient.pdb (Partial PDB)
