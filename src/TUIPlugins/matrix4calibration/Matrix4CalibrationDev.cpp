@@ -22,16 +22,16 @@
 */
 
 
-#include <TUIPlugins/matrix4calibration/Matrix4CalibrationDev.h>
+#include "Matrix4CalibrationDev.h"
 
-#include <tuiframework/core/ITUIServer.h>
-#include <tuiframework/core/IEvent.h>
-#include <tuiframework/core/Exception.h>
-#include <tuiframework/server/DeviceConfig.h>
+#include "../../tuiframework/core/ITUIServer.h"
+#include "../../tuiframework/core/IEvent.h"
+#include "../../tuiframework/core/Exception.h"
+#include "../../tuiframework/server/DeviceConfig.h"
 
 
 #define USE_TFDEBUG
-#include <tuiframework/logging/Logger.h>
+#include "../../tuiframework/logging/Logger.h"
 
 #include <cstdlib> // GCC 4.3 related build problem
 

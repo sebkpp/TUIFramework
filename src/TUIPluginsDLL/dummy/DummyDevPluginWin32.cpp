@@ -1,18 +1,18 @@
-#include <tuiframework/server/DeviceFactorySingleton.h>
-#include <tuiframework/server/MSPFactorySingleton.h>
+#include "../../tuiframework/server/DeviceFactorySingleton.h"
+#include "../../tuiframework/server/MSPFactorySingleton.h"
 
-#include <tuiframework/core/Version.h>
-#include <tuiframework/core/IDevice.h>
-#include <tuiframework/core/IMSP.h>
-#include <tuiframework/server/DeviceConfig.h>
-#include <tuiframework/server/MSPConfig.h>
-#include <tuiframework/server/IDeviceFactory.h>
+#include "../../tuiframework/core/Version.h"
+#include "../../tuiframework/core/IDevice.h"
+#include "../../tuiframework/core/IMSP.h"
+#include "../../tuiframework/server/DeviceConfig.h"
+#include "../../tuiframework/server/MSPConfig.h"
+#include "../../tuiframework/server/IDeviceFactory.h"
 
-#include <TUIPlugins/dummy/DummyDevDA.h>
-#include <TUIPlugins/dummy/DummyDevTracker.h>
-#include <TUIPlugins/dummy/DummyDevMatrix4.h>
-#include <TUIPlugins/dummy/DummyDevPackedVector4.h>
-#include <TUIPlugins\dummy\DummyDevWinMod.h>
+#include "../../TUIPlugins/dummy/DummyDevDA.h"
+#include "../../TUIPlugins/dummy/DummyDevTracker.h"
+#include "../../TUIPlugins/dummy/DummyDevMatrix4.h"
+#include "../../TUIPlugins/dummy/DummyDevPackedVector4.h"
+#include "../../TUIPlugins\dummy\DummyDevWinMod.h"
 
 using namespace tuidevices;
 using namespace tuiframework;

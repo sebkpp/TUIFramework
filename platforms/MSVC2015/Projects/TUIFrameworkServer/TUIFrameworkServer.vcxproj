@@ -68,13 +68,13 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSDK_IncludePath);C:\Program Files (x86)\Windows Kits\10\Include\10.0.10150.0\ucrt</IncludePath>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
-    <OutDir>..\..\..\..\bin\$(Platform)\$(VisualStudioVersion)\$(PlatformTarget)\$(Configuration)\lib\TUIFramework</OutDir>
-    <IntDir>..\..\$(PlatformTarget)\$(Configuration)\$(MSBuildProjectName)</IntDir>
+    <OutDir>$(SolutionDir)..\..\install\lib\$(PlatformTarget)\TUIFramework</OutDir>
+    <IntDir>$(SolutionDir)..\..\build\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSDK_IncludePath);C:\Program Files (x86)\Windows Kits\10\Include\10.0.10150.0\ucrt</IncludePath>
+    <IncludePath>$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSDK_IncludePath);C:\Program Files (x86)\Windows Kits\10\src\10.0.10150.0\ucrt</IncludePath>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
     <OutDir>..\..\..\..\bin\$(Platform)\$(VisualStudioVersion)\$(PlatformTarget)\$(Configuration)\lib\TUIFramework</OutDir>
     <IntDir>..\..\$(PlatformTarget)\$(Configuration)\$(MSBuildProjectName)</IntDir>
@@ -94,12 +94,16 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;HAVE_STRUCT_TIMESPEC;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\..\..\..\3rdParty\Pre-built.2\include;..\..\..\..\include;$(IncludePath);$(UniversalCRT_IncludePath);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\3rdParty\Pre-built.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>/FS %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <Lib>
+      <OutputFile>$(OutDir)$(TargetName)D$(TargetExt)</OutputFile>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -156,9 +160,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <Text Include="ReadMe.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="..\..\..\..\src\TUIFramework\server\Connector.cpp" />
     <ClCompile Include="..\..\..\..\src\TUIFramework\server\DeviceConfig.cpp" />
     <ClCompile Include="..\..\..\..\src\TUIFramework\server\DeviceContainer.cpp" />
@@ -185,33 +186,33 @@
     <ClCompile Include="..\..\..\..\src\TUIFramework\server\TUIServerApp.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\..\include\TUIFramework\server\Connector.h" />
-    <ClInclude Include="..\..\..\..\include\TUIFramework\server\DeviceConfig.h" />
-    <ClInclude Include="..\..\..\..\include\TUIFramework\server\DeviceContainer.h" />
-    <ClInclude Include="..\..\..\..\include\TUIFramework\server\DeviceDescriptor.h" />
-    <ClInclude Include="..\..\..\..\include\TUIFramework\server\DeviceFactory.h" />
-    <ClInclude Include="..\..\..\..\include\TUIFramework\server\DeviceFactorySingleton.h" />
-    <ClInclude Include="..\..\..\..\include\TUIFramework\server\DeviceInstance.h" />
-    <ClInclude Include="..\..\..\..\include\TUIFramework\server\DeviceType.h" />
-    <ClInclude Include="..\..\..\..\include\TUIFramework\server\EPAddressTranslator.h" />
-    <ClInclude Include="..\..\..\..\include\TUIFramework\server\IDeviceFactory.h" />
-    <ClInclude Include="..\..\..\..\include\TUIFramework\server\IMSPFactory.h" />
-    <ClInclude Include="..\..\..\..\include\TUIFramework\server\MSPBase.h" />
-    <ClInclude Include="..\..\..\..\include\TUIFramework\server\MSPConfig.h" />
-    <ClInclude Include="..\..\..\..\include\TUIFramework\server\MSPContainer.h" />
-    <ClInclude Include="..\..\..\..\include\TUIFramework\server\MSPDescriptor.h" />
-    <ClInclude Include="..\..\..\..\include\TUIFramework\server\MSPFactory.h" />
-    <ClInclude Include="..\..\..\..\include\TUIFramework\server\MSPFactorySingleton.h" />
-    <ClInclude Include="..\..\..\..\include\TUIFramework\server\MSPInstance.h" />
-    <ClInclude Include="..\..\..\..\include\TUIFramework\server\MSPType.h" />
-    <ClInclude Include="..\..\..\..\include\TUIFramework\server\ParameterGroup.h" />
-    <ClInclude Include="..\..\..\..\include\TUIFramework\server\PluginLibWin32.h" />
-    <ClInclude Include="..\..\..\..\include\TUIFramework\server\PluginShelf.h" />
-    <ClInclude Include="..\..\..\..\include\TUIFramework\server\PluginShelfSingleton.h" />
-    <ClInclude Include="..\..\..\..\include\TUIFramework\server\PortAddress.h" />
-    <ClInclude Include="..\..\..\..\include\TUIFramework\server\ServerConfig.h" />
-    <ClInclude Include="..\..\..\..\include\TUIFramework\server\ServerStartupConfig.h" />
-    <ClInclude Include="..\..\..\..\include\TUIFramework\server\TUIServerApp.h" />
+    <ClInclude Include="..\..\..\..\src\TUIFramework\server\Connector.h" />
+    <ClInclude Include="..\..\..\..\src\TUIFramework\server\DeviceConfig.h" />
+    <ClInclude Include="..\..\..\..\src\TUIFramework\server\DeviceContainer.h" />
+    <ClInclude Include="..\..\..\..\src\TUIFramework\server\DeviceDescriptor.h" />
+    <ClInclude Include="..\..\..\..\src\TUIFramework\server\DeviceFactory.h" />
+    <ClInclude Include="..\..\..\..\src\TUIFramework\server\DeviceFactorySingleton.h" />
+    <ClInclude Include="..\..\..\..\src\TUIFramework\server\DeviceInstance.h" />
+    <ClInclude Include="..\..\..\..\src\TUIFramework\server\DeviceType.h" />
+    <ClInclude Include="..\..\..\..\src\TUIFramework\server\EPAddressTranslator.h" />
+    <ClInclude Include="..\..\..\..\src\TUIFramework\server\IDeviceFactory.h" />
+    <ClInclude Include="..\..\..\..\src\TUIFramework\server\IMSPFactory.h" />
+    <ClInclude Include="..\..\..\..\src\TUIFramework\server\MSPBase.h" />
+    <ClInclude Include="..\..\..\..\src\TUIFramework\server\MSPConfig.h" />
+    <ClInclude Include="..\..\..\..\src\TUIFramework\server\MSPContainer.h" />
+    <ClInclude Include="..\..\..\..\src\TUIFramework\server\MSPDescriptor.h" />
+    <ClInclude Include="..\..\..\..\src\TUIFramework\server\MSPFactory.h" />
+    <ClInclude Include="..\..\..\..\src\TUIFramework\server\MSPFactorySingleton.h" />
+    <ClInclude Include="..\..\..\..\src\TUIFramework\server\MSPInstance.h" />
+    <ClInclude Include="..\..\..\..\src\TUIFramework\server\MSPType.h" />
+    <ClInclude Include="..\..\..\..\src\TUIFramework\server\ParameterGroup.h" />
+    <ClInclude Include="..\..\..\..\src\TUIFramework\server\PluginLibWin32.h" />
+    <ClInclude Include="..\..\..\..\src\TUIFramework\server\PluginShelf.h" />
+    <ClInclude Include="..\..\..\..\src\TUIFramework\server\PluginShelfSingleton.h" />
+    <ClInclude Include="..\..\..\..\src\TUIFramework\server\PortAddress.h" />
+    <ClInclude Include="..\..\..\..\src\TUIFramework\server\ServerConfig.h" />
+    <ClInclude Include="..\..\..\..\src\TUIFramework\server\ServerStartupConfig.h" />
+    <ClInclude Include="..\..\..\..\src\TUIFramework\server\TUIServerApp.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

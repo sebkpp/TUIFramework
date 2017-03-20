@@ -23,7 +23,7 @@
 
 
 
-#include <TUIPlugins\tuitypes\common\HapticAngle.h>
+#include "HapticAngle.h"
 
 
 HapticAngle::HapticAngle() : angle(0) {}

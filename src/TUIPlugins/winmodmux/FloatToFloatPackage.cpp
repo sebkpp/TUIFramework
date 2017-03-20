@@ -1,22 +1,11 @@
 #include "FloatToFloatPackage.h"
-#include <tuiframework/core/Exception.h>
+#include "../../tuiframework/core/Exception.h"
 #define USE_TFDEBUG
-#include <tuiframework/logging/Logger.h>
+#include "../../tuiframework/logging/Logger.h"
 
-static const char * in0Tag = "in0";
-static const char * in1Tag = "in1";
-static const char * in2Tag = "in2";
-static const char * in3Tag = "in3";
-static const char * in4Tag = "in4";
-static const char * in5Tag = "in5";
-static const char * in6Tag = "in6";
-static const char * in7Tag = "in7";
-static const char * in8Tag = "in8";
-static const char * in9Tag = "in9";
+
 static const char * outTagPacked = "outPacked";
 
-int Combi=0;
-int Combi_temp=0;
 
 
 namespace tuiframework {
@@ -48,6 +37,7 @@ namespace tuiframework {
 			this->floatSize = config.getParameterGroup().getInt("Convert|floatSize");
 			TFDEBUG("ID = " << this->id);
 			TFDEBUG("FloatSize = " << this->floatSize);
+			initInTag();
 		}
 		catch (Exception & e) {
 			TFERROR(e.getFormattedString());
@@ -71,38 +61,13 @@ namespace tuiframework {
 	}
 
 	IEventSink * FloatToFloatPackage::getEventSink(const std::string & name)
-	{
-		if (name.compare(in0Tag) == 0) {
+	{	
+		for (string inTag : this->inTag)
+		{
+			if (name.compare(inTag) == 0)
+				return &eventDelegate;
+		}
 
-			return &eventDelegate;
-		}
-		if (name.compare(in1Tag) == 0) {
-			return &eventDelegate;
-		}
-		if (name.compare(in2Tag) == 0) {
-			return &eventDelegate;
-		}
-		if (name.compare(in3Tag) == 0) {
-			return &eventDelegate;
-		}
-		if (name.compare(in4Tag) == 0) {
-			return &eventDelegate;
-		}
-		if (name.compare(in5Tag) == 0) {
-			return &eventDelegate;
-		}
-		if (name.compare(in6Tag) == 0) {
-			return &eventDelegate;
-		}
-		if (name.compare(in7Tag) == 0) {
-			return &eventDelegate;
-		}
-		if (name.compare(in8Tag) == 0) {
-			return &eventDelegate;
-		}
-		if (name.compare(in9Tag) == 0) {
-			return &eventDelegate;
-		}
 		return 0;
 	}
 
@@ -162,5 +127,13 @@ namespace tuiframework {
 	{
 		this->eventOrder[std::to_string(entityID) + std::to_string(portID)] = this->index;
 		++index;
+	}
+
+	void FloatToFloatPackage::initInTag()
+	{
+		for (int i = 0; i < this->floatSize; i++)
+		{
+			this->inTag.push_back("in" + std::to_string(i));
+		}
 	}
 }

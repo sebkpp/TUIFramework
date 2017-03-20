@@ -23,7 +23,7 @@
 */
 
 
-#include <TUIPlugins/kinect/SimpleFilter.h>
+#include "SimpleFilter.h"
 
 namespace tuiframework {
 

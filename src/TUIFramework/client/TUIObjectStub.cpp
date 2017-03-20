@@ -22,16 +22,16 @@
 */
 
 
-#include <TUIFramework/client/TUIObjectStub.h>
+#include "TUIObjectStub.h"
+#include "TUIClientApp.h"
 
-#include <TUIFramework/core/IEventChannel.h>
-#include <TUIFramework/core/IEventChannelFactory.h>
-#include <TUIFramework/core/IEventMsg.h>
-#include <TUIFramework/core/TUIObjectInstance.h>
-#include <TUIFramework/core/TUIObjectType.h>
-#include <TUIFramework/client/TUIClientApp.h>
+#include "../core/IEventChannel.h"
+#include "../core/IEventChannelFactory.h"
+#include "../core/IEventMsg.h"
+#include "../core/TUIObjectInstance.h"
+#include "../core/TUIObjectType.h"
 
-#include <TUIFramework/logging/Logger.h>
+#include "../logging/Logger.h"
 
 using namespace std;
 

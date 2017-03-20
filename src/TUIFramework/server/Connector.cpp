@@ -22,7 +22,7 @@
 */
 
 
-#include <TUIFramework\server\Connector.h>
+#include "Connector.h"
 
 #include <iostream>
 

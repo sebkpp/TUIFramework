@@ -23,9 +23,9 @@
 
 
 
-#include <TUIPlugins\tuitypes\common\CommonTypeReg.h>
+#include "CommonTypeReg.h"
 
-#include <tuiframework/core/TypeRegistration.h>
+#include "../../../tuiframework/core/TypeRegistration.h"
 
 using namespace tuiframework;
 
@@ -54,13 +54,6 @@ void registerTypes(IEventFactory * eventFactory, IEventChannelFactory * eventCha
     tuiframework::registerType<PackedType<Vector4<double> >, 24>(eventFactory, eventChannelFactory, "PackedVector4");
     tuiframework::registerType<Matrix4<double>, 25>(eventFactory, eventChannelFactory, "Matrix4");
     tuiframework::registerType<PackedType<Matrix4<double> >, 26>(eventFactory, eventChannelFactory, "PackedMatrix4");
-
-	// Not completly tested yet
-	tuiframework::registerType<VectorList<unsigned char>, 27>(eventFactory, eventChannelFactory, "ByteChannel");
-	tuiframework::registerType<VectorList<unsigned short>, 28>(eventFactory,eventChannelFactory, "WordVectorChannel");
-	tuiframework::registerType<VectorList<unsigned long>, 29>(eventFactory,eventChannelFactory, "DWordVectorChannel");
-	tuiframework::registerType<VectorList<float>, 30>(eventFactory,eventChannelFactory, "AnalogVectorChannel");
-	tuiframework::registerType<VectorList<int>, 31>(eventFactory,eventChannelFactory, "IntegerVectorChannel");
 
 	tuiframework::registerType<XControllerData, 32>(eventFactory,eventChannelFactory, "XControllerChannel");
 	tuiframework::registerType<WinModData,33>(eventFactory,eventChannelFactory,"WinModChannel");

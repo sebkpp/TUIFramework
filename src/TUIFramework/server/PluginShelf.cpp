@@ -24,25 +24,25 @@
 
 
 #define USE_TFDEBUG
-#include <TUIFramework\logging\Logger.h>
+#include "..\logging\Logger.h"
 
-#include <TUIFramework\server\PluginShelf.h>
-#include <TUIFramework\server\PluginShelfSingleton.h>
+#include "PluginShelf.h"
+#include "PluginShelfSingleton.h"
 
 #ifdef _WIN32
 
-#include <TUIFramework\server\PluginLibWin32.h>
+#include "PluginLibWin32.h"
 
 #else
 
-#include <TUIFramework\server\PluginLib.h>
 #include <string.h>
 #include <dirent.h>
+#include "PluginLib.h"
 
 #endif
 
-#include <TUIFramework\server\DeviceConfig.h>
-#include <TUIFramework\server\MSPConfig.h>
+#include "DeviceConfig.h"
+#include "MSPConfig.h"
 
 
 using namespace std;

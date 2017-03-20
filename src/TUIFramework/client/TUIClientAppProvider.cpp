@@ -22,7 +22,7 @@
 */
 
 
-#include <TUIFramework/client/TUIClientAppProvider.h>
+#include "TUIClientAppProvider.h"
 
 namespace tuiframework {
 

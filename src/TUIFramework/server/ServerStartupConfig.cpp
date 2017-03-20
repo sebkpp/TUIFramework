@@ -22,7 +22,7 @@
 */
 
 
-#include <TUIFramework\server\ServerStartupConfig.h>
+#include "ServerStartupConfig.h"
 
 #include <iostream>
 

@@ -23,13 +23,13 @@
 
 
 
-#include <TUIPlugins/phidgets/PhidgetsDev.h>
+#include "PhidgetsDev.h"
 
-#include <tuiframework/core/ITUIServer.h>
-#include <tuiframework/core/IEvent.h>
-#include <tuiframework/server/DeviceConfig.h>
+#include "../../tuiframework/core/ITUIServer.h"
+#include "../../tuiframework/core/IEvent.h"
+#include "../../tuiframework/server/DeviceConfig.h"
 
-#include <TUIPlugins/tuitypes/common/CommonTypeReg.h>
+#include "../../TUIPlugins/tuitypes/common/CommonTypeReg.h"
 
 #include <stdio.h>
 #include <iostream>

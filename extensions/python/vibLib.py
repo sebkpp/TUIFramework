@@ -1,3 +1,251 @@
+import socket
+import json, os.path, time
+
+#################################################################################################################################
+####################################################### GLOBAL VARIABLES ########################################################
+#################################################################################################################################
+
+TUIdict = dict()				#TUIFramework signal is a dict
+ConfigDict = dict()				#configuration dictionary, loaded from a JSON file
+nodesList = dict()				#principal data structure
+receive = False
+path = "C:/Users/VIB_SHP/Documents/Test_CaPa_TUI_2016-2017/TUIFramework_Github/extensions/tuiclientpyext/TUIdict.json"
+connection = True
+
+#################################################################################################################################
+####################################################### NODES LIST SETUP ########################################################
+#################################################################################################################################
+
+##### Call the recursive function for each child node of each instance #####
+def recurseFindNodes( instances ):
+	global nodesList
+
+	for instance in instances.keys():
+		if len(instances[instance]) == 0:
+			print("Instance: " + instance + " is not found!")
+			del(nodesList[instance])
+			continue
+		children = instances[instance][0].getNChildren()
+		if children > 0:
+			for child in xrange(0, children):
+				researchNode(str(instance), instances[instance][0].getChild(child), nodesList[instance].keys())
+
+##### Recursive function which looks if the child in parameter is a moving node and then call itself for all the children of the child #####
+def researchNode( instanceName, instanceChild, portName ):
+	global nodesList
+	
+	for port in portName:
+		if instanceChild.getName() == nodesList[instanceName][port]['Description']:
+			key = 'Pointer'
+			if nodesList[instanceName][port].has_key(key) is False:
+				setRotationAndPosition(instanceName, port, instanceChild)
+
+	children = instanceChild.getNChildren()
+
+	if children > 0:
+		for child in xrange(0, children):
+			researchNode(instanceName, instanceChild.getChild(child), nodesList[instanceName].keys())
+
+##### Set the node pointer, its original position, its rotation position and its receive value in the dictionary nodesList #####
+def setRotationAndPosition( instanceName, port, nodePtr ):
+	global nodesList
+	nodesList[instanceName][port]['Pointer'] = nodePtr
+	nodesList[instanceName][port]['Original_Position'] = calculateLocalPosition(nodePtr)
+	nodesList[instanceName][port]['Rotation_Position'] = nodePtr.getRotation()
+	nodesList[instanceName][port]['Receive_Value'] = 0
+	nodesList[instanceName][port]['Sign'] = True 		#signal sign, useful for the translation equations
+
+##### Find all the interesting nodes in the scene and store them in a way that we can distinguish them #####
+def findInterestingNodes():
+	global nodesList
+	global ConfigDict
+
+	instances = dict()
+	nodesList = ConfigDict
+
+	for instance in nodesList.keys():
+		instances[instance] = findNodes(str(instance))
+
+	recurseFindNodes(instances)
+
+#################################################################################################################################
+#######################################################  RECEPTION SETUP  #######################################################
+#################################################################################################################################
+
+##### Receive the informations from the Python Interface with a TCP connection #####
+def recv(tmp):
+	global TUIdict
+	global receive
+	global connection
+
+	UDP_IP = "127.0.0.1"
+	UDP_PORT = 5005
+
+	sock = socket.socket(socket.AF_INET, # Internet
+						socket.SOCK_DGRAM) # UDP
+	sock.bind((UDP_IP, UDP_PORT))
+	print("CONNECTION ESTABLISHED")
+
+	while connection:
+		data, addr = sock.recvfrom(2048) # buffer size is 1024 bytes
+
+		TUIdict = json.loads(data.decode())
+
+		if receive is False:
+			findInterestingNodes()
+			receive = True
+			print("Receiving started")
+
+	sock.close()
+	print("Socket closed")
+
+#################################################################################################################################
+#######################################################   LOADING JSON    #######################################################
+#################################################################################################################################
+
+##### Load the JSON file which contains the information sent by the python interface #####
+def loadJSON():
+	global ConfigDict
+	global path
+
+	try:
+		with open(path) as json_file:
+			ConfigDict = json.load(json_file)
+	except:
+		print("JSON file occupied")
+		return
+	return
+
+#################################################################################################################################
+####################################################### TRANSLATION SETUP #######################################################
+#################################################################################################################################
+
+##### Calculate the local position of the node pointed by nodePtr #####
+def calculateLocalPosition( nodePtr ):
+	position = nodePtr.getWorldTranslation()
+	matrix = nodePtr.getWorldTransform()
+
+	xl = matrix[0] * position[0] + matrix[1] * position[1] + matrix[2] * position[2]
+	yl = matrix[4] * position[0] + matrix[5] * position[1] + matrix[6] * position[2]
+	zl = matrix[8] * position[0] + matrix[9] * position[1] + matrix[10] * position[2]
+
+	return [xl, yl, zl]																															
+
+def correctOriginalPosition( nodePtr, instance, port ):
+	global nodesList
+
+	newPosition = calculateLocalPosition( nodePtr )
+
+	if nodesList[instance][port]['TrafoType'] == 'rot' :
+		return
+
+	trafoNo = int(nodesList[instance][port]['TrafoNo']) - 1
+
+	matrix = nodePtr.getWorldTransform()
+
+	d = (-1) * nodesList[instance][port]['Value']
+
+	newPosition[trafoNo] = d + newPosition[trafoNo]
+
+	diff = newPosition[trafoNo] - nodesList[instance][port]['Original_Position'][trafoNo]
+
+	if diff < 0.005 and diff > -0.005:
+		return
+
+	nodesList[instance][port]['Original_Position'][trafoNo] = newPosition[trafoNo]
+
+
+#################################################################################################################################
+######################################################      OPERATE      ########################################################
+#################################################################################################################################
+
+##### Update the signal and call the good sub-operate functions #####
+def operate():
+	global TUIdict
+	global nodesList
+	global receive
+
+	if receive is False:
+		return
+
+	for instance in nodesList.keys():
+
+		for port in nodesList[instance].keys():
+
+			if nodesList[instance][port]['Description'] == "empty":
+				continue
+
+			nodePtr = nodesList[instance][port]['Pointer']
+
+			if TUIdict[instance][port]['Value'] < 0.5 and TUIdict[instance][port]['Value'] > -0.5:
+				TUIdict[instance][port]['Value'] = 0
+
+			if nodesList[instance][port]['Value'] != TUIdict[instance][port]['Value']:
+				correctOriginalPosition( nodePtr, instance, port )
+				nodesList[instance][port]['Value'] = TUIdict[instance][port]['Value']
+
+				if nodesList[instance][port]['TrafoType'] == 'rot' :
+					rotationOperate (nodePtr, instance, port)
+
+				else:
+					translationOperate(nodePtr, instance, port)
+			pass
+
+##### Operate rotation on the node pointed by nodePtr using the value stored in the dictionary #####
+def rotationOperate (nodePtr, instance, port):
+	global nodesList
+
+	rotate_x = nodesList[instance][port]['Rotation_Position'][0]
+	rotate_y = nodesList[instance][port]['Rotation_Position'][1]
+	rotate_z = nodesList[instance][port]['Rotation_Position'][2]
+
+	trafoNo = int(nodesList[instance][port]['TrafoNo'])
+
+	if rotate_x == 0 and rotate_y == 0 and rotate_z == 0:
+		pass
+	else:
+		setTransformNodeRotationOrientation(nodePtr, rotate_x, rotate_y, rotate_z)
+
+	if trafoNo == 1:
+		rotate_x = rotate_x + nodesList[instance][port]['Value']
+	elif trafoNo == 2:
+		rotate_y = rotate_y + nodesList[instance][port]['Value']
+	elif trafoNo == 3:
+		rotate_z = rotate_z + nodesList[instance][port]['Value']
+
+	nodePtr.setRotation(rotate_x, rotate_y, rotate_z)
+
+##### Operate translation on the node pointed by nodePtr using the value stored in the dictionary #####
+def translationOperate ( nodePtr, instance, port ):
+	global nodesList
+
+	translate_x = nodesList[instance][port]['Original_Position'][0]
+	translate_y = nodesList[instance][port]['Original_Position'][1]
+	translate_z = nodesList[instance][port]['Original_Position'][2]
+
+	translateTab = [translate_x, translate_y, translate_z]
+	trafoNo = int(nodesList[instance][port]['TrafoNo']) - 1
+
+	position = nodePtr.getWorldTranslation()
+	matrix = nodePtr.getWorldTransform()
+	local_position = calculateLocalPosition(nodePtr)
+
+	if nodesList[instance][port]['Sign'] is True:
+		d = nodesList[instance][port]['Value'] - abs(translateTab[trafoNo] - local_position[trafoNo])
+		if nodesList[instance][port]['Value'] < 0:
+			nodesList[instance][port]['Sign'] = False
+	else:
+		d = nodesList[instance][port]['Value'] + abs(translateTab[trafoNo] - local_position[trafoNo])
+		if nodesList[instance][port]['Value'] >= 0:
+			nodesList[instance][port]['Sign'] = True
+
+	nodePtr.setWorldTranslation(matrix[trafoNo] * d + position[0], matrix[trafoNo + 4] * d + position[1], matrix[trafoNo + 8] * d + position[2])
+
+
+#################################################################################################################################
+######################################################    SETUP SCENE    ########################################################
+#################################################################################################################################
+
 def vibGetVeh():
 	hvpData.listVeh = []
 	PNG = []
@@ -108,26 +356,15 @@ def vibLoadScene(vehGrp, envGrp, pntGrp, vehID, envID, pntID):
 	vibLog("info", "a", "  - Plant: " + pntMtx[pntGrp][0] + "_"  + pntMtx[pntGrp][1][pntID] + "</br>")
 	hvpData.drive = False
 	try:
-		#setRenderQuality(VR_QUALITY_RAYTRACING) 
-		#enableHeadlight(SWITCH_OFF)
-		#enableAntialiasing(SWITCH_ON)
-		#load(hvpData.pathOprDir  +  "operator.vpb") 
+
 		load(hvpData.pathPntDir  + pntMtx[pntGrp][0] + "_"  + pntMtx[pntGrp][1][pntID] + ".vpb") 
-		#load(hvpData.pathEnvDir  + envMtx[envGrp][0] + "_"  + envMtx[envGrp][1][envID] + ".vpb") 
-		#load(hvpData.pathVehDir  + vehMtx[vehGrp][0] + "_"  + vehMtx[vehGrp][1][vehID] + ".vpb")   
-		#hvpData.env = envMtx[envGrp][0] + "_"  + envMtx[envGrp][1][envID]
-		#envPtr = findMaterial(hvpData.env)
-		#applyEnvToAllMaterials(envPtr) 
 		vibSelectView(0, 0, 0)
 		driverSetup()
 
-		
 	except:
 		vrLogError("Unexpected error loading VRED scene. Please contact nVIZ!")
 		return 
 	return
-	
-	
 	
 def vibLog(color,writeMode,string):
 	logFile = open(hvpData.pathLog+"log.html", writeMode) #writeMode: w - new file , a - append to file
@@ -176,154 +413,46 @@ def vibSelectView(vehGrp, vehID, vp):
 			setFov(45.0)
 	vrLogInfo("Set view: " + str(vp+1)) 
 	vibLog("Info","a","Set view to: " + str(vp+1) + "</br>") 
-	
-	
-def operate():
-	if hvpData.drivers[5] == 1.0:
-		hvpData.objPtr[0].setActive(True)
-	else:
-		hvpData.objPtr[0].setActive(False)
-		
-	if hvpData.drivers[6] == 1.0:
-		hvpData.objPtr[1].setActive(True)
-	else:
-		hvpData.objPtr[1].setActive(False)
-		
-	if hvpData.drivers[7] == 1.0:
-		hvpData.objPtr[2].setActive(True)
-	else:
-		hvpData.objPtr[2].setActive(False)
-		
-	setTransformNodeRotation(hvpData.drvPtr[0], hvpData.drivers[0], 0.0, 0.0)
-	setTransformNodeRotation(hvpData.drvPtr[1], hvpData.drivers[1], 0.0, 0.0)
-	setTransformNodeRotation(hvpData.drvPtr[2], hvpData.drivers[2], 0.0, 0.0)
-	setTransformNodeRotation(hvpData.drvPtr[3], hvpData.drivers[3], 0.0, 0.0)
-	setTransformNodeRotation(hvpData.drvPtr[4], hvpData.drivers[4], 0.0, 0.0)
-	setTransformNodeRotation(hvpData.drvPtr[5], hvpData.drivers[5], 0.0, 0.0) #test
-	setTransformNodeRotation(hvpData.drvPtr[6], hvpData.drivers[6], 0.0, 0.0) #test
-	setTransformNodeTranslation(hvpData.drvPtr[7], 0.0, hvpData.drivers[7] +1300, 0.0, False) #test
 
-	transf_1 = getTransformNodeTranslation(hvpData.oprPtr[0],True) #vec3f
-	rx1 = transf_1.x()
-	ry1 = transf_1.y()
-	
-	#setTransformNodeTranslation(hvpData.oprPtr[0], rx1 + hvpData.drivers[12]/10.0, ry1 + hvpData.drivers[13]/10.0, 0.0, True)
-	
-	
+#################################################################################################################################
+#####################################################    SCENE STARTER    #######################################################
+#################################################################################################################################
+
 def driverSetup():
 	hvpData.drvPtr = []
 	hvpData.objPtr = []
 	hvpData.oprPtr = []
 	hvpData.drivers = [0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0]
-	
-	hvpData.drvPtr.append(findNode("link1"))
-	hvpData.drvPtr.append(findNode("link2"))
-	hvpData.drvPtr.append(findNode("link3"))
-	hvpData.drvPtr.append(findNode("link6"))
-	hvpData.drvPtr.append(findNode("flansch"))
-	hvpData.drvPtr.append(findNode("link4"))	# test
-	hvpData.drvPtr.append(findNode("link5"))	# test
-	hvpData.drvPtr.append(findNode("PLH9002000513-A-Konzept 2 Assembly (150%) (View)"))	# test
-	
-	hvpData.objPtr.append(findNode("Front_1"))
-	hvpData.objPtr.append(findNode("Front_2"))
-	hvpData.objPtr.append(findNode("Front_3"))
-	
-	hvpData.oprPtr.append(findNode("Operator"))
-	
-	hvpData.objPtr[0].setActive(True)
-	hvpData.objPtr[1].setActive(False)
-	hvpData.objPtr[2].setActive(True)
-	
-	setTransformNodeRotation(hvpData.drvPtr[0], 0.0, 0.0, 0.0)
-	setTransformNodeRotation(hvpData.drvPtr[1], 0.0, 0.0, 0.0)
-	setTransformNodeRotation(hvpData.drvPtr[2], 0.0, 0.0, 0.0)
-	setTransformNodeRotation(hvpData.drvPtr[3], 0.0, 0.0, 0.0)
-	setTransformNodeRotation(hvpData.drvPtr[4], 0.0, 0.0, 0.0)
-	setTransformNodeRotation(hvpData.drvPtr[5], 0.0, 0.0, 0.0) #test
-	setTransformNodeRotation(hvpData.drvPtr[6], 0.0, 0.0, 0.0) #test
-	setTransformNodeTranslation(hvpData.drvPtr[7], 0.0, 0.0, 0.0,False) #test
-	
 	hvpData.timer = vrTimer(hvpData.timeStep)
 	hvpData.timer.connect(operate)
 	hvpData.timer.setActive(False)
-	
 	
 def startDriver():
 	global lock
 	if lock:
 		driverSetup()
-		startReceiver()
+		print("Connecting to TUI Framework...")
+		loadJSON()
+		print("Configuration loaded from JSON...")
+		th1 = start_new_thread(recv,("tmp",))
 		hvpData.timer.setActive(True)
 		lock = False
+		print("Start SUCCEEDED!")
 	else:
-		print "Socket already created!"
+		print("Error during start!")
 	
 def stopDriver():
 	global lock
-	#sock.setsockopt(socket.SOL_IP, socket.IP_DROP_MEMBERSHIP, socket.inet_aton('127.0.0.1') + socket.inet_aton('0.0.0.0'))
+	global connection
+
 	try:
 		lock = True
 		driverSetup()
-		print "Closing Socket..."
-		sock.shutdown(socket.SHUT_RDWR) # shuts down the socket on both side
-		sock.close()
-		print "Closing Socket Succeeded..."
 		hvpData.timer.setActive(False)
+		connection = False
+		print("Stopping program success!")
 	except IOError:
-		print "IOError: Socket was already closed previously!"
-	except ValueError:
-		print "ValueError: Socket was already closed previously!"
-	except TypeError:
-		print "TypeError: Socket was already closed previously!"
-	
-def recv(tmp):
-	print "Creating Socket..."
-	UDP_IP = "127.0.0.1"
-	#UDP_PORT = 7999 # gets the state of button changed => freezes server output
-	#UDP_PORT = 7998 # gets nothing
-	#UDP_PORT = 8998 # gets nothing
-	UDP_PORT = 8999 # grabs the client signal - all => freezes client output
-	global sock  # sets the socket as a global variable so it can be reused in other functions
-	sock = socket.socket(socket.AF_INET, # Internet
-						 socket.SOCK_DGRAM) # UDP
-	sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1) # socket flag preventing the socket to be left in a TIME_WAIT state (we can reuse the socket)
-	sock.bind((UDP_IP, UDP_PORT))
-	print "Binding Socket Succeeded..."
-	while True:
-
-		data, addr = sock.recvfrom(1024) # buffer size is 1024 bytes
-		if data !="":
-			list = data.split(' ')
-			#print "5: %s  -   23: %s - 41: %s - 95: %s" % (list[5],list[23],list[41],list[95]) 
-			#if len(list) == 51:
-			str = list[136] # cannot convert last value of buffer to float?? 17 * matNumber
-				
-			hvpData.drivers[0] = float(list[5]) # link1 list[3]
-			hvpData.drivers[1] = float(list[23]) # link2 list[4]
-			hvpData.drivers[2] = float(list[41]) # link3
-			hvpData.drivers[3] = float(list[59]) # link6
-			hvpData.drivers[4] = float(list[77]) # flansch
-			hvpData.drivers[5] = float(list[95]) # test link4
-				
-			hvpData.drivers[6] = float(list[113]) # visibility 0
-			#hvpData.drivers[6] = float(list[9]) # visibility 1
-			hvpData.drivers[7] = float(list[131]) # visibility 2
-				
-			hvpData.drivers[8] = float(list[11]) # button number
-			hvpData.drivers[9] = float(list[12]) # thumb right X
-			hvpData.drivers[10] = float(list[13]) # thumb right Y
-			hvpData.drivers[11] = float(list[14]) # thumb right normalized magnitude
-				
-			hvpData.drivers[12] = float(list[15]) # blank
-			hvpData.drivers[13] = float(list[16]) #time step 0 - 400
-			hvpData.drivers[14] = float(list[17]) #clock time 
-			
-				
-
-def startReceiver():
-	print "Connecting to TUI Framework..."
-	th1 = start_new_thread(recv,("tmp",))
+		print("Error during close!")
 	
 def setOculus():
 	setDisplayMode(VR_DISPLAY_OCULUS_RIFT)
@@ -342,43 +471,3 @@ keyO.connect(setOculus)
 
 keyM = vrKey(Key_M)
 keyM.connect(setMonitor)
-
-#keyA = vrKey(Key_A)
-#keyA.connect(startReceiver)	
-
-	
-# def SetZoom(value):
-	# setCameraZoom(value)
-	# vrLogInfo("Zooming by factor: " + str(value)) 
-	# hvpLog("Info","a","Zooming by factor: " + str(value) + "</br>") 
-	
-	
-# def hvpSetExposure(value):
-	# envMat = findMaterial(hvpData.env)
-	# e = envMat.fields().getReal32("exposure")
-	# envMat.fields().setReal32("exposure", value)
-	# vrLogInfo("Set exposure to: " + str(value)) 
-	# hvpLog("Info","a","Set exposure to: " + str(value) + "</br>") 
-	
-	
-# def hvpDrive():
-	# if hvpData.drive == True:
-		# vrLogWarning("Executing drive animation. Hit p-key to pause, c-key to contiune animation...")
-		# hvpLog('info','a','Executing drive animation. Hit p-key to pause, c-key to contiune animation...</br>')
-		# playCAnimation("drive",0,490)
-	# else:
-		# vrLogWarning( "This scene is not suitable for driving animations.Please load a suitable scene!")
-		# hvpLog('note','a','This scene is not suitable for driving animations.</br>Please load a suitable scene!</br>')
-
-# def hvpPause():
-	# pauseCAnimation("drive",True)
-	# vrLogWarning("Paused drive animation...")
-	# hvpLog('info','a','Pause drive animation...</br>')
-	
-# def hvpCont():
-	# pauseCAnimation("drive",False)
-	# vrLogWarning("Executing drive animation...")
-	# hvpLog('info','a','Continue drive animation...</br>')
-
-	
-

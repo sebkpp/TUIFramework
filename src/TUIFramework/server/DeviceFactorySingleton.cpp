@@ -22,7 +22,7 @@
 */
 
 
-#include <TUIFramework\server\DeviceFactorySingleton.h>
+#include "DeviceFactorySingleton.h"
 
 namespace tuiframework {
 

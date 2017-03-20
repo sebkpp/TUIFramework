@@ -22,7 +22,7 @@
 */
 
 
-#include <TUIFramework\core\ISerializable.h>
+#include "ISerializable.h"
 
 namespace tuiframework {
 

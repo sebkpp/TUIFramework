@@ -22,7 +22,7 @@
 */
 
 
-#include <TUIFramework\logging\Logger.h>
+#include "Logger.h"
 #include <pthread.h>
 #include <iostream>
 

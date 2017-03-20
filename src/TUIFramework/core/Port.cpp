@@ -22,7 +22,7 @@
 */
 
 
-#include <TUIFramework\core\Port.h>
+#include "Port.h"
 
 #include <iostream>
 #include <ios>
@@ -92,12 +92,20 @@ void Port::setConstraintMax(const std::string & constraintMax) {
 	this->constraintMax = constraintMax;
 }
 
-const std::string & Port::getTransfoType() const {
+const std::string & Port::getTrafoType() const {
 	return this->trafotype;
 }
 
-void Port::setTransfoType(const std::string & trafoType) {
+void Port::setTrafoType(const std::string & trafoType) {
 	this->trafotype = trafoType;
+}
+
+const std::string & Port::getTrafoNo() const {
+	return this->trafono;
+}
+
+void Port::setTrafoNo(const std::string & trafoType) {
+	this->trafono = trafoType;
 }
 
 Port::DataFlowDirection Port::getDataFlowDirection() const {
@@ -116,7 +124,7 @@ std::ostream & Port::serialize(std::ostream & os) const
 	os << this->name << " " << this->typeName << " " << this->description << " ";
 
     os << this->dataFlowDirection ;
-	os << " " << this->constraintMin << " " << this->constraintMax << " " << this->trafotype;
+	os << " " << this->constraintMin << " " << this->constraintMax << " " << this->trafotype << " " << this->trafono;
     return os;
 }
 
@@ -126,7 +134,7 @@ std::istream & Port::deSerialize(std::istream & is) {
 	is >> this->name >> this->typeName >> this->description;
 
     is >> this->dataFlowDirection;
-	is >> this->constraintMin >> this->constraintMax >> this->trafotype;
+	is >> this->constraintMin >> this->constraintMax >> this->trafotype >> this->trafono;
     return is;
 }
 

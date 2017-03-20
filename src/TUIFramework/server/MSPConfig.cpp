@@ -22,9 +22,9 @@
 */
 
 
-#include <TUIFramework\server\MSPConfig.h>
+#include "MSPConfig.h"
 
-#include <TUIFramework\core\Exception.h>
+#include "..\core\Exception.h"
 
 #include <iostream>
 

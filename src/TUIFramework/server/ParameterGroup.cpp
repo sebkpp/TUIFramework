@@ -20,17 +20,15 @@
     You should have received a copy of the GNU Lesser General Public License
     along with the TUIFramework.  If not, see <http://www.gnu.org/licenses/>.
 */
-
-
-#include <TUIFramework\server\ParameterGroup.h>
-
-#include <TUIFramework\core\Exception.h>
-
 #define USE_TFDEBUG
 
-#include <TUIFramework\logging\Logger.h>
-
 #include <stdlib.h>
+
+#include "ParameterGroup.h"
+
+#include "..\core\Exception.h"
+#include "..\logging\Logger.h"
+
 
 using namespace std;
 

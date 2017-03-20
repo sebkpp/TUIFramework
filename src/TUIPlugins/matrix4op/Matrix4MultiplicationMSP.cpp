@@ -23,12 +23,12 @@
 */
 
 
-#include <TUIPlugins/matrix4op/Matrix4MultiplicationMSP.h>
+#include "Matrix4MultiplicationMSP.h"
 
-#include <tuiframework/server/ParameterGroup.h>
-#include <tuiframework/core/Exception.h>
+#include "../../tuiframework/server/ParameterGroup.h"
+#include "../../tuiframework/core/Exception.h"
 #define USE_TFDEBUG
-#include <tuiframework/logging/Logger.h>
+#include "../../tuiframework/logging/Logger.h"
 
 static const char * inATag = "A";
 static const char * inAPackedTag = "AP";

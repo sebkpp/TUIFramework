@@ -1,9 +1,9 @@
 #pragma once
-#include <tuiframework/server/MSPConfig.h>
-#include <tuiframework/server/MSPType.h>
-#include <TUIPlugins/tuitypes/common/CommonTypeReg.h>
-#include <tuiframework/core/IMSP.h>
-#include <tuiframework/core/EventDelegate.h>
+#include "../../tuiframework/server/MSPConfig.h"
+#include "../../tuiframework/server/MSPType.h"
+#include "../../TUIPlugins/tuitypes/common/CommonTypeReg.h"
+#include "../../tuiframework/core/IMSP.h"
+#include "../../tuiframework/core/EventDelegate.h"
 
 namespace tuiframework {
 	class ByteToBytePackage :
@@ -29,6 +29,7 @@ namespace tuiframework {
 		MSPType type;
 
 		EventDelegateNC<DigitalChangedEvent, ByteToBytePackage> eventDelegate;
+		void initInTag();
 
 		IEventSink * out;
 		std::map<std::string, int> nameToIdMap;
@@ -36,6 +37,7 @@ namespace tuiframework {
 		int index = 0;
 
 		PackedType <int> packedByte;
+		vector<std::string> inTag;
 		int id;
 		int byteSize;
 	};

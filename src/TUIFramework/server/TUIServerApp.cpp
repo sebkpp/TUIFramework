@@ -22,22 +22,6 @@
 */
 
 
-#define USE_TFDEBUG
-#include <TUIFramework\logging\Logger.h>
-
-#include <TUIFramework\server\TUIServerApp.h>
-
-#include <TUIFramework\core\IEvent.h>
-#include <TUIFramework\core\IDevice.h>
-#include <TUIFramework\core\HostAddress.h>
-#include <TUIFramework\core\Exception.h>
-
-
-#include <TUIFramework\server\EPAddressTranslator.h>
-
-#include <TUIFramework\core\TypeRegistration.h>
-
-
 #include <vector>
 #include <sstream>
 #include <string>
@@ -45,6 +29,24 @@
 #include <iostream>
 #include <cstdio>
 #include <cstring> // GCC 4.3 related build problem
+
+#include "TUIServerApp.h"
+#include "EPAddressTranslator.h"
+
+#define USE_TFDEBUG
+#include "..\logging\Logger.h"
+
+
+#include "..\core\IEvent.h"
+#include "..\core\IDevice.h"
+#include "..\core\HostAddress.h"
+#include "..\core\Exception.h"
+
+
+
+#include "..\core\TypeRegistration.h"
+
+
 
 using namespace std;
 

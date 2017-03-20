@@ -21,15 +21,15 @@
     along with the TUIFramework.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include <TUIPlugins/motioncapture/MotionCaptureStubDev.h>
+#include "MotionCaptureStubDev.h"
 
-#include <tuiframework/core/ITUIServer.h>
-#include <tuiframework/core/IEvent.h>
-#include <tuiframework/core/Exception.h>
+#include "../../tuiframework/core/ITUIServer.h"
+#include "../../tuiframework/core/IEvent.h"
+#include "../../tuiframework/core/Exception.h"
 #define USE_TFDEBUG
-#include <tuiframework/logging/Logger.h>
-#include <tuiframework/server/DeviceConfig.h>
-#include <TUIPlugins/tuitypes/common/CommonTypeReg.h>
+#include "../../tuiframework/logging/Logger.h"
+#include "../../tuiframework/server/DeviceConfig.h"
+#include "../../TUIPlugins/tuitypes/common/CommonTypeReg.h"
 
 #include <cstdlib> // GCC 4.3 related build problem
 

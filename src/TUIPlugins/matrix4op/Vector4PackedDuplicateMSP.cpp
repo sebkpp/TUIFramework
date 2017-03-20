@@ -23,12 +23,12 @@
 */
 
 
-#include <TUIPlugins/matrix4op/Vector4PackedDuplicateMSP.h>
+#include "Vector4PackedDuplicateMSP.h"
 
-#include <tuiframework/server/ParameterGroup.h>
-#include <tuiframework/core/Exception.h>
+#include "../../tuiframework/server/ParameterGroup.h"
+#include "../../tuiframework/core/Exception.h"
 #define USE_TFDEBUG
-#include <tuiframework/logging/Logger.h>
+#include "../../tuiframework/logging/Logger.h"
 
 static const char * inAPTag = "AP";
 static const char * outAP1Tag = "AP1";

@@ -21,23 +21,20 @@
     along with the TUIFramework.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-
-#include <TUIFramework\core\EventDeserializer.h>
-
-#include <TUIFramework\core\IEventSink.h>
-#include <TUIFramework\core\IEvent.h>
-#include <TUIFramework\core\ISerializedDataSource.h>
-#include <TUIFramework\core\IThreadMessageSink.h>
-
-#include <TUIFramework\core\EventFactory.h>
-#include <TUIFramework\core\HostAddress.h>
-
-#include <TUIFramework\logging\Logger.h>
-
 #include <iostream>
 #include <sstream>
 #include <string>
 #include <cstring> // GCC 4.3 related build problem
+
+#include "EventDeserializer.h"
+
+#include "IEventSink.h"
+#include "IEvent.h"
+#include "ISerializedDataSource.h"
+#include "IThreadMessageSink.h"
+#include "EventFactory.h"
+#include "HostAddress.h"
+#include "../logging/Logger.h"
 
 using namespace std;
 

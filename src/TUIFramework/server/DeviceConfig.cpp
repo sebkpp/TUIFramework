@@ -22,9 +22,9 @@
 */
 
 
-#include <TUIFramework\server\DeviceConfig.h>
+#include "DeviceConfig.h"
 
-#include <TUIFramework\logging\Logger.h>
+#include "..\logging\Logger.h"
 
 #include <iostream>
 

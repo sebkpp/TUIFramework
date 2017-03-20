@@ -1,18 +1,11 @@
 #include "ByteToBytePackage.h"
-#include <tuiframework/core/Exception.h>
-#define USE_TFDEBUG
-#include <tuiframework/logging/Logger.h>
 
-static const char * in0Tag = "in0";
-static const char * in1Tag = "in1";
-/*static const char * in2Tag = "in2";
-static const char * in3Tag = "in3";
-static const char * in4Tag = "in4";
-static const char * in5Tag = "in5";
-static const char * in6Tag = "in6";
-static const char * in7Tag = "in7";
-static const char * in8Tag = "in8";
-static const char * in9Tag = "in9";*/
+
+#include "../../tuiframework/core/Exception.h"
+#define USE_TFDEBUG
+#include "../../tuiframework/logging/Logger.h"
+
+
 static const char * outTagPacked = "outPacked";
 
 namespace tuiframework {
@@ -43,6 +36,7 @@ namespace tuiframework {
 			this->byteSize = config.getParameterGroup().getInt("Convert|byteSize");
 			TFDEBUG("ID = " << this->id);
 			TFDEBUG("ByteSize = " << this->byteSize);
+			initInTag();
 		}
 		catch (Exception & e) {
 			TFERROR(e.getFormattedString());
@@ -67,36 +61,13 @@ namespace tuiframework {
 
 	IEventSink * ByteToBytePackage::getEventSink(const std::string & name)
 	{
-		if (name.compare(in0Tag) == 0) {
-			return &eventDelegate;
+		for (string inTag : this->inTag)
+		{
+			if (name.compare(inTag) == 0) {
+				return &eventDelegate;
+			}
 		}
-		if (name.compare(in1Tag) == 0) {
-			return &eventDelegate;
-		}
-		/*if (name.compare(in2Tag) == 0) {
-			return &eventDelegate;
-		}
-		if (name.compare(in3Tag) == 0) {
-			return &eventDelegate;
-		}
-		if (name.compare(in4Tag) == 0) {
-			return &eventDelegate;
-		}
-		if (name.compare(in5Tag) == 0) {
-			return &eventDelegate;
-		}
-		if (name.compare(in6Tag) == 0) {
-			return &eventDelegate;
-		}
-		if (name.compare(in7Tag) == 0) {
-			return &eventDelegate;
-		}
-		if (name.compare(in8Tag) == 0) {
-			return &eventDelegate;
-		}
-		if (name.compare(in9Tag) == 0) {
-			return &eventDelegate;
-		}*/
+
 		return 0;
 	}
 
@@ -137,5 +108,13 @@ namespace tuiframework {
 	{
 		this->eventOrder[std::to_string(entityID) + std::to_string(portID)] = this->index;
 		++index;
+	}
+
+	void ByteToBytePackage::initInTag()
+	{
+		for (int i = 0; i < this->byteSize; i++)
+		{
+			this->inTag.push_back("in" + std::to_string(i));
+		}
 	}
 }

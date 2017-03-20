@@ -23,7 +23,7 @@
 */
 
 
-#include <TUIPlugins\tuitypes\common\Vector3d.h>
+#include "Vector3d.h"
 
 Vector3d::Vector3d()
 : x(0), y(0), z(0) {}
