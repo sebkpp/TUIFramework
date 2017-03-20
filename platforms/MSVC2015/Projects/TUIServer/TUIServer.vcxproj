@@ -112,7 +112,10 @@
     </Link>
     <PostBuildEvent>
       <Command>copy "$(SolutionDir)3rdParty\Pre-built.2\lib\pthreadVCE2.dll" "$(SolutionDir)..\..\install\bin\$(PlatformTarget)\TUIFramework\"
-copy "$(SolutionDir)3rdParty\xerces-c-3.1.1-x86-windows-vc-9.0\lib\xerces-c_3_1.dll" "$(SolutionDir)..\..\install\bin\$(PlatformTarget)\TUIFramework\"</Command>
+copy "$(SolutionDir)3rdParty\xerces-c-3.1.1-x86-windows-vc-9.0\lib\xerces-c_3_1.dll" "$(SolutionDir)..\..\install\bin\$(PlatformTarget)\TUIFramework\"
+copy "$(SolutionDir)3rdParty\winmod\Y200Clntd.dll" "$(SolutionDir)..\..\install\bin\$(PlatformTarget)\TUIFramework\"
+copy "$(SolutionDir)3rdParty\winmod\Y200Clnt.dll" "$(SolutionDir)..\..\install\bin\$(PlatformTarget)\TUIFramework\"
+copy "$(SolutionDir)3rdParty\winmod\Y200Ctrl.dll" "$(SolutionDir)..\..\install\bin\$(PlatformTarget)\TUIFramework\"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
