@@ -9,7 +9,7 @@ TUIdict = dict()				#TUIFramework signal is a dict
 ConfigDict = dict()				#configuration dictionary, loaded from a JSON file
 nodesList = dict()				#principal data structure
 receive = False
-path = "C:/Users/VIB_SHP/Documents/Test_CaPa_TUI_2016-2017/TUI_demo_v3/extensions/tuiclientpyext/TUIdict.json"
+path = "C:/Users/VIB_SHP/Documents/Test_CaPa_TUI_2016-2017/TUIFramework_Github/extensions/tuiclientpyext/TUIdict.json"
 connection = True
 
 #################################################################################################################################
@@ -24,7 +24,6 @@ def recurseFindNodes( instances ):
 		if len(instances[instance]) == 0:
 			print("Instance: " + instance + " is not found!")
 			del(nodesList[instance])
-			#print(nodesList)
 			continue
 		children = instances[instance][0].getNChildren()
 		if children > 0:
@@ -87,8 +86,8 @@ def recv(tmp):
 	sock.bind((UDP_IP, UDP_PORT))
 	print("CONNECTION ESTABLISHED")
 
-	while True:
-		data, addr = sock.recvfrom(1024) # buffer size is 1024 bytes
+	while connection:
+		data, addr = sock.recvfrom(2048) # buffer size is 1024 bytes
 
 		TUIdict = json.loads(data.decode())
 
@@ -132,6 +131,30 @@ def calculateLocalPosition( nodePtr ):
 
 	return [xl, yl, zl]																															
 
+def correctOriginalPosition( nodePtr, instance, port ):
+	global nodesList
+
+	newPosition = calculateLocalPosition( nodePtr )
+
+	if nodesList[instance][port]['TrafoType'] == 'rot' :
+		return
+
+	trafoNo = int(nodesList[instance][port]['TrafoNo']) - 1
+
+	matrix = nodePtr.getWorldTransform()
+
+	d = (-1) * nodesList[instance][port]['Value']
+
+	newPosition[trafoNo] = d + newPosition[trafoNo]
+
+	diff = newPosition[trafoNo] - nodesList[instance][port]['Original_Position'][trafoNo]
+
+	if diff < 0.005 and diff > -0.005:
+		return
+
+	nodesList[instance][port]['Original_Position'][trafoNo] = newPosition[trafoNo]
+
+
 #################################################################################################################################
 ######################################################      OPERATE      ########################################################
 #################################################################################################################################
@@ -144,17 +167,24 @@ def operate():
 
 	if receive is False:
 		return
-	#print("Operate")    
 
-	#print(TUIdict)
 	for instance in nodesList.keys():
+
 		for port in nodesList[instance].keys():
+
+			if nodesList[instance][port]['Description'] == "empty":
+				continue
+
 			nodePtr = nodesList[instance][port]['Pointer']
-			
+
+			if TUIdict[instance][port]['Value'] < 0.5 and TUIdict[instance][port]['Value'] > -0.5:
+				TUIdict[instance][port]['Value'] = 0
+
 			if nodesList[instance][port]['Value'] != TUIdict[instance][port]['Value']:
+				correctOriginalPosition( nodePtr, instance, port )
 				nodesList[instance][port]['Value'] = TUIdict[instance][port]['Value']
 
-				if nodesList[instance][port]['Transformation_Type'] == 'rot' :
+				if nodesList[instance][port]['TrafoType'] == 'rot' :
 					rotationOperate (nodePtr, instance, port)
 
 				else:
@@ -169,11 +199,21 @@ def rotationOperate (nodePtr, instance, port):
 	rotate_y = nodesList[instance][port]['Rotation_Position'][1]
 	rotate_z = nodesList[instance][port]['Rotation_Position'][2]
 
+	trafoNo = int(nodesList[instance][port]['TrafoNo'])
+
 	if rotate_x == 0 and rotate_y == 0 and rotate_z == 0:
 		pass
 	else:
 		setTransformNodeRotationOrientation(nodePtr, rotate_x, rotate_y, rotate_z)
-	nodePtr.setRotation(rotate_x, rotate_y, rotate_z + nodesList[instance][port]['Value'])
+
+	if trafoNo == 1:
+		rotate_x = rotate_x + nodesList[instance][port]['Value']
+	elif trafoNo == 2:
+		rotate_y = rotate_y + nodesList[instance][port]['Value']
+	elif trafoNo == 3:
+		rotate_z = rotate_z + nodesList[instance][port]['Value']
+
+	nodePtr.setRotation(rotate_x, rotate_y, rotate_z)
 
 ##### Operate translation on the node pointed by nodePtr using the value stored in the dictionary #####
 def translationOperate ( nodePtr, instance, port ):
@@ -183,20 +223,24 @@ def translationOperate ( nodePtr, instance, port ):
 	translate_y = nodesList[instance][port]['Original_Position'][1]
 	translate_z = nodesList[instance][port]['Original_Position'][2]
 
+	translateTab = [translate_x, translate_y, translate_z]
+	trafoNo = int(nodesList[instance][port]['TrafoNo']) - 1
+
 	position = nodePtr.getWorldTranslation()
 	matrix = nodePtr.getWorldTransform()
 	local_position = calculateLocalPosition(nodePtr)
 
 	if nodesList[instance][port]['Sign'] is True:
-		d = nodesList[instance][port]['Value'] - abs(translate_y - local_position[1])
+		d = nodesList[instance][port]['Value'] - abs(translateTab[trafoNo] - local_position[trafoNo])
 		if nodesList[instance][port]['Value'] < 0:
 			nodesList[instance][port]['Sign'] = False
 	else:
-		d = nodesList[instance][port]['Value'] + abs(translate_y - local_position[1])
+		d = nodesList[instance][port]['Value'] + abs(translateTab[trafoNo] - local_position[trafoNo])
 		if nodesList[instance][port]['Value'] >= 0:
 			nodesList[instance][port]['Sign'] = True
 
-	nodePtr.setWorldTranslation(matrix[1] * d + position[0], matrix[5] * d + position[1], matrix[9] * d + position[2])
+	nodePtr.setWorldTranslation(matrix[trafoNo] * d + position[0], matrix[trafoNo + 4] * d + position[1], matrix[trafoNo + 8] * d + position[2])
+
 
 #################################################################################################################################
 ######################################################    SETUP SCENE    ########################################################
